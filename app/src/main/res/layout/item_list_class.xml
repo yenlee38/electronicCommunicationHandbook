@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="158dp"
+    android:background="@drawable/border_list_class"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_border_subject_a"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="@dimen/size_min"
+        android:backgroundTintMode="@drawable/border_buton_yellow"
+        android:elevation="2dp"
+        app:cardCornerRadius="@dimen/size_min"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_border_subject_b"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+           android:layout_margin="6dp"
+            android:backgroundTintMode="@drawable/border_buton_yellow"
+            android:elevation="2dp"
+            app:cardCornerRadius="@dimen/size_min"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgSubject"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+
+                android:scaleType="fitXY"
+
+                android:src="@drawable/title_background"
+
+                ></ImageView>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/tv_item_class_subject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_medium"
+        android:text="Deep learning"
+
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_min"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/cardView_border_subject_a"
+        app:layout_constraintStart_toEndOf="@id/cardView_border_subject_a"
+        app:layout_constraintTop_toTopOf="@id/cardView_border_subject_a" />
+
+    <LinearLayout
+        android:id="@+id/linear_class_item"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_medium"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/cardView_border_subject_a"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_class_subject">
+
+        <TextView
+            android:id="@+id/tvBin1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_super_min"
+            android:text="Number of students:"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_item_class_numbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_super_min"
+            android:text="60"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_class_view_student"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/size_medium"
+        android:background="@drawable/border_buton_yellow"
+        android:paddingLeft="@dimen/size_min"
+        android:paddingRight="@dimen/size_min"
+        android:text="View student"
+        app:layout_constraintBottom_toBottomOf="@id/cardView_border_subject_a"
+        app:layout_constraintLeft_toRightOf="@id/cardView_border_subject_a" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_max">32dp</dimen>
+    <dimen name="size_super_max">40dp</dimen>
+    <dimen name="size_medium">24dp</dimen>
+    <dimen name="size_min">16dp</dimen>
+    <dimen name="size_super_min">8dp</dimen>
+    <dimen name="border_radius">10dp</dimen>
+    <dimen name="border_radius_medium">15dp</dimen>
+
+</resources>
