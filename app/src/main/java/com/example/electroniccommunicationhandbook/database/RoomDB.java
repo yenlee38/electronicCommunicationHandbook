@@ -34,10 +34,12 @@ import com.example.electroniccommunicationhandbook.entity.Student_Parent;
 import com.example.electroniccommunicationhandbook.entity.Subject;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Account.class, Announcement.class, Class.class, ConfirmationPaper.class, Message.class, Parent.class, SchoolTime.class
+
+@Database(entities = {Account.class, Announcement.class, Class.class,  ConfirmationPaper.class, Message.class, Parent.class, SchoolTime.class
 , Student.class, Student_Class.class, Student_ConfirmationPaper.class, Student_Parent.class, Subject.class, Teacher.class}, version = 1, exportSchema = false)
 @TypeConverters(Convert.class)
 public abstract class RoomDB extends RoomDatabase {

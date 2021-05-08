@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+
+    tools:context=".ui.authentication.login.Login">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/title_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="7"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_medium"
+            android:layout_marginTop="@dimen/size_max"
+            android:layout_marginRight="@dimen/size_medium"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:background="@drawable/cus_input"
+                android:paddingStart="@dimen/size_medium"
+                android:paddingEnd="@dimen/size_medium"
+                android:hint="@string/enter_email"
+                android:textColorHint="@color/gray_primary"
+
+                android:drawableLeft="@drawable/ic_user"
+                android:drawablePadding="@dimen/size_super_min"
+                android:drawableTint="@color/gray_primary"
+                />
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/tv_log_error_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_warning"
+                android:drawableTint="@color/red_warning"
+                android:drawableLeft="@drawable/ic_warning"
+                android:layout_marginTop="@dimen/size_super_min"
+                android:text="Your email is incorrect"></TextView>
+            <EditText
+              android:layout_marginTop="@dimen/size_super_min"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:background="@drawable/cus_input"
+                android:paddingEnd="@dimen/size_medium"
+                android:paddingStart="@dimen/size_medium"
+                android:hint="@string/enter_password"
+                android:textColorHint="@color/gray_primary"
+
+                android:drawableLeft="@drawable/ic_lock"
+                android:drawablePadding="@dimen/size_super_min"
+                android:drawableTint="@color/gray_primary"
+                 />
+            <TextView
+
+                android:id="@+id/tv_log_error_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_warning"
+                android:drawableTint="@color/red_warning"
+                android:drawableLeft="@drawable/ic_warning"
+                android:layout_marginTop="@dimen/size_super_min"
+                android:text="Your email is incorrect"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_medium"
+            android:layout_marginRight="@dimen/size_medium"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/rad_log_group_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rad_log_student"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:text="Student" />
+
+                <RadioButton
+                    android:id="@+id/rad_log_teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:text="Teacher" />
+
+                <RadioButton
+                    android:id="@+id/rad_log_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/black"
+                    android:text="Parent" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="@dimen/size_medium"
+
+                android:backgroundTint="@color/purple_pastel_200"
+                android:text="Login" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewShowInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:text="Forgot your password?"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_log_direct_reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Reset password"
+                android:textColor="@color/blue_pastel_200" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
