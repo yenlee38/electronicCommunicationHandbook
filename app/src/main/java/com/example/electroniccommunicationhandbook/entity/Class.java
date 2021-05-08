@@ -135,4 +135,18 @@ public class Class {
 
     public Class() {
     }
+
+    public Class (Class temp){
+        this.classId = temp.getClassId();
+        this.subjectId = temp.getSubjectId();
+        this.teacherId = temp.getTeacherId();
+        this.semester = temp.getSemester();
+        this.studyingYear = temp.getStudyingYear();
+        this.classStartDate = temp.getClassStartDate();
+        this.classEndDate = temp.getClassEndDate();
+        this.classDayOfWeek = temp.getClassDayOfWeek();
+        this.startSchoolTime = temp.getStartSchoolTime();
+        this.endSchoolTime = temp.getEndSchoolTime();
+        this.classRoom = temp.getClassRoom();
+    }
 }
