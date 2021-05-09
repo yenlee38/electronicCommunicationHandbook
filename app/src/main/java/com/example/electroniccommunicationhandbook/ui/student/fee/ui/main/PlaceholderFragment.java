@@ -11,8 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.entity.Fee;
+import com.example.electroniccommunicationhandbook.entity.Point;
+import com.example.electroniccommunicationhandbook.ui.student.fee.FeeAdapter;
+import com.example.electroniccommunicationhandbook.ui.student.point.PointAdapter;
+
+import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -20,8 +28,9 @@ import com.example.electroniccommunicationhandbook.R;
 public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
-
-    private PageViewModel pageViewModel;
+    private RecyclerView recyclerView;
+    private FeeAdapter feeAdapter;
+    private ArrayList<Fee> listFee;
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -34,12 +43,10 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pageViewModel = new ViewModelProvider(this).get(PageViewModel.class);
         int index = 1;
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
-        pageViewModel.setIndex(index);
     }
 
     @Override
@@ -47,13 +54,22 @@ public class PlaceholderFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_fee_view, container, false);
-        final TextView textView = root.findViewById(R.id.section_label);
-        pageViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        recyclerView = root.findViewById(R.id.recycelviewFee);
+
+        listFee= new ArrayList<>();
+        listFee.add(new Fee(1,2020,580000));
+        listFee.add(new Fee(1,2020,580000));
+        listFee.add(new Fee(1,2020,580000));
+        listFee.add(new Fee(1,2020,580000));
+        listFee.add(new Fee(1,2020,580000));
+        listFee.add(new Fee(1,2020,580000));
+
+        feeAdapter= new FeeAdapter(listFee,this.getContext());
+        recyclerView.setAdapter(feeAdapter);
+        LinearLayoutManager layoutManager= new LinearLayoutManager(root.getContext());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+
         return root;
     }
 }

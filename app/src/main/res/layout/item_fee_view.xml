@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:orientation="vertical"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="15dp"
+    android:background="@drawable/background_fee_item"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_subject_name"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-black"
+            android:padding="5dp"
+            android:text="Lập trình hướng đối tượng"
+            android:textColor="#5E5E5E"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_noCredit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="right"
+            android:text="3tc"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_subject_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="18dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="1,777,000"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+
+</LinearLayout>
