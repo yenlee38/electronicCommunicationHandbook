@@ -13,4 +13,5 @@
     <string name="tab_text_2">SEMESTER 2</string>
     <string name="viewpoints">View Points</string>
     <string name="title_activity_fee_view">activity_fee_view</string>
+    <string name="tab_student_card">Student Card </string>
 </resources>

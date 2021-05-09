@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <ImageView
+           android:layout_width="20dp"
+           android:layout_height="20dp"
+           android:layout_marginTop="16dp"
+           android:layout_marginLeft="29dp"
+           android:src="@drawable/arrow_back_black_24dp"
+
+           />
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="117dp"
+            android:layout_height="30dp"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/tab_student_card"
+            android:textAppearance="@style/tab_style_text"
+            android:lineSpacingExtra="8sp"
+            android:translationY="-4.11sp"
+            android:gravity="center_horizontal|top"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="363dp"
+        android:layout_height="533dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/ic_backround">
+
+        <RelativeLayout
+            android:layout_width="363dp"
+            android:layout_height="173dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="336dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="133dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="12dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/avatar"/>
+
+            <LinearLayout
+                android:layout_width="214dp"
+                android:layout_height="96dp"
+                android:orientation="vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="137dp"
+                android:layout_marginTop="24dp">
+
+                <LinearLayout
+                    android:layout_width="207dp"
+                    android:layout_height="42dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="207dp"
+                        android:layout_height="19dp"
+                        android:textSize="16dp"
+                        android:textColor="#000000"
+                        android:text="Education Network School"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="19dp"
+                        android:textSize="16dp"
+                        android:textColor="#000000"
+                        android:text="STUDENT ID CARD"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Student ID:"
+                        android:textSize="12dp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:id="@+id/tvId"
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18110348"
+                        android:textStyle="bold"
+                        android:textSize="16dp"
+                        android:textColor="#000000"
+                        android:layout_gravity="center_horizontal"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="339dp"
+            android:layout_height="35dp"
+           android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:layout_marginTop="205dp"
+           >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full name:"/>
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hoang Thai Nhu Quynh"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="339dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:layout_marginTop="244dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DoB:"/>
+            <TextView
+                android:id="@+id/tvDoB"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="07/08/2000"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="339dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:layout_marginTop="283dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Major:"/>
+            <TextView
+                android:id="@+id/tvMajor"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Information Technology"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_year"
+            android:layout_width="339dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical"
+            android:layout_marginTop="321dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Year of admisstion:"/>
+            <TextView
+                android:id="@+id/tvYearAdmission"
+                android:layout_marginLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018"
+                android:textSize="16dp"
+                android:textColor="#000000"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/imgId"
+            android:layout_marginTop="34dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_year"
+            android:src="@drawable/ma"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tvIdCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgId"
+            android:layout_marginTop="2dp"
+            android:layout_centerHorizontal="true"
+            android:text="9704 1800 9364 1413"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:letterSpacing="0.19"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+
+</LinearLayout>
