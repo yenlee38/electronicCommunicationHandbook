@@ -12,23 +12,25 @@
         <activity
             android:name=".ui.student.fee.FeeViewActivity"
             android:label="@string/title_activity_fee_view"
-            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar"></activity>
+            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.student.point.PointViewActivity"
             android:label="@string/title_activity_point_view"
-            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar"></activity>
         <activity android:name=".ui.teacher.list_class.ListClass" />
         <activity android:name=".ui.authentication.login.Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

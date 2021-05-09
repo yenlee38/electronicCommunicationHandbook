@@ -14,4 +14,11 @@
     <string name="viewpoints">View Points</string>
     <string name="title_activity_fee_view">activity_fee_view</string>
     <string name="tab_student_card">Student Card </string>
+    <string name="view_fee_title">Fee</string>
+    <string name="total_fee">Total Fee</string>
+    <string name="price">Price</string>
+    <string name="no_sub">No. Subject</string>
+    <string name="view_fee">View Fees</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
 </resources>
