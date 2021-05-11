@@ -44,6 +44,7 @@
           android:paddingTop="8dp"
           android:orientation="horizontal">
           <TextView
+              android:id="@+id/tv_semesterOne"
               android:layout_width="205dp"
               android:layout_height="37dp"
               android:text="SEMESTER 1"
@@ -52,6 +53,7 @@
               android:gravity="center_horizontal|center_vertical"/>
 
           <TextView
+              android:id="@+id/tv_semesterTwo"
               android:layout_width="205dp"
               android:layout_height="37dp"
               android:text="SEMESTER 2"
@@ -67,6 +69,7 @@
           android:orientation="horizontal"
           android:background="#80E7FF">
             <TextView
+                android:id="@+id/tv_monDay"
                 android:layout_marginLeft="20dp"
                 android:layout_width="53dp"
                 android:layout_height="60dp"
@@ -81,6 +84,7 @@
                 />
 
           <TextView
+              android:id="@+id/tv_tueDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -95,6 +99,7 @@
               />
 
           <TextView
+              android:id="@+id/tv_wedDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -109,6 +114,7 @@
               />
 
           <TextView
+              android:id="@+id/tv_thuDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -123,6 +129,7 @@
               />
 
           <TextView
+              android:id="@+id/tv_friDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -137,6 +144,7 @@
               />
 
           <TextView
+              android:id="@+id/tv_satDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -154,6 +162,7 @@
       </LinearLayout>
 
       <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rlv_schedule"
           android:layout_marginTop="10dp"
           android:layout_width="match_parent"
           android:layout_height="448dp">
@@ -168,6 +177,7 @@
           android:gravity="center_vertical|center_horizontal">
 
           <androidx.appcompat.widget.AppCompatSpinner
+              android:id="@+id/sp_year"
               android:layout_width="152dp"
               android:layout_height="36dp"
               android:background="@drawable/border_btn_white"
@@ -175,10 +185,10 @@
               />
 
           <TextView
+              android:id="@+id/tv_viewPoint"
               android:layout_width="156dp"
               android:layout_height="37dp"
               android:layout_marginLeft="8dp"
-
               android:background="@drawable/border_btnview"
               android:text="View points"
               android:textSize="16dp"
