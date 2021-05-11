@@ -15,4 +15,6 @@
     <color name="grey_light_background">#F4F4F2</color>
     <color name="yellow_dark">#FEC000</color>
     <color name="yellow_light">#ffd24d</color>
+    <color name="color_border_btn_white"> #73D0E5</color>
+    <color name="color_border_btn_purple"> #7AA9F7</color>
 </resources>
