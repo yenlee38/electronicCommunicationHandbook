@@ -20,23 +20,14 @@
         android:layout_height="0dp">
     </androidx.viewpager.widget.ViewPager>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_border_decorate"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
 
-        android:background="@drawable/background_blue_light"
-
-
-        app:cardCornerRadius="@dimen/size_min">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/size_super_min"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+
             android:background="@drawable/background_linear_blue"></LinearLayout>
-    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,14 +38,13 @@
         android:orientation="horizontal"
         android:weightSum="2">
 
-        <Spinner
-            android:id="@+id/spinner"
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_year"
             android:layout_width="0dp"
-
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/size_super_max"
-
+            android:layout_height="36dp"
             android:layout_weight="1"
+            android:layout_marginLeft="@dimen/size_max"
+            android:background="@drawable/border_btn_white"
 
             />
 
@@ -65,7 +55,7 @@
                     android:id="@+id/btn_class_view_class"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="36dp"
                     android:background="@drawable/button_purple"
                     android:text="View class" />
     </LinearLayout>

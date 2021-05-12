@@ -25,7 +25,7 @@
 
                 android:scaleType="fitXY"
 
-                android:src="@drawable/title_background"
+                android:src="@drawable/new_avatar"
 
                 ></ImageView>
         </androidx.cardview.widget.CardView>

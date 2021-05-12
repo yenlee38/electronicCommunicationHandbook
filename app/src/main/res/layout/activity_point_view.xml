@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             app:tabTextColor="@color/litte_gray"
             app:tabUnboundedRipple="true"
-            android:outlineAmbientShadowColor="@color/blue_pastel_200"
+            android:outlineAmbientShadowColor="@color/blue_pastel_300"
             app:tabSelectedTextColor="@color/black"
             android:background="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>

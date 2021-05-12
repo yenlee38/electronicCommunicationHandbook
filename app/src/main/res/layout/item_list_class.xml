@@ -35,7 +35,7 @@
 
                 android:scaleType="fitXY"
 
-                android:src="@drawable/title_background"
+                android:src="@drawable/subject_image"
 
                 ></ImageView>
         </androidx.cardview.widget.CardView>
@@ -46,7 +46,7 @@
         android:id="@+id/tv_item_class_subject"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/size_medium"
+        android:layout_marginLeft="@dimen/size_max"
         android:text="Deep learning"
 
         android:textColor="@color/black"
