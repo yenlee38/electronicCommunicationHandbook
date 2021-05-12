@@ -5,6 +5,7 @@
     <dimen name="size_medium">24dp</dimen>
     <dimen name="size_min">16dp</dimen>
     <dimen name="size_super_min">8dp</dimen>
+<<<<<<< HEAD
     <dimen name="border_radius">10dp</dimen>
     <dimen name="border_radius_medium">15dp</dimen>
     <dimen name="text_margin">16dp</dimen>
@@ -14,5 +15,13 @@
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+=======
+    <dimen name="border_radius_min">7dp</dimen>
+    <dimen name="border_radius_medium">10dp</dimen>
+    <dimen name="border_radius_max">15dp</dimen>
+    <dimen name="width_stroke">3dp</dimen>
+    <dimen name="border_radius_super_max">50dp</dimen>
+    <dimen name="width_stroke_max">8dp</dimen>
+>>>>>>> 8cf1aab... navigation confirm request
 
 </resources>

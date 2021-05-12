@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="11"
+    tools:context=".ui.teacher.list_class.ListClass">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_class"
+        android:layout_width="match_parent"
+        app:tabSelectedTextColor="@color/black"
+        android:layout_weight="1.5"
+        android:layout_height="0dp"></com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpage_class"
+        android:layout_width="match_parent"
+        android:layout_weight="8"
+        android:layout_height="0dp">
+    </androidx.viewpager.widget.ViewPager>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_border_decorate"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+
+        android:background="@drawable/background_blue_light"
+
+
+        app:cardCornerRadius="@dimen/size_min">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/size_super_min"
+            android:background="@drawable/background_linear_blue"></LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.1"
+        android:background="@color/blue_pastel_500"
+
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_super_max"
+
+            android:layout_weight="1"
+
+            />
+
+                <androidx.appcompat.widget.AppCompatButton
+                 android:layout_marginLeft="@dimen/size_min"
+
+                    android:layout_marginRight="@dimen/size_medium"
+                    android:id="@+id/btn_class_view_class"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_purple"
+                    android:text="View class" />
+    </LinearLayout>
+</LinearLayout>

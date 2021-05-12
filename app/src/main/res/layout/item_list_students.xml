@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/border_list_student"
+    android:orientation="horizontal">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_border_image_student"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="8dp"
+            android:backgroundTintMode="@drawable/button_yellow"
+            android:elevation="2dp"
+            app:cardCornerRadius="@dimen/size_super_min"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgStudent"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+
+                android:scaleType="fitXY"
+
+                android:src="@drawable/title_background"
+
+                ></ImageView>
+        </androidx.cardview.widget.CardView>
+
+
+
+    <TextView
+        android:id="@+id/tv_item_class_student"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_min"
+        android:text="Le Thi Phuong Thao"
+
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_min"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@+id/cardView_border_image_student"
+        app:layout_constraintStart_toEndOf="@id/cardView_border_image_student"
+        app:layout_constraintTop_toTopOf="@id/cardView_border_image_student" />
+
+    <LinearLayout
+        android:id="@+id/linear_class_item"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_min"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toRightOf="@id/cardView_border_image_student"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_class_student">
+
+        <TextView
+            android:id="@+id/tvBin1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_super_min"
+            android:text="Students ID: "
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_item_class_numbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_super_min"
+            android:text="18110366"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

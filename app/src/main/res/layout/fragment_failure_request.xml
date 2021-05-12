@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="9"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.student.ConfirmationRequest.FailureRequestFragment">
+
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_margin="@dimen/size_medium"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_gravity="center"
+
+            android:id="@+id/imgFailure"
+            android:layout_width="106dp"
+            android:layout_height="106dp"
+            android:backgroundTint="@color/red_warning"
+            android:background="@drawable/ic_warning" />
+
+        <TextView
+            android:id="@+id/tvTitleFailure"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/size_max"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/size_medium"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:text="Send Request failed" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btRetryRequest"
+            android:layout_gravity="center"
+            android:layout_width="176dp"
+            android:layout_height="48dp"
+            android:drawableLeft="@drawable/ic_refresh"
+            android:text="Try again"
+            android:layout_marginTop="@dimen/size_min"
+
+            android:background="@drawable/background_purple_not_shape"
+            android:textColor="@color/white"
+            android:paddingLeft="@dimen/size_medium"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/red_warning"
+            ></androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSuccessToHome"
+            android:background="@drawable/background_purple_not_shape"
+            android:backgroundTint="@color/purple_200"
+            android:textColor="@color/white"
+            android:layout_width="176dp"
+            android:layout_marginTop="@dimen/size_min"
+
+            android:paddingRight="@dimen/size_medium"
+            android:layout_height="48dp"
+            android:drawableRight="@drawable/ic_trending_flat"
+            android:drawableTint="@color/white"
+            android:layout_gravity="center"
+            android:text="Go to home" />
+    </LinearLayout>
+</LinearLayout>

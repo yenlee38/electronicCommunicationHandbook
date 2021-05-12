@@ -16,7 +16,7 @@ public class ListClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_class);
+        setContentView(R.layout.activity_list_classes);
         //---------- Hook-------------
         mTabLayout= findViewById(R.id.tab_class);
         mViewPager= findViewById(R.id.viewpage_class);

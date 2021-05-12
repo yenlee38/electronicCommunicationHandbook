@@ -137,7 +137,7 @@
                 android:layout_height="55dp"
                 android:layout_margin="@dimen/size_medium"
 
-                android:backgroundTint="@color/purple_pastel_200"
+                android:backgroundTint="@color/purple_pastel_500"
                 android:text="Login" />
         </LinearLayout>
 
@@ -159,7 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=" Reset password"
-                android:textColor="@color/blue_pastel_200" />
+                android:textColor="@color/blue_pastel_500" />
         </LinearLayout>
 
     </LinearLayout>
