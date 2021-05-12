@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_confirmation_request"
+    app:startDestination="@id/confirmationRequestActivity">
+
+    <activity
+        android:id="@+id/confirmationRequestActivity"
+        android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.ConfirmationRequestActivity"
+        android:label="activity_confirmation_request"
+        tools:layout="@layout/activity_confirmation_request" />
+    <fragment
+        android:id="@+id/newRequestFragment"
+        android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.NewRequestFragment"
+        android:label="fragment_new_request"
+        tools:layout="@layout/fragment_new_request" >
+        <action
+            android:id="@+id/action_newRequestFragment_to_failureRequestFragment"
+            app:destination="@id/failureRequestFragment" />
+        <action
+            android:id="@+id/action_newRequestFragment_to_successfulRequestFragment3"
+            app:destination="@id/successfulRequestFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/successfulRequestFragment3"
+        android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.SuccessfulRequestFragment"
+        android:label="fragment_successful_request"
+        tools:layout="@layout/fragment_successful_request" />
+    <fragment
+        android:id="@+id/failureRequestFragment"
+        android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.FailureRequestFragment"
+        android:label="fragment_failure_request"
+        tools:layout="@layout/fragment_failure_request" />
+</navigation>

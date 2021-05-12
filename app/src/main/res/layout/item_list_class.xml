@@ -11,7 +11,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_margin="@dimen/size_min"
-        android:backgroundTintMode="@drawable/border_buton_yellow"
+
         android:elevation="2dp"
         app:cardCornerRadius="@dimen/size_min"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
             android:layout_width="108dp"
             android:layout_height="108dp"
            android:layout_margin="6dp"
-            android:backgroundTintMode="@drawable/border_buton_yellow"
+            android:backgroundTintMode="@drawable/button_yellow"
             android:elevation="2dp"
             app:cardCornerRadius="@dimen/size_min"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
 
                 android:scaleType="fitXY"
 
-                android:src="@drawable/title_background"
+                android:src="@drawable/subject_image"
 
                 ></ImageView>
         </androidx.cardview.widget.CardView>
@@ -46,7 +46,7 @@
         android:id="@+id/tv_item_class_subject"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/size_medium"
+        android:layout_marginLeft="@dimen/size_max"
         android:text="Deep learning"
 
         android:textColor="@color/black"
@@ -93,7 +93,7 @@
         android:layout_height="40dp"
         android:textColor="@color/white"
         android:layout_marginLeft="@dimen/size_medium"
-        android:background="@drawable/border_buton_yellow"
+        android:background="@drawable/button_yellow"
         android:paddingLeft="@dimen/size_min"
         android:paddingRight="@dimen/size_min"
         android:text="View student"
