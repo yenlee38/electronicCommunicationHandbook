@@ -148,6 +148,20 @@ public class Class {
         EndSchoolTime = endSchoolTime;
     }
 
+    public Class(Class classNew){
+        ClassID = classNew.ClassID;
+        SubjectID = classNew.SubjectID;
+        TeacherID = classNew.TeacherID;
+        Semester = classNew.Semester;
+        StudyingYear = classNew.StudyingYear;
+        StartingDate = classNew.StartingDate;
+        EndDate = classNew.EndDate;
+        DayOfWeek = classNew.DayOfWeek;
+        Room = classNew.Room;
+        StartingSchoolTime = classNew.StartingSchoolTime;
+        EndSchoolTime = classNew.EndSchoolTime;
+    }
+
     public Class() {
     }
 

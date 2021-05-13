@@ -22,11 +22,11 @@ public interface ClassDAO {
     void updateClass(Class classUpdate);
 
 
-    @Query("SELECT Name FROM Subject WHERE subjectId = :subjectId")
-    String getNameSubjectById(int subjectId);
+    @Query("SELECT Name FROM Subject WHERE SubjectID = :subjectID")
+    String getNameSubjectById(String subjectID);
 
-    @Query("SELECT * FROM Subject WHERE subjectId = :subjectId")
-    Subject getSubjectById(int subjectId);
+    @Query("SELECT * FROM Subject WHERE SubjectID = :subjectID")
+    Subject getSubjectById(String subjectID);
 
 
 

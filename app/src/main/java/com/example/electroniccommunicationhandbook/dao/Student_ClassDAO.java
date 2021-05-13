@@ -23,9 +23,9 @@ public interface Student_ClassDAO {
     @Delete
     void delete (Student_Class st);
 
-    @Query("SELECT * FROM Class, Student_Class WHERE Class.classId = Student_Class.classId" +
-            " AND Student_Class.studentId = :studentId ")
-    List<Class> getListClassByStudentId(int studentId); // lọc ra danh sách lớp học theo sinh viên
+    @Query("SELECT * FROM Class, Student_Class WHERE Class.ClassID = Student_Class.ClassID" +
+            " AND Student_Class.StudentID = :studentID ")
+    List<Class> getListClassByStudentId(String studentID); // lọc ra danh sách lớp học theo sinh viên
 
 
 }
