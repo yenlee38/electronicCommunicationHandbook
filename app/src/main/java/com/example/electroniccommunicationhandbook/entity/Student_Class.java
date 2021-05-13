@@ -6,53 +6,99 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity (tableName = "Student_Class")
 public class Student_Class {
 
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    @ColumnInfo (name = "studentId") //foreign key with table Student
-    private int studentId;
+    @ColumnInfo (name = "StudentID") //foreign key with table Student
+    private String StudentID;
 
-    @ColumnInfo (name = "classId") //foreign key with table Class
-    private int classId;
+    @ColumnInfo (name = "ClassID") //foreign key with table Class
+    private String ClassID;
 
-    @ColumnInfo (name = "middleMark")
-    private float middleMark;
+    @ColumnInfo (name = "MiddleMark")
+    private float MiddleMark;
 
-    @ColumnInfo (name = "finalMark")
-    private float finalMark;
+    @ColumnInfo (name = "FinalMark")
+    private float FinalMark;
 
-    public int getStudentId() {
-        return studentId;
+    @ColumnInfo (name = "Rating")
+    private int Rating;
+
+    @ColumnInfo (name = "Comment")
+    private String Comment;
+
+    @ColumnInfo (name = "CreateDate")
+    private Date CreateDate;
+
+    @NonNull
+    public String getStudentID() {
+        return StudentID;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setStudentID(@NonNull String studentID) {
+        StudentID = studentID;
     }
 
-    public int getClassId() {
-        return classId;
+    public String getClassID() {
+        return ClassID;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setClassID(String classID) {
+        ClassID = classID;
     }
 
     public float getMiddleMark() {
-        return middleMark;
+        return MiddleMark;
     }
 
     public void setMiddleMark(float middleMark) {
-        this.middleMark = middleMark;
+        MiddleMark = middleMark;
     }
 
     public float getFinalMark() {
-        return finalMark;
+        return FinalMark;
     }
 
     public void setFinalMark(float finalMark) {
-        this.finalMark = finalMark;
+        FinalMark = finalMark;
+    }
+
+    public int getRating() {
+        return Rating;
+    }
+
+    public void setRating(int rating) {
+        Rating = rating;
+    }
+
+    public String getComment() {
+        return Comment;
+    }
+
+    public void setComment(String comment) {
+        Comment = comment;
+    }
+
+    public Date getCreateDate() {
+        return CreateDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        CreateDate = createDate;
+    }
+
+    public Student_Class(@NonNull String studentID, String classID, float middleMark, float finalMark, int rating, String comment, Date createDate) {
+        StudentID = studentID;
+        ClassID = classID;
+        MiddleMark = middleMark;
+        FinalMark = finalMark;
+        Rating = rating;
+        Comment = comment;
+        CreateDate = createDate;
     }
 
     public Student_Class() {

@@ -11,105 +11,130 @@ import java.util.Date;
 @Entity(tableName = "Student")
 public class Student {
 
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    @ColumnInfo (name = "studentId")
-    private int studentId;
+    @ColumnInfo (name = "StudentID")
+    private String StudentID;
 
-    @ColumnInfo (name = "studentName")
-    private String studentName;
+    @ColumnInfo (name = "Name")
+    private String Name;
 
-    @ColumnInfo (name = "studentBirthday")
-    private Date studentBirthday;
+    @ColumnInfo (name = "Birthday")
+    private Date Birthday;
 
-    @ColumnInfo (name = "studentPhone")
-    private String studentPhone;
+    @ColumnInfo (name = "Gender")
+    private String Gender;
 
-    @ColumnInfo (name = "studentAddress")
-    private String studentAddress;
+    @ColumnInfo (name = "Phone")
+    private String Phone;
 
-    @ColumnInfo (name = "studentEmail")
-    private String studentEmail;
+    @ColumnInfo (name = "Address")
+    private String Address;
 
-    @ColumnInfo (name = "studentImage")
-    private String studentImage;
+    @ColumnInfo (name = "Email")
+    private String Email;
 
-    @ColumnInfo (name = "studentCode") // mã số sv
-    private String studentCode;
+    @ColumnInfo (name = "Image")
+    private String Image;
 
-    @ColumnInfo (name = "accountId") //foreign key with table Account
-    private int accountId;
+    @ColumnInfo (name = "BankSeri")
+    private String BankSeri;
 
-    public String getStudentCode() {
-        return studentCode;
+    @ColumnInfo (name = "AccountID") //foreign key with table Account
+    private int AccountID;
+
+    @NonNull
+    public String getStudentID() {
+        return StudentID;
     }
 
-    public void setStudentCode(String studentCode) {
-        this.studentCode = studentCode;
+    public void setStudentID(@NonNull String studentID) {
+        StudentID = studentID;
     }
 
-    public int getStudentId() {
-        return studentId;
+    public String getName() {
+        return Name;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public Date getBirthday() {
+        return Birthday;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setBirthday(Date birthday) {
+        Birthday = birthday;
     }
 
-    public Date getStudentBirthday() {
-        return studentBirthday;
+    public String getGender() {
+        return Gender;
     }
 
-    public void setStudentBirthday(Date studentBirthday) {
-        this.studentBirthday = studentBirthday;
+    public void setGender(String gender) {
+        Gender = gender;
     }
 
-    public String getStudentPhone() {
-        return studentPhone;
+    public String getPhone() {
+        return Phone;
     }
 
-    public void setStudentPhone(String studentPhone) {
-        this.studentPhone = studentPhone;
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
-    public String getStudentAddress() {
-        return studentAddress;
+    public String getAddress() {
+        return Address;
     }
 
-    public void setStudentAddress(String studentAddress) {
-        this.studentAddress = studentAddress;
+    public void setAddress(String address) {
+        Address = address;
     }
 
-    public String getStudentEmail() {
-        return studentEmail;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setStudentEmail(String studentEmail) {
-        this.studentEmail = studentEmail;
+    public void setEmail(String email) {
+        Email = email;
     }
 
-    public String getStudentImage() {
-        return studentImage;
+    public String getImage() {
+        return Image;
     }
 
-    public void setStudentImage(String studentImage) {
-        this.studentImage = studentImage;
+    public void setImage(String image) {
+        Image = image;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public String getBankSeri() {
+        return BankSeri;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setBankSeri(String bankSeri) {
+        BankSeri = bankSeri;
+    }
+
+    public int getAccountID() {
+        return AccountID;
+    }
+
+    public void setAccountID(int accountID) {
+        AccountID = accountID;
+    }
+
+    public Student(@NonNull String studentID, String name, Date birthday, String gender, String phone, String address, String email, String image, String bankSeri, int accountID) {
+        StudentID = studentID;
+        Name = name;
+        Birthday = birthday;
+        Gender = gender;
+        Phone = phone;
+        Address = address;
+        Email = email;
+        Image = image;
+        BankSeri = bankSeri;
+        AccountID = accountID;
     }
 
     public Student() {

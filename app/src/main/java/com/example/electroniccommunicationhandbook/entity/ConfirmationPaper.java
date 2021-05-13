@@ -9,26 +9,26 @@ import androidx.room.PrimaryKey;
 public class ConfirmationPaper {
     @PrimaryKey (autoGenerate = true)
     @NonNull
-    @ColumnInfo (name = "confirmationPaperId")
-    private int confirmationPaperId;
+    @ColumnInfo (name = "ConfirmationPaperID")
+    private int ConfirmationPaperID;
 
-    @ColumnInfo (name = "confirmationPaperName")
-    private String confirmationPaperName;
+    @ColumnInfo (name = "ConfirmationPaperName")
+    private String ConfirmationPaperName;
 
-    public int getConfirmationPaperId() {
-        return confirmationPaperId;
+    public int getConfirmationPaperID() {
+        return ConfirmationPaperID;
     }
 
-    public void setConfirmationPaperId(int confirmationPaperId) {
-        this.confirmationPaperId = confirmationPaperId;
+    public void setConfirmationPaperID(int confirmationPaperId) {
+        this.ConfirmationPaperID = confirmationPaperId;
     }
 
     public String getConfirmationPaperName() {
-        return confirmationPaperName;
+        return ConfirmationPaperName;
     }
 
     public void setConfirmationPaperName(String confirmationPaperName) {
-        this.confirmationPaperName = confirmationPaperName;
+        this.ConfirmationPaperName = confirmationPaperName;
     }
 
     public ConfirmationPaper() {

@@ -7,56 +7,57 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Subject")
 public class Subject {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "subjectId")
-    private int subjectId;
+    @ColumnInfo(name = "SubjectID")
+    private String SubjectID;
 
-    @ColumnInfo(name = "subjectName")
-    private String subjectName;
+    @ColumnInfo(name = "Name")
+    private String Name;
 
-    @ColumnInfo(name = "subjectNoCredit")
-    private int subjectNoCredit;
+    @ColumnInfo(name = "NumberOfCredit")
+    private int NumberOfCredit;
 
-    @ColumnInfo(name = "subjectDescription")
-    private String subjectDescription;
+    @ColumnInfo(name = "Description")
+    private String Description;
 
-    public int getSubjectId() {
-        return subjectId;
+    public String getSubjectID() {
+        return SubjectID;
     }
 
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
+    public void setSubjectID(String subjectID) {
+        SubjectID = subjectID;
     }
 
-    public String getSubjectName() {
-        return subjectName;
+    public String getName() {
+        return Name;
     }
 
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public int getSubjectNoCredit() {
-        return subjectNoCredit;
+    public int getNumberOfCredit() {
+        return NumberOfCredit;
     }
 
-    public void setSubjectNoCredit(int subjectNoCredit) {
-        this.subjectNoCredit = subjectNoCredit;
+    public void setNumberOfCredit(int numberOfCredit) {
+        NumberOfCredit = numberOfCredit;
     }
 
-    public String getSubjectDescription() {
-        return subjectDescription;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setSubjectDescription(String subjectDescription) {
-        this.subjectDescription = subjectDescription;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public Subject(String subjectName, int subjectNoCredit, String subjectDescription) {
-        this.subjectName = subjectName;
-        this.subjectNoCredit = subjectNoCredit;
-        this.subjectDescription = subjectDescription;
+    public Subject(@NonNull String subjectID, String name, int numberOfCredit, String description) {
+        SubjectID = subjectID;
+        Name = name;
+        NumberOfCredit = numberOfCredit;
+        Description = description;
     }
 
     public Subject() {

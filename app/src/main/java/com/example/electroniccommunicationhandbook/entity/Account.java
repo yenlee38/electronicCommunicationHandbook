@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey;
 public class Account {
     @PrimaryKey (autoGenerate = true)
     @NonNull
-    @ColumnInfo (name = "accountId")
-    private int accountId;
+    @ColumnInfo (name = "AccountID")
+    private int AccountID;
 
     @ColumnInfo (name = "username")
     private String username;
@@ -18,12 +18,12 @@ public class Account {
     @ColumnInfo (name = "password")
     private String password;
 
-    public int getAccountId() {
-        return accountId;
+    public int getAccountID() {
+        return AccountID;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setAccountID(int accountID) {
+        this.AccountID = accountID;
     }
 
     public String getUsername() {
