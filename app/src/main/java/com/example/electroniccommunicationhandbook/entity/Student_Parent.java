@@ -8,29 +8,37 @@ import androidx.room.PrimaryKey;
 @Entity (tableName = "Student_Parent")
 public class Student_Parent {
 
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    @ColumnInfo (name = "studentId")
-    private int studentId; //foreign key with table Student
+    @ColumnInfo (name = "StudentID")
+    private String StudentID; //foreign key with table Student
 
-    public int getStudentId() {
-        return studentId;
-    }
-    public  Student_Parent(){
-    }
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
 
-    public int getParentId() {
-        return parentId;
+    @ColumnInfo (name = "ParentID") //foreign key with table Parent
+    private String ParentID;
+
+    @NonNull
+    public String getStudentID() {
+        return StudentID;
     }
 
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
+    public void setStudentID(@NonNull String studentID) {
+        StudentID = studentID;
     }
 
-    @ColumnInfo (name = "parentId") //foreign key with table Parent
-    private int parentId;
+    public String getParentID() {
+        return ParentID;
+    }
 
+    public void setParentID(String parentID) {
+        ParentID = parentID;
+    }
+
+    public Student_Parent(@NonNull String studentID, String parentID) {
+        StudentID = studentID;
+        ParentID = parentID;
+    }
+
+    public Student_Parent() {
+    }
 }

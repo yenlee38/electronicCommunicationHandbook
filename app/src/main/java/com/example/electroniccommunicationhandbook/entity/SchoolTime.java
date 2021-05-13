@@ -11,37 +11,37 @@ import java.sql.Time;
 public class SchoolTime {
     @PrimaryKey (autoGenerate = true)
     @NonNull
-    @ColumnInfo (name = "schoolTimeOrder")
-    private int schoolTimeOrder;
+    @ColumnInfo (name = "SchoolTimeOrder")
+    private int SchoolTimeOrder;
 
-    @ColumnInfo (name = "schoolTimeStartTime")
-    private Time schoolTimeStartTime;
+    @ColumnInfo (name = "StartingTime")
+    private Time StartingTime;
 
-    @ColumnInfo (name = "schoolTimeEndTime")
-    private Time schoolTimeEndTime;
+    @ColumnInfo (name = "EndTime")
+    private Time EndTime;
 
     public int getSchoolTimeOrder() {
-        return schoolTimeOrder;
+        return SchoolTimeOrder;
     }
 
     public void setSchoolTimeOrder(int schoolTimeOrder) {
-        this.schoolTimeOrder = schoolTimeOrder;
+        SchoolTimeOrder = schoolTimeOrder;
     }
 
-    public Time getSchoolTimeStartTime() {
-        return schoolTimeStartTime;
+    public Time getStartingTime() {
+        return StartingTime;
     }
 
-    public void setSchoolTimeStartTime(Time schoolTimeStartTime) {
-        this.schoolTimeStartTime = schoolTimeStartTime;
+    public void setStartingTime(Time startingTime) {
+        StartingTime = startingTime;
     }
 
-    public Time getSchoolTimeEndTime() {
-        return schoolTimeEndTime;
+    public Time getEndTime() {
+        return EndTime;
     }
 
-    public void setSchoolTimeEndTime(Time schoolTimeEndTime) {
-        this.schoolTimeEndTime = schoolTimeEndTime;
+    public void setEndTime(Time endTime) {
+        EndTime = endTime;
     }
 
     public SchoolTime() {

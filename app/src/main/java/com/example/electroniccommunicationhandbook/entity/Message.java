@@ -12,49 +12,49 @@ public class Message {
 
     @PrimaryKey
     @NonNull
-    @ColumnInfo (name = "sentTime")
-    private Date sentTime;
+    @ColumnInfo (name = "SentTime")
+    private Date SentTime;
 
-    @ColumnInfo (name = "senderAccountId") // foreign key with table Account
-    private int senderAccountId;
+    @ColumnInfo (name = "SenderAccountID") // foreign key with table Account
+    private int SenderAccountID;
 
-    @ColumnInfo (name = "receiverAccountId") // foreign key with table Account
-    private int receiverAccountId;
+    @ColumnInfo (name = "ReceiverAccountID") // foreign key with table Account
+    private int ReceiverAccountID;
 
-    @ColumnInfo (name = "messageContent")
-    private String messageContent;
+    @ColumnInfo (name = "Content")
+    private String Content;
 
     @NonNull
     public Date getSentTime() {
-        return sentTime;
+        return SentTime;
     }
 
     public void setSentTime(@NonNull Date sentTime) {
-        this.sentTime = sentTime;
+        SentTime = sentTime;
     }
 
-    public int getSenderAccountId() {
-        return senderAccountId;
+    public int getSenderAccountID() {
+        return SenderAccountID;
     }
 
-    public void setSenderAccountId(int senderAccountId) {
-        this.senderAccountId = senderAccountId;
+    public void setSenderAccountID(int senderAccountID) {
+        SenderAccountID = senderAccountID;
     }
 
-    public int getReceiverAccountId() {
-        return receiverAccountId;
+    public int getReceiverAccountID() {
+        return ReceiverAccountID;
     }
 
-    public void setReceiverAccountId(int receiverAccountId) {
-        this.receiverAccountId = receiverAccountId;
+    public void setReceiverAccountID(int receiverAccountID) {
+        ReceiverAccountID = receiverAccountID;
     }
 
-    public String getMessageContent() {
-        return messageContent;
+    public String getContent() {
+        return Content;
     }
 
-    public void setMessageContent(String messageContent) {
-        this.messageContent = messageContent;
+    public void setContent(String content) {
+        Content = content;
     }
 
     public Message() {

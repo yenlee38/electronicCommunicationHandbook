@@ -12,38 +12,59 @@ public class Announcement {
 
     @PrimaryKey (autoGenerate = true)
     @NonNull
-    @ColumnInfo (name = "announcementId")
-    private int announcementId;
+    @ColumnInfo (name = "AnnouncementID")
+    private int AnnouncementID;
 
-    @ColumnInfo (name = "announcementContent")
-    private String announcementContent;
+    @ColumnInfo (name = "SenderID")
+    private int SenderID;
 
-    @ColumnInfo (name = "announcementTime")
-    private Date announcementTime;
+    @ColumnInfo (name = "ClassID")
+    private String ClassID;
 
+    @ColumnInfo (name = "Content")
+    private String Content;
 
-    public int getAnnouncementId() {
-        return announcementId;
+    @ColumnInfo (name = "AnnouncementTime")
+    private Date AnnouncementTime;
+
+    public int getAnnouncementID() {
+        return AnnouncementID;
     }
 
-    public void setAnnouncementId(int announcementId) {
-        this.announcementId = announcementId;
+    public void setAnnouncementID(int announcementID) {
+        AnnouncementID = announcementID;
     }
 
-    public String getAnnouncementContent() {
-        return announcementContent;
+    public int getSenderID() {
+        return SenderID;
     }
 
-    public void setAnnouncementContent(String announcementContent) {
-        this.announcementContent = announcementContent;
+    public void setSenderID(int senderID) {
+        SenderID = senderID;
+    }
+
+    public String getClassID() {
+        return ClassID;
+    }
+
+    public void setClassID(String classID) {
+        ClassID = classID;
+    }
+
+    public String getContent() {
+        return Content;
+    }
+
+    public void setContent(String content) {
+        Content = content;
     }
 
     public Date getAnnouncementTime() {
-        return announcementTime;
+        return AnnouncementTime;
     }
 
     public void setAnnouncementTime(Date announcementTime) {
-        this.announcementTime = announcementTime;
+        AnnouncementTime = announcementTime;
     }
 
     public Announcement() {

@@ -9,100 +9,122 @@ import java.util.Date;
 
 @Entity (tableName = "Parent")
 public class Parent {
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    @ColumnInfo (name = "parentId")
-    private int parentId;
+    @ColumnInfo (name = "ParentID")
+    private String ParentID;
 
-    @ColumnInfo (name = "parentName")
-    private String parentName;
+    @ColumnInfo (name = "Name")
+    private String Name;
 
-    @ColumnInfo (name = "parentBirthday")
-    private Date parentBirthday;
+    @ColumnInfo (name = "Birthday")
+    private Date Birthday;
 
-    @ColumnInfo (name = "parentPhone")
-    private String parentPhone;
+    @ColumnInfo (name = "Phone")
+    private String Phone;
 
-    @ColumnInfo (name = "parentAddress")
-    private String parentAddress;
+    @ColumnInfo (name = "Address")
+    private String Address;
 
-    @ColumnInfo (name = "parentEmail")
-    private String parentEmail;
+    @ColumnInfo (name = "Email")
+    private String Email;
 
-    @ColumnInfo (name = "parentImage")
-    private String parentImage;
+    @ColumnInfo (name = "Gender")
+    private String Gender;
 
-    @ColumnInfo (name = "accountId") // foreign key with table Account
-    private int accountId;
+    @ColumnInfo (name = "Image")
+    private String Image;
 
-    public int getParentId() {
-        return parentId;
+    @ColumnInfo (name = "AccountID") // foreign key with table Account
+    private String AccountID;
+
+    @NonNull
+    public String getParentID() {
+        return ParentID;
     }
 
-    public void setParentId(int parentId) {
-        this.parentId = parentId;
+    public void setParentID(@NonNull String parentID) {
+        ParentID = parentID;
     }
 
-    public String getParentName() {
-        return parentName;
+    public String getName() {
+        return Name;
     }
 
-    public void setParentName(String parentName) {
-        this.parentName = parentName;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public Date getParentBirthday() {
-        return parentBirthday;
+    public Date getBirthday() {
+        return Birthday;
     }
 
-    public void setParentBirthday(Date parentBirthday) {
-        this.parentBirthday = parentBirthday;
+    public void setBirthday(Date birthday) {
+        Birthday = birthday;
     }
 
-    public String getParentPhone() {
-        return parentPhone;
+    public String getPhone() {
+        return Phone;
     }
 
-    public void setParentPhone(String parentPhone) {
-        this.parentPhone = parentPhone;
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
-    public String getParentAddress() {
-        return parentAddress;
+    public String getAddress() {
+        return Address;
     }
 
-    public void setParentAddress(String parentAddress) {
-        this.parentAddress = parentAddress;
+    public void setAddress(String address) {
+        Address = address;
     }
 
-    public String getParentEmail() {
-        return parentEmail;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setParentEmail(String parentEmail) {
-        this.parentEmail = parentEmail;
+    public void setEmail(String email) {
+        Email = email;
     }
 
-    public String getParentImage() {
-        return parentImage;
+    public String getGender() {
+        return Gender;
     }
 
-    public void setParentImage(String parentImage) {
-        this.parentImage = parentImage;
+    public void setGender(String gender) {
+        Gender = gender;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public String getImage() {
+        return Image;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setImage(String image) {
+        Image = image;
+    }
+
+    public String getAccountID() {
+        return AccountID;
+    }
+
+    public void setAccountID(String accountID) {
+        AccountID = accountID;
+    }
+
+    public Parent(@NonNull String parentID, String name, Date birthday, String phone, String address, String email, String gender, String image, String accountID) {
+        ParentID = parentID;
+        Name = name;
+        Birthday = birthday;
+        Phone = phone;
+        Address = address;
+        Email = email;
+        Gender = gender;
+        Image = image;
+        AccountID = accountID;
     }
 
     public Parent() {
     }
 
-    public Parent(int accountId) {
-        this.accountId = accountId;
-    }
+
 }

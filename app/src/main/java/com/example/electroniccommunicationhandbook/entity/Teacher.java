@@ -11,96 +11,127 @@ import java.util.Date;
 public class Teacher {
     @PrimaryKey (autoGenerate = true)
     @NonNull
-    @ColumnInfo (name = "teacherId")
-    private int teacherId;
+    @ColumnInfo (name = "TeacherID")
+    private String TeacherID;
 
-    @ColumnInfo (name = "teacherName")
-    private String teacherName;
+    @ColumnInfo (name = "Name")
+    private String Name;
 
-    @ColumnInfo (name = "teacherBirthday")
-    private Date teacherBirthday;
+    @ColumnInfo (name = "Birthday")
+    private Date Birthday;
 
-    @ColumnInfo (name = "teacherDegree")
-    private String teacherDegree;
+    @ColumnInfo (name = "Degree")
+    private String Degree;
 
-    @ColumnInfo (name = "teacherAddress")
-    private String teacherAddress;
+    @ColumnInfo (name = "Phone")
+    private String Phone;
 
-    @ColumnInfo (name = "teacherEmail")
-    private String teacherEmail;
+    @ColumnInfo (name = "Gender")
+    private String Gender;
 
-    @ColumnInfo (name = "teacherImage")
-    private String teacherImage;
+    @ColumnInfo (name = "Address")
+    private String Address;
 
-    @ColumnInfo (name = "accountId") //foreign key with table Account
-    private int accountId;
+    @ColumnInfo (name = "Email")
+    private String Email;
 
-    public int getTeacherId() {
-        return teacherId;
+    @ColumnInfo (name = "Image")
+    private String Image;
+
+    @ColumnInfo (name = "AccountID") //foreign key with table Account
+    private int AccountID;
+
+    public String getTeacherID() {
+        return TeacherID;
     }
 
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
+    public void setTeacherID(String teacherID) {
+        TeacherID = teacherID;
     }
 
-    public String getTeacherName() {
-        return teacherName;
+    public String getName() {
+        return Name;
     }
 
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public Date getTeacherBirthday() {
-        return teacherBirthday;
+    public Date getBirthday() {
+        return Birthday;
     }
 
-    public void setTeacherBirthday(Date teacherBirthday) {
-        this.teacherBirthday = teacherBirthday;
+    public void setBirthday(Date birthday) {
+        Birthday = birthday;
     }
 
-    public String getTeacherDegree() {
-        return teacherDegree;
+    public String getDegree() {
+        return Degree;
     }
 
-    public void setTeacherDegree(String teacherDegree) {
-        this.teacherDegree = teacherDegree;
+    public void setDegree(String degree) {
+        Degree = degree;
     }
 
-    public String getTeacherAddress() {
-        return teacherAddress;
+    public String getPhone() {
+        return Phone;
     }
 
-    public void setTeacherAddress(String teacherAddress) {
-        this.teacherAddress = teacherAddress;
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
-    public String getTeacherEmail() {
-        return teacherEmail;
+    public String getGender() {
+        return Gender;
     }
 
-    public void setTeacherEmail(String teacherEmail) {
-        this.teacherEmail = teacherEmail;
+    public void setGender(String gender) {
+        Gender = gender;
     }
 
-    public String getTeacherImage() {
-        return teacherImage;
+    public String getAddress() {
+        return Address;
     }
 
-    public void setTeacherImage(String teacherImage) {
-        this.teacherImage = teacherImage;
+    public void setAddress(String address) {
+        Address = address;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setEmail(String email) {
+        Email = email;
     }
 
-    public Teacher(int accountId) {
-        this.accountId = accountId;
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
+
+    public int getAccountID() {
+        return AccountID;
+    }
+
+    public void setAccountID(int accountID) {
+        AccountID = accountID;
+    }
+
+    public Teacher(String teacherID, String name, Date birthday, String degree, String phone, String gender, String address, String email, String image, int accountID) {
+        TeacherID = teacherID;
+        Name = name;
+        Birthday = birthday;
+        Degree = degree;
+        Phone = phone;
+        Gender = gender;
+        Address = address;
+        Email = email;
+        Image = image;
+        AccountID = accountID;
     }
 
     public Teacher() {

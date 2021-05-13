@@ -11,38 +11,44 @@ import java.util.Date;
 public class Student_ConfirmationPaper {
     @PrimaryKey
     @NonNull
-    @ColumnInfo (name = "requiredTime")
-    private Date requiredTime;
+    @ColumnInfo (name = "RequiredTime")
+    private Date RequiredTime;
 
-    @ColumnInfo (name = "studentId") //foreign key with table Student
-    private int studentId;
+    @ColumnInfo (name = "StudentID") //foreign key with table Student
+    private String StudentID;
 
-    @ColumnInfo (name = "confirmationPaperId") //foreign key with table ConfirmationPaper
-    private int confirmationPaperId;
+    @ColumnInfo (name = "ConfirmationPaperID") //foreign key with table ConfirmationPaper
+    private int ConfirmationPaperID;
 
     @NonNull
     public Date getRequiredTime() {
-        return requiredTime;
+        return RequiredTime;
     }
 
     public void setRequiredTime(@NonNull Date requiredTime) {
-        this.requiredTime = requiredTime;
+        RequiredTime = requiredTime;
     }
 
-    public int getStudentId() {
-        return studentId;
+    public String getStudentID() {
+        return StudentID;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public void setStudentID(String studentID) {
+        StudentID = studentID;
     }
 
-    public int getConfirmationPaperId() {
-        return confirmationPaperId;
+    public int getConfirmationPaperID() {
+        return ConfirmationPaperID;
     }
 
-    public void setConfirmationPaperId(int confirmationPaperId) {
-        this.confirmationPaperId = confirmationPaperId;
+    public void setConfirmationPaperID(int confirmationPaperID) {
+        ConfirmationPaperID = confirmationPaperID;
+    }
+
+    public Student_ConfirmationPaper(@NonNull Date requiredTime, String studentID, int confirmationPaperID) {
+        RequiredTime = requiredTime;
+        StudentID = studentID;
+        ConfirmationPaperID = confirmationPaperID;
     }
 
     public Student_ConfirmationPaper() {
