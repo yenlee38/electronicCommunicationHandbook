@@ -9,15 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectronicCommunicationHandbook">
+        <activity android:name=".ui.resetpassword.ResetPasswordSuccessfullyActivity"></activity>
+        <activity android:name=".ui.resetpassword.ChangePasswordActivity" />
+        <activity android:name=".ui.resetpassword.PasswordResetVerificationActivity" />
+        <activity android:name=".ui.resetpassword.GetEmailActivity" />
+        <activity android:name=".ui.profile.UpdateSuccessfullyActivity" />
+        <activity android:name=".ui.profile.VerifyOTPActivity" />
+        <activity android:name=".ui.profile.UpdateProfileActivity" />
+        <activity android:name=".ui.profile.ProfileActivity" />
         <activity
             android:name=".ui.student.fee.FeeViewActivity"
             android:label="@string/title_activity_fee_view"
-            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar"></activity>
+            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar" />
         <activity
             android:name=".ui.student.point.PointViewActivity"
             android:label="@string/title_activity_point_view"
-            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar" />
         <activity android:name=".ui.teacher.list_class.ListClass" />
         <activity android:name=".ui.authentication.login.Login">
             <intent-filter>

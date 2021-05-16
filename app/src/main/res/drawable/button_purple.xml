@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tint="?attr/actionBarTheme">
     <solid android:color="@color/purple_pastel_700" />
     <corners android:radius="@dimen/border_radius_min"></corners>
     <stroke

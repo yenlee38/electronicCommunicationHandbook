@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
     android:tint="?attr/actionBarTheme">
-    <solid android:color="#00D0FF"/>
+    <solid android:color="@color/black"/>
     <corners android:radius="8dp"/>
     <stroke android:color="#1A00D0FF" android:width="3dp"/>
 </shape>

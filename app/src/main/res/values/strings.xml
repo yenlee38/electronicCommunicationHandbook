@@ -20,5 +20,8 @@
     <string name="no_sub">No. Subject</string>
     <string name="view_fee">View Fees</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="profile">Profile</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="reset_password">Reset Password</string>
 
 </resources>
