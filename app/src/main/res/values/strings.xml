@@ -9,8 +9,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_point_view">PointViewActivity</string>
-    <string name="tab_text_1">SEMESTER 1</string>
-    <string name="tab_text_2">SEMESTER 2</string>
+    <string name="tab_semester_1">SEMESTER 1</string>
+    <string name="tab_semester_2">SEMESTER 2</string>
+    <string name="tab_teacher">TEACHER</string>
+    <string name="tab_school">SCHOOL</string>
     <string name="viewpoints">View Points</string>
     <string name="title_activity_fee_view">activity_fee_view</string>
     <string name="tab_student_card">Student Card </string>
@@ -23,5 +25,6 @@
     <string name="profile">Profile</string>
     <string name="update_profile">Update Profile</string>
     <string name="reset_password">Reset Password</string>
-
+    <string name="title_activity_notification">NotificationActivity</string>
+    <string name="notification">Notification</string>
 </resources>

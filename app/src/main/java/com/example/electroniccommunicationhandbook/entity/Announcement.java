@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
 import java.util.Date;
+import java.util.List;
 
 @Entity (tableName = "Announcement")
 public class Announcement {
@@ -23,6 +23,7 @@ public class Announcement {
 
     @ColumnInfo (name = "Content")
     private String Content;
+
 
     @ColumnInfo (name = "AnnouncementTime")
     private Date AnnouncementTime;
