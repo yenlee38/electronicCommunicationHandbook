@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity (tableName = "Teacher")
 public class Teacher {
-    @PrimaryKey (autoGenerate = true)
+    @PrimaryKey
     @NonNull
     @ColumnInfo (name = "TeacherID")
     private String TeacherID;
