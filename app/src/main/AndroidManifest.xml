@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectronicCommunicationHandbook">
-        <activity android:name=".ui.resetpassword.ResetPasswordSuccessfullyActivity"></activity>
+        <activity android:name=".MainActivity_parent"></activity>
+        <activity android:name=".MainActivity_teacher" />
+        <activity android:name=".ui.resetpassword.ResetPasswordSuccessfullyActivity" />
         <activity android:name=".ui.resetpassword.ChangePasswordActivity" />
         <activity android:name=".ui.resetpassword.PasswordResetVerificationActivity" />
         <activity android:name=".ui.resetpassword.GetEmailActivity" />

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity_teacher"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="272dp"
+        android:background="@drawable/title_background">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome,"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="64dp"
+            android:layout_marginLeft="24dp"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hoang Thai Nhu Quynh"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="104dp"
+            android:layout_marginLeft="24dp"
+            android:textSize="24dp"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_profile"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="156dp"
+            android:background="@drawable/btn_profile_home"
+            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+            android:paddingLeft="8dp"
+            android:text="Profile"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_logout"
+            android:layout_width="129dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/btn_logout"
+            android:drawableRight="@drawable/ic_baseline_logout_24"
+            android:paddingLeft="8dp"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="21dp"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_margin="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal|center_vertical">
+
+            <LinearLayout
+                android:layout_width="72dp"
+                android:layout_height="98dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_points">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_class"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/ic_baseline_class_24"
+                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_width="72dp"
+                android:layout_height="98dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_fee_home">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_notification_new"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/ic_baseline_notification_add_24"
+                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notify"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_width="72dp"
+                android:layout_height="98dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_schedule_home">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_schedule"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/ic_baseline_event_24"
+                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schedule"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="25dp"
+                android:layout_width="72dp"
+                android:layout_height="98dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:gravity="center"
+                    android:background="@drawable/btn_statistic_home">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_statistic"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/ic_round_bar_chart_24"
+                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Statistic"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal|center_vertical"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_notification"
+                android:layout_width="169dp"
+                android:layout_height="64dp"
+                android:textAllCaps="false"
+                android:text="Notification"
+                android:textSize="14dp"
+                android:drawableLeft="@drawable/ic_baseline_circle_notifications_24"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:background="@drawable/btn_notification"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginLeft="25dp"
+                android:id="@+id/btn_message"
+                android:layout_width="169dp"
+                android:layout_height="64dp"
+                android:textAllCaps="false"
+                android:text="Message"
+                android:textSize="14dp"
+                android:drawableLeft="@drawable/ic_baseline_chat_24"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:background="@drawable/btn_message_home"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="120dp"
+        android:id="@+id/btn_send_off_request"
+        android:layout_width="363dp"
+        android:layout_height="40dp"
+        android:textAllCaps="false"
+
+        android:gravity="left|center_vertical"
+        android:paddingLeft="16dp"
+        android:drawablePadding="32dp"
+        android:background="@drawable/btn_choose"
+        android:drawableLeft="@drawable/ic_baseline_logout_24"
+        android:textColor="@color/white"
+        android:text="Send Class-off Request"/>
+
+</LinearLayout>
