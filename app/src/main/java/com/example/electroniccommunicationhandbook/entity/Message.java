@@ -7,54 +7,43 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity (tableName = "Message")
 public class Message {
 
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "SentTime")
-    private Date SentTime;
+    private Date sentTime;
+    private Account senderAccount;
+    private Account receiverAccount;
+    private String content;
 
-    @ColumnInfo (name = "SenderAccountID") // foreign key with table Account
-    private int SenderAccountID;
-
-    @ColumnInfo (name = "ReceiverAccountID") // foreign key with table Account
-    private int ReceiverAccountID;
-
-    @ColumnInfo (name = "Content")
-    private String Content;
-
-    @NonNull
     public Date getSentTime() {
-        return SentTime;
+        return sentTime;
     }
 
-    public void setSentTime(@NonNull Date sentTime) {
-        SentTime = sentTime;
+    public void setSentTime(Date sentTime) {
+        this.sentTime = sentTime;
     }
 
-    public int getSenderAccountID() {
-        return SenderAccountID;
+    public Account getSenderAccount() {
+        return senderAccount;
     }
 
-    public void setSenderAccountID(int senderAccountID) {
-        SenderAccountID = senderAccountID;
+    public void setSenderAccount(Account senderAccount) {
+        this.senderAccount = senderAccount;
     }
 
-    public int getReceiverAccountID() {
-        return ReceiverAccountID;
+    public Account getReceiverAccount() {
+        return receiverAccount;
     }
 
-    public void setReceiverAccountID(int receiverAccountID) {
-        ReceiverAccountID = receiverAccountID;
+    public void setReceiverAccount(Account receiverAccount) {
+        this.receiverAccount = receiverAccount;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
     public Message() {

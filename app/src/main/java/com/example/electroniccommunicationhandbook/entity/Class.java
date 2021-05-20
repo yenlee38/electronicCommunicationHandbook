@@ -6,164 +6,159 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.sql.Time;
+import java.util.Collection;
 import java.util.Date;
 
-@Entity (tableName = "Class")
 public class Class {
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "ClassID")
-    private String ClassID;
 
-    @ColumnInfo (name = "SubjectID") // foreign key
-    private String SubjectID;
+    private String classId;
+    private Subject subject;
+    private Teacher teacher;
+    private int semester;
+    private int studyingYear;
+    private Date startingDate;
+    private Date endDate;
+    private int dayOfWeek;
+    private String room;
+    private int startingSchoolTime;
+    private int endSchoolTime;
+    private Collection<Announcement> announcements;
+    private Collection<Student_Class>  students;
 
-    @ColumnInfo (name = "TeacherID") // foreign key
-    private String TeacherID;
-
-    @ColumnInfo (name = "Semester")
-    private int Semester;
-
-    @ColumnInfo (name = "StudyingYear")
-    private int StudyingYear;
-
-    @ColumnInfo (name = "StartingDate")
-    private Date StartingDate;
-
-    @ColumnInfo (name = "EndDate")
-    private Date EndDate;
-
-    @ColumnInfo (name = "DayOfWeek")
-    private int DayOfWeek;
-
-    @ColumnInfo (name = "Room")
-    private String Room;
-
-    @ColumnInfo (name = "StartingSchoolTime") ///Tiết học
-    private int StartingSchoolTime;
-
-    @ColumnInfo (name = "EndSchoolTime")
-    private int EndSchoolTime;
-
-    @NonNull
-    public String getClassID() {
-        return ClassID;
+    public String getClassId() {
+        return classId;
     }
 
-    public void setClassID(@NonNull String classID) {
-        ClassID = classID;
+    public void setClassId(String classId) {
+        this.classId = classId;
     }
 
-    public String getSubjectID() {
-        return SubjectID;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjectID(String subjectID) {
-        SubjectID = subjectID;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
-    public String getTeacherID() {
-        return TeacherID;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setTeacherID(String teacherID) {
-        TeacherID = teacherID;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public int getSemester() {
-        return Semester;
+        return semester;
     }
 
     public void setSemester(int semester) {
-        Semester = semester;
+        this.semester = semester;
     }
 
     public int getStudyingYear() {
-        return StudyingYear;
+        return studyingYear;
     }
 
     public void setStudyingYear(int studyingYear) {
-        StudyingYear = studyingYear;
+        this.studyingYear = studyingYear;
     }
 
     public Date getStartingDate() {
-        return StartingDate;
+        return startingDate;
     }
 
     public void setStartingDate(Date startingDate) {
-        StartingDate = startingDate;
+        this.startingDate = startingDate;
     }
 
     public Date getEndDate() {
-        return EndDate;
+        return endDate;
     }
 
     public void setEndDate(Date endDate) {
-        EndDate = endDate;
+        this.endDate = endDate;
     }
 
     public int getDayOfWeek() {
-        return DayOfWeek;
+        return dayOfWeek;
     }
 
     public void setDayOfWeek(int dayOfWeek) {
-        DayOfWeek = dayOfWeek;
+        this.dayOfWeek = dayOfWeek;
     }
 
     public String getRoom() {
-        return Room;
+        return room;
     }
 
     public void setRoom(String room) {
-        Room = room;
+        this.room = room;
     }
 
     public int getStartingSchoolTime() {
-        return StartingSchoolTime;
+        return startingSchoolTime;
     }
 
     public void setStartingSchoolTime(int startingSchoolTime) {
-        StartingSchoolTime = startingSchoolTime;
+        this.startingSchoolTime = startingSchoolTime;
     }
 
     public int getEndSchoolTime() {
-        return EndSchoolTime;
+        return endSchoolTime;
     }
 
     public void setEndSchoolTime(int endSchoolTime) {
-        EndSchoolTime = endSchoolTime;
+        this.endSchoolTime = endSchoolTime;
     }
 
-    public Class(@NonNull String classID, String subjectID, String teacherID, int semester, int studyingYear, Date startingDate, Date endDate, int dayOfWeek, String room, int startingSchoolTime, int endSchoolTime) {
-        ClassID = classID;
-        SubjectID = subjectID;
-        TeacherID = teacherID;
-        Semester = semester;
-        StudyingYear = studyingYear;
-        StartingDate = startingDate;
-        EndDate = endDate;
-        DayOfWeek = dayOfWeek;
-        Room = room;
-        StartingSchoolTime = startingSchoolTime;
-        EndSchoolTime = endSchoolTime;
+    public Collection<Announcement> getAnnouncements() {
+        return announcements;
+    }
+
+    public void setAnnouncements(Collection<Announcement> announcements) {
+        this.announcements = announcements;
+    }
+
+    public Collection<Student_Class> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Collection<Student_Class> students) {
+        this.students = students;
+    }
+
+    public Class(String classId, Subject subject, Teacher teacher, int semester, int studyingYear, Date startingDate, Date endDate, int dayOfWeek, String room, int startingSchoolTime, int endSchoolTime, Collection<Announcement> announcements, Collection<Student_Class> students) {
+        this.classId = classId;
+        this.subject = subject;
+        this.teacher = teacher;
+        this.semester = semester;
+        this.studyingYear = studyingYear;
+        this.startingDate = startingDate;
+        this.endDate = endDate;
+        this.dayOfWeek = dayOfWeek;
+        this.room = room;
+        this.startingSchoolTime = startingSchoolTime;
+        this.endSchoolTime = endSchoolTime;
+        this.announcements = announcements;
+        this.students = students;
     }
 
     public Class(Class classNew){
-        ClassID = classNew.ClassID;
-        SubjectID = classNew.SubjectID;
-        TeacherID = classNew.TeacherID;
-        Semester = classNew.Semester;
-        StudyingYear = classNew.StudyingYear;
-        StartingDate = classNew.StartingDate;
-        EndDate = classNew.EndDate;
-        DayOfWeek = classNew.DayOfWeek;
-        Room = classNew.Room;
-        StartingSchoolTime = classNew.StartingSchoolTime;
-        EndSchoolTime = classNew.EndSchoolTime;
+        classId = classNew.getClassId();
+        subject = classNew.getSubject();
+        teacher = classNew.getTeacher();
+        semester = classNew.getSemester();
+        studyingYear = classNew.getStudyingYear();
+        startingDate = classNew.getStartingDate();
+        endDate = classNew.getEndDate();
+        dayOfWeek = classNew.getDayOfWeek();
+        room = classNew.getRoom();
+        startingSchoolTime = classNew.getStartingSchoolTime();
+        endSchoolTime = classNew.getEndSchoolTime();
     }
 
     public Class() {
     }
-
-
 }

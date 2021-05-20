@@ -1,29 +1,17 @@
 package com.example.electroniccommunicationhandbook.entity;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity (tableName = "Account")
 public class Account {
-    @PrimaryKey (autoGenerate = true)
-    @NonNull
-    @ColumnInfo (name = "AccountID")
-    private int AccountID;
 
-    @ColumnInfo (name = "username")
+    private int accountId;
     private String username;
-
-    @ColumnInfo (name = "password")
     private String password;
 
     public int getAccountID() {
-        return AccountID;
+        return accountId;
     }
 
     public void setAccountID(int accountID) {
-        this.AccountID = accountID;
+        this.accountId = accountID;
     }
 
     public String getUsername() {

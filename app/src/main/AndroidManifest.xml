@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectronicCommunicationHandbook">
-        <activity android:name=".MainActivity_parent"></activity>
+        <activity android:name=".MainActivity_parent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>+
+        </activity>
         <activity android:name=".MainActivity_teacher" />
         <activity android:name=".ui.resetpassword.ResetPasswordSuccessfullyActivity" />
         <activity android:name=".ui.resetpassword.ChangePasswordActivity" />
@@ -40,11 +46,7 @@
 
         <activity android:name=".ui.teacher.list_class.ListClass" />
         <activity android:name=".ui.authentication.login.Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
     </application>

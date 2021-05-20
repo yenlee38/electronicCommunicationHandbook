@@ -10,20 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
-import com.example.electroniccommunicationhandbook.entity.Fee;
-import com.example.electroniccommunicationhandbook.ui.student.point.PointAdapter;
 
 import java.util.ArrayList;
 
 public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
 
-    private ArrayList<Fee> listFee;
     Context context;
 
-    public FeeAdapter(ArrayList<Fee> listFee, Context context) {
-        this.listFee = listFee;
-        this.context = context;
-    }
 
     @NonNull
     @Override
@@ -38,10 +31,9 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Fee fee= listFee.get(position);
 
         holder.tvSubjectCredit.setText("3"+"tc");
-        holder.tvSubjectFee.setText(String.valueOf( fee.getFee()));
+       // holder.tvSubjectFee.setText(String.valueOf( fee.getFee()));
         holder.tvSubjectname.setText("Lập trình di động");
 
 
@@ -49,7 +41,7 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return listFee.size();
+        return 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

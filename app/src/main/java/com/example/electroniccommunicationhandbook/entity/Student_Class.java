@@ -11,76 +11,67 @@ import java.util.Date;
 @Entity (tableName = "Student_Class")
 public class Student_Class {
 
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "StudentID") //foreign key with table Student
-    private String StudentID;
+    private String studentId;
 
-    @ColumnInfo (name = "ClassID") //foreign key with table Class
-    private String ClassID;
+    private String classId;
 
-    @ColumnInfo (name = "MiddleMark")
-    private float MiddleMark;
+    private float middleMark;
 
-    @ColumnInfo (name = "FinalMark")
-    private float FinalMark;
+    private float finalMark;
 
-    @ColumnInfo (name = "Rating")
-    private int Rating;
+    private int rating;
 
-    @ColumnInfo (name = "Comment")
-    private String Comment;
+    private String comment;
 
-    @ColumnInfo (name = "CreateDate")
     private Date CreateDate;
 
     @NonNull
-    public String getStudentID() {
-        return StudentID;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setStudentID(@NonNull String studentID) {
-        StudentID = studentID;
+    public void setStudentId(@NonNull String studentId) {
+        this.studentId = studentId;
     }
 
-    public String getClassID() {
-        return ClassID;
+    public String getClassId() {
+        return classId;
     }
 
-    public void setClassID(String classID) {
-        ClassID = classID;
+    public void setClassId(String classId) {
+        this.classId = classId;
     }
 
     public float getMiddleMark() {
-        return MiddleMark;
+        return middleMark;
     }
 
     public void setMiddleMark(float middleMark) {
-        MiddleMark = middleMark;
+        this.middleMark = middleMark;
     }
 
     public float getFinalMark() {
-        return FinalMark;
+        return finalMark;
     }
 
     public void setFinalMark(float finalMark) {
-        FinalMark = finalMark;
+        this.finalMark = finalMark;
     }
 
     public int getRating() {
-        return Rating;
+        return rating;
     }
 
     public void setRating(int rating) {
-        Rating = rating;
+        this.rating = rating;
     }
 
     public String getComment() {
-        return Comment;
+        return comment;
     }
 
     public void setComment(String comment) {
-        Comment = comment;
+        this.comment = comment;
     }
 
     public Date getCreateDate() {
@@ -91,13 +82,13 @@ public class Student_Class {
         CreateDate = createDate;
     }
 
-    public Student_Class(@NonNull String studentID, String classID, float middleMark, float finalMark, int rating, String comment, Date createDate) {
-        StudentID = studentID;
-        ClassID = classID;
-        MiddleMark = middleMark;
-        FinalMark = finalMark;
-        Rating = rating;
-        Comment = comment;
+    public Student_Class(@NonNull String studentId, String classId, float middleMark, float finalMark, int rating, String comment, Date createDate) {
+        this.studentId = studentId;
+        this.classId = classId;
+        this.middleMark = middleMark;
+        this.finalMark = finalMark;
+        this.rating = rating;
+        this.comment = comment;
         CreateDate = createDate;
     }
 

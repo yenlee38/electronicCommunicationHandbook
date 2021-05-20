@@ -8,133 +8,119 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "Student")
 public class Student {
 
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "StudentID")
-    private String StudentID;
+    private String studentId;
 
-    @ColumnInfo (name = "Name")
-    private String Name;
+    private String name;
 
-    @ColumnInfo (name = "Birthday")
-    private Date Birthday;
+    private Date  birthday;
 
-    @ColumnInfo (name = "Gender")
-    private String Gender;
+    private String gender;
 
-    @ColumnInfo (name = "Phone")
-    private String Phone;
+    private String phone;
 
-    @ColumnInfo (name = "Address")
-    private String Address;
+    private String address;
 
-    @ColumnInfo (name = "Email")
-    private String Email;
+    private String email;
 
-    @ColumnInfo (name = "Image")
-    private String Image;
+    private String image;
 
-    @ColumnInfo (name = "BankSeri")
-    private String BankSeri;
+    private String bankSeri;
 
-    @ColumnInfo (name = "AccountID") //foreign key with table Account
-    private int AccountID;
+    private Account account;
 
-    @NonNull
-    public String getStudentID() {
-        return StudentID;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setStudentID(@NonNull String studentID) {
-        StudentID = studentID;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Date getBirthday() {
-        return Birthday;
+        return birthday;
     }
 
     public void setBirthday(Date birthday) {
-        Birthday = birthday;
+        this.birthday = birthday;
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
     public String getBankSeri() {
-        return BankSeri;
+        return bankSeri;
     }
 
     public void setBankSeri(String bankSeri) {
-        BankSeri = bankSeri;
+        this.bankSeri = bankSeri;
     }
 
-    public int getAccountID() {
-        return AccountID;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountID(int accountID) {
-        AccountID = accountID;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-    public Student(@NonNull String studentID, String name, Date birthday, String gender, String phone, String address, String email, String image, String bankSeri, int accountID) {
-        StudentID = studentID;
-        Name = name;
-        Birthday = birthday;
-        Gender = gender;
-        Phone = phone;
-        Address = address;
-        Email = email;
-        Image = image;
-        BankSeri = bankSeri;
-        AccountID = accountID;
+    public Student(String studentId, String name, Date birthday, String gender, String phone, String address, String email, String image, String bankSeri, Account account) {
+        this.studentId = studentId;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.image = image;
+        this.bankSeri = bankSeri;
+        this.account = account;
     }
 
     public Student() {

@@ -7,120 +7,110 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity (tableName = "Parent")
 public class Parent {
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "ParentID")
-    private String ParentID;
 
-    @ColumnInfo (name = "Name")
-    private String Name;
+    private String parentId;
+    private String name;
+    private Date birthday;
+    private String phone;
+    private String address;
+    private String email;
+    private String gender;
+    private String image;
+    private Account account;
+    private Student student;
 
-    @ColumnInfo (name = "Birthday")
-    private Date Birthday;
-
-    @ColumnInfo (name = "Phone")
-    private String Phone;
-
-    @ColumnInfo (name = "Address")
-    private String Address;
-
-    @ColumnInfo (name = "Email")
-    private String Email;
-
-    @ColumnInfo (name = "Gender")
-    private String Gender;
-
-    @ColumnInfo (name = "Image")
-    private String Image;
-
-    @ColumnInfo (name = "AccountID") // foreign key with table Account
-    private String AccountID;
-
-    @NonNull
-    public String getParentID() {
-        return ParentID;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setParentID(@NonNull String parentID) {
-        ParentID = parentID;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Date getBirthday() {
-        return Birthday;
+        return birthday;
     }
 
     public void setBirthday(Date birthday) {
-        Birthday = birthday;
+        this.birthday = birthday;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
-    public String getAccountID() {
-        return AccountID;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountID(String accountID) {
-        AccountID = accountID;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-    public Parent(@NonNull String parentID, String name, Date birthday, String phone, String address, String email, String gender, String image, String accountID) {
-        ParentID = parentID;
-        Name = name;
-        Birthday = birthday;
-        Phone = phone;
-        Address = address;
-        Email = email;
-        Gender = gender;
-        Image = image;
-        AccountID = accountID;
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Parent(String parentId, String name, Date birthday, String phone, String address, String email, String gender, String image, Account account, Student student) {
+        this.parentId = parentId;
+        this.name = name;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.gender = gender;
+        this.image = image;
+        this.account = account;
+        this.student = student;
     }
 
     public Parent() {

@@ -9,39 +9,33 @@ import java.sql.Time;
 
 @Entity (tableName = "SchoolTime")
 public class SchoolTime {
-    @PrimaryKey (autoGenerate = true)
-    @NonNull
-    @ColumnInfo (name = "SchoolTimeOrder")
-    private int SchoolTimeOrder;
 
-    @ColumnInfo (name = "StartingTime")
-    private Time StartingTime;
-
-    @ColumnInfo (name = "EndTime")
-    private Time EndTime;
+    private int schoolTimeOrder;
+    private Time startingTime;
+    private Time endTime;
 
     public int getSchoolTimeOrder() {
-        return SchoolTimeOrder;
+        return schoolTimeOrder;
     }
 
     public void setSchoolTimeOrder(int schoolTimeOrder) {
-        SchoolTimeOrder = schoolTimeOrder;
+        this.schoolTimeOrder = schoolTimeOrder;
     }
 
     public Time getStartingTime() {
-        return StartingTime;
+        return startingTime;
     }
 
     public void setStartingTime(Time startingTime) {
-        StartingTime = startingTime;
+        this.startingTime = startingTime;
     }
 
     public Time getEndTime() {
-        return EndTime;
+        return endTime;
     }
 
     public void setEndTime(Time endTime) {
-        EndTime = endTime;
+        this.endTime = endTime;
     }
 
     public SchoolTime() {

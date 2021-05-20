@@ -7,65 +7,52 @@ import androidx.room.PrimaryKey;
 import java.util.Date;
 import java.util.List;
 
-@Entity (tableName = "Announcement")
 public class Announcement {
 
-    @PrimaryKey (autoGenerate = true)
-    @NonNull
-    @ColumnInfo (name = "AnnouncementID")
-    private int AnnouncementID;
+    private int announcementId;
+    private Teacher sender;
+    private Class _class;
+    private String content;
+    private Date announcementTime;
 
-    @ColumnInfo (name = "SenderID")
-    private int SenderID;
-
-    @ColumnInfo (name = "ClassID")
-    private String ClassID;
-
-    @ColumnInfo (name = "Content")
-    private String Content;
-
-
-    @ColumnInfo (name = "AnnouncementTime")
-    private Date AnnouncementTime;
-
-    public int getAnnouncementID() {
-        return AnnouncementID;
+    public int getAnnouncementId() {
+        return announcementId;
     }
 
-    public void setAnnouncementID(int announcementID) {
-        AnnouncementID = announcementID;
+    public void setAnnouncementId(int announcementId) {
+        this.announcementId = announcementId;
     }
 
-    public int getSenderID() {
-        return SenderID;
+    public Teacher getSender() {
+        return sender;
     }
 
-    public void setSenderID(int senderID) {
-        SenderID = senderID;
+    public void setSender(Teacher sender) {
+        this.sender = sender;
     }
 
-    public String getClassID() {
-        return ClassID;
+    public Class get_class() {
+        return _class;
     }
 
-    public void setClassID(String classID) {
-        ClassID = classID;
+    public void set_class(Class _class) {
+        this._class = _class;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
     public Date getAnnouncementTime() {
-        return AnnouncementTime;
+        return announcementTime;
     }
 
     public void setAnnouncementTime(Date announcementTime) {
-        AnnouncementTime = announcementTime;
+        this.announcementTime = announcementTime;
     }
 
     public Announcement() {

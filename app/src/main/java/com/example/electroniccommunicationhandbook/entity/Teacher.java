@@ -5,133 +5,146 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity (tableName = "Teacher")
 public class Teacher {
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "TeacherID")
-    private String TeacherID;
 
-    @ColumnInfo (name = "Name")
-    private String Name;
 
-    @ColumnInfo (name = "Birthday")
-    private Date Birthday;
+    private String teacherId;
 
-    @ColumnInfo (name = "Degree")
-    private String Degree;
+    private String name;
 
-    @ColumnInfo (name = "Phone")
-    private String Phone;
+    private Date birthday;
 
-    @ColumnInfo (name = "Gender")
-    private String Gender;
+    private String degree;
 
-    @ColumnInfo (name = "Address")
-    private String Address;
+    private String phone;
 
-    @ColumnInfo (name = "Email")
-    private String Email;
+    private String gender;
 
-    @ColumnInfo (name = "Image")
-    private String Image;
+    private String address;
 
-    @ColumnInfo (name = "AccountID") //foreign key with table Account
-    private int AccountID;
+    private String email;
 
-    public String getTeacherID() {
-        return TeacherID;
+    private String image;
+
+    private Account account;
+
+    private Collection<Announcement> announcements;
+
+    private Collection<Class> classes;
+
+    public String getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacherID(String teacherID) {
-        TeacherID = teacherID;
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Date getBirthday() {
-        return Birthday;
+        return birthday;
     }
 
     public void setBirthday(Date birthday) {
-        Birthday = birthday;
+        this.birthday = birthday;
     }
 
     public String getDegree() {
-        return Degree;
+        return degree;
     }
 
     public void setDegree(String degree) {
-        Degree = degree;
+        this.degree = degree;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getImage() {
-        return Image;
+        return image;
     }
 
     public void setImage(String image) {
-        Image = image;
+        this.image = image;
     }
 
-    public int getAccountID() {
-        return AccountID;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountID(int accountID) {
-        AccountID = accountID;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-    public Teacher(String teacherID, String name, Date birthday, String degree, String phone, String gender, String address, String email, String image, int accountID) {
-        TeacherID = teacherID;
-        Name = name;
-        Birthday = birthday;
-        Degree = degree;
-        Phone = phone;
-        Gender = gender;
-        Address = address;
-        Email = email;
-        Image = image;
-        AccountID = accountID;
+    public Collection<Announcement> getAnnouncements() {
+        return announcements;
+    }
+
+    public void setAnnouncements(Collection<Announcement> announcements) {
+        this.announcements = announcements;
+    }
+
+    public Collection<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Collection<Class> classes) {
+        this.classes = classes;
+    }
+
+    public Teacher(String teacherId, String name, Date birthday, String degree, String phone, String gender, String address, String email, String image, Account account, Collection<Announcement> announcements, Collection<Class> classes) {
+        this.teacherId = teacherId;
+        this.name = name;
+        this.birthday = birthday;
+        this.degree = degree;
+        this.phone = phone;
+        this.gender = gender;
+        this.address = address;
+        this.email = email;
+        this.image = image;
+        this.account = account;
+        this.announcements = announcements;
+        this.classes = classes;
     }
 
     public Teacher() {

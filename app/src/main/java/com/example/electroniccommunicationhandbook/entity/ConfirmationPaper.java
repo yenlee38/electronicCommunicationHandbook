@@ -5,30 +5,25 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "ConfirmationPaper")
 public class ConfirmationPaper {
-    @PrimaryKey (autoGenerate = true)
-    @NonNull
-    @ColumnInfo (name = "ConfirmationPaperID")
-    private int ConfirmationPaperID;
 
-    @ColumnInfo (name = "ConfirmationPaperName")
-    private String ConfirmationPaperName;
+    private int confirmationPaperID;
+    private String confirmationPaperName;
 
     public int getConfirmationPaperID() {
-        return ConfirmationPaperID;
+        return confirmationPaperID;
     }
 
     public void setConfirmationPaperID(int confirmationPaperId) {
-        this.ConfirmationPaperID = confirmationPaperId;
+        this.confirmationPaperID = confirmationPaperId;
     }
 
     public String getConfirmationPaperName() {
-        return ConfirmationPaperName;
+        return confirmationPaperName;
     }
 
     public void setConfirmationPaperName(String confirmationPaperName) {
-        this.ConfirmationPaperName = confirmationPaperName;
+        this.confirmationPaperName = confirmationPaperName;
     }
 
     public ConfirmationPaper() {
