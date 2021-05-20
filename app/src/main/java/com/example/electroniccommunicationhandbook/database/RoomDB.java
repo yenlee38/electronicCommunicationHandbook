@@ -39,9 +39,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 
-@Database(entities = {Account.class, Announcement.class, Class.class,  ConfirmationPaper.class, Message.class, Parent.class, SchoolTime.class
-, Student.class, Student_Class.class, Student_ConfirmationPaper.class, Student_Parent.class, Subject.class, Teacher.class}, version = 1, exportSchema = false)
-@TypeConverters(Convert.class)
 public abstract class RoomDB extends RoomDatabase {
 
     private static String dbName = "ECH";
@@ -63,18 +60,5 @@ public abstract class RoomDB extends RoomDatabase {
         return INSTANCE;
     }
 
-    public abstract AccountDAO accountDAO();
-    public abstract AnnouncementDAO announcementDAO();
-    public abstract ClassDAO classDAO();
-    public abstract ConfirmationPaperDAO confirmationPaperDAO();
-    public abstract MessageDAO messageDAO();
-    public abstract ParentDAO parentDAO();
-    public abstract SchoolTimeDAO schoolTimeDAO();
-    public abstract Student_ClassDAO student_classDAO();
-    public abstract Student_ConfirmationPaperDAO student_confirmationPaperDAO();
-    public abstract Student_ParentDAO student_parentDAO();
-    public abstract StudentDAO studentDAO();
-    public abstract SubjectDAO subjectDAO();
-    public abstract TeacherDAO teacherDAO();
 
 }

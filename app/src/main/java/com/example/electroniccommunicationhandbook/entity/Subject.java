@@ -5,59 +5,61 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Subject")
+import java.util.Collection;
+
 public class Subject {
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo(name = "SubjectID")
-    private String SubjectID;
 
-    @ColumnInfo(name = "Name")
-    private String Name;
+    private String subjectId;
+    private String name;
+    private int numberOfCredit;
+    private String description;
+    private Collection<Class> classes;
 
-    @ColumnInfo(name = "NumberOfCredit")
-    private int NumberOfCredit;
-
-    @ColumnInfo(name = "Description")
-    private String Description;
-
-    public String getSubjectID() {
-        return SubjectID;
+    public Collection<Class> getClasses() {
+        return classes;
     }
 
-    public void setSubjectID(String subjectID) {
-        SubjectID = subjectID;
+    public void setClasses(Collection<Class> classes) {
+        this.classes = classes;
+    }
+
+    public String getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public int getNumberOfCredit() {
-        return NumberOfCredit;
+        return numberOfCredit;
     }
 
     public void setNumberOfCredit(int numberOfCredit) {
-        NumberOfCredit = numberOfCredit;
+        this.numberOfCredit = numberOfCredit;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
-    public Subject(@NonNull String subjectID, String name, int numberOfCredit, String description) {
-        SubjectID = subjectID;
-        Name = name;
-        NumberOfCredit = numberOfCredit;
-        Description = description;
+    public Subject(String subjectId, String name, int numberOfCredit, String description) {
+        this.subjectId = subjectId;
+        this.name = name;
+        this.numberOfCredit = numberOfCredit;
+        this.description = description;
     }
 
     public Subject() {

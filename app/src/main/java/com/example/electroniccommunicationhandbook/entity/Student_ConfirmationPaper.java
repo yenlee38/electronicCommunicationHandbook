@@ -9,46 +9,47 @@ import java.util.Date;
 
 @Entity (tableName = "Student_ConfirmationPaper")
 public class Student_ConfirmationPaper {
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "RequiredTime")
-    private Date RequiredTime;
 
-    @ColumnInfo (name = "StudentID") //foreign key with table Student
-    private String StudentID;
+    private Date requiredTime;
+    private Student student;
+    private ConfirmationPaper confirmationPaper;
 
-    @ColumnInfo (name = "ConfirmationPaperID") //foreign key with table ConfirmationPaper
-    private int ConfirmationPaperID;
-
-    @NonNull
     public Date getRequiredTime() {
-        return RequiredTime;
+        return requiredTime;
     }
 
-    public void setRequiredTime(@NonNull Date requiredTime) {
-        RequiredTime = requiredTime;
+    public void setRequiredTime(Date requiredTime) {
+        this.requiredTime = requiredTime;
     }
 
-    public String getStudentID() {
-        return StudentID;
+    public Student getStudentId() {
+        return student;
     }
 
-    public void setStudentID(String studentID) {
-        StudentID = studentID;
+    public void setStudentId(Student studentId) {
+        this.student = studentId;
     }
 
-    public int getConfirmationPaperID() {
-        return ConfirmationPaperID;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setConfirmationPaperID(int confirmationPaperID) {
-        ConfirmationPaperID = confirmationPaperID;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-    public Student_ConfirmationPaper(@NonNull Date requiredTime, String studentID, int confirmationPaperID) {
-        RequiredTime = requiredTime;
-        StudentID = studentID;
-        ConfirmationPaperID = confirmationPaperID;
+    public ConfirmationPaper getConfirmationPaper() {
+        return confirmationPaper;
+    }
+
+    public void setConfirmationPaper(ConfirmationPaper confirmationPaper) {
+        this.confirmationPaper = confirmationPaper;
+    }
+
+    public Student_ConfirmationPaper(Date requiredTime, Student student, ConfirmationPaper confirmationPaper) {
+        this.requiredTime = requiredTime;
+        this.student = student;
+        this.confirmationPaper = confirmationPaper;
     }
 
     public Student_ConfirmationPaper() {

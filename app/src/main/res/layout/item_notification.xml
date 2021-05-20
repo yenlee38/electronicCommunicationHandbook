@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+    android:background="@drawable/border_notification"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="20dp"
+            >
+            <ImageView
+                android:id="@+id/img_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:foregroundGravity="center"
+                android:layout_margin="4dp"
+                android:src="@drawable/avatar"></ImageView>
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tv_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/muli_bold"
+            android:text="Nguyễn Ngọc Châu"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#C8CCCA"
+        android:layout_marginTop="65dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="75dp"
+        android:fontFamily="@font/muli_bold"
+        android:text="Title ABC "
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/black"
+        android:text="Ngày mai các em được nghĩ học, nhớ thông báo đến các bạn cùng lớp giúp thầy"
+        android:layout_marginBottom="10dp"
+        />
+</com.google.android.material.card.MaterialCardView>

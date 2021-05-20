@@ -8,16 +8,10 @@ import androidx.room.PrimaryKey;
 @Entity (tableName = "Student_Parent")
 public class Student_Parent {
 
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "StudentID")
     private String StudentID; //foreign key with table Student
 
-
-    @ColumnInfo (name = "ParentID") //foreign key with table Parent
     private String ParentID;
 
-    @NonNull
     public String getStudentID() {
         return StudentID;
     }

@@ -5,36 +5,30 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "FeeperCredit")
 public class FeeperCredit {
 
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo (name = "Year")
-    private int Year;
-
-    @ColumnInfo (name = "Fee")
-    private double Fee;
+    private int year;
+    private double fee;
 
     public int getYear() {
-        return Year;
+        return year;
     }
 
     public void setYear(int year) {
-        this.Year = year;
+        this.year = year;
     }
 
     public double getFee() {
-        return Fee;
+        return fee;
     }
 
     public void setFee(double fee) {
-        this.Fee = fee;
+        this.fee = fee;
     }
 
     public FeeperCredit(int year, double fee) {
-        this.Year = year;
-        this.Fee = fee;
+        this.year = year;
+        this.fee = fee;
     }
 
     public FeeperCredit() {

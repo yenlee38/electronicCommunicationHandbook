@@ -1,4 +1,4 @@
-package com.example.electroniccommunicationhandbook.ui.student.point.ui.main;
+package com.example.electroniccommunicationhandbook.ui.student.notification.ui.main;
 
 import android.content.Context;
 
@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.electroniccommunicationhandbook.R;
 
-
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
@@ -18,7 +17,7 @@ import com.example.electroniccommunicationhandbook.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_semester_1, R.string.tab_semester_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_school, R.string.tab_teacher};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
