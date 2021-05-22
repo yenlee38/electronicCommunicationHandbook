@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.student.rate.RateDetailFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,12 +40,12 @@
         android:orientation="horizontal"
         android:padding="24dp"
         android:background="@color/black">
-        
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/new_avatar"/>
-        
+
         <LinearLayout
             android:layout_marginLeft="24dp"
             android:layout_width="match_parent"
@@ -67,7 +70,7 @@
                 android:text="Web Security"
                 android:textSize="16dp"
                 android:textColor="@color/white"
-               />
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -96,11 +99,12 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_round_star_rate"/>
+
             <TextView
                 android:id="@+id/tv_rate_2"
-                android:layout_width="48dp"
+                android:layout_width="53dp"
                 android:layout_height="48dp"
-                android:background="@drawable/ic_round_star_rate"/>
+                android:background="@drawable/ic_round_star_rate" />
 
             <TextView
                 android:id="@+id/tv_rate_3"
@@ -110,9 +114,9 @@
 
             <TextView
                 android:id="@+id/tv_rate_4"
-                android:layout_width="48dp"
+                android:layout_width="53dp"
                 android:layout_height="48dp"
-                android:background="@drawable/ic_round_star_not_rate"/>
+                android:background="@drawable/ic_round_star_not_rate" />
 
             <TextView
                 android:id="@+id/tv_rate_5"
@@ -145,12 +149,12 @@
             android:background="@drawable/border_opition_rate"
             android:gravity="top"
             android:padding="12dp">
-    </EditText>
+        </EditText>
     </LinearLayout>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="219dp"
-        android:id="@+id/tv_rate_teacher"
+        android:id="@+id/btn_rate_teacher"
         android:layout_width="363dp"
         android:layout_height="44dp"
         android:layout_gravity="center_horizontal"
@@ -159,6 +163,7 @@
         android:text="Rate Teacher"
         android:textSize="16dp"
         android:textColor="@color/white"
+        android:textAllCaps="false"
         android:textStyle="bold" />
 
 </LinearLayout>

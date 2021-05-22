@@ -50,25 +50,40 @@
             android:text="Not yet Rated"
             android:textSize="16dp"/>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/group_rate"
-        android:layout_marginLeft="32dp"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_rate"
         android:layout_width="92dp"
         android:layout_height="40dp"
         android:background="@drawable/border_btn_rate"
-        android:gravity="center_vertical|center_horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_stars_24"
-            android:layout_gravity="center_vertical"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rate"
-            android:textStyle="bold"
-            android:textSize="16dp"
-            android:textColor="@color/white"
-            android:layout_marginLeft="8dp"/>
-    </LinearLayout>
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginLeft="32dp"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:text="Rate"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:drawableLeft="@drawable/ic_baseline_stars_24"
+        android:padding="8dp"
+        />
+<!--    <LinearLayout-->
+<!--        android:id="@+id/group_rate"-->
+<!--        android:layout_marginLeft="32dp"-->
+<!--        android:layout_width="92dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:background="@drawable/border_btn_rate"-->
+<!--        android:gravity="center_vertical|center_horizontal">-->
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_baseline_stars_24"-->
+<!--            android:layout_gravity="center_vertical"/>-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Rate"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="16dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_marginLeft="8dp"/>-->
+<!--    </LinearLayout>-->
 </LinearLayout>

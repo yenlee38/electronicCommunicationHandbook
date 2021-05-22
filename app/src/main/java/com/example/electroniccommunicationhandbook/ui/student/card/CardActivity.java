@@ -1,16 +1,19 @@
 package com.example.electroniccommunicationhandbook.ui.student.card;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -31,6 +34,7 @@ public class CardActivity  extends AppCompatActivity {
     private TextView tv_year_studying;
     private ImageView img_code_id;
     private TextView tv_bank_seri;
+    private ImageView img_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,20 @@ public class CardActivity  extends AppCompatActivity {
         tv_year_studying = findViewById(R.id.tv_year_studying);
         tv_bank_seri = findViewById(R.id.tv_bank_seri);
         img_code_id = findViewById(R.id.img_code_id);
+        img_back = findViewById(R.id.img_back);
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     private void createImageViewCode() {

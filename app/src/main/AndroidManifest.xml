@@ -18,6 +18,7 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".ui.student.rate.RateTeacherActivity"/>
         <activity android:name=".ui.student.card.CardActivity" />
         <activity android:name=".MainActivity_teacher" />
         <activity android:name=".ui.resetpassword.ResetPasswordSuccessfullyActivity" />
