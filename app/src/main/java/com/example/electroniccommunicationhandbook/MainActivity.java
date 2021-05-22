@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-   tvName= findViewById(R.id.txvName);
+        tvName= findViewById(R.id.txvName);
         btnLogout= findViewById(R.id.hoang);
         pointService=  PointRepository.getInstance();
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -48,19 +48,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-              //  mainRepository = MainRepository.getInstance();
-                Student_Class student_class= new Student_Class();
+                //  mainRepository = MainRepository.getInstance();
+                Student_Class student_class = new Student_Class();
                 Class mclass = new Class();
                 Student student = new Student();
                 mclass.setClassId("Class1");
 
                 student_class.set_class(mclass);
                 student_class.setStudent(student);
-                student= pointService.createPointInfo("1");
-                if(student!= null)
-                tvName.setText(student.getName() +" " + student.getBirthday());
+                student = pointService.createPointInfo("1");
+                if (student != null)
+                    tvName.setText(student.getName() + " " + student.getBirthday());
                 else
                     tvName.setText("Null roi");
+            }});
         initView();
     }
 
