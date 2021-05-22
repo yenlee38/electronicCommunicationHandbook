@@ -8,7 +8,6 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity (tableName = "Student_Class")
 public class Student_Class {
 
     private String studentId;
@@ -24,6 +23,26 @@ public class Student_Class {
     private String comment;
 
     private Date CreateDate;
+
+    private Class _class;
+
+    private  Student student;
+
+    public Class get_class() {
+        return _class;
+    }
+
+    public void set_class(Class _class) {
+        this._class = _class;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     @NonNull
     public String getStudentId() {
