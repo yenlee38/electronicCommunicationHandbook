@@ -54,7 +54,7 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
 
     @Override
     public int getItemCount() {
-        return mClass.size();
+        return 3;
     }
 
     public class RateTeacherViewHolder extends RecyclerView.ViewHolder {

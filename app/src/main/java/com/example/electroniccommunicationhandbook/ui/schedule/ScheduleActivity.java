@@ -3,6 +3,8 @@ package com.example.electroniccommunicationhandbook.ui.schedule;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Class;
 
@@ -10,6 +12,9 @@ import java.util.List;
 
 public class ScheduleActivity extends AppCompatActivity {
 
+    private List<Class> mClassOfDay = null; // schedule for each day
+    private RecyclerView rlv_schedule;
+    private ScheduleAdapter scheduleAdapter;
 
     public ScheduleActivity() {
         // Required empty public constructor
@@ -21,6 +26,18 @@ public class ScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_schedule);
 
     }
+
+    private void setRecyclerView(){
+        scheduleAdapter = new ScheduleAdapter(mClassOfDay);
+
+    }
+
+    private void initView(){
+        rlv_schedule = findViewById(R.id.rlv_schedule);
+
+    }
+
+
 
 
     private void sortClassBySchoolTime(List<Class> lClass){ // Sắp xếp lại thứ tự tiết học

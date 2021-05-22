@@ -153,8 +153,8 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="219dp"
         android:id="@+id/btn_rate_teacher"
+        android:layout_marginTop="219dp"
         android:layout_width="363dp"
         android:layout_height="44dp"
         android:layout_gravity="center_horizontal"

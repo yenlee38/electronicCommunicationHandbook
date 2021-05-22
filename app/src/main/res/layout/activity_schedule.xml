@@ -11,6 +11,7 @@
           android:layout_height="wrap_content">
 
           <ImageView
+              android:id="@+id/img_back"
               android:layout_width="20dp"
               android:layout_height="20dp"
               android:layout_marginTop="16dp"
@@ -65,8 +66,8 @@
           android:layout_height="80dp"
           android:orientation="horizontal"
           android:background="#80E7FF">
-            <TextView
-                android:id="@+id/tv_monDay"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_monDay"
                 android:layout_marginLeft="20dp"
                 android:layout_width="53dp"
                 android:layout_height="60dp"
@@ -80,8 +81,8 @@
                 android:layout_gravity="center_vertical"
                 />
 
-          <TextView
-              android:id="@+id/tv_tueDay"
+          <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/btn_tueDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -95,8 +96,8 @@
               android:layout_gravity="center_vertical"
               />
 
-          <TextView
-              android:id="@+id/tv_wedDay"
+          <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/btn_wedDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -110,8 +111,8 @@
               android:layout_gravity="center_vertical"
               />
 
-          <TextView
-              android:id="@+id/tv_thuDay"
+          <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/btn_thuDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -125,8 +126,8 @@
               android:layout_gravity="center_vertical"
               />
 
-          <TextView
-              android:id="@+id/tv_friDay"
+          <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/btn_friDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -140,8 +141,8 @@
               android:layout_gravity="center_vertical"
               />
 
-          <TextView
-              android:id="@+id/tv_satDay"
+          <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/btn_satDay"
               android:layout_marginLeft="10dp"
               android:layout_width="53dp"
               android:layout_height="60dp"
@@ -181,14 +182,15 @@
 
               />
 
-          <TextView
-              android:id="@+id/tv_viewPoint"
+          <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/btn_viewPoint"
               android:layout_width="156dp"
               android:layout_height="37dp"
               android:layout_marginLeft="8dp"
               android:background="@drawable/border_btnview"
               android:text="View points"
               android:textSize="16dp"
+              android:textAllCaps="false"
               android:textColor="@color/white"
               android:gravity="center_vertical|center_horizontal"
               android:textStyle="bold" />
