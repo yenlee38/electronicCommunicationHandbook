@@ -292,6 +292,7 @@
         android:id="@+id/hoang"
 ></Button>
     <TextView
+        android:id="@+id/txvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
