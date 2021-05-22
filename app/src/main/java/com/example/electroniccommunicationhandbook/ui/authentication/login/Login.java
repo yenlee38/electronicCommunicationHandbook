@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
-import com.example.electroniccommunicationhandbook.Repository.MainRepository;
+import com.example.electroniccommunicationhandbook.repository.MainRepository;
 import com.example.electroniccommunicationhandbook.entity.Account;
 import com.example.electroniccommunicationhandbook.entity.Dummy.jwt;
 

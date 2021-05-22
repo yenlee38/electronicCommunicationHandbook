@@ -1,4 +1,4 @@
-package com.example.electroniccommunicationhandbook.Repository;
+package com.example.electroniccommunicationhandbook.repository;
 
 import com.example.electroniccommunicationhandbook.service.AuthenticateService;
 
