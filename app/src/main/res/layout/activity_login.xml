@@ -34,6 +34,7 @@
 
 
             <EditText
+                android:id="@+id/edtUserName_Login"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:inputType="text"
@@ -59,6 +60,7 @@
                 android:layout_marginTop="@dimen/size_super_min"
                 android:text="Your email is incorrect"></TextView>
             <EditText
+                android:id="@+id/edtPassword_Login"
               android:layout_marginTop="@dimen/size_super_min"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -106,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/black"
+                    android:checked="true"
                     android:text="Student" />
 
                 <RadioButton
@@ -132,7 +135,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_margin="@dimen/size_medium"
