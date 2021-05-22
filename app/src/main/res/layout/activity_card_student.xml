@@ -48,6 +48,7 @@
             android:layout_marginBottom="336dp">
 
             <ImageView
+                android:id="@+id/img_avatar"
                 android:layout_width="100dp"
                 android:layout_height="133dp"
                 android:layout_marginTop="24dp"
@@ -107,7 +108,7 @@
                         android:layout_gravity="center_horizontal"/>
 
                     <TextView
-                        android:id="@+id/tvId"
+                        android:id="@+id/tv_student_id"
                         android:layout_marginTop="4dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -134,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:text="Full name:"/>
             <TextView
-                android:id="@+id/tvName"
+                android:id="@+id/tv_name"
                 android:layout_marginLeft="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:text="DoB:"/>
             <TextView
-                android:id="@+id/tvDoB"
+                android:id="@+id/tv_DoB"
                 android:layout_marginLeft="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -176,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:text="Major:"/>
             <TextView
-                android:id="@+id/tvMajor"
+                android:id="@+id/tv_major"
                 android:layout_marginLeft="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -198,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:text="Year of admisstion:"/>
             <TextView
-                android:id="@+id/tvYearAdmission"
+                android:id="@+id/tv_year_studying"
                 android:layout_marginLeft="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -208,19 +209,21 @@
                 android:textStyle="bold"/>
         </LinearLayout>
         <ImageView
-            android:id="@+id/imgId"
+            android:id="@+id/img_code_id"
             android:layout_marginTop="34dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="314dp"
+            android:layout_height="86dp"
             android:layout_below="@+id/layout_year"
             android:src="@drawable/ma"
             android:layout_centerHorizontal="true"/>
+           <!-- android:src="@drawable/ma" -->
+
 
         <TextView
-            android:id="@+id/tvIdCard"
+            android:id="@+id/tv_bank_seri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgId"
+            android:layout_below="@+id/img_code_id"
             android:layout_marginTop="2dp"
             android:layout_centerHorizontal="true"
             android:text="9704 1800 9364 1413"
