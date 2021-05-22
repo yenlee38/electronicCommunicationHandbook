@@ -8,7 +8,6 @@ import androidx.room.PrimaryKey;
 import java.util.Collection;
 import java.util.Date;
 
-@Entity (tableName = "Teacher")
 public class Teacher {
 
 
@@ -132,7 +131,9 @@ public class Teacher {
         this.classes = classes;
     }
 
-    public Teacher(String teacherId, String name, Date birthday, String degree, String phone, String gender, String address, String email, String image, Account account, Collection<Announcement> announcements, Collection<Class> classes) {
+    public Teacher(String teacherId, String name, Date birthday, String degree,
+                   String phone, String gender, String address, String email, String image,
+                   Account account, Collection<Announcement> announcements, Collection<Class> classes) {
         this.teacherId = teacherId;
         this.name = name;
         this.birthday = birthday;

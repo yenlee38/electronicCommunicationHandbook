@@ -2,6 +2,7 @@ package com.example.electroniccommunicationhandbook.ui.authentication.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,10 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
-import com.example.electroniccommunicationhandbook.Repository.MainRepository;
+import com.example.electroniccommunicationhandbook.repository.MainRepository;
 import com.example.electroniccommunicationhandbook.entity.Account;
 import com.example.electroniccommunicationhandbook.entity.Dummy.jwt;
 
@@ -25,13 +27,13 @@ import static com.example.electroniccommunicationhandbook.util.Comon.MY_PREFS_FI
 public class Login extends AppCompatActivity {
     Button login;
     EditText edtUserName, edtPassword;
-
+    Context context;
     private MainRepository mainRepository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        this.context= this;
         mainRepository = mainRepository.getInstance();
 
         login= findViewById(R.id.btn_login);
@@ -44,33 +46,14 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 //TODO: check Type login in radio button
 
-
                 Account account = new Account(edtUserName.getText().toString(),edtPassword.getText().toString());
-
-                mainRepository.getAuthenticateService().login(account).enqueue(new Callback<jwt>() {
-                    @Override
-                    public void onResponse(Call<jwt> call, Response<jwt> auth) {
-                        if(auth != null){
-                            Log.e("token",auth.body().getJwt()  );
-                            String token=auth.body().getJwt();
-
-                            //Save token
-                            SharedPreferences.Editor prefsEditor = getSharedPreferences(MY_PREFS_FILE, MODE_PRIVATE).edit();
-                            prefsEditor.putString("token",token);
-                            prefsEditor.commit();
-
-                            mainRepository.setToken(token);
-                            //Go login
-                            Intent intent= new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<jwt> call, Throwable t) {
-                        Log.e("Token", "Noooooooooooo");
-                    }
-                });
+                if(mainRepository.login(account)) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(context, "Login fail", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

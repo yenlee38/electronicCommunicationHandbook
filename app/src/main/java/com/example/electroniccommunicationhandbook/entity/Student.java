@@ -6,14 +6,21 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Student {
 
     private String studentId;
 
+    @SerializedName("studentName")
+    @Expose
     private String name;
 
+    @SerializedName("studentBirthday")
+    @Expose
     private Date  birthday;
 
     private String gender;

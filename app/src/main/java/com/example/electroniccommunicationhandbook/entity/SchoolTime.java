@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 
 import java.sql.Time;
 
-@Entity (tableName = "SchoolTime")
 public class SchoolTime {
 
     private int schoolTimeOrder;

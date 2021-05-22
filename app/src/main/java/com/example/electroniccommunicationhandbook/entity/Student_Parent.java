@@ -5,7 +5,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "Student_Parent")
 public class Student_Parent {
 
     private String StudentID; //foreign key with table Student
