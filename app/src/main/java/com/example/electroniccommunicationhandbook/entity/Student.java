@@ -5,7 +5,9 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+import com.example.electroniccommunicationhandbook.database.Convert;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -19,8 +21,9 @@ public class Student {
     @Expose
     private String name;
 
-    @SerializedName("studentBirthday")
-    @Expose
+//    @SerializedName("studentBirthday")
+//    @Expose
+    @TypeConverters(Convert.class)
     private Date  birthday;
 
     private String gender;
