@@ -79,34 +79,34 @@ public  class MainRepository {
         pointService= retrofit.create(PointService.class);
     }
 
-
-    public boolean login (Account account){
-
-        authenticateService.login(account).enqueue(new Callback<jwt>() {
-            @Override
-            public void onResponse(Call<jwt> call, retrofit2.Response<jwt> auth) {
-                if(auth != null){
-                    Log.e("token",auth.body().getJwt()  );
-                    String token=auth.body().getJwt();
-
-                    //Save token
-                   /* SharedPreferences.Editor prefsEditor = getSharePreference(MY_PREFS_FILE, MODE_PRIVATE).edit();
-                    prefsEditor.putString("token",token);
-                    prefsEditor.commit();*/
-
-                    setToken(token);
-                    loginSuccess= true;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<jwt> call, Throwable t) {
-
-                loginSuccess= false;
-                Log.e("Fail", t.toString() );
-            }
-        });
-        return  loginSuccess;
-    }
+//Must return role
+//    public boolean login (Account account){
+//
+//        authenticateService.login(account).enqueue(new Callback<jwt>() {
+//            @Override
+//            public void onResponse(Call<jwt> call, retrofit2.Response<jwt> auth) {
+//                if(auth != null){
+//                    Log.e("token",auth.body().getJwt()  );
+//                    String token=auth.body().getJwt();
+//
+//                    //Save token
+//                   /* SharedPreferences.Editor prefsEditor = getSharePreference(MY_PREFS_FILE, MODE_PRIVATE).edit();
+//                    prefsEditor.putString("token",token);
+//                    prefsEditor.commit();*/
+//
+//                    setToken(token);
+//                    loginSuccess= true;
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<jwt> call, Throwable t) {
+//
+//                loginSuccess= false;
+//                Log.e("Fail", t.toString() );
+//            }
+//        });
+//        return  loginSuccess;
+//    }
 
 }
