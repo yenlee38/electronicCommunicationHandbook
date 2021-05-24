@@ -77,6 +77,7 @@ public class Login extends AppCompatActivity {
 
                 if(radTeacher.isChecked()){
                     role=1;
+
                 }
                 else if (radStudent.isChecked()){
                     role=2;
