@@ -37,9 +37,10 @@
         android:background="@color/black">
 
         <ImageView
+            android:id="@+id/imv_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/avatar_man"/>
+            android:src="@drawable/avatar_man" />
 
         <LinearLayout
             android:layout_marginLeft="24dp"
@@ -47,7 +48,7 @@
             android:layout_height="100dp"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/tv_name_teacher_rate"
+                android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Le Duc Tan"
@@ -76,6 +77,7 @@
 
             </LinearLayout>
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_update_profile"
                 android:layout_width="150dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="5dp"
