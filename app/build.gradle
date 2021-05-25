@@ -65,5 +65,4 @@ dependencies {
     //Decode token
     implementation 'com.auth0.android:jwtdecode:2.0.0'
 
-
 }

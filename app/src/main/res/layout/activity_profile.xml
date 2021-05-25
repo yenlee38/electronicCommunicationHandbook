@@ -122,7 +122,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
                 android:hint="leductan12c5@gmail.com"
-                android:layout_marginStart="5dp" />
+                android:layout_marginStart="5dp"
+                android:visibility="invisible"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -158,7 +159,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
                 android:hint="0365791309"
-                android:layout_marginStart="5dp" />
+                android:layout_marginStart="5dp"
+                android:visibility="invisible"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -194,7 +196,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
                 android:hint="01 Street 7, Linh Chieu, Thu Duc"
-                android:layout_marginStart="5dp" />
+                android:layout_marginStart="5dp"
+                android:visibility="invisible"/>
         </LinearLayout>
 
     </LinearLayout>

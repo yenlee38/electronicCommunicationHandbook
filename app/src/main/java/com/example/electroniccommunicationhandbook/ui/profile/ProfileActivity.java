@@ -14,8 +14,10 @@ import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.repository.PointRepository;
 
 public class ProfileActivity extends AppCompatActivity {
+    PointRepository pointRepository;
     private ImageView imvBack,imvPhoto;
     private TextView tvID,tvName;
     private AppCompatButton btnUpdateProfile;
@@ -24,15 +26,8 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        imvBack = findViewById(R.id.imv_back);
-        imvPhoto = findViewById(R.id.imv_photo);
-        tvID = findViewById(R.id.tv_student_id);
-        tvName = findViewById(R.id.tv_name);
-        btnUpdateProfile = findViewById(R.id.btn_update_profile);
-        edtEmail =findViewById(R.id.edit_text_email);
-        edtPhone = findViewById(R.id.edit_text_phone);
-        edtAddress = findViewById(R.id.edit_text_address);
-        showData();
+        loadData();
+
         imvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +42,8 @@ public class ProfileActivity extends AppCompatActivity {
                     case 3:
                         Intent intentTeacher = new Intent(ProfileActivity.this, MainActivity_teacher.class);
                         startActivity(intentTeacher);
+                    default:
+                        return ;
                 }
             }
         });
@@ -60,8 +57,17 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void showData() {
-        
+    private void loadData() {
+        pointRepository = PointRepository.getInstance();
+        imvBack = findViewById(R.id.imv_back);
+        imvPhoto = findViewById(R.id.imv_photo);
+        tvID = findViewById(R.id.tv_student_id);
+        tvName = findViewById(R.id.tv_name);
+        btnUpdateProfile = findViewById(R.id.btn_update_profile);
+        edtEmail =findViewById(R.id.edit_text_email);
+        edtPhone = findViewById(R.id.edit_text_phone);
+        edtAddress = findViewById(R.id.edit_text_address);
+
     }
 
 }
