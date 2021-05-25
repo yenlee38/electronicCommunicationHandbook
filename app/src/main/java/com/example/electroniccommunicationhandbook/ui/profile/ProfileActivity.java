@@ -1,16 +1,66 @@
 package com.example.electroniccommunicationhandbook.ui.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.electroniccommunicationhandbook.MainActivity;
+import com.example.electroniccommunicationhandbook.MainActivity_parent;
+import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
 
 public class ProfileActivity extends AppCompatActivity {
-
+    private ImageView imvBack,imvPhoto;
+    private TextView tvID,tvName;
+    private AppCompatButton btnUpdateProfile;
+    private EditText edtEmail,edtPhone, edtAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        imvBack = findViewById(R.id.imv_back);
+        imvPhoto = findViewById(R.id.imv_photo);
+        tvID = findViewById(R.id.tv_student_id);
+        tvName = findViewById(R.id.tv_name);
+        btnUpdateProfile = findViewById(R.id.btn_update_profile);
+        edtEmail =findViewById(R.id.edit_text_email);
+        edtPhone = findViewById(R.id.edit_text_phone);
+        edtAddress = findViewById(R.id.edit_text_address);
+        showData();
+        imvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int accountType = 1 ;
+                switch (accountType) {
+                    case 1:
+                        Intent intentStudent = new Intent(ProfileActivity.this, MainActivity.class);
+                        startActivity(intentStudent);
+                    case 2:
+                        Intent intentParent = new Intent(ProfileActivity.this, MainActivity_parent.class);
+                        startActivity(intentParent);
+                    case 3:
+                        Intent intentTeacher = new Intent(ProfileActivity.this, MainActivity_teacher.class);
+                        startActivity(intentTeacher);
+                }
+            }
+        });
+
+        btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, UpdateProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void showData() {
+        
     }
 }
