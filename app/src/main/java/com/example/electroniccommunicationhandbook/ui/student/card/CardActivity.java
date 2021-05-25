@@ -17,6 +17,7 @@ import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.Writer;
@@ -39,6 +40,7 @@ public class CardActivity  extends AppCompatActivity {
     private TextView tv_bank_seri;
     private ImageView img_back;
     private StudentRepository studentRepository;
+    UserLocalStore userLocalStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,8 @@ public class CardActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_card_student);
         Intent intent = getIntent();
         studentRepository = new StudentRepository();
-        String studentId = intent.getStringExtra("studentId");
-        student = studentRepository.getInfo(studentId);
+        userLocalStore = new UserLocalStore(getApplicationContext());
+        student = userLocalStore.getStudentLocal();
         initView();
         createImageViewCode();
 

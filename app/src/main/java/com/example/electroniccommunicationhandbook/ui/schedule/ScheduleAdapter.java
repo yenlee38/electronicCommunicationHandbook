@@ -20,6 +20,17 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         this.mClassOfDay = mClassOfDay;
     }
 
+    public List<Class> getmClassOfDay() {
+        return mClassOfDay;
+    }
+
+    public  ScheduleAdapter(){}
+
+    public void setmClassOfDay(List<Class> mClassOfDay) {
+        this.mClassOfDay = mClassOfDay;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ScheduleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

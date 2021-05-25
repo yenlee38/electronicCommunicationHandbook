@@ -12,27 +12,35 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Class;
+import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.util.List;
 
 public class RateTeacherActivity extends AppCompatActivity {
 
     private RateTeacherAdapter rateTeacherAdapter;
-    private List<Class> mClass = null;
+    private List<Class> lClass = null;
     private RecyclerView rlv_rateTeacher;
     private ImageView img_back;
+    UserLocalStore userLocalStore;
+    private Student student;
+    private StudentRepository studentRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_teacher);
+        userLocalStore = new UserLocalStore(getApplicationContext());
+        student = userLocalStore.getStudentLocal();
         initView();
         setRecyclerView();
 
     }
 
     private void setRecyclerView(){ //
-        rateTeacherAdapter = new RateTeacherAdapter(mClass);
+        rateTeacherAdapter = new RateTeacherAdapter(lClass);
         rlv_rateTeacher.setAdapter(rateTeacherAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);

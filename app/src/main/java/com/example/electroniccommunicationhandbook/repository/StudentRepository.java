@@ -2,6 +2,10 @@ package com.example.electroniccommunicationhandbook.repository;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.service.PointService;
 import com.example.electroniccommunicationhandbook.service.StudentService;
@@ -24,6 +28,7 @@ public class StudentRepository {
 
     private StudentService studentService;
     public Student student;
+    private MutableLiveData<Class> classResponseLiveData;
 
     private static StudentRepository instance;
 
@@ -82,4 +87,26 @@ public class StudentRepository {
         return  student;
     }
 
+    public MutableLiveData<Class> getSchedule(String idStudent, int year, int semester) {
+       studentService.getSchedule(idStudent, year, semester)
+               .enqueue(new Callback<Class>() {
+                   @Override
+                   public void onResponse(Call<Class> call, Response<Class> response) {
+                        if(response.body() !=null){
+                            classResponseLiveData.postValue(response.body());
+                        }
+                   }
+
+                   @Override
+                   public void onFailure(Call<Class> call, Throwable t) {
+                        classResponseLiveData.postValue(null);
+                   }
+               });
+
+       return classResponseLiveData;
+    }
+
+    public MutableLiveData<Class> getClassResponseLiveData() {
+        return classResponseLiveData;
+    }
 }

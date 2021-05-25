@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
 
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CardActivity.class);
-                intent.putExtra("studentId", "18110402");
                 startActivity(intent);
               //  setContentView(R.layout.activity_card_student);
 
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         btn_schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RateTeacherActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
                 startActivity(intent);
                // setContentView(R.layout.activity_schedule);
 
