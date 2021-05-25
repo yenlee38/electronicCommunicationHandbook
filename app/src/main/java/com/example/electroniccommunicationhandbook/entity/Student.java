@@ -40,6 +40,10 @@ public class Student {
 
     private Account account;
 
+    private String year;
+
+    private String major;
+
     public String getStudentId() {
         return studentId;
     }
@@ -110,6 +114,22 @@ public class Student {
 
     public void setBankSeri(String bankSeri) {
         this.bankSeri = bankSeri;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
     }
 
     public Account getAccount() {

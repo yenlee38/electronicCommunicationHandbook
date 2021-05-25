@@ -15,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.Writer;
@@ -27,6 +30,7 @@ import java.util.Hashtable;
 
 public class CardActivity  extends AppCompatActivity {
 
+    private Student student;
     private ImageView img_avatar;
     private TextView tv_student_id;
     private TextView tv_name;
@@ -35,14 +39,28 @@ public class CardActivity  extends AppCompatActivity {
     private ImageView img_code_id;
     private TextView tv_bank_seri;
     private ImageView img_back;
+    private StudentRepository studentRepository;
+    UserLocalStore userLocalStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_student);
-
+        Intent intent = getIntent();
+        studentRepository = new StudentRepository();
+        userLocalStore = new UserLocalStore(getApplicationContext());
+        student = userLocalStore.getStudentLocal();
         initView();
         createImageViewCode();
+
+    }
+
+    private void setValueForCard(){
+        tv_student_id.setText(student.getStudentId());
+        if(student.getName() != null){ tv_name.setText(student.getName());}
+        if(student.getMajor() != null){ tv_major.setText(student.getMajor());}
+        if(student.getYear() != null){ tv_year_studying.setText(student.getYear());}
+        if(student.getBankSeri() != null){tv_bank_seri.setText(student.getBankSeri());}
 
     }
 
@@ -56,6 +74,8 @@ public class CardActivity  extends AppCompatActivity {
         tv_bank_seri = findViewById(R.id.tv_bank_seri);
         img_code_id = findViewById(R.id.img_code_id);
         img_back = findViewById(R.id.img_back);
+
+        setValueForCard();
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +93,7 @@ public class CardActivity  extends AppCompatActivity {
 
     private void createImageViewCode() {
         try {
-            String studentId = tv_student_id.getText().toString();
+            String studentId = student.getStudentId();
             Hashtable<EncodeHintType, ErrorCorrectionLevel> hintMap = new Hashtable<EncodeHintType, ErrorCorrectionLevel>();
             hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
             Writer codeWriter;

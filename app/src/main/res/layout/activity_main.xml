@@ -71,7 +71,7 @@
    </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:orientation="vertical">
@@ -198,7 +198,7 @@
 
     </LinearLayout>
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -239,7 +239,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         android:layout_width="363dp"
         android:layout_height="40dp"
         android:textAllCaps="false"
