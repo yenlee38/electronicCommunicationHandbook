@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CardActivity.class);
+                intent.putExtra("studentId", "18110402");
                 startActivity(intent);
               //  setContentView(R.layout.activity_card_student);
 

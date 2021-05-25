@@ -79,6 +79,7 @@ public  class MainRepository {
         pointService= retrofit.create(PointService.class);
     }
 
+
 //Must return role
 //    public boolean login (Account account){
 //

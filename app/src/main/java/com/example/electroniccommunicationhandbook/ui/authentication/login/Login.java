@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity {
     EditText edtUserName, edtPassword;
 
     UserLocalStore userLocalStore;
+
     Context context;
 
     RadioButton radTeacher, radParent, radStudent;
@@ -142,6 +143,7 @@ public class Login extends AppCompatActivity {
                             //Go login
                             Intent intent= new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
+
                         }
                         else{
                             Toast.makeText(getApplicationContext(),"Email or password is incorrect", Toast.LENGTH_LONG);
