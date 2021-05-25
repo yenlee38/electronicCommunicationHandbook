@@ -1,7 +1,9 @@
 package com.example.electroniccommunicationhandbook.ui.student.rate;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Adapter;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,7 @@ public class RateTeacherActivity extends AppCompatActivity {
     private RateTeacherAdapter rateTeacherAdapter;
     private List<Class> mClass = null;
     private RecyclerView rlv_rateTeacher;
+    private ImageView img_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,14 @@ public class RateTeacherActivity extends AppCompatActivity {
 
     private void initView(){
         rlv_rateTeacher = findViewById(R.id.rlv_rateTeacher);
+        img_back = findViewById(R.id.img_back);
+
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
 }

@@ -1,10 +1,14 @@
 package com.example.electroniccommunicationhandbook.ui.schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Class;
 
@@ -15,6 +19,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private List<Class> mClassOfDay = null; // schedule for each day
     private RecyclerView rlv_schedule;
     private ScheduleAdapter scheduleAdapter;
+    private ImageView img_back;
 
     public ScheduleActivity() {
         // Required empty public constructor
@@ -32,9 +37,22 @@ public class ScheduleActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
     private void initView(){
         rlv_schedule = findViewById(R.id.rlv_schedule);
+        img_back = findViewById(R.id.img_back);
 
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
 
