@@ -151,4 +151,10 @@ public class Teacher {
 
     public Teacher() {
     }
+
+    public Teacher(String teacherId, String name, Account account) {
+        this.teacherId = teacherId;
+        this.name = name;
+        this.account = account;
+    }
 }
