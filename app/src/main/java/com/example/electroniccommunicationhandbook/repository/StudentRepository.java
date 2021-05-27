@@ -31,22 +31,20 @@ public class StudentRepository {
 
     private StudentService studentService;
     public Student student;
-    private MutableLiveData<List<Class>> classResponseLiveData;
-    public List<Class> lClass;
-    public List<SchoolTime> lSchoolTime;
+    private MutableLiveData<ArrayList<Class>> classResponseLiveData;
+    public ArrayList<Class> lClass;
+    public MutableLiveData<ArrayList<SchoolTime>> lSchoolTime;
     private static final int NUMBER_OF_THREADS = 4;
 
     public Student getStudent() {
         return student;
     }
 
-    public List<Class> getlClass() {
+    public ArrayList<Class> getlClass() {
         return lClass;
     }
 
-    public List<SchoolTime> getlSchoolTime() {
-        return lSchoolTime;
-    }
+
 
     public static ExecutorService getDatabaseWriteExecutor() {
         return databaseWriteExecutor;
@@ -63,17 +61,10 @@ public class StudentRepository {
         this.student = student;
     }
 
-    public void setClassResponseLiveData(MutableLiveData<List<Class>> classResponseLiveData) {
+    public void setClassResponseLiveData(MutableLiveData<ArrayList<Class>> classResponseLiveData) {
         this.classResponseLiveData = classResponseLiveData;
     }
 
-    public void setlClass(List<Class> lClass) {
-        this.lClass = lClass;
-    }
-
-    public void setlSchoolTime(List<SchoolTime> lSchoolTime) {
-        this.lSchoolTime = lSchoolTime;
-    }
 
     public static void setInstance(StudentRepository instance) {
         StudentRepository.instance = instance;
@@ -90,8 +81,8 @@ public class StudentRepository {
 
     public StudentRepository() {
         lClass = new ArrayList<Class>();
-        lSchoolTime = new ArrayList<SchoolTime>();
-        classResponseLiveData = new MutableLiveData<List<Class>>();
+        lSchoolTime = new MutableLiveData<>();
+        classResponseLiveData = new MutableLiveData<>();
         MainRepository mainRepository;
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -102,10 +93,7 @@ public class StudentRepository {
                 Request originalRequest = chain.request();
 
                 Request.Builder builder = originalRequest.newBuilder().header("Authorization",
-                        "Bearer " +"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySnNvbkJhc2U2NCI6ImV5SnpkSFZrWlc1MFNXUWlPaUpUZEhWa1pXNTBNVElpTENKaFkyTnZkVzUwSWpwN0ltRmpZMjkxYm5SSlpDSTZNVElzSW5W" +
-                                "elpYSnVZVzFsSWpvaWMzUnlhVzVuSWl3aWNHRnpjM2R2Y21RaU9pSm9iMkZ1WnlKOUxDSnpkSFZrWlc1MFJXMWhhV3dpT201MWJHd3NJbk4wZFdSbGJuUk9ZVzFsSWpwdWRXeHNMQ0p6ZEhWa1pXNTBRbWx" +
-                                "5ZEdoa1lYa2lPbTUxYkd3c0luTjBkV1JsYm5SQlpHUnlaWE56SWpwdWRXeHNMQ0p6ZEhWa1pXNTBVR2h2Ym1VaU9tNTFiR3dzSW5OMGRXUmxiblJKYldGblpTSTZiblZzYkgwPSIsInN1YiI6InN0cmluZyIsIm" +
-                                "lhdCI6MTYyMjEwMTMxNCwiZXhwIjoxNjIyMTM3MzE0fQ.qTtEVOt_macz6EYEfdtpbMm-bYTjX7RPcQ1mjfaihZU");
+                        "Bearer " + MainRepository.getToken());
 
                 Request newRequest = builder.build();
                 return chain.proceed(newRequest);
@@ -141,22 +129,22 @@ public class StudentRepository {
         });
     }
 
-    public void setLSchoolTime(){
+    public MutableLiveData<ArrayList<SchoolTime>> setLSchoolTimeLiveData(){
         studentService.getListSchoolTime()
-                .enqueue(new Callback<List<SchoolTime>>() {
+                .enqueue(new Callback<ArrayList<SchoolTime>>() {
                     @Override
-                    public void onResponse(Call<List<SchoolTime>> call, Response<List<SchoolTime>> response) {
-                        if(response.isSuccessful()){ lSchoolTime = response.body();
-                            Log.e("lSchoolTime :", String.valueOf(lSchoolTime.size()));}
+                    public void onResponse(Call<ArrayList<SchoolTime>> call, Response<ArrayList<SchoolTime>> response) {
+                        if(response.isSuccessful()){ lSchoolTime.postValue(response.body());
+                            Log.e("lSchoolTime", "hihi");}
                     }
 
                     @Override
-                    public void onFailure(Call<List<SchoolTime>> call, Throwable t) {
+                    public void onFailure(Call<ArrayList<SchoolTime>> call, Throwable t) {
                         lSchoolTime = null;
                         Log.e("Failure : ", t.toString() );
                     }
                 });
-//        return lSchoolTime;
+        return lSchoolTime;
 
 //        Call<List<SchoolTime>> callSync = studentService.getListSchoolTime();
 //
@@ -178,9 +166,9 @@ public class StudentRepository {
 
     public void setClassForSchedule(String idStudent, int year, int semester){
         studentService.getSchedule(idStudent, year, semester)
-                .enqueue(new Callback<List<Class>>() {
+                .enqueue(new Callback<ArrayList<Class>>() {
                     @Override
-                    public void onResponse(Call<List<Class>> call, Response<List<Class>> response) {
+                    public void onResponse(Call<ArrayList<Class>> call, Response<ArrayList<Class>> response) {
                         if(response.isSuccessful()){
                             lClass = response.body();
                             Log.e("lClass :", String.valueOf(lClass.size()));
@@ -188,7 +176,7 @@ public class StudentRepository {
                     }
 
                     @Override
-                    public void onFailure(Call<List<Class>> call, Throwable t) {
+                    public void onFailure(Call<ArrayList<Class>> call, Throwable t) {
                         lClass = null;
                         Log.e("Failure class: ", t.toString() );
                     }
@@ -214,20 +202,23 @@ public class StudentRepository {
        // return lClass;
     }
 
-    public MutableLiveData<List<Class>> getSchedule(String idStudent, int year, int semester) {
+    public MutableLiveData<ArrayList<Class>> getSchedule(String idStudent, int year, int semester) {
+        Log.e("vo livedata: ", "vo roi");
        studentService.getSchedule(idStudent, year, semester)
-               .enqueue(new Callback<List<Class>>() {
+               .enqueue(new Callback<ArrayList<Class>>() {
                    @Override
-                   public void onResponse(Call<List<Class>> call, Response<List<Class>> response) {
+                   public void onResponse(Call<ArrayList<Class>> call, Response<ArrayList<Class>> response) {
                        if(response.isSuccessful()){
                            classResponseLiveData.postValue(response.body());
-                           Log.e("value: ", String.valueOf(classResponseLiveData.getValue().size()));
+                           Log.e("value: ", String.valueOf(response.body().size()));
                        }
+
                    }
 
                    @Override
-                   public void onFailure(Call<List<Class>> call, Throwable t) {
+                   public void onFailure(Call<ArrayList<Class>> call, Throwable t) {
                        classResponseLiveData.postValue(null);
+                       Log.e("null livedata: ", "vo roi");
                    }
 
 
@@ -236,7 +227,9 @@ public class StudentRepository {
        return classResponseLiveData;
     }
 
-    public MutableLiveData<List<Class>> getClassResponseLiveData() {
+
+
+    public MutableLiveData<ArrayList<Class>> getClassResponseLiveData() {
         return classResponseLiveData;
     }
 }

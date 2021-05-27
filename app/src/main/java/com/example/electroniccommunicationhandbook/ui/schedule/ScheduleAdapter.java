@@ -13,28 +13,29 @@ import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>{
 
-    private List<Class> mClassOfDay;
-    public ScheduleAdapter(List<Class> mClassOfDay) {
+    private ArrayList<Class> mClassOfDay;
+    public ScheduleAdapter(ArrayList<Class> mClassOfDay) {
         this.mClassOfDay = mClassOfDay;
     }
 
-    public List<Class> getmClassOfDay() {
+    public ArrayList<Class> getmClassOfDay() {
         return mClassOfDay;
     }
 
-    private List<SchoolTime> lSchoolTime;
+    private ArrayList<SchoolTime> lSchoolTime;
 
-    public void setlSchoolTime(List<SchoolTime> lSchoolTime) {
+    public void setlSchoolTime(ArrayList<SchoolTime> lSchoolTime) {
         this.lSchoolTime = lSchoolTime;
     }
 
     public  ScheduleAdapter(){}
 
-    public void setmClassOfDay(List<Class> mClassOfDay) {
+    public void setmClassOfDay(ArrayList<Class> mClassOfDay) {
         this.mClassOfDay = mClassOfDay;
         notifyDataSetChanged();
     }
