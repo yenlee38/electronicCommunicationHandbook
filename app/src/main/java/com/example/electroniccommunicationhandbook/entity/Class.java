@@ -18,11 +18,11 @@ public class Class {
     private int studyingYear;
     private Date startingDate;
     private Date endDate;
-    private int dayOfWeek;
+    private int classDayOfWeek;
     private String room;
     private int startingSchoolTime;
     private int endSchoolTime;
-    private Collection<Announcement> announcements;
+    private Collection<Announcement> announcement;
     private Collection<Student_Class>  students;
 
     public String getClassId() {
@@ -82,11 +82,11 @@ public class Class {
     }
 
     public int getDayOfWeek() {
-        return dayOfWeek;
+        return classDayOfWeek;
     }
 
     public void setDayOfWeek(int dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+        this.classDayOfWeek = dayOfWeek;
     }
 
     public String getRoom() {
@@ -114,11 +114,11 @@ public class Class {
     }
 
     public Collection<Announcement> getAnnouncements() {
-        return announcements;
+        return announcement;
     }
 
     public void setAnnouncements(Collection<Announcement> announcements) {
-        this.announcements = announcements;
+        this.announcement = announcements;
     }
 
     public Collection<Student_Class> getStudents() {
@@ -137,11 +137,11 @@ public class Class {
         this.studyingYear = studyingYear;
         this.startingDate = startingDate;
         this.endDate = endDate;
-        this.dayOfWeek = dayOfWeek;
+        this.classDayOfWeek = dayOfWeek;
         this.room = room;
         this.startingSchoolTime = startingSchoolTime;
         this.endSchoolTime = endSchoolTime;
-        this.announcements = announcements;
+        this.announcement = announcements;
         this.students = students;
     }
 
@@ -153,7 +153,7 @@ public class Class {
         studyingYear = classNew.getStudyingYear();
         startingDate = classNew.getStartingDate();
         endDate = classNew.getEndDate();
-        dayOfWeek = classNew.getDayOfWeek();
+        classDayOfWeek = classNew.getDayOfWeek();
         room = classNew.getRoom();
         startingSchoolTime = classNew.getStartingSchoolTime();
         endSchoolTime = classNew.getEndSchoolTime();

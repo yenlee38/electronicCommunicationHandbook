@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.example.electroniccommunicationhandbook.dao.StudentDAO;
+import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.service.StudentService;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
@@ -26,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
     //MainRepository mainRepository;
     PointRepository pointService;
     TextView tvName;
-  
+    StudentRepository studentRepository;
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
+
+    private AppCompatButton btn_logout;
+
     private  AppCompatButton btn_point;
 
     @Override
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
     }
 
     private void initView(){

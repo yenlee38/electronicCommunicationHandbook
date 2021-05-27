@@ -17,7 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public  class MainRepository {
    private static MainRepository instance;
-   private PointService pointService;
    private Student student;
    private boolean loginSuccess= false;
    private Retrofit retrofit;
@@ -65,7 +64,7 @@ public  class MainRepository {
                 .build();
 
         authenticateService= retrofit.create(AuthenticateService.class);
-        pointService= retrofit.create(PointService.class);
+
     }
 
 
