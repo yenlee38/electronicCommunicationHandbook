@@ -95,6 +95,7 @@ public class UserLocalStore {
     public void setRoleLocal(int role){
         SharedPreferences.Editor editor= userLocalStore.edit();
         editor.putInt(ROLE,role);
+        editor.commit();
     }
 
     public int getRoleLocal(){
