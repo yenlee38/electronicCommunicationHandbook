@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.example.electroniccommunicationhandbook.dao.StudentDAO;
+import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.service.StudentService;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
@@ -36,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
     //MainRepository mainRepository;
     PointRepository pointService;
     TextView tvName;
-  
+    StudentRepository studentRepository;
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
+    private AppCompatButton btn_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         tvName= findViewById(R.id.txvName);
         btnLogout= findViewById(R.id.hoang);
         pointService=  PointRepository.getInstance();
+        studentRepository = StudentRepository.getInstance();
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         btn_student_card = findViewById(R.id.btn_student_card);
         btn_rate = findViewById(R.id.btn_rate);
         btn_schedule = findViewById(R.id.btn_schedule);
-
+        btn_logout = findViewById(R.id.btn_logout);
         btn_student_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

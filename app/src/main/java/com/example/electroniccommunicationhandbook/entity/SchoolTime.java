@@ -10,8 +10,8 @@ import java.sql.Time;
 public class SchoolTime {
 
     private int schoolTimeOrder;
-    private Time startingTime;
-    private Time endTime;
+    private String startingTime;
+    private String endTime;
 
     public int getSchoolTimeOrder() {
         return schoolTimeOrder;
@@ -21,19 +21,19 @@ public class SchoolTime {
         this.schoolTimeOrder = schoolTimeOrder;
     }
 
-    public Time getStartingTime() {
+    public String getStartingTime() {
         return startingTime;
     }
 
-    public void setStartingTime(Time startingTime) {
+    public void setStartingTime(String startingTime) {
         this.startingTime = startingTime;
     }
 
-    public Time getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

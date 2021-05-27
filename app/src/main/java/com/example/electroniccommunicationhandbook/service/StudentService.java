@@ -1,7 +1,10 @@
 package com.example.electroniccommunicationhandbook.service;
 
 import com.example.electroniccommunicationhandbook.entity.Class;
+import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
+
+import java.util.List;
 
 import kotlin.ParameterName;
 import retrofit2.Call;
@@ -13,6 +16,10 @@ public interface StudentService {
     @GET("/student/{id}")
     Call<Student> getInfo(@Path("id") String id);
 
-    @GET("'student_class/schedule/{id_student}/{year}/{semester}")
-    Call<Class> getSchedule(@Path("id_student") String id_student, @Path("year") int year, @Path("semester") int semester);
+    @GET("/student_class/schedule/{id_student}/{year}/{semester}")
+    Call<List<Class>> getSchedule(@Path("id_student") String id_student, @Path("year") int year, @Path("semester") int semester);
+
+    @GET("/schooltime")
+    Call<List<SchoolTime>> getListSchoolTime();
+
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.electroniccommunicationhandbook.entity.Class;
+import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.service.PointService;
 import com.example.electroniccommunicationhandbook.service.StudentService;
@@ -13,6 +14,10 @@ import com.example.electroniccommunicationhandbook.service.StudentService;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -28,7 +33,53 @@ public class StudentRepository {
 
     private StudentService studentService;
     public Student student;
-    private MutableLiveData<Class> classResponseLiveData;
+    private MutableLiveData<List<Class>> classResponseLiveData;
+    public List<Class> lClass;
+    public List<SchoolTime> lSchoolTime;
+    private static final int NUMBER_OF_THREADS = 4;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public List<Class> getlClass() {
+        return lClass;
+    }
+
+    public List<SchoolTime> getlSchoolTime() {
+        return lSchoolTime;
+    }
+
+    public static ExecutorService getDatabaseWriteExecutor() {
+        return databaseWriteExecutor;
+    }
+
+    public static final ExecutorService databaseWriteExecutor =
+            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public void setClassResponseLiveData(MutableLiveData<List<Class>> classResponseLiveData) {
+        this.classResponseLiveData = classResponseLiveData;
+    }
+
+    public void setlClass(List<Class> lClass) {
+        this.lClass = lClass;
+    }
+
+    public void setlSchoolTime(List<SchoolTime> lSchoolTime) {
+        this.lSchoolTime = lSchoolTime;
+    }
+
+    public static void setInstance(StudentRepository instance) {
+        StudentRepository.instance = instance;
+    }
 
     private static StudentRepository instance;
 
@@ -40,7 +91,9 @@ public class StudentRepository {
     }
 
     public StudentRepository() {
-
+        lClass = new ArrayList<Class>();
+        lSchoolTime = new ArrayList<SchoolTime>();
+        classResponseLiveData = new MutableLiveData<List<Class>>();
         MainRepository mainRepository;
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -66,7 +119,7 @@ public class StudentRepository {
                 .create(StudentService.class);
     }
 
-    public Student getInfo(String id) {
+    public void getInfo(String id) {
 
         studentService.getInfo(id).enqueue(new Callback<Student>() {
             @Override
@@ -75,6 +128,7 @@ public class StudentRepository {
                 {
                     student = response.body();
                     Log.e("ID :", student.getStudentId() );
+
                 }
             }
 
@@ -84,29 +138,104 @@ public class StudentRepository {
                 Log.e("Failure : ", t.toString() );
             }
         });
-        return  student;
     }
 
-    public MutableLiveData<Class> getSchedule(String idStudent, int year, int semester) {
-       studentService.getSchedule(idStudent, year, semester)
-               .enqueue(new Callback<Class>() {
-                   @Override
-                   public void onResponse(Call<Class> call, Response<Class> response) {
-                        if(response.body() !=null){
-                            classResponseLiveData.postValue(response.body());
+    public void setLSchoolTime(){
+        studentService.getListSchoolTime()
+                .enqueue(new Callback<List<SchoolTime>>() {
+                    @Override
+                    public void onResponse(Call<List<SchoolTime>> call, Response<List<SchoolTime>> response) {
+                        if(response.isSuccessful()){ lSchoolTime = response.body();
+                            Log.e("lSchoolTime :", String.valueOf(lSchoolTime.size()));}
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<SchoolTime>> call, Throwable t) {
+                        lSchoolTime = null;
+                        Log.e("Failure : ", t.toString() );
+                    }
+                });
+//        return lSchoolTime;
+
+//        Call<List<SchoolTime>> callSync = studentService.getListSchoolTime();
+//
+//        try
+//        {
+//            Response<List<SchoolTime>> response = callSync.execute();
+//            lSchoolTime = response.body();
+//
+//            //API response
+//
+//        }
+//        catch (Exception ex)
+//        {
+//            ex.printStackTrace();
+//        }
+
+        //return lSchoolTime;
+    }
+
+    public void setClassForSchedule(String idStudent, int year, int semester){
+        studentService.getSchedule(idStudent, year, semester)
+                .enqueue(new Callback<List<Class>>() {
+                    @Override
+                    public void onResponse(Call<List<Class>> call, Response<List<Class>> response) {
+                        if(response.isSuccessful()){
+                            lClass = response.body();
+                            Log.e("lClass :", String.valueOf(lClass.size()));
                         }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Class>> call, Throwable t) {
+                        lClass = null;
+                        Log.e("Failure class: ", t.toString() );
+                    }
+                });
+//        return lClass;
+//
+//        Call<List<Class>> callSync = studentService.getSchedule(idStudent, year, semester);
+//
+//        try
+//        {
+//            Response<List<Class>> response = callSync.execute();
+//            lClass = response.body();
+////            Log.e("lClass :", String.valueOf(lClass.size()));
+//            //API response
+//
+//        }
+//        catch (Exception ex)
+//        {
+//            ex.printStackTrace();
+//            Log.e("Failure class: ", ex.toString() );
+//        }
+
+       // return lClass;
+    }
+
+    public MutableLiveData<List<Class>> getSchedule(String idStudent, int year, int semester) {
+       studentService.getSchedule(idStudent, year, semester)
+               .enqueue(new Callback<List<Class>>() {
+                   @Override
+                   public void onResponse(Call<List<Class>> call, Response<List<Class>> response) {
+                       if(response.isSuccessful()){
+                           classResponseLiveData.postValue(response.body());
+                           Log.e("value: ", String.valueOf(classResponseLiveData.getValue().size()));
+                       }
                    }
 
                    @Override
-                   public void onFailure(Call<Class> call, Throwable t) {
-                        classResponseLiveData.postValue(null);
+                   public void onFailure(Call<List<Class>> call, Throwable t) {
+                       classResponseLiveData.postValue(null);
                    }
+
+
                });
 
        return classResponseLiveData;
     }
 
-    public MutableLiveData<Class> getClassResponseLiveData() {
+    public MutableLiveData<List<Class>> getClassResponseLiveData() {
         return classResponseLiveData;
     }
 }

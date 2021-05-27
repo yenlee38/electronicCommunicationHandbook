@@ -22,7 +22,7 @@ public class Class {
     private String room;
     private int startingSchoolTime;
     private int endSchoolTime;
-    private Collection<Announcement> announcements;
+    private Collection<Announcement> announcement;
     private Collection<Student_Class>  students;
 
     public String getClassId() {
@@ -114,11 +114,11 @@ public class Class {
     }
 
     public Collection<Announcement> getAnnouncements() {
-        return announcements;
+        return announcement;
     }
 
     public void setAnnouncements(Collection<Announcement> announcements) {
-        this.announcements = announcements;
+        this.announcement = announcements;
     }
 
     public Collection<Student_Class> getStudents() {
@@ -141,7 +141,7 @@ public class Class {
         this.room = room;
         this.startingSchoolTime = startingSchoolTime;
         this.endSchoolTime = endSchoolTime;
-        this.announcements = announcements;
+        this.announcement = announcements;
         this.students = students;
     }
 
