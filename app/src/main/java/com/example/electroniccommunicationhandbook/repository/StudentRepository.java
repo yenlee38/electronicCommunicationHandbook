@@ -2,12 +2,10 @@ package com.example.electroniccommunicationhandbook.repository;
 
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.Student;
-import com.example.electroniccommunicationhandbook.service.PointService;
 import com.example.electroniccommunicationhandbook.service.StudentService;
 
 import org.jetbrains.annotations.NotNull;
@@ -51,7 +49,10 @@ public class StudentRepository {
                 Request originalRequest = chain.request();
 
                 Request.Builder builder = originalRequest.newBuilder().header("Authorization",
-                        "Bearer " +MainRepository.getToken());
+                        "Bearer " +"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySnNvbkJhc2U2NCI6ImV5SnpkSFZrWlc1MFNXUWlPaUpUZEhWa1pXNTBNVElpTENKaFkyTnZkVzUwSWpwN0ltRmpZMjkxYm5SSlpDSTZNVElzSW5W" +
+                                "elpYSnVZVzFsSWpvaWMzUnlhVzVuSWl3aWNHRnpjM2R2Y21RaU9pSm9iMkZ1WnlKOUxDSnpkSFZrWlc1MFJXMWhhV3dpT201MWJHd3NJbk4wZFdSbGJuUk9ZVzFsSWpwdWRXeHNMQ0p6ZEhWa1pXNTBRbWx" +
+                                "5ZEdoa1lYa2lPbTUxYkd3c0luTjBkV1JsYm5SQlpHUnlaWE56SWpwdWRXeHNMQ0p6ZEhWa1pXNTBVR2h2Ym1VaU9tNTFiR3dzSW5OMGRXUmxiblJKYldGblpTSTZiblZzYkgwPSIsInN1YiI6InN0cmluZyIsIm" +
+                                "lhdCI6MTYyMjEwMTMxNCwiZXhwIjoxNjIyMTM3MzE0fQ.qTtEVOt_macz6EYEfdtpbMm-bYTjX7RPcQ1mjfaihZU");
 
                 Request newRequest = builder.build();
                 return chain.proceed(newRequest);
