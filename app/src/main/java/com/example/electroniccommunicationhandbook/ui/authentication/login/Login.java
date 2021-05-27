@@ -85,10 +85,15 @@ public class Login extends AppCompatActivity {
                 }
                 else if (radStudent.isChecked()){
                     role=2;
+
                 }
                 else{
                     role=3;
+
                 }
+
+                userLocalStore.clearUser();
+                userLocalStore.setRoleLocal(role);
 
                 Account account = new Account(edtUserName.getText().toString(),edtPassword.getText().toString());
 
@@ -114,7 +119,7 @@ public class Login extends AppCompatActivity {
                                 //Convert Json to object
                                 Gson gson= new GsonBuilder()
                                         .registerTypeAdapter(Date.class, getUnixEpochDateTypeAdapter()).create();
-                                userLocalStore.setRoleLocal(role);
+
                                 if(role==1){
                                     Teacher teacher= gson.fromJson(text, Teacher.class);
                                     //TODO: save to share preference
@@ -148,6 +153,7 @@ public class Login extends AppCompatActivity {
                         else{
                             Toast.makeText(getApplicationContext(),"Email or password is incorrect", Toast.LENGTH_LONG);
                             Log.e("error: ","Email or password is incorrect" );
+                            Log.e("Status : " ," "+ auth.code());
                         }
                     }
 

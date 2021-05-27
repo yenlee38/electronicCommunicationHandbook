@@ -1,5 +1,6 @@
 package com.example.electroniccommunicationhandbook.ui.student.point.ui.main;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,13 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Point;
+import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Student_Class;
+import com.example.electroniccommunicationhandbook.repository.PointRepository;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointAdapter;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
+import java.security.acl.Owner;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +37,13 @@ public class PlaceholderFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private RecyclerView recyclerView;
+    private TextView txvErrorload;
     private PointAdapter pointAdapter;
-    private ArrayList<Point> listpoint;
+    private ArrayList<Student_Class> listpoint;
+    private UserLocalStore userLocalStore;
+    private Context context;
+    private PointRepository repository;
+    private int role;
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -57,19 +70,40 @@ public class PlaceholderFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_point_view, container, false);
         recyclerView =root.findViewById(R.id.recycelviewPoint);
+        context= this.getContext();
+        userLocalStore = new UserLocalStore(context);
+        role = userLocalStore.getRoleLocal();
 
-        listpoint= new ArrayList<Point>();
-        listpoint.add(new Point(8.5f,9,8.75f,'A',true,1,"2020-2021",1,"Cơ sở dữ liệu"));
-        listpoint.add(new Point(8.5f,5.5f,6.5f,'B',false,1,"2020-2021",1,"Lập trình di động"));
-        listpoint.add(new Point(8.5f,5.5f,6.5f,'B',true,1,"2020-2021",1,"Hệ điều hành"));
-        listpoint.add(new Point(8.5f,5.5f,6.5f,'B',true,1,"2020-2021",1,"QL phần mềm"));
-        listpoint.add(new Point(8.5f,5.5f,6.5f,'B',false,1,"2020-2021",1,"LT Web"));
+        txvErrorload= root.findViewById(R.id.txv_errorload);
 
-        pointAdapter =new PointAdapter(listpoint,root.getContext() );
-        recyclerView.setAdapter(pointAdapter);
-        LinearLayoutManager layout= new LinearLayoutManager(root.getContext());
-        layout.setOrientation(RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(layout);
+        Student student = new Student();
+        if(role==2){
+
+            student= userLocalStore.getStudentLocal();
+        }
+
+
+        repository= ViewModelProviders.of(this).get(PointRepository.class);
+        repository.findPointEverySemester(student.getStudentId(), 2021,2);
+        repository.getStudentClassList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Student_Class>>() {
+            @Override
+            public void onChanged(ArrayList<Student_Class> student_classes) {
+                if(student_classes!=null)
+                {
+                    txvErrorload.setVisibility(View.INVISIBLE);
+                    listpoint =new ArrayList<Student_Class>(student_classes);
+                    pointAdapter =new PointAdapter(listpoint,root.getContext() );
+                    recyclerView.setAdapter(pointAdapter);
+                    LinearLayoutManager layout= new LinearLayoutManager(root.getContext());
+                    layout.setOrientation(RecyclerView.VERTICAL);
+                    recyclerView.setLayoutManager(layout);
+                }
+                else
+                {
+                    txvErrorload.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         return root;
     }
