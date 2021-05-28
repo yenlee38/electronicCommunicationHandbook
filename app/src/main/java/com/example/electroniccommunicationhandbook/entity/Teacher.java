@@ -1,21 +1,21 @@
 package com.example.electroniccommunicationhandbook.entity;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.electroniccommunicationhandbook.database.Convert;
 
 import java.util.Collection;
 import java.util.Date;
 
-@Entity (tableName = "Teacher")
 public class Teacher {
 
 
-    private String teacherId;
+    private String teacherID;
 
     private String name;
 
+    @TypeConverters(Convert.class)
     private Date birthday;
 
     private String degree;
@@ -36,12 +36,12 @@ public class Teacher {
 
     private Collection<Class> classes;
 
-    public String getTeacherId() {
-        return teacherId;
+    public String getTeacherID() {
+        return teacherID;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
+    public void setTeacherID(String teacherID) {
+        this.teacherID = teacherID;
     }
 
     public String getName() {
@@ -132,8 +132,10 @@ public class Teacher {
         this.classes = classes;
     }
 
-    public Teacher(String teacherId, String name, Date birthday, String degree, String phone, String gender, String address, String email, String image, Account account, Collection<Announcement> announcements, Collection<Class> classes) {
-        this.teacherId = teacherId;
+
+    public Teacher(String teacherID, String name, Date birthday, String degree, String phone, String gender, String address, String email, String image, Account account, Collection<Announcement> announcements, Collection<Class> classes) {
+        this.teacherID = teacherID;
+
         this.name = name;
         this.birthday = birthday;
         this.degree = degree;
@@ -151,7 +153,7 @@ public class Teacher {
     }
 
     public Teacher(String teacherId, String name, Account account) {
-        this.teacherId = teacherId;
+        this.teacherID = teacherId;
         this.name = name;
         this.account = account;
     }

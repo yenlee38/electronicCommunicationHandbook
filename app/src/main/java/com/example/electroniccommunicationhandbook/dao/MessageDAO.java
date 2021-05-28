@@ -15,18 +15,18 @@ public interface MessageDAO {
     @Insert
     void insert(Message message);
 
-    @Query("SELECT * FROM Message where senderAccount= :accountid")
-    List<Message> getAllMessageByAccount(Account accountid);
-
-    @Query ("SELECT * FROM student " +
-            " where student.StudentID IN (SELECT StudentID from student_class where classID  = :classID) " +
-            " and Name like '%'||:name||'%'")
-    List<Student> getAllStudentInClassBySimilarName (String classID, String name);
-
-    @Query ("SELECT * " +
-            " FROM student " +
-            " where student.StudentID IN (SELECT StudentID from student_class where classID " +
-            " IN (SELECT classID FROM class where teacherid = :teacherID)) " +
-            " and Name like '%'||:name||'%'")
-    List<Student> getAllStudentOfTeacherWithSimilarName (String teacherID, String name);
+//    @Query("SELECT * FROM Message where senderAccount= :accountid")
+//    List<Message> getAllMessageByAccount(Account accountid);
+//
+//    @Query ("SELECT * FROM student " +
+//            " where student.StudentID IN (SELECT StudentID from student_class where classID  = :classID) " +
+//            " and Name like '%'||:name||'%'")
+//    List<Student> getAllStudentInClassBySimilarName (String classID, String name);
+//
+//    @Query ("SELECT * " +
+//            " FROM student " +
+//            " where student.StudentID IN (SELECT StudentID from student_class where classID " +
+//            " IN (SELECT classID FROM class where teacherid = :teacherID)) " +
+//            " and Name like '%'||:name||'%'")
+//    List<Student> getAllStudentOfTeacherWithSimilarName (String teacherID, String name);
 }

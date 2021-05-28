@@ -71,7 +71,7 @@
    </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="230dp"
         android:orientation="vertical">
@@ -198,7 +198,7 @@
 
     </LinearLayout>
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="0dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -218,8 +218,8 @@
                 android:background="@drawable/btn_notification"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_marginLeft="25dp"
                 android:id="@+id/btn_message"
+                android:layout_marginLeft="25dp"
                 android:layout_width="169dp"
                 android:layout_height="64dp"
                 android:textAllCaps="false"
@@ -235,11 +235,11 @@
     </LinearLayout>
     
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_request"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:id="@+id/btn_request"
+        android:layout_marginTop="0dp"
         android:layout_width="363dp"
         android:layout_height="40dp"
         android:textAllCaps="false"
@@ -252,11 +252,11 @@
         android:text="Confirmation Request"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_rate"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
-        android:id="@+id/btn_rate"
         android:layout_width="363dp"
         android:layout_height="40dp"
         android:textAllCaps="false"
@@ -269,11 +269,11 @@
         android:text="Rate Teacher"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_student_card"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
-        android:id="@+id/btn_student_card"
         android:layout_width="363dp"
         android:layout_height="40dp"
         android:textAllCaps="false"
@@ -285,4 +285,16 @@
         android:textColor="@color/white"
         android:text="Student Card"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hoang"
+        android:id="@+id/hoang"
+></Button>
+    <TextView
+        android:id="@+id/txvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TextView>
 </LinearLayout>

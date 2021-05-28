@@ -5,6 +5,11 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.electroniccommunicationhandbook.database.Convert;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
@@ -12,8 +17,13 @@ public class Student {
 
     private String studentId;
 
+    @SerializedName("studentName")
+    @Expose
     private String name;
 
+//    @SerializedName("studentBirthday")
+//    @Expose
+    @TypeConverters(Convert.class)
     private Date  birthday;
 
     private String gender;
@@ -29,6 +39,10 @@ public class Student {
     private String bankSeri;
 
     private Account account;
+
+    private String year;
+
+    private String major;
 
     public String getStudentId() {
         return studentId;
@@ -100,6 +114,22 @@ public class Student {
 
     public void setBankSeri(String bankSeri) {
         this.bankSeri = bankSeri;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
     }
 
     public Account getAccount() {

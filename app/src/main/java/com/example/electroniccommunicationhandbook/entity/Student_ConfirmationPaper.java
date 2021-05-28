@@ -7,7 +7,6 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity (tableName = "Student_ConfirmationPaper")
 public class Student_ConfirmationPaper {
 
     private Date requiredTime;
