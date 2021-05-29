@@ -112,7 +112,7 @@
             app:layout_constraintVertical_bias="0.262" />
 
         <TextView
-            android:id="@+id/tv_boolPass"
+            android:id="@+id/tv_numPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
@@ -166,6 +166,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerYear"
             android:layout_width="150dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/border_spinner"

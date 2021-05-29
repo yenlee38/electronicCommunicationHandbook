@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.service.StudentClassService;
@@ -34,6 +35,8 @@ public class PointRepository extends AndroidViewModel {
     private Student student;
     private ArrayList<Student_Class> a;
     private MutableLiveData<ArrayList<Student_Class>> studentClassList;
+    private MutableLiveData<ArrayList<Class>> classList;
+
     private static PointRepository instance;
 
     public static PointRepository getInstance(Application application){
@@ -45,8 +48,8 @@ public class PointRepository extends AndroidViewModel {
 
     public PointRepository(Application app) {
         super(app);
-        a = new ArrayList<>();
-        a.add(new Student_Class());
+      //  a = new ArrayList<>();
+        //a.add(new Student_Class());
         studentClassList= new MutableLiveData<>();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -93,24 +96,59 @@ public class PointRepository extends AndroidViewModel {
 
     public MutableLiveData<ArrayList<Student_Class>> findPointEverySemester(String studentId, int year, int semester){
 
-        studentClassService.findByStudentIdAndYearAndSemester(studentId, year,semester).enqueue(new Callback<ArrayList<Student_Class>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Student_Class>> call, Response<ArrayList<Student_Class>> response) {
-                if(response.isSuccessful()){
-                    a= response.body();
-                    studentClassList.postValue( a);
-                   // Log.e("XOng",""+ studentClassList.getValue().size());
+        //findByStudentIdAndYearAndSemester(studentId, year,semester)
+        if(semester==2)
+        {
+            studentClassService.findAll().enqueue(new Callback<ArrayList<Student_Class>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Student_Class>> call, Response<ArrayList<Student_Class>> response) {
+                    if(response.isSuccessful()){
+                        a= response.body();
+                        studentClassList.postValue( a);
+                        // Log.e("XOng",""+ studentClassList.getValue().size());
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ArrayList<Student_Class>> call, Throwable t) {
-                studentClassList= null;
-                Log.e("Failure : ", t.toString() );
-            }
-        });
+                @Override
+                public void onFailure(Call<ArrayList<Student_Class>> call, Throwable t) {
+                    studentClassList= null;
+                    Log.e("Failure : ", t.toString() );
+                }
+            });
+        }
       //  Log.e("XOng",""+ studentClassList.getValue().size());
         return studentClassList;
+    }
+
+    private ArrayList<Class> b;
+    public MutableLiveData<ArrayList<Class>> findClassByIdTeacher(String teacherId){
+
+        classList= new MutableLiveData<>();
+        b=new ArrayList<>();
+        //findByStudentIdAndYearAndSemester(studentId, year,semester)
+            studentClassService.findClassByIdTeacher(teacherId).enqueue(new Callback<ArrayList<Class>>() {
+                @Override
+                public void onResponse(Call<ArrayList<Class>> call, Response<ArrayList<Class>> response) {
+                    if(response.isSuccessful()){
+                        Log.e("response : ", "" +response.code()+response.body());
+                        b=response.body();
+                        classList.postValue(b);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ArrayList<Class>> call, Throwable t) {
+                    classList= null;
+                    Log.e("Failure : ", t.toString() );
+                }
+            });
+
+        //  Log.e("XOng",""+ studentClassList.getValue().size());
+        return classList;
+    }
+
+    public MutableLiveData<ArrayList<Class>> getClassList() {
+        return classList;
     }
 
     public MutableLiveData<ArrayList<Student_Class>> getStudentClassList(){return studentClassList;}
