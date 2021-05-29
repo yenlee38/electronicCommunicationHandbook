@@ -67,7 +67,7 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
         public RateTeacherViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_name_teacher_rate = itemView.findViewById(R.id.tv_name_teacher_rate);
+            tv_name_teacher_rate = itemView.findViewById(R.id.tv_name);
             tv_name_subject_rate = itemView.findViewById(R.id.tv_name_subject_rate);
             tv_status_rate = itemView.findViewById(R.id.tv_status_rate);
             btn_rate = itemView.findViewById(R.id.btn_rate);
