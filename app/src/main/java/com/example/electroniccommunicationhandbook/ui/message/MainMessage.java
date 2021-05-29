@@ -45,6 +45,7 @@ public class MainMessage extends AppCompatActivity {
     MutableLiveData<ArrayList<Message>> messageList;
     private MainMessageAdapter.recyclerViewClickListener clickListener;
     UserLocalStore user;
+    int role;
 
 //    //set user (for testing func)
 //    private Teacher user;
@@ -56,7 +57,7 @@ public class MainMessage extends AppCompatActivity {
 
         //get current user
        user = new UserLocalStore(getApplicationContext());
-        int role = user.getRoleLocal();
+       role = user.getRoleLocal();
 
         messageRepository = MessageRepository.getInstance();
 
@@ -231,7 +232,7 @@ when click an item in recyclerView
 //        String name = tvSearch.getText().toString().trim();
 //
 //        //user is a teacher
-//        if(user instanceof Teacher) {
+//        if(role==1) {
 //            //show searching result
 //            db.databaseWriteExecutor.execute(() -> {
 //                List<Student> studentList = db.messageDAO().getAllStudentOfTeacherWithSimilarName(user.getTeacherId(), name);
