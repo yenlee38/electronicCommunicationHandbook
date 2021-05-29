@@ -1,10 +1,5 @@
 package com.example.electroniccommunicationhandbook.repository;
 
-import android.content.SharedPreferences;
-import android.util.Log;
-
-import com.example.electroniccommunicationhandbook.entity.Account;
-import com.example.electroniccommunicationhandbook.entity.Dummy.jwt;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.service.AuthenticateService;
 import com.example.electroniccommunicationhandbook.service.ClassService;
@@ -20,13 +15,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static android.content.Context.MODE_PRIVATE;
-import static com.example.electroniccommunicationhandbook.util.Comon.MY_PREFS_FILE;
 
 public  class MainRepository {
    private static MainRepository instance;

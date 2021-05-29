@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Point;
+import com.example.electroniccommunicationhandbook.entity.Student_Class;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,10 @@ import java.util.List;
 public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> {
 
 
-    ArrayList<Point>  pointList;
+    ArrayList<Student_Class>  pointList;
     Context context;
 
-    public PointAdapter(ArrayList<Point> pointList, Context context) {
+    public PointAdapter(ArrayList<Student_Class> pointList, Context context) {
         this.pointList= new ArrayList<>();
         this.pointList = pointList;
         this.context = context;
@@ -49,18 +50,23 @@ public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Point point =  pointList.get(position);
+        Student_Class point =  pointList.get(position);
 
-        holder.tvsubject.setText(point.getSubject());
-        holder.tvmidtermpoint.setText(String.valueOf(point.getMidterm()));
-        holder.tvfinalpoint.setText(String.valueOf(point.getFinalterm()));
-        holder.tvresult.setText(String.valueOf(point.getTotal()));
-        holder.tvgrade.setText(String.valueOf(point.getGrade()));
-        if(point.isIspass())
+        holder.tvsubject.setText(point.get_class().getSubject().getName());
+        holder.tvmidtermpoint.setText(String.valueOf(point.getMiddleMark()));
+        holder.tvfinalpoint.setText(String.valueOf(point.getFinalMark()));
+        float result;
+        String grade= "";
+
+        result=( point.getFinalMark()+ point.getMiddleMark())/ point.get_class().getSubject().getNumberOfCredit();
+        grade= ClassifyGrade(result);
+        holder.tvresult.setText(String.valueOf(result));
+        holder.tvgrade.setText(grade);
+        //Show pass or fail state into UI
+        if(result>5)
         {
             holder.tvpass.setText("Pass");
             holder.imgPass.setImageResource(R.drawable.ic_baseline_check_24);
-
         }
         else
         {
@@ -71,6 +77,16 @@ public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> 
             holder.imgPass.setImageResource(R.drawable.ic_baseline_close_24);
         }
 
+    }
+
+    public String ClassifyGrade(float result){
+        String grade="";
+        if(result<5) grade="F";
+        if(result>=5 & result<7) grade="D";
+        if(result>=7 & result<8) grade="C" ;
+        if(result>=8 &result<9)  grade="B";
+        if(result>=10) grade= "A";
+        return  grade;
     }
 
     @Override

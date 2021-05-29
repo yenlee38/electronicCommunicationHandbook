@@ -4,6 +4,8 @@ import androidx.room.Entity;
 import androidx.room.TypeConverters;
 
 import com.example.electroniccommunicationhandbook.database.Convert;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -21,12 +23,18 @@ public class Teacher implements Serializable {
 
     private String degree;
 
+    @SerializedName("teacherPhone")
+    @Expose
     private String phone;
 
     private String gender;
 
+    @SerializedName("teacherAddress")
+    @Expose
     private String address;
 
+    @SerializedName("teacherEmail")
+    @Expose
     private String email;
 
     private String image;
@@ -151,5 +159,11 @@ public class Teacher implements Serializable {
     }
 
     public Teacher() {
+    }
+
+    public Teacher(String teacherId, String name, Account account) {
+        this.teacherID = teacherId;
+        this.name = name;
+        this.account = account;
     }
 }

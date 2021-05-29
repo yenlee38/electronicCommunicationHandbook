@@ -9,15 +9,26 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.example.electroniccommunicationhandbook.dao.StudentDAO;
+import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.service.StudentService;
+import com.example.electroniccommunicationhandbook.ui.message.MainMessage;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
+
 import com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.ConfirmationRequestActivity;
+
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
+
+
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
+import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
 
 
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.electroniccommunicationhandbook.repository.PointRepository;
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
@@ -38,48 +49,46 @@ public class MainActivity extends AppCompatActivity {
     PointRepository pointService;
     TextView tvName;
 
+
+    StudentRepository studentRepository;
+
+    private Button btnMessage;
+
+    private AppCompatButton btn_profile;
+
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
     private AppCompatButton btn_request;
+
+    private AppCompatButton btn_logout;
+
+    private AppCompatButton btn_point;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
         tvName = findViewById(R.id.txvName);
         btnLogout = findViewById(R.id.hoang);
-        btn_request= findViewById(R.id.btn_request);
-        pointService = PointRepository.getInstance();
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btn_request = findViewById(R.id.btn_request);
+        pointService = PointRepository.getInstance(getApplication());
 
-
-                //  mainRepository = MainRepository.getInstance();
-                Student_Class student_class = new Student_Class();
-                Class mclass = new Class();
-                Student student = new Student();
-                mclass.setClassId("Class1");
-
-                student_class.set_class(mclass);
-                student_class.setStudent(student);
-                student = pointService.createPointInfo("1");
-                if (student != null)
-                    tvName.setText(student.getName() + " " + student.getBirthday());
-                else
-                    tvName.setText("Null roi");
-            }
-        });
 
     }
 
+
     private void initView() {
+        btn_profile = findViewById(R.id.btn_profile);
         btn_student_card = findViewById(R.id.btn_student_card);
         btn_rate = findViewById(R.id.btn_rate);
         btn_schedule = findViewById(R.id.btn_schedule);
+        btn_point = findViewById(R.id.btn_points);
+        btnMessage = findViewById(R.id.btn_message);
         btn_request= findViewById(R.id.btn_request);
+
         btn_student_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,14 +119,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), ConfirmationRequestActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ConfirmationRequestActivity.class);
                 startActivity(intent);
+
+
+                btn_point.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+
+                btn_profile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+
+                        startActivity(intent);
+                    }
+                });
+
+                btnMessage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getApplicationContext(), MainMessage.class);
+                        startActivity(intent);
+                        // setContentView(R.layout.activity_schedule);
+
+                    }
+                });
             }
+
+
         });
     }
-
-
 }

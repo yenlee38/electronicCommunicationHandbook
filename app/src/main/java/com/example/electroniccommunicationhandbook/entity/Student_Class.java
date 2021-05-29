@@ -7,6 +7,9 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+
+import java.sql.Time;
+
 import java.util.Date;
 
 public class Student_Class implements Serializable {
@@ -113,6 +116,14 @@ public class Student_Class implements Serializable {
     }
 
     public Student_Class() {
+
+        this.studentId = "studentId";
+        this.classId = "classId";
+        this.middleMark = 5;
+        this.finalMark = 10;
+        this.rating = 2;
+        this.comment = "comment";
+        CreateDate = new Date();
     }
     public Student_Class(@NonNull String studentId, String classId,
                          float middleMark, float finalMark, int rating, String comment, Date createDate,

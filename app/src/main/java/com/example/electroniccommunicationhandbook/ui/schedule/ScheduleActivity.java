@@ -1,34 +1,48 @@
 package com.example.electroniccommunicationhandbook.ui.schedule;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.common.StudyingYear;
 import com.example.electroniccommunicationhandbook.entity.Class;
+import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
+import java.time.Year;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScheduleActivity extends AppCompatActivity {
 
-    private List<Class> mClassOfDay = null; // schedule for each day
     private RecyclerView rlv_schedule;
     private ScheduleAdapter scheduleAdapter;
     private ImageView img_back;
-    private LiveData<Class> classLiveData;
-    private int year;
+    private MutableLiveData<ArrayList<Class>> classLiveData;
+    private static int YEAR;
     private static int SEMESTER = 1;
+    private static int DAY = 1;
     private AppCompatButton btn_semesterOne;
     private AppCompatButton btn_semesterTwo;
     private StudentRepository studentRepository;
@@ -40,8 +54,11 @@ public class ScheduleActivity extends AppCompatActivity {
     private AppCompatButton btn_thuDay;
     private AppCompatButton btn_friDay;
     private AppCompatButton btn_satDay;
-
-
+   private ArrayList<Class> lSchedule;
+    private ArrayList<SchoolTime> lSchoolTime;
+    private MutableLiveData<ArrayList<SchoolTime>> lSchoolTimeLiveData;
+    private Spinner sp_year;
+    private TextView tv_nullClass;
     public ScheduleActivity() {
         // Required empty public constructor
     }
@@ -52,15 +69,93 @@ public class ScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_schedule);
         userLocalStore = new UserLocalStore(getApplicationContext());
         student = userLocalStore.getStudentLocal();
+        studentRepository = new StudentRepository();
+        classLiveData = new MutableLiveData<>();
+        lSchedule = new ArrayList<Class>();
+        lSchoolTime = new ArrayList<SchoolTime>();
+        lSchoolTimeLiveData = new MutableLiveData<>();
+        setListStudyingYear();
         initView();
-        setRecyclerView();
+        setlSchoolTime();
+        setClassLiveDataForChangeSemester();
+        //
 
     }
 
-    private void setRecyclerView(){
-        scheduleAdapter = new ScheduleAdapter(mClassOfDay);
+    private void setListStudyingYear(){
+        sp_year = findViewById(R.id.sp_year);
+        List<StudyingYear> yearList = new ArrayList<StudyingYear>();
+        for(int i = 2018; i < 2025; i++) // create year from 2018 to 2025
+            yearList.add(new StudyingYear(i));
+        ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(getApplicationContext(), android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
+        sp_year.setAdapter(adapter);
+        try {
+            sp_year.setSelection(yearList.indexOf(student.getYear())); // set studying
+        }catch (Exception e){}
 
+        sp_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                YEAR = ((StudyingYear)sp_year.getSelectedItem()).getYear();
+                setClassLiveDataForChangeSemester(); // change class for year
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
+
+    private void setlSchoolTime(){
+        lSchoolTimeLiveData = studentRepository.setLSchoolTimeLiveData();
+        lSchoolTimeLiveData.observe(this, new Observer<ArrayList<SchoolTime>>() {
+            @Override
+            public void onChanged(ArrayList<SchoolTime> schoolTimes) {
+                if(schoolTimes != null)
+                    lSchoolTime = schoolTimes;
+            }
+        });
+    }
+
+
+    private void setClassLiveDataForChangeSemester(){
+
+        classLiveData = studentRepository.getSchedule(student.getStudentId(), YEAR, SEMESTER);
+        classLiveData.observe(this, new Observer<ArrayList<Class>>() {
+            @Override
+            public void onChanged(ArrayList<Class> classes) {
+                if(classes != null ){
+                    lSchedule = classes;
+                    scheduleAdapter = new ScheduleAdapter();
+                    scheduleAdapter.setmClassOfDay(getListClassOfDay(classes));
+                    scheduleAdapter.setlSchoolTime(lSchoolTime);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+                    linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+                    rlv_schedule.setAdapter(scheduleAdapter);
+                    rlv_schedule.setLayoutManager(linearLayoutManager);
+                }
+            }
+        });
+    }
+
+    private void setClassDay(){
+        if(lSchedule.size()!= 0)
+        {
+            tv_nullClass.setText("");
+            scheduleAdapter = new ScheduleAdapter();
+            scheduleAdapter.setmClassOfDay(getListClassOfDay(lSchedule));
+            scheduleAdapter.setlSchoolTime(lSchoolTime);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+            linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+            rlv_schedule.setAdapter(scheduleAdapter);
+            rlv_schedule.setLayoutManager(linearLayoutManager);
+
+        }
+        else
+            tv_nullClass.setText("DON'T HAVE CLASS OF DAY !!");
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -69,6 +164,7 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void initView(){
+        tv_nullClass = findViewById(R.id.tv_nullClass);
         rlv_schedule = findViewById(R.id.rlv_schedule);
         img_back = findViewById(R.id.img_back);
         btn_semesterOne = findViewById(R.id.btn_semesterOne);
@@ -96,6 +192,9 @@ public class ScheduleActivity extends AppCompatActivity {
                 btn_friDay.setTextColor(Color.BLACK);
                 btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
                 btn_satDay.setTextColor(Color.BLACK);
+                DAY = 1;
+                setClassDay();
+
             }
         });
 
@@ -114,6 +213,8 @@ public class ScheduleActivity extends AppCompatActivity {
                 btn_friDay.setTextColor(Color.BLACK);
                 btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
                 btn_satDay.setTextColor(Color.BLACK);
+                DAY = 2;
+                setClassDay();
             }
         });
 
@@ -132,6 +233,8 @@ public class ScheduleActivity extends AppCompatActivity {
                 btn_friDay.setTextColor(Color.BLACK);
                 btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
                 btn_satDay.setTextColor(Color.BLACK);
+                DAY = 3;
+                setClassDay();
             }
         });
 
@@ -150,6 +253,8 @@ public class ScheduleActivity extends AppCompatActivity {
                 btn_friDay.setTextColor(Color.BLACK);
                 btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
                 btn_satDay.setTextColor(Color.BLACK);
+                DAY = 4;
+                setClassDay();
             }
         });
 
@@ -168,6 +273,8 @@ public class ScheduleActivity extends AppCompatActivity {
                 btn_monDay.setTextColor(Color.BLACK);
                 btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
                 btn_satDay.setTextColor(Color.BLACK);
+                DAY = 5;
+                setClassDay();
             }
         });
 
@@ -186,6 +293,8 @@ public class ScheduleActivity extends AppCompatActivity {
                 btn_friDay.setTextColor(Color.BLACK);
                 btn_monDay.setBackground(getDrawable(R.drawable.border_btn_white));
                 btn_monDay.setTextColor(Color.BLACK);
+                DAY = 6;
+                setClassDay();
             }
         });
 
@@ -202,7 +311,11 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SEMESTER = 1;
-                setClassLiveData();
+                btn_semesterOne.setBackground(getDrawable(R.drawable.border_bottom));
+                btn_semesterOne.setTextColor(Color.BLACK);
+                btn_semesterTwo.setBackground(getDrawable(R.drawable.border_bottom_gray));
+                btn_semesterTwo.setTextColor(Color.GRAY);
+                setClassLiveDataForChangeSemester();
             }
         });
 
@@ -210,18 +323,13 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SEMESTER = 2;
-                setClassLiveData();
+                btn_semesterTwo.setBackground(getDrawable(R.drawable.border_bottom));
+                btn_semesterTwo.setTextColor(Color.BLACK);
+                btn_semesterOne.setBackground(getDrawable(R.drawable.border_bottom_gray));
+                btn_semesterOne.setTextColor(Color.GRAY);
+                setClassLiveDataForChangeSemester();
             }
         });
-    }
-
-
-    private void setClassLiveData(){
-        classLiveData = studentRepository.getSchedule(student.getStudentId(), year, SEMESTER);
-    }
-
-    private void setListClassForAdapter(){
-
     }
 
 
@@ -238,10 +346,26 @@ public class ScheduleActivity extends AppCompatActivity {
         c2 = new Class(temp);
     }
 
-    private int isClassOfDay(Class classNow, int dayOfWeek){ // Kiểm tra class đó có phải là thứ trong tuần mà mình cần tìm hay không
 
-        if(classNow.getClassDayOfWeek() == dayOfWeek)
+    private int isClassOfDay(Class classNow, int dayOfWeek) { // Kiểm tra class đó có phải là thứ trong tuần mà mình cần tìm hay không
+
+        if (classNow.getClassDayOfWeek() == dayOfWeek)
             return 1;
         return 0;
     }
+    private ArrayList<Class> getListClassOfDay(ArrayList<Class> mClassOfDay){
+        ArrayList<Class> lClass = new ArrayList<Class>();
+        for(int i = 0; i < mClassOfDay.size(); i++) {
+            if (mClassOfDay.get(i).getClassDayOfWeek() == DAY)
+                lClass.add(mClassOfDay.get(i));
+        }
+      //  sortClassBySchoolTime(lClass);
+        if(lClass.size() != 0)
+            tv_nullClass.setText("");
+        else tv_nullClass.setText("DON'T HAVE CLASS OF DAY !!");
+        return lClass;
+
+    }
+
+
 }
