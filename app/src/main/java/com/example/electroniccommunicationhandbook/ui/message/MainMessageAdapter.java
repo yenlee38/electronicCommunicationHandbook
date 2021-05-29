@@ -26,20 +26,21 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
     private RoomDB db;
     public Context mcontext;
     //student list is used for searching function
-    private List<Student> studentList;
+    private ArrayList<Student> studentList;
+    public recyclerViewClickListener clickListener;
 
 
-    public MainMessageAdapter(ArrayList<Message> messageList, List<Student> studentList, Context context)
+    public MainMessageAdapter(ArrayList<Message> messageList, ArrayList<Student> studentList, recyclerViewClickListener clickListener, Context context)
     {
         this.messageList = messageList;
         this.mcontext = context;
         this.studentList = studentList;
+        this.clickListener=clickListener;
     }
-
     /*
     class holds structure of view
      */
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ShapeableImageView personalImage;
         public TextView tvName;
         public TextView tvLastestMessage;
@@ -53,8 +54,16 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
             tvLastestMessage = (TextView)itemView.findViewById(R.id.tvLastestMessage);
             allBorder = (ConstraintLayout)itemView.findViewById(R.id.allBorder_message);
 
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onClick(v ,getAdapterPosition());
+        }
+
     }
+
 
     @NonNull
     @Override
@@ -66,19 +75,17 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
 
         ViewHolder viewHolder = new ViewHolder(messageView);
 
-//        db = RoomDB.getDatabase(context);
         return viewHolder;
     }
 
     @Override
     public int getItemCount() {
-//        if(messageList !=null)
-//            return messageList.size();
-//        else if (studentList!=null)
-//            return studentList.size();
-//        else
-        Log.e("size ", "mess :"+messageList.get(0).getContent());
+        if(messageList !=null)
             return messageList.size();
+        else if (studentList!=null)
+            return studentList.size();
+        else
+            return 0;
     }
 
     @Override
@@ -110,7 +117,6 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
 //            });
 
             holder.tvLastestMessage.setText(message.getContent());
-            Log.e("mess adapter","content: "+ message.getContent());
             holder.tvLastestMessage.setVisibility(View.VISIBLE);
             holder.allBorder.setBackgroundResource(R.drawable.item_message_border);
         }
@@ -124,5 +130,12 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
             holder.allBorder.setBackgroundResource(R.drawable.no_border_message);
 
         }
+    }
+
+    /*
+    process for clicking item in the recyclerView
+     */
+    public interface recyclerViewClickListener{
+        void onClick(View view, int position);
     }
 }

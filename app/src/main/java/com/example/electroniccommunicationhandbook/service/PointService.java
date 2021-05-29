@@ -24,6 +24,4 @@ public interface PointService {
 
     @GET("/student/{id}")
     Call<Student> findStudent (@Path("id") String id);
-
-
 }

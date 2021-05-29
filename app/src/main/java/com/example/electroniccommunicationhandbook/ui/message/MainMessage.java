@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -42,6 +43,8 @@ public class MainMessage extends AppCompatActivity {
     private MessageRepository messageRepository;
     ArrayList<Message> messageArrayList;
     MutableLiveData<ArrayList<Message>> messageList;
+    private MainMessageAdapter.recyclerViewClickListener clickListener;
+    UserLocalStore user;
 
 //    //set user (for testing func)
 //    private Teacher user;
@@ -52,22 +55,22 @@ public class MainMessage extends AppCompatActivity {
         setContentView(R.layout.activity_main_message);
 
         //get current user
-        UserLocalStore user = new UserLocalStore(getApplicationContext());
+       user = new UserLocalStore(getApplicationContext());
         int role = user.getRoleLocal();
 
         messageRepository = MessageRepository.getInstance();
 
-//        switch (role) {
-//            case 1://teacher
-//                currentAccount = user.getTeacherLocal().getAccount();
-//                break;
-//            case 2: //student
-//                currentAccount = user.getStudentLocal().getAccount();
-//                break;
-//            case 3: //parent
-//                currentAccount = user.getParentLocal().getAccount();
-//                break;
-//        }
+        switch (role) {
+            case 1://teacher
+                currentAccount = user.getTeacherLocal().getAccount();
+                break;
+            case 2: //student
+                currentAccount = user.getStudentLocal().getAccount();
+                break;
+            case 3: //parent
+                currentAccount = user.getParentLocal().getAccount();
+                break;
+        }
 
         Log.e("Account", String.valueOf(user.getTeacherLocal().getName()));
 
@@ -99,7 +102,8 @@ public class MainMessage extends AppCompatActivity {
                 public void onChanged(ArrayList<Message> messages) {
                     if(messages !=null){
                         messageArrayList= getLatestMessage(messages);
-                        messageAdapter = new MainMessageAdapter(messageArrayList, null, getApplicationContext());
+                        setOnClickListener(messageArrayList);
+                        messageAdapter = new MainMessageAdapter(messageArrayList, null, clickListener, getApplicationContext());
 
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
 
@@ -115,7 +119,7 @@ public class MainMessage extends AppCompatActivity {
 //            List<Student> studentList = db.messageDAO().getAllStudentInClass("1");
 
 //        //when the text in tvsearch changing
-//        tvSearch = (TextInputEditText) findViewById(R.id.tvSearch_Message);
+        tvSearch = (TextInputEditText) findViewById(R.id.tvSearch_Message);
 //        tvSearch.addTextChangedListener(new TextWatcher() {
 //            @Override
 //            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -134,31 +138,52 @@ public class MainMessage extends AppCompatActivity {
 //        });
 //
 //        //when don't focus searching tv and text is empty
-//        tvSearch.setOnFocusChangeListener((View v, boolean hasFocus)->{
-//            if(!hasFocus && tvSearch.getText().toString().trim().isEmpty() ){
-//                loadRecentMessage();
-//            }
-//        });
+        tvSearch.setOnFocusChangeListener((View v, boolean hasFocus)->{
+            if(!hasFocus && tvSearch.getText().toString().trim().isEmpty() ){
+                loadRecentMessage();
+            }
+        });
     }
 //
     /*
     load recent message
      */
-//    void loadRecentMessage() {
-//        db.databaseWriteExecutor.execute(()->
-//        {
-//            List<Message> messageList = db.messageDAO().getAllMessageByAccount(1);
-//            List<Message> messageList1 = getLatestMessage(messageList);
-//
-//            runOnUiThread(()->{
-//                messageAdapter = new MainMessageAdapter(messageList1, null, this);
-//                recyclerView.setAdapter(messageAdapter);
-//            });
-//
-//        });
-//    }
-//
-//
+    void loadRecentMessage() {
+        messageList = messageRepository.getMessageByAccountID(41);
+
+        messageList.observe(this, new Observer<ArrayList<Message>>() {
+            @Override
+            public void onChanged(ArrayList<Message> messages) {
+                if(messages !=null){
+                    messageArrayList= getLatestMessage(messages);
+                    messageAdapter = new MainMessageAdapter(messageArrayList, null, clickListener, getApplicationContext());
+
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+                    recyclerView.setAdapter(messageAdapter);
+                    recyclerView.setLayoutManager(linearLayoutManager);
+
+                }
+            }
+        });
+    }
+
+    /*
+when click an item in recyclerView
+ */
+    private void setOnClickListener(List<Message> messageList) {
+        clickListener = new MainMessageAdapter.recyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(getApplicationContext(), detail_message.class);
+//                intent.putExtra("myName", user.getName());
+//                intent.putExtra("myAccountID", user.getAccountID());
+                intent.putExtra("otherAccountID", messageList.get(position).getReceiverAccount().getAccountID());
+                startActivity(intent);
+            }
+        };
+    }
+
     /*
     The func will be to get messages sent latest
      */
