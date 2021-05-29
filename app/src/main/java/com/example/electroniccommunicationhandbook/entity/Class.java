@@ -17,7 +17,7 @@ public class Class {
     private Date classStartDate;
     private int classDayOfWeek;
     private String classRoom;
-    private int startSchoolTime;
+    private int startingSchoolTime;
     private int endSchoolTime;
 //    private Collection<Announcement> announcements;
   //  private Collection<Student_Class>  students;
@@ -104,14 +104,7 @@ public class Class {
 
     public void setClassRoom(String classRoom) {
         this.classRoom = classRoom;
-    }
 
-    public int getStartSchoolTime() {
-        return startSchoolTime;
-    }
-
-    public void setStartSchoolTime(int startSchoolTime) {
-        this.startSchoolTime = startSchoolTime;
     }
 
     public int getEndSchoolTime() {
@@ -122,7 +115,15 @@ public class Class {
         this.endSchoolTime = endSchoolTime;
     }
 
-//<<<<<<< HEAD
+    public int getStartingSchoolTime() {
+        return startingSchoolTime;
+    }
+
+    public void setStartingSchoolTime(int startingSchoolTime) {
+        this.startingSchoolTime = startingSchoolTime;
+    }
+
+    //<<<<<<< HEAD
 ////    public Collection<Announcement> getAnnouncements() {
 ////        return announcements;
 ////    }
@@ -148,53 +149,28 @@ public class Class {
 //        this.students = students;
 //    }
 
-    public Class(String classId, Subject subject, Teacher teacher, int semester, int studyingYear, Date classEndDate, Date classStartDate, int classDayOfWeek, String classRoom, int startSchoolTime, int endSchoolTime, Collection<Announcement> announcements, Collection<Student_Class> students) {
-        this.classId = classId;
-        this.subject = subject;
-        this.teacher = teacher;
-        this.semester = semester;
-        this.studyingYear = studyingYear;
-
-        this.classEndDate = classEndDate;
-        this.classStartDate = classStartDate;
-        this.classDayOfWeek = classDayOfWeek;
-        this.classRoom = classRoom;
-        this.startSchoolTime = startSchoolTime;
-        this.endSchoolTime = endSchoolTime;
-//        this.announcements = announcements;
-      // this.students = students;
-//=======
-//        this.startingDate = startingDate;
-//        this.endDate = endDate;
-//        this.classDayOfWeek = dayOfWeek;
-//        this.room = room;
-//        this.startingSchoolTime = startingSchoolTime;
-//        this.endSchoolTime = endSchoolTime;
-//        this.announcement = announcements;
-//        this.students = students;
-//>>>>>>> 836807ab68d973bf865d4940a07023765675ffba
-    }
-
     public Class(Class classNew){
         classId = classNew.getClassId();
         subject = classNew.getSubject();
         teacher = classNew.getTeacher();
         semester = classNew.getSemester();
         studyingYear = classNew.getStudyingYear();
-
         classEndDate = classNew.getClassEndDate();
         classStartDate = classNew.getClassStartDate();
         classDayOfWeek = classNew.getClassDayOfWeek();
         classRoom = classNew.getClassRoom();
-        startSchoolTime = classNew.getStartSchoolTime();
-//=======
-//        startingDate = classNew.getStartingDate();
-//        endDate = classNew.getEndDate();
+//        startSchoolTime = classNew.getStartSchoolTime();
+////=======
+////        startingDate = classNew.getStartingDate();
+////        endDate = classNew.getEndDate();
+////        classDayOfWeek = classNew.getDayOfWeek();
+////        room = classNew.getRoom();
+////        startingSchoolTime = classNew.getStartingSchoolTime();
+////>>>>>>> 836807ab68d973bf865d4940a07023765675ffba
 //        classDayOfWeek = classNew.getDayOfWeek();
-//        room = classNew.getRoom();
+//        classRoom = classNew.getRoom();
 //        startingSchoolTime = classNew.getStartingSchoolTime();
-//>>>>>>> 836807ab68d973bf865d4940a07023765675ffba
-        endSchoolTime = classNew.getEndSchoolTime();
+//        endSchoolTime = classNew.getEndSchoolTime();
     }
 
     public Class() {

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.student.rate.RateTeacherActivity"
     android:orientation="vertical"
+    android:id="@+id/layout_rate_teacher"
     >
     <LinearLayout
         android:id="@+id/nav"

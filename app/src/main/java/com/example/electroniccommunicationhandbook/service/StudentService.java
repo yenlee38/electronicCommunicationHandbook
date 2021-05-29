@@ -3,6 +3,7 @@ package com.example.electroniccommunicationhandbook.service;
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Student_Class;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,4 +24,7 @@ public interface StudentService {
     @GET("/schooltime")
     Call<ArrayList<SchoolTime>> getListSchoolTime();
 
+    @GET("/student_class/get/{id_student}/{year}/{semester}")
+    Call<ArrayList<Student_Class>> getRateList(@Path("id_student") String studentId, @Path("year") int year, @Path("semester") int semester);
 }
+
