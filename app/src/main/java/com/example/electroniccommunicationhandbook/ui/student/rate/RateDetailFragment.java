@@ -14,6 +14,7 @@ import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 
 
+
 public class RateDetailFragment extends Fragment {
 
     private Student_Class student_class;
@@ -26,6 +27,7 @@ public class RateDetailFragment extends Fragment {
     private AppCompatButton btn_rate_3;
     private AppCompatButton btn_rate_4;
     private AppCompatButton btn_rate_5;
+
 
     public RateDetailFragment() {
         student_class = new Student_Class();

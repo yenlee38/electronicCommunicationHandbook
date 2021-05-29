@@ -20,7 +20,7 @@ public class Class {
     private int startingSchoolTime;
     private int endSchoolTime;
 //    private Collection<Announcement> announcements;
-  //  private Collection<Student_Class>  students;
+    //  private Collection<Student_Class>  students;
 //=======
 //    private Date startingDate;
 //    private Date endDate;
@@ -171,6 +171,20 @@ public class Class {
 //        classRoom = classNew.getRoom();
 //        startingSchoolTime = classNew.getStartingSchoolTime();
 //        endSchoolTime = classNew.getEndSchoolTime();
+    }
+
+    public Class(String classId, Subject subject, Teacher teacher, int semester, int studyingYear, Date classEndDate, Date classStartDate, int classDayOfWeek, String classRoom, int startingSchoolTime, int endSchoolTime) {
+        this.classId = classId;
+        this.subject = subject;
+        this.teacher = teacher;
+        this.semester = semester;
+        this.studyingYear = studyingYear;
+        this.classEndDate = classEndDate;
+        this.classStartDate = classStartDate;
+        this.classDayOfWeek = classDayOfWeek;
+        this.classRoom = classRoom;
+        this.startingSchoolTime = startingSchoolTime;
+        this.endSchoolTime = endSchoolTime;
     }
 
     public Class() {

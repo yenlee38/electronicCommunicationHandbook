@@ -3,6 +3,7 @@ package com.example.electroniccommunicationhandbook.ui.student.rate;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
     @Override
     public void onBindViewHolder(@NonNull RateTeacherViewHolder holder, int position) {
 
+
         try {
 
             holder.getTv_name_teacher_rate().setText(mClass.get(position).get_class().getTeacher().getName());
@@ -57,6 +59,7 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
             holder.setChangeBtnRate(rate, holder.itemView);
 
         }catch (Exception ex){}
+
 
         holder.getBtn_rate().setOnClickListener(new View.OnClickListener() {
 
@@ -148,6 +151,7 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
                 getTv_status_rate().setText(activity.getString(R.string.rated));
                 getBtn_rate().setBackground(activity.getDrawable(R.drawable.border_btn_not_rate));
                 getTv_status_rate().setTextColor(activity.getColor(R.color.color_text_status_rate));
+
             }
         }
     }
