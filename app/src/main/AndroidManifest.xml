@@ -13,6 +13,7 @@
         <activity android:name=".ui.message.MainMessage">
 
         </activity>
+        <activity android:name=".ui.message.detail_message"/>
         <activity android:name=".ui.authentication.login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
