@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.student.rate.RateDetailFragment">
+    android:background="@color/white"
+    tools:context=".ui.student.rate.RateDetailFragment"
+    android:gravity="center">
 
     <LinearLayout
+        android:id="@+id/nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -35,6 +38,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/info"
+        android:layout_below="@+id/nav"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:orientation="horizontal"
@@ -75,11 +80,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/rate"
+        android:layout_below="@+id/info"
         android:layout_width="363dp"
         android:layout_height="96dp"
         android:orientation="vertical"
         android:layout_marginTop="24dp"
-        android:layout_gravity="center_horizontal">
+       android:layout_centerHorizontal="true">
 
         <TextView
             android:padding="8dp"
@@ -128,11 +135,13 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/cmt"
+        android:layout_below="@+id/rate"
         android:layout_width="363dp"
         android:layout_height="160dp"
         android:orientation="vertical"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center_horizontal">
+        android:layout_centerHorizontal="true">
         <TextView
             android:padding="8dp"
             android:layout_width="wrap_content"
@@ -154,16 +163,21 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_rate_teacher"
+        android:layout_below="@+id/cmt"
         android:layout_marginTop="219dp"
         android:layout_width="363dp"
         android:layout_height="44dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/border_btn_navy_color"
+        android:background="@drawable/btn_navy_color"
         android:gravity="center"
         android:text="Rate Teacher"
         android:textSize="16dp"
         android:textColor="@color/white"
         android:textAllCaps="false"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+       />
 
-</LinearLayout>
+</RelativeLayout>

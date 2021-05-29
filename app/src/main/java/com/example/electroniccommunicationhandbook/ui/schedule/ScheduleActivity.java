@@ -68,32 +68,19 @@ public class ScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
-        userLocalStore = new UserLocalStore(getApplicationContext());
-        student = userLocalStore.getStudentLocal();
-        studentRepository = new StudentRepository();
-        classLiveData = new MutableLiveData<>();
-        lSchedule = new ArrayList<Class>();
-        lSchoolTime = new ArrayList<SchoolTime>();
-        lSchoolTimeLiveData = new MutableLiveData<>();
-        setListStudyingYear();
         initView();
         setlSchoolTime();
-        setClassLiveDataForChangeSemester();
-        //
+        setListStudyingYear();
 
     }
 
     private void setListStudyingYear(){
-        sp_year = findViewById(R.id.sp_year);
         List<StudyingYear> yearList = new ArrayList<StudyingYear>();
         for(int i = 2018; i < 2025; i++) // create year from 2018 to 2025
             yearList.add(new StudyingYear(i));
         ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(getApplicationContext(), android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
         sp_year.setAdapter(adapter);
-        try {
-            sp_year.setSelection(yearList.indexOf(student.getYear())); // set studying
-        }catch (Exception e){}
-
+        sp_year.setSelection(3); // set studying
         sp_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -165,8 +152,16 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void initView(){
+        userLocalStore = new UserLocalStore(getApplicationContext());
+        student = userLocalStore.getStudentLocal();
+        studentRepository = new StudentRepository();
+        classLiveData = new MutableLiveData<>();
+        lSchedule = new ArrayList<Class>();
+        lSchoolTime = new ArrayList<SchoolTime>();
+        lSchoolTimeLiveData = new MutableLiveData<>();
         tv_nullClass = findViewById(R.id.tv_nullClass);
         rlv_schedule = findViewById(R.id.rlv_schedule);
+        sp_year = findViewById(R.id.sp_year);
         img_back = findViewById(R.id.img_back);
         btn_semesterOne = findViewById(R.id.btn_semesterOne);
         btn_semesterTwo = findViewById(R.id.btn_semesterTwo);

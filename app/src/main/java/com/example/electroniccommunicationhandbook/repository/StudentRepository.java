@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.service.StudentService;
 
 import org.jetbrains.annotations.NotNull;
@@ -32,6 +33,7 @@ public class StudentRepository {
     private StudentService studentService;
     public Student student;
     private MutableLiveData<ArrayList<Class>> classResponseLiveData;
+    private MutableLiveData<ArrayList<Student_Class>> studentClassResponseLiveData;
     public ArrayList<Class> lClass;
     public MutableLiveData<ArrayList<SchoolTime>> lSchoolTime;
     private static final int NUMBER_OF_THREADS = 4;
@@ -83,6 +85,7 @@ public class StudentRepository {
         lClass = new ArrayList<Class>();
         lSchoolTime = new MutableLiveData<>();
         classResponseLiveData = new MutableLiveData<>();
+        studentClassResponseLiveData = new MutableLiveData<>();
         MainRepository mainRepository;
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -225,6 +228,31 @@ public class StudentRepository {
                });
 
        return classResponseLiveData;
+    }
+
+    public MutableLiveData<ArrayList<Student_Class>> getRateList(String idStudent, int year, int semester) {
+        Log.e("vo livedata rate: ", "vo roi");
+        studentService.getRateList(idStudent, year, semester)
+                .enqueue(new Callback<ArrayList<Student_Class>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<Student_Class>> call, Response<ArrayList<Student_Class>> response) {
+                        if(response.isSuccessful()){
+                            studentClassResponseLiveData.postValue(response.body());
+                            Log.e("value rate: ", String.valueOf(response.body().size()));
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<Student_Class>> call, Throwable t) {
+                        studentClassResponseLiveData.postValue(null);
+                        Log.e("null livedata: ", "vo roi");
+                    }
+
+
+                });
+
+        return studentClassResponseLiveData;
     }
 
 

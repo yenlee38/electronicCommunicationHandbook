@@ -19,7 +19,7 @@ public class Class {
     private Date startingDate;
     private Date endDate;
     private int classDayOfWeek;
-    private String room;
+    private String classRoom;
     private int startingSchoolTime;
     private int endSchoolTime;
     private Collection<Announcement> announcement;
@@ -90,11 +90,11 @@ public class Class {
     }
 
     public String getRoom() {
-        return room;
+        return classRoom;
     }
 
     public void setRoom(String room) {
-        this.room = room;
+        this.classRoom = room;
     }
 
     public int getStartingSchoolTime() {
@@ -138,7 +138,7 @@ public class Class {
         this.startingDate = startingDate;
         this.endDate = endDate;
         this.classDayOfWeek = dayOfWeek;
-        this.room = room;
+        this.classRoom = room;
         this.startingSchoolTime = startingSchoolTime;
         this.endSchoolTime = endSchoolTime;
         this.announcement = announcements;
@@ -154,7 +154,7 @@ public class Class {
         startingDate = classNew.getStartingDate();
         endDate = classNew.getEndDate();
         classDayOfWeek = classNew.getDayOfWeek();
-        room = classNew.getRoom();
+        classRoom = classNew.getRoom();
         startingSchoolTime = classNew.getStartingSchoolTime();
         endSchoolTime = classNew.getEndSchoolTime();
     }
