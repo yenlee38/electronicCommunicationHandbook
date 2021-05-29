@@ -69,19 +69,11 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
+
     private void loadData() {
-
-        imvBack = findViewById(R.id.imv_back);
-        imvPhoto = findViewById(R.id.imv_photo);
-        tvID = findViewById(R.id.tv_student_id);
-        tvName = findViewById(R.id.tv_name);
-        btnUpdateProfile = findViewById(R.id.btn_update_profile);
-        edtEmail =findViewById(R.id.edit_text_email);
-        edtPhone = findViewById(R.id.edit_text_phone);
-        edtAddress = findViewById(R.id.edit_text_address);
-
 
         if(userLocalStore.getRoleLocal()==1){
             Teacher teacher = userLocalStore.getTeacherLocal();
@@ -106,7 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
             edtAddress.setText(parent.getAddress());
         }
 
-
     }
+
 
 }
