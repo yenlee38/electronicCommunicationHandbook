@@ -2,65 +2,64 @@ package com.example.electroniccommunicationhandbook.ui.student.rate;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.entity.Student_Class;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RateDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
+
 public class RateDetailFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private Student_Class student_class;
+    private TextView tv_name_teacher_rate;
+    private TextView tv_name_subject_rate;
+    private TextView edt_comment;
+    private AppCompatButton btn_rate_teacher;
+    private AppCompatButton btn_rate_1;
+    private AppCompatButton btn_rate_2;
+    private AppCompatButton btn_rate_3;
+    private AppCompatButton btn_rate_4;
+    private AppCompatButton btn_rate_5;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public RateDetailFragment() {
+        student_class = new Student_Class();
+        student_class = (Student_Class) getArguments().getSerializable("student_class_object");
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RateDetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RateDetailFragment newInstance(String param1, String param2) {
-        RateDetailFragment fragment = new RateDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rate_detail, container, false);
+          View view = inflater.inflate(R.layout.fragment_rate_detail, container, false);
+          initView(view);
+         return view;
+    }
+
+    private void initView(View view){
+        tv_name_subject_rate = view.findViewById(R.id.tv_name_subject_rate);
+        tv_name_subject_rate = view.findViewById(R.id.tv_name_subject_rate);
+        edt_comment = view.findViewById(R.id.edt_comment);
+        btn_rate_teacher = view.findViewById(R.id.btn_rate_teacher);
+        btn_rate_1 = view.findViewById(R.id.btn_rate_1);
+        btn_rate_2 = view.findViewById(R.id.btn_rate_2);
+        btn_rate_3 = view.findViewById(R.id.btn_rate_3);
+        btn_rate_4 = view.findViewById(R.id.btn_rate_4);
+        btn_rate_5 = view.findViewById(R.id.btn_rate_5);
     }
 }

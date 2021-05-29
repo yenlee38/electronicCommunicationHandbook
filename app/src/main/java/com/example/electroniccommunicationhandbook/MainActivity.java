@@ -125,38 +125,34 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ConfirmationRequestActivity.class);
                 startActivity(intent);
-
-
-                btn_point.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
-                        startActivity(intent);
-                    }
-                });
-
-
-                btn_profile.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-
-                        startActivity(intent);
-                    }
-                });
-
-                btnMessage.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), MainMessage.class);
-                        startActivity(intent);
-                        // setContentView(R.layout.activity_schedule);
-
-                    }
-                });
             }
+        });
 
+        btn_point.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainMessage.class);
+                startActivity(intent);
+                // setContentView(R.layout.activity_schedule);
+
+            }
         });
     }
 }
