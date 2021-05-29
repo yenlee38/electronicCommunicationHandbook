@@ -102,17 +102,27 @@
         </LinearLayout>
 
     </LinearLayout>
-    <Button
-        android:id="@+id/btn_update_profile"
-        android:layout_width="363dp"
-        android:layout_height="48dp"
-        android:background="@drawable/border_btn_navy_color"
-        android:text="Update"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="15dp"
-        android:layout_marginTop="250dp"
-        android:layout_gravity="center_horizontal"
-        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_update_profile"
+            android:layout_width="363dp"
+            android:layout_height="48dp"
+            android:background="@drawable/border_btn_navy_color"
+            android:text="Update"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_gravity="center_horizontal" />
+        <ProgressBar
+            android:id="@+id/progess_bar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+    </FrameLayout>
+
 
 </LinearLayout>
