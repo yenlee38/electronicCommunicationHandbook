@@ -66,6 +66,10 @@ dependencies {
     //Decode token
     implementation 'com.auth0.android:jwtdecode:2.0.0'
 
+
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
+
     //Firebase OTP
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
 
@@ -75,3 +79,4 @@ dependencies {
 
 }
 apply plugin: 'com.google.gms.google-services'
+

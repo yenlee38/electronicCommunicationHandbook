@@ -9,16 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 
 
-<<<<<<< HEAD
+
 import com.example.electroniccommunicationhandbook.dao.StudentDAO;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
 import com.example.electroniccommunicationhandbook.service.StudentService;
+import com.example.electroniccommunicationhandbook.ui.message.MainMessage;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 
-=======
+
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
+
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
@@ -28,6 +29,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
+import com.example.electroniccommunicationhandbook.entity.Class;
+import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Student_Class;
+import com.example.electroniccommunicationhandbook.repository.MainRepository;
+import com.example.electroniccommunicationhandbook.repository.PointRepository;
+import com.example.electroniccommunicationhandbook.service.PointService;
+
+import java.util.List;
+
+import retrofit2.Call;
+
+import static com.example.electroniccommunicationhandbook.util.Comon.MY_PREFS_FILE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
     //MainRepository mainRepository;
     PointRepository pointService;
     TextView tvName;
-<<<<<<< HEAD
+
 
     StudentRepository studentRepository;
+
+    private Button btnMessage;
+  
     private AppCompatButton btn_profile;
 
-=======
-    private AppCompatButton btn_profile;
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
@@ -56,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-
     }
 
     private void initView(){
@@ -65,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         btn_rate = findViewById(R.id.btn_rate);
         btn_schedule = findViewById(R.id.btn_schedule);
         btn_point= findViewById(R.id.btn_points);
+        btnMessage = findViewById(R.id.btn_message);
 
         btn_student_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-<<<<<<< HEAD
+
 
 
         btn_point.setOnClickListener(new View.OnClickListener() {
@@ -104,17 +117,23 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
             } });
 
-=======
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
+
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-<<<<<<< HEAD
 
-=======
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
                 startActivity(intent);
+            }
+        });
+
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainMessage.class);
+                startActivity(intent);
+                // setContentView(R.layout.activity_schedule);
+
             }
         });
     }

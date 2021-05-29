@@ -45,6 +45,7 @@
           android:orientation="horizontal"
           android:layout_below="@+id/nav"
           android:gravity="center">
+
           <androidx.appcompat.widget.AppCompatButton
               android:id="@+id/btn_semesterOne"
               android:layout_width="205dp"

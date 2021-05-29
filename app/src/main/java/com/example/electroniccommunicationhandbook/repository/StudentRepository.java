@@ -117,7 +117,6 @@ public class StudentRepository {
                 {
                     student = response.body();
                     Log.e("ID :", student.getStudentId() );
-
                 }
             }
 

@@ -59,6 +59,18 @@ public abstract class RoomDB extends RoomDatabase {
         }
         return INSTANCE;
     }
-
+    public abstract AccountDAO accountDAO();
+    public abstract AnnouncementDAO announcementDAO();
+    public abstract ClassDAO classDAO();
+    public abstract ConfirmationPaperDAO confirmationPaperDAO();
+    public abstract MessageDAO messageDAO();
+    public abstract ParentDAO parentDAO();
+    public abstract SchoolTimeDAO schoolTimeDAO();
+    public abstract Student_ClassDAO student_classDAO();
+    public abstract Student_ConfirmationPaperDAO student_confirmationPaperDAO();
+    public abstract Student_ParentDAO student_parentDAO();
+    public abstract StudentDAO studentDAO();
+    public abstract SubjectDAO subjectDAO();
+    public abstract TeacherDAO teacherDAO();
 
 }
