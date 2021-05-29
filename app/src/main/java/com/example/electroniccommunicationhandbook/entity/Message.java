@@ -12,7 +12,7 @@ public class Message {
     private Date sentTime;
     private Account senderAccount;
     private Account receiverAccount;
-    private String content;
+    private String messageContent;
 
     public Date getSentTime() {
         return sentTime;
@@ -39,11 +39,11 @@ public class Message {
     }
 
     public String getContent() {
-        return content;
+        return messageContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContent(String messageContent) {
+        this.messageContent = messageContent;
     }
 
     public Message() {

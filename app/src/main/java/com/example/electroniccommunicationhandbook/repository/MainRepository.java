@@ -64,7 +64,6 @@ public  class MainRepository {
                 .build();
 
         authenticateService= retrofit.create(AuthenticateService.class);
-
     }
 
 

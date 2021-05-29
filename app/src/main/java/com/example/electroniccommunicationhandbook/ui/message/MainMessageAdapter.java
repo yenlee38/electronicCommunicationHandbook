@@ -1,6 +1,7 @@
 package com.example.electroniccommunicationhandbook.ui.message;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +18,18 @@ import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.google.android.material.imageview.ShapeableImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.ViewHolder>{
-    private List<Message> messageList;
+    private ArrayList<Message> messageList;
     private RoomDB db;
     public Context mcontext;
     //student list is used for searching function
     private List<Student> studentList;
 
 
-    public MainMessageAdapter(List<Message> messageList, List<Student> studentList, Context context)
+    public MainMessageAdapter(ArrayList<Message> messageList, List<Student> studentList, Context context)
     {
         this.messageList = messageList;
         this.mcontext = context;
@@ -64,18 +66,19 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
 
         ViewHolder viewHolder = new ViewHolder(messageView);
 
-        db = RoomDB.getDatabase(context);
+//        db = RoomDB.getDatabase(context);
         return viewHolder;
     }
 
     @Override
     public int getItemCount() {
-        if(messageList !=null)
+//        if(messageList !=null)
+//            return messageList.size();
+//        else if (studentList!=null)
+//            return studentList.size();
+//        else
+        Log.e("size ", "mess :"+messageList.get(0).getContent());
             return messageList.size();
-        else if (studentList!=null)
-            return studentList.size();
-        else
-            return 0;
     }
 
     @Override
@@ -91,22 +94,23 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
             //get receiver's name
             String name = "";
             holder.tvName.setText("");
-            db.databaseWriteExecutor.execute(() -> {
-                Student std = db.studentDAO().getStudentByAccountID(receiverID);
-                if (std != null)
-                    ((MainMessage) mcontext).runOnUiThread(() -> {
-                        holder.tvName.setText(std.getName());
-                    });
-                else {
-                    Teacher teacher = db.teacherDAO().getTeacherByAccountID(receiverID);
-                    if (teacher != null)
-                        ((MainMessage) mcontext).runOnUiThread(() -> {
-                            holder.tvName.setText(teacher.getName());
-                        });
-                }
-            });
+//            db.databaseWriteExecutor.execute(() -> {
+//                Student std = db.studentDAO().getStudentByAccountID(receiverID);
+//                if (std != null)
+//                    ((MainMessage) mcontext).runOnUiThread(() -> {
+//                        holder.tvName.setText(std.getName());
+//                    });
+//                else {
+//                    Teacher teacher = db.teacherDAO().getTeacherByAccountID(receiverID);
+//                    if (teacher != null)
+//                        ((MainMessage) mcontext).runOnUiThread(() -> {
+//                            holder.tvName.setText(teacher.getName());
+//                        });
+//                }
+//            });
 
             holder.tvLastestMessage.setText(message.getContent());
+            Log.e("mess adapter","content: "+ message.getContent());
             holder.tvLastestMessage.setVisibility(View.VISIBLE);
             holder.allBorder.setBackgroundResource(R.drawable.item_message_border);
         }

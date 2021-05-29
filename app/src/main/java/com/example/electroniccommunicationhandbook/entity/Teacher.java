@@ -153,7 +153,7 @@ public class Teacher {
     }
 
     public Teacher(String teacherId, String name, Account account) {
-        this.teacherId = teacherId;
+        this.teacherID = teacherId;
         this.name = name;
         this.account = account;
     }

@@ -119,7 +119,6 @@ public class Login extends AppCompatActivity {
                                 //Convert Json to object
                                 Gson gson= new GsonBuilder()
                                         .registerTypeAdapter(Date.class, getUnixEpochDateTypeAdapter()).create();
-
                                 if(role==1){
                                     Teacher teacher= gson.fromJson(text, Teacher.class);
                                     //TODO: save to share preference
