@@ -9,11 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 
 
+
 import com.example.electroniccommunicationhandbook.dao.StudentDAO;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
 import com.example.electroniccommunicationhandbook.service.StudentService;
 import com.example.electroniccommunicationhandbook.ui.message.MainMessage;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
+
+
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
+
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
@@ -42,9 +48,14 @@ public class MainActivity extends AppCompatActivity {
     //MainRepository mainRepository;
     PointRepository pointService;
     TextView tvName;
+
+
     StudentRepository studentRepository;
+
     private Button btnMessage;
   
+    private AppCompatButton btn_profile;
+
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
@@ -61,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView(){
+        btn_profile = findViewById(R.id.btn_profile);
         btn_student_card = findViewById(R.id.btn_student_card);
         btn_rate = findViewById(R.id.btn_rate);
         btn_schedule = findViewById(R.id.btn_schedule);
@@ -97,10 +109,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         btn_point.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
+            } });
+
+
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+
                 startActivity(intent);
             }
         });
