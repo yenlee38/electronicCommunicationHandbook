@@ -77,7 +77,7 @@
                 android:drawableTint="@color/gray_primary"
                  />
             <TextView
-
+                android:visibility="invisible"
                 android:id="@+id/tv_log_error_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

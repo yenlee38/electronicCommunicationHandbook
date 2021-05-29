@@ -10,6 +10,7 @@ import android.view.View;
 
 
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
+import com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.ConfirmationRequestActivity;
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
 
@@ -36,19 +37,21 @@ public class MainActivity extends AppCompatActivity {
     //MainRepository mainRepository;
     PointRepository pointService;
     TextView tvName;
-  
+
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
+    private AppCompatButton btn_request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        tvName= findViewById(R.id.txvName);
-        btnLogout= findViewById(R.id.hoang);
-        pointService=  PointRepository.getInstance();
+        tvName = findViewById(R.id.txvName);
+        btnLogout = findViewById(R.id.hoang);
+        btn_request= findViewById(R.id.btn_request);
+        pointService = PointRepository.getInstance();
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,20 +70,22 @@ public class MainActivity extends AppCompatActivity {
                     tvName.setText(student.getName() + " " + student.getBirthday());
                 else
                     tvName.setText("Null roi");
-            }});
+            }
+        });
+
     }
 
-    private void initView(){
+    private void initView() {
         btn_student_card = findViewById(R.id.btn_student_card);
         btn_rate = findViewById(R.id.btn_rate);
         btn_schedule = findViewById(R.id.btn_schedule);
-
+        btn_request= findViewById(R.id.btn_request);
         btn_student_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CardActivity.class);
                 startActivity(intent);
-              //  setContentView(R.layout.activity_card_student);
+                //  setContentView(R.layout.activity_card_student);
 
             }
         });
@@ -100,8 +105,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
                 startActivity(intent);
-               // setContentView(R.layout.activity_schedule);
+                // setContentView(R.layout.activity_schedule);
 
+            }
+        });
+
+        btn_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), ConfirmationRequestActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_confirmation_request"
-    app:startDestination="@id/confirmationRequestActivity">
+    app:startDestination="@id/boardConfirmation">
 
-    <activity
-        android:id="@+id/confirmationRequestActivity"
-        android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.ConfirmationRequestActivity"
-        android:label="activity_confirmation_request"
-        tools:layout="@layout/activity_confirmation_request" />
     <fragment
         android:id="@+id/newRequestFragment"
         android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.NewRequestFragment"
@@ -32,4 +27,13 @@
         android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.FailureRequestFragment"
         android:label="fragment_failure_request"
         tools:layout="@layout/fragment_failure_request" />
+    <fragment
+        android:id="@+id/boardConfirmation"
+        android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.BoardConfirmation"
+        android:label="fragment_board_confirmation"
+        tools:layout="@layout/fragment_board_confirmation" >
+        <action
+            android:id="@+id/action_boardConfirmation_to_newRequestFragment"
+            app:destination="@id/newRequestFragment" />
+    </fragment>
 </navigation>

@@ -26,6 +26,7 @@ public class ListClass extends AppCompatActivity {
                 new VPClassAdapterFragment(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewPager.setAdapter(viewpageAdapter);
 
+
         mTabLayout.setupWithViewPager(mViewPager);
     }
 }

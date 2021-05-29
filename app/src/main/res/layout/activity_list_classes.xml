@@ -5,58 +5,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="11"
+    android:weightSum="13"
     tools:context=".ui.teacher.list_class.ListClass">
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_class"
-        android:layout_width="match_parent"
-        app:tabSelectedTextColor="@color/black"
-        android:layout_weight="1.5"
-        android:layout_height="0dp"></com.google.android.material.tabs.TabLayout>
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpage_class"
-        android:layout_width="match_parent"
-        android:layout_weight="8"
-        android:layout_height="0dp">
-    </androidx.viewpager.widget.ViewPager>
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-
-            android:background="@drawable/background_linear_blue"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.1"
-        android:background="@color/blue_pastel_500"
+        android:layout_weight="1"
+        android:padding="@dimen/size_min">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_arrow_back"
+            android:backgroundTint="@color/black"
+            android:textSize="18dp"></androidx.appcompat.widget.AppCompatButton>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/size_min"
+            android:text="Class"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"></TextView>
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_class"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:tabSelectedTextColor="@color/black"></com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpage_class"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.5"></androidx.viewpager.widget.ViewPager>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/background_linear_blue"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/blue_pastel_500"
         android:orientation="horizontal"
         android:weightSum="2">
-
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/sp_year"
             android:layout_width="0dp"
             android:layout_height="36dp"
-            android:layout_weight="1"
             android:layout_marginLeft="@dimen/size_max"
+            android:layout_weight="1"
             android:background="@drawable/border_btn_white"
-
             />
 
-                <androidx.appcompat.widget.AppCompatButton
-                 android:layout_marginLeft="@dimen/size_min"
-
-                    android:layout_marginRight="@dimen/size_medium"
-                    android:id="@+id/btn_class_view_class"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="36dp"
-                    android:background="@drawable/button_purple"
-                    android:text="View class" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_class_view_class"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="@dimen/size_min"
+            android:layout_marginRight="@dimen/size_medium"
+            android:layout_weight="1"
+            android:background="@color/purple_pastel_500"
+            android:text="View class" />
     </LinearLayout>
 </LinearLayout>

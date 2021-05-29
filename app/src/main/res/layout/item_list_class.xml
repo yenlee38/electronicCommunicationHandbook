@@ -22,7 +22,7 @@
             android:layout_width="108dp"
             android:layout_height="108dp"
            android:layout_margin="6dp"
-            android:backgroundTintMode="@drawable/button_yellow"
+
             android:elevation="2dp"
             app:cardCornerRadius="@dimen/size_min"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
         android:layout_height="40dp"
         android:textColor="@color/white"
         android:layout_marginLeft="@dimen/size_medium"
-        android:background="@drawable/button_yellow"
+        android:background="@color/yellow_light"
         android:paddingLeft="@dimen/size_min"
         android:paddingRight="@dimen/size_min"
         android:text="View student"

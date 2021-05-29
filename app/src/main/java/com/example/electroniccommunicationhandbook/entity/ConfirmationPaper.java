@@ -10,6 +10,11 @@ public class ConfirmationPaper {
     private int confirmationPaperID;
     private String confirmationPaperName;
 
+    public ConfirmationPaper(int confirmationPaperID, String confirmationPaperName) {
+        this.confirmationPaperID = confirmationPaperID;
+        this.confirmationPaperName = confirmationPaperName;
+    }
+
     public int getConfirmationPaperID() {
         return confirmationPaperID;
     }
@@ -25,7 +30,9 @@ public class ConfirmationPaper {
     public void setConfirmationPaperName(String confirmationPaperName) {
         this.confirmationPaperName = confirmationPaperName;
     }
-
+    public ConfirmationPaper(int confirmationPaperID){
+        this.confirmationPaperID=confirmationPaperID;
+    }
     public ConfirmationPaper() {
     }
 }

@@ -58,7 +58,7 @@ public class UserLocalStore {
     /*
     Get student infor from local
      */
-    public Student getStudentLocal(){
+    public  Student getStudentLocal(){
         Gson gson= new Gson();
         String json= userLocalStore.getString(STUDENT,null);
         Student student= new Student();

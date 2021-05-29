@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.electroniccommunicationhandbook">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectronicCommunicationHandbook">
+        <activity android:name=".ViewStudentProfile"></activity>
+        <activity android:name=".ui.teacher.list_class.StudentInClass" />
         <activity android:name=".ui.authentication.login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,11 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity">
-                   </activity>
-        <activity android:name=".ui.schedule.ScheduleActivity"/>
-        <activity android:name=".ui.student.rate.RateTeacherActivity"/>
+        <activity android:name=".ui.student.ConfirmationRequest.ConfirmationRequestActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.schedule.ScheduleActivity" />
+        <activity android:name=".ui.student.rate.RateTeacherActivity" />
         <activity android:name=".ui.student.card.CardActivity" />
         <activity android:name=".MainActivity_teacher" />
         <activity android:name=".ui.resetpassword.ResetPasswordSuccessfullyActivity" />
@@ -35,9 +37,7 @@
         <activity
             android:name=".ui.student.notification.NotificationActivity"
             android:label="@string/title_activity_notification"
-            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar" />
         <activity
             android:name=".ui.student.fee.FeeViewActivity"
             android:label="@string/title_activity_fee_view"
@@ -45,12 +45,9 @@
         <activity
             android:name=".ui.student.point.PointViewActivity"
             android:label="@string/title_activity_point_view"
-            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar"></activity>
-
+            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar" />
         <activity android:name=".ui.teacher.list_class.ListClass" />
-
         <activity android:name=".MainActivity_parent" />
-
     </application>
 
 </manifest>

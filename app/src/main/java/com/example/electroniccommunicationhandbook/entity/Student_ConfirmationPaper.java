@@ -6,21 +6,22 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
-
+//@Entity(primaryKeys = {"requiredTime","student.getStudentId","confirmationPaper.getConfirmationPaperID"})
 public class Student_ConfirmationPaper {
 
     private Date requiredTime;
     private Student student;
     private ConfirmationPaper confirmationPaper;
-
+//    private String student;
+//    private String confirmationPaper;
     public Date getRequiredTime() {
         return requiredTime;
     }
 
     public void setRequiredTime(Date requiredTime) {
+
         this.requiredTime = requiredTime;
     }
-
     public Student getStudentId() {
         return student;
     }

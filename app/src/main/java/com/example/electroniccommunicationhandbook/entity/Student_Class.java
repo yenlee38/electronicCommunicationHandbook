@@ -6,9 +6,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Student_Class {
+public class Student_Class implements Serializable {
 
     private String studentId;
 
@@ -112,5 +113,17 @@ public class Student_Class {
     }
 
     public Student_Class() {
+    }
+    public Student_Class(@NonNull String studentId, String classId,
+                         float middleMark, float finalMark, int rating, String comment, Date createDate,
+                         Student student) {
+        this.studentId = studentId;
+        this.classId = classId;
+        this.middleMark = middleMark;
+        this.finalMark = finalMark;
+        this.rating = rating;
+        this.comment = comment;
+        this.student=student;
+        CreateDate = createDate;
     }
 }

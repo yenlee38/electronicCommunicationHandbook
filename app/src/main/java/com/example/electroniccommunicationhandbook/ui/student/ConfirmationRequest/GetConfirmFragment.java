@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.electroniccommunicationhandbook.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GetConfirmFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class GetConfirmFragment extends Fragment {
 
 

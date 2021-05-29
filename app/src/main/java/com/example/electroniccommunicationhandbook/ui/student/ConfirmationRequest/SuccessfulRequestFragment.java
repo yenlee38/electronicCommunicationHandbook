@@ -1,29 +1,39 @@
 package com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SuccessfulRequestFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SuccessfulRequestFragment extends Fragment {
+    Button btnGoHome;
+
     public SuccessfulRequestFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        btnGoHome= view.findViewById(R.id.btnSuccessToHome);
+        btnGoHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

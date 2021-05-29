@@ -13,15 +13,16 @@ public class Subject {
     private String name;
     private int numberOfCredit;
     private String description;
-    private Collection<Class> classes;
 
-    public Collection<Class> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(Collection<Class> classes) {
-        this.classes = classes;
-    }
+//    private Collection<Class> classes;
+//
+//    public Collection<Class> getClasses() {
+//        return classes;
+//    }
+//
+//    public void setClasses(Collection<Class> classes) {
+//        this.classes = classes;
+//    }
 
     public String getSubjectId() {
         return subjectId;

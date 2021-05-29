@@ -11,10 +11,12 @@ import com.example.electroniccommunicationhandbook.database.Convert;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Student {
-
+public class Student implements Serializable {
+    @SerializedName("studentId")
+    @Expose
     private String studentId;
 
     @SerializedName("studentName")
@@ -154,5 +156,21 @@ public class Student {
     }
 
     public Student() {
+    }
+
+    public Student(String studentId, String name, Date birthday, String gender, String phone, String address,
+                   String email, String image, String bankSeri, Account account, String year, String major) {
+        this.studentId = studentId;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.image = image;
+        this.bankSeri = bankSeri;
+        this.account = account;
+        this.year = year;
+        this.major = major;
     }
 }

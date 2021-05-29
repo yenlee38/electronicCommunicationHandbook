@@ -38,7 +38,7 @@
 
             <RadioButton
                 android:layout_gravity="center"
-
+                android:checked="true"
                 android:id="@+id/rdGetTranscript"
 
                 android:layout_width="150dp"

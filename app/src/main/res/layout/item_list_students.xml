@@ -12,7 +12,7 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_margin="8dp"
-            android:backgroundTintMode="@drawable/button_yellow"
+
             android:elevation="2dp"
             app:cardCornerRadius="@dimen/size_super_min"
             app:layout_constraintStart_toStartOf="parent"

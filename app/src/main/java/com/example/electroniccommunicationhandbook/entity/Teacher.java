@@ -5,10 +5,11 @@ import androidx.room.TypeConverters;
 
 import com.example.electroniccommunicationhandbook.database.Convert;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
-public class Teacher {
+public class Teacher implements Serializable {
 
 
     private String teacherID;

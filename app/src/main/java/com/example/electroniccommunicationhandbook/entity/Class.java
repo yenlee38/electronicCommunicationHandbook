@@ -1,29 +1,25 @@
 package com.example.electroniccommunicationhandbook.entity;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import com.google.gson.annotations.SerializedName;
 
-import java.sql.Time;
 import java.util.Collection;
 import java.util.Date;
 
 public class Class {
-
+    @SerializedName("class_id")
     private String classId;
     private Subject subject;
     private Teacher teacher;
     private int semester;
     private int studyingYear;
-    private Date startingDate;
-    private Date endDate;
-    private int dayOfWeek;
-    private String room;
-    private int startingSchoolTime;
+    private Date classEndDate;
+    private Date classStartDate;
+    private int classDayOfWeek;
+    private String classRoom;
+    private int startSchoolTime;
     private int endSchoolTime;
-    private Collection<Announcement> announcements;
-    private Collection<Student_Class>  students;
+//    private Collection<Announcement> announcements;
+  //  private Collection<Student_Class>  students;
 
     public String getClassId() {
         return classId;
@@ -65,44 +61,44 @@ public class Class {
         this.studyingYear = studyingYear;
     }
 
-    public Date getStartingDate() {
-        return startingDate;
+    public Date getClassEndDate() {
+        return classEndDate;
     }
 
-    public void setStartingDate(Date startingDate) {
-        this.startingDate = startingDate;
+    public void setClassEndDate(Date classEndDate) {
+        this.classEndDate = classEndDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getClassStartDate() {
+        return classStartDate;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setClassStartDate(Date classStartDate) {
+        this.classStartDate = classStartDate;
     }
 
-    public int getDayOfWeek() {
-        return dayOfWeek;
+    public int getClassDayOfWeek() {
+        return classDayOfWeek;
     }
 
-    public void setDayOfWeek(int dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
+    public void setClassDayOfWeek(int classDayOfWeek) {
+        this.classDayOfWeek = classDayOfWeek;
     }
 
-    public String getRoom() {
-        return room;
+    public String getClassRoom() {
+        return classRoom;
     }
 
-    public void setRoom(String room) {
-        this.room = room;
+    public void setClassRoom(String classRoom) {
+        this.classRoom = classRoom;
     }
 
-    public int getStartingSchoolTime() {
-        return startingSchoolTime;
+    public int getStartSchoolTime() {
+        return startSchoolTime;
     }
 
-    public void setStartingSchoolTime(int startingSchoolTime) {
-        this.startingSchoolTime = startingSchoolTime;
+    public void setStartSchoolTime(int startSchoolTime) {
+        this.startSchoolTime = startSchoolTime;
     }
 
     public int getEndSchoolTime() {
@@ -113,36 +109,36 @@ public class Class {
         this.endSchoolTime = endSchoolTime;
     }
 
-    public Collection<Announcement> getAnnouncements() {
-        return announcements;
-    }
+//    public Collection<Announcement> getAnnouncements() {
+//        return announcements;
+//    }
+//
+//    public void setAnnouncements(Collection<Announcement> announcements) {
+//        this.announcements = announcements;
+//    }
 
-    public void setAnnouncements(Collection<Announcement> announcements) {
-        this.announcements = announcements;
-    }
+//    public Collection<Student_Class> getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(Collection<Student_Class> students) {
+//        this.students = students;
+//    }
 
-    public Collection<Student_Class> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Collection<Student_Class> students) {
-        this.students = students;
-    }
-
-    public Class(String classId, Subject subject, Teacher teacher, int semester, int studyingYear, Date startingDate, Date endDate, int dayOfWeek, String room, int startingSchoolTime, int endSchoolTime, Collection<Announcement> announcements, Collection<Student_Class> students) {
+    public Class(String classId, Subject subject, Teacher teacher, int semester, int studyingYear, Date classEndDate, Date classStartDate, int classDayOfWeek, String classRoom, int startSchoolTime, int endSchoolTime, Collection<Announcement> announcements, Collection<Student_Class> students) {
         this.classId = classId;
         this.subject = subject;
         this.teacher = teacher;
         this.semester = semester;
         this.studyingYear = studyingYear;
-        this.startingDate = startingDate;
-        this.endDate = endDate;
-        this.dayOfWeek = dayOfWeek;
-        this.room = room;
-        this.startingSchoolTime = startingSchoolTime;
+        this.classEndDate = classEndDate;
+        this.classStartDate = classStartDate;
+        this.classDayOfWeek = classDayOfWeek;
+        this.classRoom = classRoom;
+        this.startSchoolTime = startSchoolTime;
         this.endSchoolTime = endSchoolTime;
-        this.announcements = announcements;
-        this.students = students;
+//        this.announcements = announcements;
+      // this.students = students;
     }
 
     public Class(Class classNew){
@@ -151,11 +147,11 @@ public class Class {
         teacher = classNew.getTeacher();
         semester = classNew.getSemester();
         studyingYear = classNew.getStudyingYear();
-        startingDate = classNew.getStartingDate();
-        endDate = classNew.getEndDate();
-        dayOfWeek = classNew.getDayOfWeek();
-        room = classNew.getRoom();
-        startingSchoolTime = classNew.getStartingSchoolTime();
+        classEndDate = classNew.getClassEndDate();
+        classStartDate = classNew.getClassStartDate();
+        classDayOfWeek = classNew.getClassDayOfWeek();
+        classRoom = classNew.getClassRoom();
+        startSchoolTime = classNew.getStartSchoolTime();
         endSchoolTime = classNew.getEndSchoolTime();
     }
 

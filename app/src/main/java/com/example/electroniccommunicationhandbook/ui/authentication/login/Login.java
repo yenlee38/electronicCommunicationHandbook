@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
 import com.example.electroniccommunicationhandbook.MainActivity;
+import com.example.electroniccommunicationhandbook.MainActivity_parent;
+import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.repository.MainRepository;
 import com.example.electroniccommunicationhandbook.entity.Account;
@@ -104,6 +106,13 @@ public class Login extends AppCompatActivity {
                             Claim subscriptionMetaData = parsedJWT.getClaim("userJsonBase64");
                             String parsedValue = subscriptionMetaData.asString();
 
+                            //Save token
+                            SharedPreferences.Editor prefsEditor = getSharedPreferences(MY_PREFS_FILE, MODE_PRIVATE).edit();
+                            prefsEditor.putString("token",token);
+                            prefsEditor.commit();
+
+                            mainRepository.setToken(token);
+
                             // Receiving side
                             byte[] data = Base64.decode(parsedValue, Base64.DEFAULT);
                             try {
@@ -117,32 +126,32 @@ public class Login extends AppCompatActivity {
                                 userLocalStore.setRoleLocal(role);
                                 if(role==1){
                                     Teacher teacher= gson.fromJson(text, Teacher.class);
-                                    //TODO: save to share preference
                                     userLocalStore.storeTeacher(teacher);
-
+                                    //Go login
+                                    Intent intent= new Intent(getApplicationContext(), MainActivity_teacher.class);
+                                    startActivity(intent);
                                 } else if (role==2){
                                     Student student= gson.fromJson(text, Student.class);
                                     //TODO: save to share preference
                                     userLocalStore.storeStudent(student);
+                                    //Go login
+                                    Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent);
                                 }
                                 else{
                                     Parent parent= gson.fromJson(text, Parent.class);
                                     //TODO: save to share preference
                                     userLocalStore.storeParent(parent);
+                                    //Go login
+                                    Intent intent= new Intent(getApplicationContext(), MainActivity_parent.class);
+                                    startActivity(intent);
                                 }
                              //   Log.e("extract",teacher.getBirthday().toString());
                             } catch (UnsupportedEncodingException | JSONException e) {
                                 e.printStackTrace();
                             }
-                            //Save token
-                            SharedPreferences.Editor prefsEditor = getSharedPreferences(MY_PREFS_FILE, MODE_PRIVATE).edit();
-                            prefsEditor.putString("token",token);
-                            prefsEditor.commit();
 
-                            mainRepository.setToken(token);
-                            //Go login
-                            Intent intent= new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
+
 
                         }
                         else{

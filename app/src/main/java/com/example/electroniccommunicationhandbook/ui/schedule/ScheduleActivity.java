@@ -2,7 +2,6 @@ package com.example.electroniccommunicationhandbook.ui.schedule;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -229,7 +228,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private void sortClassBySchoolTime(List<Class> lClass){ // Sắp xếp lại thứ tự tiết học
         for(int i = 0; i < lClass.size() - 1; i++)
            for(int j = i + 1; j < lClass.size(); j++)
-               if(lClass.get(j).getStartingSchoolTime() < lClass.get(i).getStartingSchoolTime())
+               if(lClass.get(j).getStartSchoolTime() < lClass.get(i).getStartSchoolTime())
                    swapClass(lClass.get(i), lClass.get(j));
     }
 
@@ -241,7 +240,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private int isClassOfDay(Class classNow, int dayOfWeek){ // Kiểm tra class đó có phải là thứ trong tuần mà mình cần tìm hay không
 
-        if(classNow.getDayOfWeek() == dayOfWeek)
+        if(classNow.getClassDayOfWeek() == dayOfWeek)
             return 1;
         return 0;
     }

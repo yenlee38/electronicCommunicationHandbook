@@ -7,7 +7,9 @@ import com.example.electroniccommunicationhandbook.entity.Account;
 import com.example.electroniccommunicationhandbook.entity.Dummy.jwt;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.service.AuthenticateService;
+import com.example.electroniccommunicationhandbook.service.ClassService;
 import com.example.electroniccommunicationhandbook.service.PointService;
+import com.example.electroniccommunicationhandbook.service.RequestPaperService;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -29,6 +31,12 @@ import static com.example.electroniccommunicationhandbook.util.Comon.MY_PREFS_FI
 public  class MainRepository {
    private static MainRepository instance;
    private PointService pointService;
+
+    public RequestPaperService getRequestPaperService() {
+        return requestPaperService;
+    }
+
+    private RequestPaperService requestPaperService;
    private Student student;
    private boolean loginSuccess= false;
    private Retrofit retrofit;
@@ -77,6 +85,21 @@ public  class MainRepository {
 
         authenticateService= retrofit.create(AuthenticateService.class);
         pointService= retrofit.create(PointService.class);
+        requestPaperService=retrofit.create(RequestPaperService.class);
+        classService= retrofit.create(ClassService.class);
+    }
+
+    public ClassService getClassService() {
+        return classService;
+    }
+
+    public void setClassService(ClassService classService) {
+        this.classService = classService;
+    }
+
+    public ClassService classService;
+    public void setRequestPaperService(RequestPaperService requestPaperService) {
+        this.requestPaperService = requestPaperService;
     }
 
 
