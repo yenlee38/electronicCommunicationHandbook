@@ -94,7 +94,6 @@ public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> 
         return pointList.size();
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tvsubject, tvmidtermpoint, tvfinalpoint, tvgrade, tvpass, tvresult;
