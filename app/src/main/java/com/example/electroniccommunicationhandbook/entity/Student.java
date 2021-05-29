@@ -28,10 +28,16 @@ public class Student {
 
     private String gender;
 
+    @SerializedName("studentPhone")
+    @Expose
     private String phone;
 
-    private String address;
+    @SerializedName("studentAddress")
+    @Expose
 
+    private String address;
+    @SerializedName("studentEmail")
+    @Expose
     private String email;
 
     private String image;

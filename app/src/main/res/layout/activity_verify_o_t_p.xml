@@ -142,7 +142,7 @@ Please enter the verification code you received."
 
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_verify"
         android:layout_width="363dp"
         android:layout_height="48dp"

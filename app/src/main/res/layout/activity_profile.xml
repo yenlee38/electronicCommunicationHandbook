@@ -63,7 +63,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Student ID : "
+                    android:text="ID : "
                     android:textSize="16dp"
                     android:textColor="@color/white" />
                 <TextView
@@ -117,13 +117,16 @@
                 android:layout_marginStart="10dp" />
 
             <EditText
-                android:id="@+id/edit_text_email"
+                android:id="@+id/edit_text_email_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:textColor="@color/black"
+                android:text="abc@gmail.com"
                 android:layout_marginTop="4dp"
                 android:hint="leductan12c5@gmail.com"
                 android:layout_marginStart="5dp"
-                android:visibility="invisible"/>
+                android:enabled="false"
+                />
         </LinearLayout>
 
     </LinearLayout>
@@ -154,13 +157,14 @@
                 android:layout_marginStart="10dp" />
 
             <EditText
-                android:id="@+id/edit_text_phone"
+                android:id="@+id/edit_text_phone_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
                 android:hint="0365791309"
                 android:layout_marginStart="5dp"
-                android:visibility="invisible"/>
+                android:enabled="false"
+                />
         </LinearLayout>
 
     </LinearLayout>
@@ -191,13 +195,14 @@
                 android:layout_marginStart="10dp" />
 
             <EditText
-                android:id="@+id/edit_text_address"
+                android:id="@+id/edit_text_address_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
                 android:hint="01 Street 7, Linh Chieu, Thu Duc"
                 android:layout_marginStart="5dp"
-                android:visibility="invisible"/>
+                android:enabled="false"
+                />
         </LinearLayout>
 
     </LinearLayout>

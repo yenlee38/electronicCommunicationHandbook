@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "881921168280",
+    "project_id": "conmunicationhandbook",
+    "storage_bucket": "conmunicationhandbook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881921168280:android:df460390bc863a1bb091ed",
+        "android_client_info": {
+          "package_name": "com.example.electroniccommunicationhandbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881921168280-7tsbocrgh808sml2c0egh7q76lglvn5i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.electroniccommunicationhandbook",
+            "certificate_hash": "6a0819561b674495cb61667cdeaa641238502d2e"
+          }
+        },
+        {
+          "client_id": "881921168280-hisrjrorijhdsjkvvd32oa1l6hp90qpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6HqVqTlDbbPRWpjFtOOm3hVxmtYYAaMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881921168280-hisrjrorijhdsjkvvd32oa1l6hp90qpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
