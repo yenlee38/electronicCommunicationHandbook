@@ -14,10 +14,15 @@ import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.entity.Parent;
+import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 public class ProfileActivity extends AppCompatActivity {
-    PointRepository pointRepository;
+    private int role;
+    private UserLocalStore userLocalStore;
     private ImageView imvBack,imvPhoto;
     private TextView tvID,tvName;
     private AppCompatButton btnUpdateProfile;
@@ -26,6 +31,15 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        userLocalStore = new UserLocalStore(this);
+        imvBack = findViewById(R.id.imv_back);
+        imvPhoto = findViewById(R.id.imv_photo);
+        tvID = findViewById(R.id.tv_student_id);
+        tvName = findViewById(R.id.tv_name);
+        btnUpdateProfile = findViewById(R.id.btn_update_profile);
+        edtEmail =findViewById(R.id.edit_text_email_profile);
+        edtPhone = findViewById(R.id.edit_text_phone_profile);
+        edtAddress = findViewById(R.id.edit_text_address_profile);
         loadData();
 
         imvBack.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void loadData() {
+
         imvBack = findViewById(R.id.imv_back);
         imvPhoto = findViewById(R.id.imv_photo);
         tvID = findViewById(R.id.tv_student_id);
@@ -66,6 +81,31 @@ public class ProfileActivity extends AppCompatActivity {
         edtEmail =findViewById(R.id.edit_text_email);
         edtPhone = findViewById(R.id.edit_text_phone);
         edtAddress = findViewById(R.id.edit_text_address);
+
+
+        if(userLocalStore.getRoleLocal()==1){
+            Teacher teacher = userLocalStore.getTeacherLocal();
+            tvName.setText(teacher.getName());
+            tvID.setText("Không");
+            edtEmail.setText(teacher.getEmail());
+            edtPhone.setText(teacher.getPhone());
+            edtAddress.setText(teacher.getAddress());
+        }else if (userLocalStore.getRoleLocal()==2){
+            Student student = userLocalStore.getStudentLocal();
+            tvName.setText(student.getName());
+            tvID.setText(student.getStudentId());
+            edtEmail.setText(student.getEmail());
+            edtPhone.setText(student.getPhone());
+            edtAddress.setText(student.getAddress());
+        }else{
+            Parent parent = new Parent();
+            tvName.setText(parent.getName());
+            tvID.setText("Không");
+            edtEmail.setText(parent.getEmail());
+            edtPhone.setText(parent.getPhone());
+            edtAddress.setText(parent.getAddress());
+        }
+
 
     }
 
