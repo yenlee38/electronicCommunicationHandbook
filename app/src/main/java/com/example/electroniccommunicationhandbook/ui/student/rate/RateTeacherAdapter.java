@@ -1,6 +1,8 @@
 package com.example.electroniccommunicationhandbook.ui.student.rate;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,23 +49,22 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
     @Override
     public void onBindViewHolder(@NonNull RateTeacherViewHolder holder, int position) {
 
+        try {
 
-        try{
             holder.getTv_name_teacher_rate().setText(mClass.get(position).get_class().getTeacher().getName());
             holder.getTv_name_subject_rate().setText(mClass.get(position).get_class().getSubject().getName());
             int rate = mClass.get(position).getRating();
-            if(rate == 0){
+            holder.setChangeBtnRate(rate, holder.itemView);
 
-            }
-            else{}
-        }
-        catch(Exception ex){}
+        }catch (Exception ex){}
 
         holder.getBtn_rate().setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("student_class_object", mClass.get(position));
                 RateDetailFragment myFragment = new RateDetailFragment();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.layout_rate_teacher, myFragment).addToBackStack(null).commit();
 
@@ -135,15 +136,18 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
             return img_avatar;
         }
 
-        public void setBtnRate(int rate){
-            AppCompatActivity activity = new AppCompatActivity();
+        public void setChangeBtnRate(int rate, View v){
+            AppCompatActivity activity = (AppCompatActivity) itemView.getContext();
             if(rate == 0)
             {
-                btn_rate.setBackground(activity.getDrawable(R.drawable.border_btn_not_rate));
+                getTv_status_rate().setText(activity.getString(R.string.not_yet_rated));
+                getBtn_rate().setBackground(activity.getDrawable(R.drawable.border_btn_rate));
+                getTv_status_rate().setTextColor(activity.getColor(R.color.color_text_status_not_rate));
             }
             else{
-
-              btn_rate.setBackground(activity.getDrawable(R.drawable.border_btn_rate));
+                getTv_status_rate().setText(activity.getString(R.string.rated));
+                getBtn_rate().setBackground(activity.getDrawable(R.drawable.border_btn_not_rate));
+                getTv_status_rate().setTextColor(activity.getColor(R.color.color_text_status_rate));
             }
         }
     }

@@ -27,7 +27,12 @@
     <string name="reset_password">Reset Password</string>
     <string name="title_activity_notification">NotificationActivity</string>
     <string name="notification">Notification</string>
+<<<<<<< HEAD
     <string name="title_activity_try">TryActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+=======
+    <string name="not_yet_rated">Not Yet Rated</string>
+    <string name="rated">Rated</string>
+>>>>>>> b93f9fe (test)
 </resources>

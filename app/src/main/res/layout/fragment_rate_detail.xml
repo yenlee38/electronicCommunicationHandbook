@@ -101,32 +101,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical">
-            <TextView
-                android:id="@+id/tv_rate_1"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_rate_1"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_round_star_rate"/>
 
-            <TextView
-                android:id="@+id/tv_rate_2"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_rate_2"
                 android:layout_width="53dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_round_star_rate" />
 
-            <TextView
-                android:id="@+id/tv_rate_3"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_rate_3"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_round_star_rate"/>
 
-            <TextView
-                android:id="@+id/tv_rate_4"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_rate_4"
                 android:layout_width="53dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_round_star_not_rate" />
 
-            <TextView
-                android:id="@+id/tv_rate_5"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_rate_5"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_round_star_not_rate"/>
@@ -151,6 +151,7 @@
             android:text="Opinion"/>
 
         <EditText
+            android:id="@+id/edt_comment"
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
