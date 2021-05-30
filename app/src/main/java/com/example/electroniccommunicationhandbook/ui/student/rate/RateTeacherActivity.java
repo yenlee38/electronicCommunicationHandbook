@@ -50,7 +50,8 @@ public class RateTeacherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_teacher);
         initView();
-        setRecyclerView();
+        SEMESTER = 1;
+        setListRate();
         setListStudyingYear();
 
     }

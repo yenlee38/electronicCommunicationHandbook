@@ -80,12 +80,12 @@ public class RateDetailFragment extends Fragment {
         if (student_class.getComment() != null) edt_comment.setText(student_class.getComment());
         setRateButton();
 
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+//        img_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
 
         btn_rate_1.setOnClickListener(new View.OnClickListener() {
             @Override

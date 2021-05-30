@@ -68,6 +68,8 @@ public class ScheduleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
         initView();
+        SEMESTER = 1;
+        DAY = 1;
         setlSchoolTime();
         setListStudyingYear();
 
