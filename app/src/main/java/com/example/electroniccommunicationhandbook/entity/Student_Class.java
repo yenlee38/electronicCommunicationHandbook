@@ -6,6 +6,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.sql.Time;
 
@@ -14,11 +17,10 @@ import java.util.Date;
 public class Student_Class implements Serializable {
 
     private  StudentClassId studentClassId;
-
-
-    private String studentId;
-
-    private String classId;
+//
+//    private String studentId;
+//
+//    private String classId;
 
     private float middleMark;
 
@@ -28,7 +30,7 @@ public class Student_Class implements Serializable {
 
     private String comment;
 
-    private Date CreateDate;
+    private Date createDate;
 
     private Class _class;
 
@@ -50,22 +52,22 @@ public class Student_Class implements Serializable {
         this.student = student;
     }
 
-    @NonNull
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(@NonNull String studentId) {
-        this.studentId = studentId;
-    }
-
-    public String getClassId() {
-        return classId;
-    }
-
-    public void setClassId(String classId) {
-        this.classId = classId;
-    }
+//    @NonNull
+//    public String getStudentId() {
+//        return studentId;
+//    }
+//
+//    public void setStudentId(@NonNull String studentId) {
+//        this.studentId = studentId;
+//    }
+//
+//    public String getClassId() {
+//        return classId;
+//    }
+//
+//    public void setClassId(String classId) {
+//        this.classId = classId;
+//    }
 
     public float getMiddleMark() {
         return middleMark;
@@ -100,11 +102,11 @@ public class Student_Class implements Serializable {
     }
 
     public Date getCreateDate() {
-        return CreateDate;
+        return createDate;
     }
 
     public void setCreateDate(Date createDate) {
-        CreateDate = createDate;
+        createDate = createDate;
     }
 
     public StudentClassId getStudentClassId() {
@@ -115,36 +117,42 @@ public class Student_Class implements Serializable {
         this.studentClassId = studentClassId;
     }
 
-    public Student_Class(@NonNull String studentId, String classId, float middleMark, float finalMark, int rating, String comment, Date createDate) {
-        this.studentId = studentId;
-        this.classId = classId;
-        this.middleMark = middleMark;
-        this.finalMark = finalMark;
+    public Student_Class(StudentClassId studentClassId, int rating, String comment) {
+        this.studentClassId = studentClassId;
         this.rating = rating;
         this.comment = comment;
-        CreateDate = createDate;
     }
+
+    //    public Student_Class(@NonNull String studentId, String classId, float middleMark, float finalMark, int rating, String comment, Date createDate) {
+//        this.studentId = studentId;
+//        this.classId = classId;
+//        this.middleMark = middleMark;
+//        this.finalMark = finalMark;
+//        this.rating = rating;
+//        this.comment = comment;
+//        createDate = createDate;
+//    }
 
     public Student_Class() {
 
-        this.studentId = "studentId";
-        this.classId = "classId";
-        this.middleMark = 5;
-        this.finalMark = 10;
-        this.rating = 2;
-        this.comment = "comment";
-        CreateDate = new Date();
+//        this.studentId = "studentId";
+//        this.classId = "classId";
+//        this.middleMark = 5;
+//        this.finalMark = 10;
+//        this.rating = 2;
+//        this.comment = "comment";
+//        createDate = new Date();
     }
-    public Student_Class(@NonNull String studentId, String classId,
-                         float middleMark, float finalMark, int rating, String comment, Date createDate,
-                         Student student) {
-        this.studentId = studentId;
-        this.classId = classId;
-        this.middleMark = middleMark;
-        this.finalMark = finalMark;
-        this.rating = rating;
-        this.comment = comment;
-        this.student=student;
-        CreateDate = createDate;
-    }
+//    public Student_Class(@NonNull String studentId, String classId,
+//                         float middleMark, float finalMark, int rating, String comment, Date createDate,
+//                         Student student) {
+//        this.studentId = studentId;
+//        this.classId = classId;
+//        this.middleMark = middleMark;
+//        this.finalMark = finalMark;
+//        this.rating = rating;
+//        this.comment = comment;
+//        this.student=student;
+//        createDate = createDate;
+//    }
 }

@@ -9,12 +9,17 @@ import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.service.StudentService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -25,6 +30,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StudentRepository {
@@ -103,7 +109,16 @@ public class StudentRepository {
             }
         }).build();
 
-        studentService = new retrofit2.Retrofit.Builder()
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Student_Class.class, new JsonSerializer<Student_Class>() {
+                    @Override
+                    public JsonElement serialize(Student_Class src, Type typeOfSrc, JsonSerializationContext context) {
+                        return context.serialize(src, src.getClass());
+                    }
+                })
+                .create();
+
+        studentService = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -252,6 +267,42 @@ public class StudentRepository {
                 });
 
         return studentClassResponseLiveData;
+    }
+
+    public void updateStudentClass(Student_Class student_class){
+        Log.e("update :" ,"vao");
+        studentService.updateStudentClass(student_class).enqueue(new Callback<Student_Class>() {
+            @Override
+            public void onResponse(Call<Student_Class> call, Response<Student_Class> response) {
+                if (response.isSuccessful()){
+                    Log.e("update:" , response.body().getRating() +" " + response.body().getComment());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student_Class> call, Throwable t) {
+                Log.e("update fail:" , t.toString());
+            }
+        });
+    }
+
+    public void updateStudentClassById(Student_Class student_class, String studentId, String classId){
+        Log.e("update :" ,"vao");
+        studentService.updateStudentClassById(student_class, studentId, classId).enqueue(new Callback<Student_Class>() {
+            @Override
+            public void onResponse(Call<Student_Class> call, Response<Student_Class> response) {
+                if (response.isSuccessful()){
+                    Log.e("update:", "vao reponse");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student_Class> call, Throwable t) {
+                Log.e("update fail:" , t.toString());
+            }
+        });
     }
 
 

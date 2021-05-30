@@ -62,7 +62,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
         }
 
         if(mClassOfDay.get(position).getClassRoom() != null){
-            holder.getTv_end_room().setText(mClassOfDay.get(position).getClassRoom());
+            holder.getTv_room_name().setText(mClassOfDay.get(position).getClassRoom());
         }
 
 
