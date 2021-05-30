@@ -115,11 +115,11 @@ public class Class {
         this.endSchoolTime = endSchoolTime;
     }
 
-    public int getStartingSchoolTime() {
+    public int getStartSchoolTime() {
         return startingSchoolTime;
     }
 
-    public void setStartingSchoolTime(int startingSchoolTime) {
+    public void setStartSchoolTime(int startingSchoolTime) {
         this.startingSchoolTime = startingSchoolTime;
     }
 

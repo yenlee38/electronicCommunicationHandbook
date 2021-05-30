@@ -41,7 +41,6 @@ public class FeeViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int role= userLocalStore.getRoleLocal();
-                if(role==1){
                     if(role==3){
                         Intent intent= new Intent(getApplicationContext(), MainActivity_parent.class);
                         startActivity(intent);
@@ -52,7 +51,7 @@ public class FeeViewActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
 
-                }
+
             }
         });
 

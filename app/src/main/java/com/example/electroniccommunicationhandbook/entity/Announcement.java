@@ -4,11 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-<<<<<<< HEAD
-=======
 import com.google.gson.annotations.Expose;
->>>>>>> 4cb0dcd... view fee and notification
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
