@@ -77,7 +77,8 @@ public class ScheduleActivity extends AppCompatActivity {
         List<StudyingYear> yearList = new ArrayList<StudyingYear>();
         for(int i = 2018; i < 2025; i++) // create year from 2018 to 2025
             yearList.add(new StudyingYear(i));
-        ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(getApplicationContext(), android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
+        ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(getApplicationContext(),
+                android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
         sp_year.setAdapter(adapter);
         sp_year.setSelection(3); // set studying
         sp_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

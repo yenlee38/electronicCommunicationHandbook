@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
@@ -12,6 +12,8 @@ import java.util.List;
 
 public class Announcement {
 
+    @SerializedName("announcementID")
+    @Expose
     private int announcementId;
     private Teacher sender;
     @SerializedName("_Class")

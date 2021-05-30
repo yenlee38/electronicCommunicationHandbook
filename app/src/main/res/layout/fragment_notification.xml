@@ -7,17 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.student.notification.ui.main.PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/section_label"
+    <androidx.recyclerview.widget.RecyclerView
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:id="@+id/recyleviewNotification"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit1"
+        style="@style/SpinKitView.Large.Circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_gravity="center_horizontal"
+        app:SpinKit_Color="@color/blue_pastel_500"
+        app:layout_constraintBottom_toBottomOf="@+id/recyleviewNotification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyleviewNotification"
+        app:layout_constraintVertical_bias="0.362" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

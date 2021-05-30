@@ -4,11 +4,15 @@ import com.example.electroniccommunicationhandbook.entity.Announcement;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface AnnouncementService {
 
     @GET("/announcement/{id}")
-    public ArrayList<Announcement> findById(@Path("id") int id);
+    Call< ArrayList<Announcement>> findById(@Path("id") int id);
+
+    @GET("/announcement/studentId/{studentId}")
+    Call<ArrayList<Announcement>> findByStudentId(@Path("studentId") String studentId);
 }

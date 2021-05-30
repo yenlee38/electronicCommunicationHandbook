@@ -21,6 +21,8 @@ import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 
 
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
+import com.example.electroniccommunicationhandbook.ui.student.fee.FeeViewActivity;
+import com.example.electroniccommunicationhandbook.ui.student.notification.NotificationActivity;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
 
@@ -60,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
     private AppCompatButton btn_request;
-
+    private AppCompatButton btn_notification;
+    private AppCompatButton btn_fee;
     private AppCompatButton btn_logout;
 
     private AppCompatButton btn_point;
@@ -88,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         btn_point = findViewById(R.id.btn_points);
         btnMessage = findViewById(R.id.btn_message);
         btn_request= findViewById(R.id.btn_request);
+        btn_notification= findViewById(R.id.btn_notification);
+        btn_fee= findViewById(R.id.btn_fee);
 
         btn_student_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,5 +159,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btn_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+         btn_fee.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent= new Intent(getApplicationContext(), FeeViewActivity.class);
+                 startActivity(intent);
+             }
+         });
     }
 }

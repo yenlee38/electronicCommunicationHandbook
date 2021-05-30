@@ -73,7 +73,7 @@ public class MainMessage extends AppCompatActivity {
                 break;
         }
 
-        Log.e("Account", String.valueOf(user.getTeacherLocal().getName()));
+      //  Log.e("Account", String.valueOf(user.getTeacherLocal().getName()));
 
 
         //set for testing

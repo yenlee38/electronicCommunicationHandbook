@@ -10,13 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.entity.FeeInfor;
 
 import java.util.ArrayList;
 
 public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
 
-    Context context;
+    private ArrayList<FeeInfor> feeInfors;
 
+    public FeeAdapter(ArrayList<FeeInfor> feeInfors) {
+        this.feeInfors= new ArrayList<>();
+        this.feeInfors = feeInfors;
+    }
 
     @NonNull
     @Override
@@ -32,16 +37,19 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.tvSubjectCredit.setText("3"+"tc");
-       // holder.tvSubjectFee.setText(String.valueOf( fee.getFee()));
-        holder.tvSubjectname.setText("Lập trình di động");
 
+        FeeInfor feeInfor= new FeeInfor();
+        feeInfor= feeInfors.get(position);
+        holder.tvSubjectCredit.setText(feeInfor.getNumberCredit()+"TC");
+       // holder.tvSubjectFee.setText(String.valueOf( fee.getFee()));
+        holder.tvSubjectname.setText(feeInfor.getSubjectName());
+        holder.tvSubjectFee.setText(feeInfor.getTotalFee()+" VND");
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return feeInfors.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
