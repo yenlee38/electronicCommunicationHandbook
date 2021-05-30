@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Date;
 
 public class Class {
-    @SerializedName("class_id")
+    @SerializedName("classId")
     private String classId;
     private Subject subject;
     private Teacher teacher;
@@ -17,7 +17,7 @@ public class Class {
     private Date classStartDate;
     private int classDayOfWeek;
     private String classRoom;
-    private int startingSchoolTime;
+    private int startSchoolTime;
     private int endSchoolTime;
 //    private Collection<Announcement> announcements;
     //  private Collection<Student_Class>  students;
@@ -116,14 +116,16 @@ public class Class {
     }
 
     public int getStartSchoolTime() {
-        return startingSchoolTime;
+
+        return startSchoolTime;
     }
 
-    public void setStartSchoolTime(int startingSchoolTime) {
-        this.startingSchoolTime = startingSchoolTime;
+    public void setStartSchoolTime(int startSchoolTime) {
+        this.startSchoolTime = startSchoolTime;
     }
 
-    //<<<<<<< HEAD
+
+//<<<<<<< HEAD
 ////    public Collection<Announcement> getAnnouncements() {
 ////        return announcements;
 ////    }
@@ -183,7 +185,7 @@ public class Class {
         this.classStartDate = classStartDate;
         this.classDayOfWeek = classDayOfWeek;
         this.classRoom = classRoom;
-        this.startingSchoolTime = startingSchoolTime;
+        this.startSchoolTime = startingSchoolTime;
         this.endSchoolTime = endSchoolTime;
     }
 

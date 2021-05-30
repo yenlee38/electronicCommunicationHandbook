@@ -41,9 +41,9 @@ public class Teacher implements Serializable {
 
     private Account account;
 
-    private Collection<Announcement> announcements;
-
-    private Collection<Class> classes;
+//    private Collection<Announcement> announcements;
+//
+//    private Collection<Class> classes;
 
     public String getTeacherID() {
         return teacherID;
@@ -125,21 +125,21 @@ public class Teacher implements Serializable {
         this.account = account;
     }
 
-    public Collection<Announcement> getAnnouncements() {
-        return announcements;
-    }
-
-    public void setAnnouncements(Collection<Announcement> announcements) {
-        this.announcements = announcements;
-    }
-
-    public Collection<Class> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(Collection<Class> classes) {
-        this.classes = classes;
-    }
+//    public Collection<Announcement> getAnnouncements() {
+//        return announcements;
+//    }
+//
+//    public void setAnnouncements(Collection<Announcement> announcements) {
+//        this.announcements = announcements;
+//    }
+//
+//    public Collection<Class> getClasses() {
+//        return classes;
+//    }
+//
+//    public void setClasses(Collection<Class> classes) {
+//        this.classes = classes;
+//    }
 
 
     public Teacher(String teacherID, String name, Date birthday, String degree, String phone, String gender, String address, String email, String image, Account account, Collection<Announcement> announcements, Collection<Class> classes) {
@@ -154,8 +154,8 @@ public class Teacher implements Serializable {
         this.email = email;
         this.image = image;
         this.account = account;
-        this.announcements = announcements;
-        this.classes = classes;
+//        this.announcements = announcements;
+//        this.classes = classes;
     }
 
     public Teacher() {

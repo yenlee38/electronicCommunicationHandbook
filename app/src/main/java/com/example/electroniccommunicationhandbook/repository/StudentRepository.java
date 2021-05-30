@@ -254,6 +254,42 @@ public class StudentRepository {
         return studentClassResponseLiveData;
     }
 
+    public void updateStudentClass(Student_Class student_class){
+        Log.e("update :" ,"vao");
+        studentService.updateStudentClass(student_class).enqueue(new Callback<Student_Class>() {
+            @Override
+            public void onResponse(Call<Student_Class> call, Response<Student_Class> response) {
+                if (response.isSuccessful()){
+                    Log.e("update:" , response.body().getRating() +" " + response.body().getComment());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student_Class> call, Throwable t) {
+                Log.e("update fail:" , t.toString());
+            }
+        });
+    }
+
+    public void updateStudentClassById(Student_Class student_class, String studentId, String classId){
+        Log.e("update :" ,"vao");
+        studentService.updateStudentClassById(student_class, studentId, classId).enqueue(new Callback<Student_Class>() {
+            @Override
+            public void onResponse(Call<Student_Class> call, Response<Student_Class> response) {
+                if (response.isSuccessful()){
+                    Log.e("update:", "vao reponse");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student_Class> call, Throwable t) {
+                Log.e("update fail:" , t.toString());
+            }
+        });
+    }
+
 
 
     public MutableLiveData<ArrayList<Class>> getClassResponseLiveData() {

@@ -57,10 +57,10 @@ public class CardActivity  extends AppCompatActivity {
 
     private void setValueForCard(){
         tv_student_id.setText(student.getStudentId());
-        if(student.getName() != null){ tv_name.setText(student.getName());}
-        if(student.getMajor() != null){ tv_major.setText(student.getMajor());}
-        if(student.getYear() != null){ tv_year_studying.setText(student.getYear());}
-        if(student.getBankSeri() != null){tv_bank_seri.setText(student.getBankSeri());}
+//        if(student.getName() != null){ tv_name.setText(student.getName());}
+//        if(student.getMajor() != null){ tv_major.setText(student.getMajor());}
+//        if(student.getYear() != null){ tv_year_studying.setText(student.getYear());}
+//        if(student.getBankSeri() != null){tv_bank_seri.setText(student.getBankSeri());}
 
     }
 

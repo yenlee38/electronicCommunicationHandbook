@@ -6,6 +6,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.sql.Time;
 
@@ -15,7 +18,6 @@ public class Student_Class implements Serializable {
 
     private  StudentClassId studentClassId;
 
-
     private String studentId;
 
     private String classId;
@@ -24,11 +26,13 @@ public class Student_Class implements Serializable {
 
     private float finalMark;
 
+    @SerializedName("Rating")
     private int rating;
 
+    @SerializedName("Comment")
     private String comment;
 
-    private Date CreateDate;
+    private Date createDate;
 
     private Class _class;
 
@@ -100,11 +104,11 @@ public class Student_Class implements Serializable {
     }
 
     public Date getCreateDate() {
-        return CreateDate;
+        return createDate;
     }
 
     public void setCreateDate(Date createDate) {
-        CreateDate = createDate;
+        createDate = createDate;
     }
 
     public StudentClassId getStudentClassId() {
@@ -122,7 +126,7 @@ public class Student_Class implements Serializable {
         this.finalMark = finalMark;
         this.rating = rating;
         this.comment = comment;
-        CreateDate = createDate;
+        createDate = createDate;
     }
 
     public Student_Class() {
@@ -133,7 +137,7 @@ public class Student_Class implements Serializable {
         this.finalMark = 10;
         this.rating = 2;
         this.comment = "comment";
-        CreateDate = new Date();
+        createDate = new Date();
     }
     public Student_Class(@NonNull String studentId, String classId,
                          float middleMark, float finalMark, int rating, String comment, Date createDate,
@@ -145,6 +149,6 @@ public class Student_Class implements Serializable {
         this.rating = rating;
         this.comment = comment;
         this.student=student;
-        CreateDate = createDate;
+        createDate = createDate;
     }
 }

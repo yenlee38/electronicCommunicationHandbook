@@ -69,6 +69,7 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("student_class_object", mClass.get(position));
                 RateDetailFragment myFragment = new RateDetailFragment();
+                myFragment.setArguments(bundle);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.layout_rate_teacher, myFragment).addToBackStack(null).commit();
 
 
