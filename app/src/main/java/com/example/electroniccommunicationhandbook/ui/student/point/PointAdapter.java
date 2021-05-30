@@ -58,7 +58,9 @@ public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> 
         float result;
         String grade= "";
 
-        result=( point.getFinalMark()+ point.getMiddleMark())/ point.get_class().getSubject().getNumberOfCredit();
+        result=( point.getFinalMark()+ point.getMiddleMark())/ 2;
+        float roundOff = Math.round(result*100)/100;
+
         grade= ClassifyGrade(result);
         holder.tvresult.setText(String.valueOf(result));
         holder.tvgrade.setText(grade);
@@ -85,7 +87,7 @@ public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> 
         if(result>=5 & result<7) grade="D";
         if(result>=7 & result<8) grade="C" ;
         if(result>=8 &result<9)  grade="B";
-        if(result>=10) grade= "A";
+        if(result>=9) grade= "A";
         return  grade;
     }
 

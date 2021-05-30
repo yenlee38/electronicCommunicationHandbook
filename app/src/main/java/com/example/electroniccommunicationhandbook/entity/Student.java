@@ -36,12 +36,14 @@ public class Student implements Serializable {
 
     @SerializedName("studentAddress")
     @Expose
-
     private String address;
+
     @SerializedName("studentEmail")
     @Expose
     private String email;
 
+    @SerializedName("studentImage")
+    @Expose
     private String image;
 
     private String bankSeri;

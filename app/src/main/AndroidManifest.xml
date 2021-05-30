@@ -11,16 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectronicCommunicationHandbook">
+
         <activity android:name=".ViewStudentProfile"></activity>
         <activity android:name=".ui.teacher.list_class.StudentInClass" />
         <activity android:name=".ui.message.MainMessage">
 
         </activity>
         <activity android:name=".ui.message.detail_message"/>
-        <activity
-            android:name=".ui.student.notification.TryActivity"
-            android:label="@string/title_activity_try"
-            android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar"></activity>
+
+        <activity android:name=".ui.teacher.off_request.OffRequestActivity" />
+        <activity android:name=".ui.teacher.notification.TeacherNotificationActivity" />
         <activity android:name=".ui.authentication.login.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.student.ConfirmationRequest.ConfirmationRequestActivity" />
+
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.schedule.ScheduleActivity" />
         <activity android:name=".ui.student.rate.RateTeacherActivity" />
@@ -56,6 +57,10 @@
             android:theme="@style/Theme.ElectronicCommunicationHandbook.NoActionBar" />
         <activity android:name=".ui.teacher.list_class.ListClass" />
         <activity android:name=".MainActivity_parent" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
