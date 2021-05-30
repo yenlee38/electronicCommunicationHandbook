@@ -1,6 +1,5 @@
 package com.example.electroniccommunicationhandbook.ui.teacher.list_class;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
-import com.example.electroniccommunicationhandbook.entity.Subject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.ClassesViewHolder> {
     ArrayList<Class> data;

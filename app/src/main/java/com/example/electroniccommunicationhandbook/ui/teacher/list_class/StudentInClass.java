@@ -12,9 +12,7 @@ import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class StudentInClass extends AppCompatActivity {

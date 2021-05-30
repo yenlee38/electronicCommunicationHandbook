@@ -6,7 +6,9 @@ import java.util.Collection;
 import java.util.Date;
 
 public class Class {
+
     @SerializedName("classId")
+
     private String classId;
     private Subject subject;
     private Teacher teacher;

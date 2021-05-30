@@ -2,8 +2,6 @@ package com.example.electroniccommunicationhandbook.ui.student.point;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +14,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
-import com.example.electroniccommunicationhandbook.entity.Point;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> {
 

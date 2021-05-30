@@ -23,18 +23,18 @@ public class Teacher implements Serializable {
 
     private String degree;
 
-    @SerializedName("teacherPhone")
-    @Expose
+//    @SerializedName("teacherPhone")
+//    @Expose
     private String phone;
 
     private String gender;
 
-    @SerializedName("teacherAddress")
-    @Expose
+//    @SerializedName("teacherAddress")
+//    @Expose
     private String address;
 
-    @SerializedName("teacherEmail")
-    @Expose
+//    @SerializedName("teacherEmail")
+//    @Expose
     private String email;
 
     private String image;

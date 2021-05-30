@@ -1,7 +1,5 @@
 package com.example.electroniccommunicationhandbook.ui.student.rate;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -13,17 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
-import com.example.electroniccommunicationhandbook.entity.Class;
-import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
-import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClassAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.RateTeacherViewHolder> {
 

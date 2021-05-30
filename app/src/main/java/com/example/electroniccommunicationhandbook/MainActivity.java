@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
-import com.example.electroniccommunicationhandbook.dao.StudentDAO;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
-import com.example.electroniccommunicationhandbook.service.StudentService;
 import com.example.electroniccommunicationhandbook.ui.message.MainMessage;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 
@@ -31,18 +29,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
-import com.example.electroniccommunicationhandbook.entity.Class;
-import com.example.electroniccommunicationhandbook.entity.Student;
-import com.example.electroniccommunicationhandbook.entity.Student_Class;
-import com.example.electroniccommunicationhandbook.repository.MainRepository;
-import com.example.electroniccommunicationhandbook.repository.PointRepository;
-import com.example.electroniccommunicationhandbook.service.PointService;
-
-import java.util.List;
-
-import retrofit2.Call;
-
-import static com.example.electroniccommunicationhandbook.util.Comon.MY_PREFS_FILE;
 
 public class MainActivity extends AppCompatActivity {
 
