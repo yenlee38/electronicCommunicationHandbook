@@ -184,7 +184,10 @@
         android:textSize="30dp"
         android:lineSpacingExtra="10dp"
         android:textStyle="bold"
-        android:textAllCaps="true"
+        android:textColor="@color/gray_primary"
+       android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+
        />
 
     <LinearLayout

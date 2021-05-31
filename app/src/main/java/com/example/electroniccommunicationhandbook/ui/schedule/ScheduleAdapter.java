@@ -53,13 +53,15 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
             holder.getTv_subject_name().setText(mClassOfDay.get(position).getSubject().getName());
         }
 
-        if(mClassOfDay.get(position).getStartSchoolTime() != 0){
-            holder.getTv_start_room().setText(getTime(mClassOfDay.get(position).getStartSchoolTime()).getStartingTime());
-        }
+        try{
+            if(mClassOfDay.get(position).getStartSchoolTime() != 0){
+                holder.getTv_start_room().setText(getTime(mClassOfDay.get(position).getStartSchoolTime()).getStartingTime());
+            }
 
-        if(mClassOfDay.get(position).getEndSchoolTime() != 0){
-            holder.getTv_end_room().setText(getTime(mClassOfDay.get(position).getEndSchoolTime()).getEndTime());
-        }
+            if(mClassOfDay.get(position).getEndSchoolTime() != 0){
+                holder.getTv_end_room().setText(getTime(mClassOfDay.get(position).getEndSchoolTime()).getEndTime());
+            }
+        }catch (Exception ex){}
 
         if(mClassOfDay.get(position).getClassRoom() != null){
             holder.getTv_room_name().setText(mClassOfDay.get(position).getClassRoom());

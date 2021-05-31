@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
+import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
 import com.example.electroniccommunicationhandbook.ui.message.MainMessage;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
@@ -29,6 +30,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
+
+import java.time.Year;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
     private AppCompatButton btn_logout;
 
     private AppCompatButton btn_point;
-
+    private TextView tv_username;
+    UserLocalStore userLocalStore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.hoang);
         btn_request = findViewById(R.id.btn_request);
         pointService = PointRepository.getInstance(getApplication());
-
-
+        userLocalStore = new UserLocalStore(getApplicationContext());
+        Student student = new Student();
+       try{ student = userLocalStore.getStudentLocal();
+       tv_username.setText(student.getName());}
+       catch (Exception ex){}
     }
 
 
@@ -79,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         btn_request= findViewById(R.id.btn_request);
         btn_notification= findViewById(R.id.btn_notification);
         btn_fee= findViewById(R.id.btn_fee);
+        tv_username = findViewById(R.id.tv_username);
+
 
         btn_student_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +104,12 @@ public class MainActivity extends AppCompatActivity {
         btn_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RateTeacherActivity.class);
+                RateTeacherActivity rateTeacherActivity = new RateTeacherActivity();
+                rateTeacherActivity.YEAR = Year.now().getValue();
+                if(Calendar.getInstance().MONTH < 9)
+                    rateTeacherActivity.SEMESTER = 2;
+                else rateTeacherActivity.SEMESTER = 1;
+                Intent intent = new Intent(getApplicationContext(), rateTeacherActivity.getClass());
                 startActivity(intent);
                 //setContentView(R.layout.activity_rate_teacher);
 
@@ -103,7 +119,13 @@ public class MainActivity extends AppCompatActivity {
         btn_schedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ScheduleActivity.class);
+                ScheduleActivity scheduleActivity = new ScheduleActivity();
+                scheduleActivity.YEAR = Year.now().getValue();
+                scheduleActivity.DAY = Calendar.getInstance().DAY_OF_WEEK;
+                if(Calendar.getInstance().MONTH < 9)
+                    scheduleActivity.SEMESTER = 2;
+                else scheduleActivity.SEMESTER = 1;
+                Intent intent = new Intent(getApplicationContext(), scheduleActivity.getClass());
                 startActivity(intent);
                 // setContentView(R.layout.activity_schedule);
 
