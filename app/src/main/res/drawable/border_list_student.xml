@@ -3,6 +3,6 @@
     <corners android:radius="@dimen/border_radius_max" />
 
     <stroke
-        android:width="2dp"
-        android:color="@color/grey_150" />
+        android:width="3dp"
+        android:color="@color/litte_gray" />
 </shape>

@@ -58,53 +58,51 @@ public class Login extends AppCompatActivity {
     RadioButton radTeacher, radParent, radStudent;
 
     private MainRepository mainRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        this.context= this;
-        role=1;
+        this.context = this;
+        role = 1;
 
-        userLocalStore= new UserLocalStore(context);
+        userLocalStore = new UserLocalStore(context);
         mainRepository = mainRepository.getInstance();
 
-        login= findViewById(R.id.btn_login);
-        edtUserName= findViewById(R.id.edtUserName_Login);
-        edtPassword= findViewById(R.id.edtPassword_Login);
-        radParent= findViewById(R.id.rad_log_parent);
-        radTeacher=findViewById(R.id.rad_log_teacher);
-        radStudent= findViewById(R.id.rad_log_student);
+        login = findViewById(R.id.btn_login);
+        edtUserName = findViewById(R.id.edtUserName_Login);
+        edtPassword = findViewById(R.id.edtPassword_Login);
+        radParent = findViewById(R.id.rad_log_parent);
+        radTeacher = findViewById(R.id.rad_log_teacher);
+        radStudent = findViewById(R.id.rad_log_student);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: check Type login in radio button
 
-                if(radTeacher.isChecked()){
-                    role=1;
+                if (radTeacher.isChecked()) {
+                    role = 1;
 
-                }
-                else if (radStudent.isChecked()){
-                    role=2;
+                } else if (radStudent.isChecked()) {
+                    role = 2;
 
-                }
-                else{
-                    role=3;
+                } else {
+                    role = 3;
 
                 }
 
                 userLocalStore.clearUser();
                 userLocalStore.setRoleLocal(role);
 
-                Account account = new Account(edtUserName.getText().toString(),edtPassword.getText().toString());
+                Account account = new Account(edtUserName.getText().toString(), edtPassword.getText().toString());
 
                 mainRepository.getAuthenticateService().login(account, role).enqueue(new Callback<jwt>() {
                     @Override
                     public void onResponse(Call<jwt> call, Response<jwt> auth) {
 
-                        if(auth.isSuccessful()){
-                            Log.e("token",auth.body().getJwt()  );
-                            String token=auth.body().getJwt();
+                        if (auth.isSuccessful()) {
+                            String token = auth.body().getJwt();
                             //Get part include user information in token
                             JWT parsedJWT = new JWT(token);
                             Claim subscriptionMetaData = parsedJWT.getClaim("userJsonBase64");
@@ -112,7 +110,7 @@ public class Login extends AppCompatActivity {
 
                             //Save token
                             SharedPreferences.Editor prefsEditor = getSharedPreferences(MY_PREFS_FILE, MODE_PRIVATE).edit();
-                            prefsEditor.putString("token",token);
+                            prefsEditor.putString("token", token);
                             prefsEditor.commit();
 
                             mainRepository.setToken(token);
@@ -122,53 +120,44 @@ public class Login extends AppCompatActivity {
                             try {
                                 //Convert from base64 to String json
                                 String text = new String(data, "UTF-8");
-                                JSONObject jsonObject= new JSONObject(text);
-                                Log.e("Object",jsonObject.toString());
+                                JSONObject jsonObject = new JSONObject(text);
                                 //Convert Json to object
-                                Gson gson= new GsonBuilder()
+                                Gson gson = new GsonBuilder()
                                         .registerTypeAdapter(Date.class, getUnixEpochDateTypeAdapter()).create();
-                                if(role==1){
-                                    Teacher teacher= gson.fromJson(text, Teacher.class);
+                                if (role == 1) {
+                                    Teacher teacher = gson.fromJson(text, Teacher.class);
                                     userLocalStore.storeTeacher(teacher);
                                     //Go login
-                                    Intent intent= new Intent(getApplicationContext(), MainActivity_teacher.class);
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity_teacher.class);
                                     startActivity(intent);
-                                } else if (role==2){
-                                    Student student= gson.fromJson(text, Student.class);
+                                } else if (role == 2) {
+                                    Student student = gson.fromJson(text, Student.class);
                                     //TODO: save to share preference
                                     userLocalStore.storeStudent(student);
                                     //Go login
-                                    Intent intent= new Intent(getApplicationContext(), MainActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
-                                }
-                                else{
-                                    Parent parent= gson.fromJson(text, Parent.class);
+                                } else {
+                                    Parent parent = gson.fromJson(text, Parent.class);
                                     //TODO: save to share preference
                                     userLocalStore.storeParent(parent);
                                     //Go login
-                                    Intent intent= new Intent(getApplicationContext(), MainActivity_parent.class);
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity_parent.class);
                                     startActivity(intent);
                                 }
-                             //   Log.e("extract",teacher.getBirthday().toString());
                             } catch (UnsupportedEncodingException | JSONException e) {
                                 e.printStackTrace();
                             }
-
-
-
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(),"Email or password is incorrect", Toast.LENGTH_LONG);
-                            Log.e("error: ","Email or password is incorrect" );
-                            Log.e("Status : " ," "+ auth.code());
+                        } else {
+                            Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
                         }
                     }
 
 
                     @Override
                     public void onFailure(Call<jwt> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"Check your info!!!", Toast.LENGTH_LONG);
-                        Log.e("error: ","Connect is error" );
+                        //Toast.makeText(getApplicationContext(),"Problem happen!!!", Toast.LENGTH_LONG);
+                        Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
 
                     }
                 });

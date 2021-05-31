@@ -2,6 +2,7 @@ package com.example.electroniccommunicationhandbook.ui.teacher.list_class;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +23,9 @@ import java.util.List;
 
 public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.ClassesViewHolder> {
     ArrayList<Class> data;
-
-    public ListClassAdapter(ArrayList<Class> listClass) {
+    Context mContext;
+    public ListClassAdapter(ArrayList<Class> listClass, Context mContext) {
+        this.mContext= mContext;
         this.data = listClass;
     }
 
@@ -41,6 +43,8 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Clas
 //            holder.listStudentInClass.addAll(data.get(position).getStudents());
 //
 //        }
+        holder.classId= data.get(position).getClassId();
+        holder.credit.setText(data.get(position).getClassRoom());
         holder.nameSubject.setText(data.get(position).getSubject().getName());
         //  holder.numberOfClass.setText(data.get(position).getStudents().size());
     }
@@ -52,29 +56,34 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Clas
         return 0;
     }
 
-    public static class ClassesViewHolder extends RecyclerView.ViewHolder {
+    public class ClassesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView nameSubject;
         private TextView numberOfClass;
+        private TextView credit;
         private AppCompatButton btnViewStudents;
-        private ArrayList<Student_Class> listStudentInClass;
+        String   classId;
 
         public ClassesViewHolder(@NonNull View itemView) {
             super(itemView);
             nameSubject = itemView.findViewById(R.id.tv_item_class_subject);
             numberOfClass = itemView.findViewById(R.id.tv_item_class_numbers);
             btnViewStudents = itemView.findViewById(R.id.btn_class_view_student);
-            listStudentInClass = new ArrayList<>();
+            credit=itemView.findViewById(R.id.tv_item_class_credit);
             btnViewStudents.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!listStudentInClass.isEmpty()) {
-                        Intent intent = new Intent(itemView.getContext(), StudentInClass.class);
-                        intent.putExtra("StudentInClass", (Serializable) listStudentInClass);
 
-                        itemView.getContext().startActivity(intent);
-                    }
+                    Intent intent = new Intent(mContext, StudentInClass.class);
+                    intent.putExtra("classId", classId);
+
+                    v.getContext().startActivity(intent);
                 }
             });
+        }
+
+        @Override
+        public void onClick(View v) {
+          //  mContext.startActivity();
         }
     }
 }

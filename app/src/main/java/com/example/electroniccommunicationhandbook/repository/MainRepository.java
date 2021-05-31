@@ -5,6 +5,8 @@ import com.example.electroniccommunicationhandbook.service.AuthenticateService;
 import com.example.electroniccommunicationhandbook.service.ClassService;
 import com.example.electroniccommunicationhandbook.service.PointService;
 import com.example.electroniccommunicationhandbook.service.RequestPaperService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -53,6 +55,13 @@ public  class MainRepository {
         return instance;
     }
     public MainRepository(){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+
+        Gson gson = gsonBuilder
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+                .setPrettyPrinting()
+                .setLenient()
+                .create();
         HttpLoggingInterceptor interceptor= new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client= new OkHttpClient.Builder().addInterceptor(new Interceptor() {
@@ -70,7 +79,7 @@ public  class MainRepository {
         retrofit= new Retrofit.Builder()
                 .baseUrl("https://api-spring-handbook.herokuapp.com/")
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         authenticateService= retrofit.create(AuthenticateService.class);

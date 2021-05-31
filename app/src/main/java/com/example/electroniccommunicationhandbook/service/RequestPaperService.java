@@ -17,7 +17,7 @@ public interface RequestPaperService {
     @GET("/studentconfirmationpaper/findbystudentid/{studentId}")
     Call<ArrayList<Student_ConfirmationPaper>> getConfirmationPapers(@Path("studentId") String studentId);
 
-    @POST("/createonfirmationpaper")
+    @POST("/createconfirmationpaper")
     Call<Student_ConfirmationPaper> createNewConfirmation (@Body Student_ConfirmationPaper student_confirmationPaper);
 
 }

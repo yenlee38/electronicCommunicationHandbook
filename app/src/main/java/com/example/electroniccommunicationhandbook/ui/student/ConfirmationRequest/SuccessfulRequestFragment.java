@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.electroniccommunicationhandbook.R;
 
 public class SuccessfulRequestFragment extends Fragment {
     Button btnGoHome;
+    Button btnBack;
 
     public SuccessfulRequestFragment() {
         // Required empty public constructor
@@ -27,6 +29,13 @@ public class SuccessfulRequestFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         btnGoHome= view.findViewById(R.id.btnSuccessToHome);
+        btnBack= view.findViewById(R.id.btn_success_to_board);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_successfulRequestFragment3_to_boardConfirmation);
+            }
+        });
         btnGoHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

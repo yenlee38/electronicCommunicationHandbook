@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,12 @@ public class VPClassAdapterFragment extends FragmentStatePagerAdapter {
         super(fm, behavior);
     }
 
+//    @Override
+//    public int getItemPosition(@NonNull Object object) {
+//       // return super.getItemPosition(object);
+//        return POSITION_NONE;
+//    }
+
     @Override
     public int getCount() {
         return 2;
@@ -40,12 +47,8 @@ public class VPClassAdapterFragment extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 1:
-                return new ClassSem2Fragment();
-
-            default:
-                return new ClassSem1Fragment();
-        }
+        Log.e("position", String.valueOf(position));
+        return ClassSem1Fragment.newInstance(position+1);
     }
+
 }

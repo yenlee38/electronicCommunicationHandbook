@@ -16,17 +16,28 @@
         <action
             android:id="@+id/action_newRequestFragment_to_successfulRequestFragment3"
             app:destination="@id/successfulRequestFragment3" />
+        <action
+            android:id="@+id/action_newRequestFragment_to_boardConfirmation"
+            app:destination="@id/boardConfirmation" />
     </fragment>
     <fragment
         android:id="@+id/successfulRequestFragment3"
         android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.SuccessfulRequestFragment"
         android:label="fragment_successful_request"
-        tools:layout="@layout/fragment_successful_request" />
+        tools:layout="@layout/fragment_successful_request" >
+        <action
+            android:id="@+id/action_successfulRequestFragment3_to_boardConfirmation"
+            app:destination="@id/boardConfirmation" />
+    </fragment>
     <fragment
         android:id="@+id/failureRequestFragment"
         android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.FailureRequestFragment"
         android:label="fragment_failure_request"
-        tools:layout="@layout/fragment_failure_request" />
+        tools:layout="@layout/fragment_failure_request" >
+        <action
+            android:id="@+id/action_failureRequestFragment_to_boardConfirmation"
+            app:destination="@id/boardConfirmation" />
+    </fragment>
     <fragment
         android:id="@+id/boardConfirmation"
         android:name="com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.BoardConfirmation"

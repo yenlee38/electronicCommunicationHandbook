@@ -1,5 +1,6 @@
 package com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.ViewModel.ConfirmationRequestViewModel;
 import com.example.electroniccommunicationhandbook.entity.ConfirmationPaper;
@@ -38,6 +40,7 @@ public class BoardConfirmation extends Fragment {
     AppCompatButton btnNewRequest;
     RecyclerView recyclerViewRequire;
     ArrayList<Student_ConfirmationPaper> historiesRequest;
+    AppCompatButton btnBack;
     ConfirmationRequestViewModel confirmationRequestViewModel;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,10 +54,18 @@ public class BoardConfirmation extends Fragment {
       //  confirmationRequestViewModel= new ViewModelProvider(this).get(ConfirmationRequestViewModel.class);
         confirmationRequestViewModel= ViewModelProviders.of(this).get(ConfirmationRequestViewModel.class);
         btnNewRequest= view.findViewById(R.id.btnNewRequest);
+        btnBack= view.findViewById(R.id.btn_boardrequest_home);
         recyclerViewRequire= getView().findViewById(R.id.rcvRequestConfirmation1);
         historiesRequest= new ArrayList<>();
         UserLocalStore userLocalStore= new UserLocalStore(getContext());
         Student student = userLocalStore.getStudentLocal();
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
         //confirmationRequestViewModel.
         confirmationRequestViewModel.findAllConfirmation(student.getStudentId()).observe(getViewLifecycleOwner(),
                 new Observer<ArrayList<Student_ConfirmationPaper>>() {

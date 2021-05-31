@@ -18,7 +18,7 @@ import java.util.List;
 public class ComfirmationAdapter extends RecyclerView.Adapter<ComfirmationAdapter.ViewHolder> {
 
     private ArrayList<Student_ConfirmationPaper> data;
-
+    
     public ComfirmationAdapter(ArrayList<Student_ConfirmationPaper> data) {
         this.data = data;
     }

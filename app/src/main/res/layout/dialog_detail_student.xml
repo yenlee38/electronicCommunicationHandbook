@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+ >
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="@dimen/size_medium"
+        android:paddingRight="@dimen/size_medium"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Name"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_opition_rate"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_user"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp" />
+
+            <EditText
+                android:id="@+id/edit_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:enabled="false"
+                android:layout_marginTop="4dp"
+                android:hint="Lê Thị Phương Thảo"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="@dimen/size_medium"
+        android:paddingRight="@dimen/size_medium"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Student ID"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:background="@drawable/border_opition_rate"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_baseline_gesture_24"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp" />
+            <EditText
+                android:id="@+id/edit_detail_id"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:enabled="false"
+                android:hint="18110366"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/size_medium"
+        android:paddingRight="@dimen/size_medium"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Email"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:background="@drawable/border_opition_rate"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_baseline_mail_24"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp" />
+
+            <EditText
+                android:id="@+id/edit_detail_email"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="4dp"
+                android:enabled="false"
+                android:hint="18110366@student.hcmute.edu.vn"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:paddingLeft="@dimen/size_medium"
+        android:paddingRight="@dimen/size_medium"
+        android:layout_width="363dp"
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Phone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_opition_rate"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_baseline_local_phone_24"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp" />
+
+            <EditText
+                android:id="@+id/edit_detail_phone"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:enabled="false"
+                android:layout_marginTop="4dp"
+                android:hint="0365791309"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:paddingLeft="@dimen/size_medium"
+        android:paddingRight="@dimen/size_medium"
+        android:layout_width="363dp"
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Address"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border_opition_rate"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_baseline_location_on_24"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp" />
+
+            <EditText
+                android:id="@+id/edit_detail_address"
+                android:layout_width="match_parent"
+                android:enabled="false"
+                android:layout_height="44dp"
+                android:layout_marginTop="4dp"
+                android:hint="01 Street 7, Linh Chieu, Thu Duc"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:layout_width="120dp"
+
+        android:paddingRight="@dimen/size_medium"
+        android:text="OK"
+        android:layout_marginTop="@dimen/size_super_min"
+        android:id="@+id/btn_detail_cancel"
+        android:textColor="@color/white"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/gray_primary"
+        android:textSize="@dimen/size_min"
+        android:layout_marginRight="@dimen/size_super_max"
+        android:layout_marginBottom="@dimen/size_medium"
+        android:layout_height="@dimen/size_super_max"></Button>
+</LinearLayout>

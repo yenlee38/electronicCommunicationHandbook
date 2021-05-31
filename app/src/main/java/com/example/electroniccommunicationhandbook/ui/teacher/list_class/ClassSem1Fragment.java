@@ -1,5 +1,6 @@
 package com.example.electroniccommunicationhandbook.ui.teacher.list_class;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ import com.example.electroniccommunicationhandbook.entity.Student_ConfirmationPa
 import com.example.electroniccommunicationhandbook.entity.Subject;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.ComfirmationAdapter;
+import com.example.electroniccommunicationhandbook.ui.student.point.ui.main.PlaceholderFragment;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.example.electroniccommunicationhandbook.entity.Class;
 
@@ -42,117 +44,109 @@ import java.util.Date;
 import java.util.List;
 
 public class ClassSem1Fragment extends Fragment {
+    private static final String SEMESTER = "Semester";
+    private static final String YEAR = "Year";
+
+
     TextView tvTotalClass, tvTotalStudent;
     RecyclerView rcvClasses;
     ArrayList<Class> listClass;
     TeacherClassViewModel teacherClassViewModel;
     Teacher teacher;
+    static int semester = 1;
+    static int studyingYear = 2021;
+    public static void setSemester(int semester) {
+        ClassSem1Fragment.semester = semester;
+        //this.updateList();
+    }
+
+    public void setStudyingYear(int studyingYear) {
+        ClassSem1Fragment.studyingYear = studyingYear;
+        this.updateList();
+    }
+
+
 
     public ClassSem1Fragment() {
-        // Required empty public constructor
     }
+
+
+    public static ClassSem1Fragment newInstance(int semester) {
+        setSemester(semester);
+        ClassSem1Fragment fragment = new ClassSem1Fragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(SEMESTER, semester);
+        bundle.putInt(YEAR, studyingYear);
+        fragment.setArguments(bundle);
+
+
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        int mSemester = 1;
+        int mYear = 2021;
+        if (getArguments() != null) {
+            mSemester = getArguments().getInt(SEMESTER);
+            mYear = getArguments().getInt(YEAR);
+
+        }
+
+        semester = mSemester;
+        studyingYear = mYear;
+    }
+
+//    public static ClassSem1Fragment newInstance(int index){
+//        ClassSem1Fragment fragment= new ClassSem1Fragment();
+//        Bundle bundle= new Bundle();
+//        bundle.putInt(SEMESTER, index);
+//        fragment.setArguments(bundle);
+//        return Instance;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_class_semp1, container, false);
+        View view= inflater.inflate(R.layout.fragment_class_semp1, container, false);
+        //
+        tvTotalClass = view.findViewById(R.id.tv_class_total_sem1);
+        tvTotalStudent = view.findViewById(R.id.tv_class_total_sem1);
+
+        teacherClassViewModel = ViewModelProviders.of(this).get(TeacherClassViewModel.class);
+        rcvClasses = view.findViewById(R.id.rcv_Classes);
+        UserLocalStore userLocalStore = new UserLocalStore(getContext());
+        teacher = userLocalStore.getTeacherLocal();
+
+        updateList();
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-       //
-        tvTotalClass = view.findViewById(R.id.tv_class_total_sem1);
-        tvTotalStudent = view.findViewById(R.id.tv_class_total_sem1);
 
-        teacherClassViewModel= ViewModelProviders.of(this).get(TeacherClassViewModel.class);
-        rcvClasses = view.findViewById(R.id.rcv_Classes);
-        UserLocalStore userLocalStore = new UserLocalStore(getContext());
-        teacher = userLocalStore.getTeacherLocal();
-        Log.e("Teacher",teacher.getTeacherID());
-//        //Subject
-//        Subject subjectA = new Subject("BMW1456", "Bảo mật web", 3, "Hiểu cách hack, tự về your web site");
-//        Subject subjectB = new Subject("BMW2dfr", "Bảo mật web", 3, "Hiểu cách hack, tự về your web site");
-//        //Student :))
-//        Student studentA = new Student("Student1", "Thao Le", Calendar.getInstance().getTime(), "Nu", "0333226399", "Cu Chi",
-//                "thaole3010001@gmail.com", null, "VCM2434", null, "2000", "Công nghệ thông tin");
-//        Student studentB = new Student("Student2", "Yen Le", Calendar.getInstance().getTime(), "Nam", "0333s76399", "Cu Chi",
-//                "thaole3010002@gmail.com", null, "VCM23334", null, "2000", "Công nghệ thông tin");
-//        Student studentC = new Student("Student3", "Thanh Le", Calendar.getInstance().getTime(), "Nam", "0332876399", "Cu Chi",
-//                "thaole3010003@gmail.com", null, "VCM231", null, "2000", "Công nghệ thông tin");
-//        Student studentD = new Student("Student4", "Hoang Le", Calendar.getInstance().getTime(), "Nu", "0333276392", "Vung Tau",
-//                "thaole3010004@gmail.com", null, "VCM2343", null, "2000", "Công nghệ thông tin");
-//        Student studentE = new Student("Student5", "Y Le", Calendar.getInstance().getTime(), "Nu", "0336872390", "An Nhon Tay ",
-//                "thaole301000@5gmail.com", null, "VCM2341", null, "2000", "Công nghệ thông tin");
-//
-//        //Class
-//        Class classA = new Class("Class001", subjectA, teacher, 1, 2020, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), 2, "A217", 0730, 1030,
-//                null, null);
-//        Class classB = new Class("Class002", subjectA, teacher, 2, 2019, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), 2, "A206", 0730, 1030,
-//                null, null);
-//        Class classC = new Class("Class003", subjectB, teacher, 1, 2020, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), 2, "A217", 0730, 1030,
-//                null, null);
-//        Class classD = new Class("Class004", subjectB, teacher, 1, 2020, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), 2, "A217", 0730, 1030,
-//                null, null);
-//
-//        Student_Class student_classA1 = new Student_Class("Student1", "Class001",
-//                3.4f, 7.87f, 0, "Giang vieen nhiet tinh", null,studentA);
-//        Student_Class student_classA2 = new Student_Class("Student2", "Class001",
-//                3.4f, 7.87f, 0, "Giang vieen nhiet tinh", null,studentB);
-//        Student_Class student_classA3 = new Student_Class("Student3", "Class002",
-//                3.4f, 7.87f, 0, "Giang vieen nhiet tinh", null,studentC);
-//        Student_Class student_classA4 = new Student_Class("Student4", "Class002",
-//                3.4f, 7.87f, 0, "Giang vieen nhiet tinh", null,studentD);
-//        Student_Class student_classA5 = new Student_Class("Student5", "Class001",
-//                3.4f, 7.87f, 0, "Giang vieen nhiet tinh", null,studentE);
-//
-//        Collection<Student_Class> students = new ArrayList<>();
-//        students.add(student_classA1);
-//        students.add(student_classA2);
-//        students.add(student_classA3);
-//        students.add(student_classA4);
-//        students.add(student_classA5);
-//
-////        students.add(studentD);
-////        students.add(studentC);
-////        students.add(studentB);
-////        students.add(studentA);
-//        classA.setStudents(students);
-//        classB.setStudents(students);
-//        classC.setStudents(students);
-//        classD.setStudents(students);
-//
-//        List<Class> listClass = new ArrayList<>();
-//        listClass.add(classA);
-//        listClass.add(classB);
-//        listClass.add(classC);
-//        listClass.add(classD);
-        //confirmationRequestViewModel.
-//        confirmationRequestViewModel.findAllConfirmation(student.getStudentId()).observe(getViewLifecycleOwner(),
-//                new Observer<ArrayList<Student_ConfirmationPaper>>() {
-//                    @Override
-//                    public void onChanged(ArrayList<Student_ConfirmationPaper> student_confirmationPapers) {
-//                        if(student_confirmationPapers != null){
-//                            Log.e("onChange",student_confirmationPapers.toString());
-//                            historiesRequest=student_confirmationPapers;
-//                        }
-//                    }
-//                });
-        teacherClassViewModel.findClassOfTeacher(teacher.getTeacherID()).observe(getViewLifecycleOwner(),
+        updateList();
+    }
+
+    public void updateList() {
+
+        teacherClassViewModel.findClassOfTeacher(teacher.getTeacherID(), semester, studyingYear).observe(getViewLifecycleOwner(),
                 new Observer<ArrayList<Class>>() {
                     @Override
                     public void onChanged(ArrayList<Class> classes) {
-                        if(!classes.isEmpty()){
-                            Log.e("Vo tam","jhjhdhjhjhd");
-                            listClass= classes;
-                            Log.e("Log class of teacher", listClass.toString());
-                            ListClassAdapter adapter = new ListClassAdapter(listClass);
-                            rcvClasses.setLayoutManager(new LinearLayoutManager(getContext()));
-                            tvTotalClass.setText(String.valueOf(listClass.size()));
+                        //Log.e(String.valueOf(semester), String.valueOf(studyingYear));
+                        listClass = new ArrayList<>();
+                        listClass = classes;
+                        ListClassAdapter adapter = new ListClassAdapter(listClass, getContext());
+                        rcvClasses.setLayoutManager(new LinearLayoutManager(getContext()));
+                        tvTotalClass.setText(String.valueOf(listClass.size()));
 
-                            rcvClasses.setAdapter(adapter);
-                        }
+                        rcvClasses.setAdapter(adapter);
+
                     }
                 });
 

@@ -1,26 +1,25 @@
 package com.example.electroniccommunicationhandbook.entity;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+
 
 public class ConfirmationPaper {
 
-    private int confirmationPaperID;
+    private int confirmationPaperId;
+
     private String confirmationPaperName;
 
-    public ConfirmationPaper(int confirmationPaperID, String confirmationPaperName) {
-        this.confirmationPaperID = confirmationPaperID;
+    public ConfirmationPaper(int confirmationPaperId, String confirmationPaperName) {
+        this.confirmationPaperId = confirmationPaperId;
         this.confirmationPaperName = confirmationPaperName;
     }
 
-    public int getConfirmationPaperID() {
-        return confirmationPaperID;
+    public int getConfirmationPaperId() {
+        return confirmationPaperId;
     }
 
-    public void setConfirmationPaperID(int confirmationPaperId) {
-        this.confirmationPaperID = confirmationPaperId;
+    public void setConfirmationPaperId(int confirmationPaperId) {
+        this.confirmationPaperId = confirmationPaperId;
     }
 
     public String getConfirmationPaperName() {
@@ -30,8 +29,8 @@ public class ConfirmationPaper {
     public void setConfirmationPaperName(String confirmationPaperName) {
         this.confirmationPaperName = confirmationPaperName;
     }
-    public ConfirmationPaper(int confirmationPaperID){
-        this.confirmationPaperID=confirmationPaperID;
+    public ConfirmationPaper(int confirmationPaperId){
+        this.confirmationPaperId = confirmationPaperId;
     }
     public ConfirmationPaper() {
     }

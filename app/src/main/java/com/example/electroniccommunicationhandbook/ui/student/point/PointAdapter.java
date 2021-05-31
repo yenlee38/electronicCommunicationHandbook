@@ -41,6 +41,7 @@ public class PointAdapter extends RecyclerView.Adapter<PointAdapter.ViewHolder> 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
+
         View recyclerView = inflater.inflate(R.layout.item_point_view, parent, false);
 
         ViewHolder viewHolder= new ViewHolder(recyclerView);

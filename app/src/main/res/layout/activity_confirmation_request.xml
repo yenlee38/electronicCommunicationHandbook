@@ -5,41 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
+
     tools:context=".ui.student.ConfirmationRequest.ConfirmationRequestActivity">
-
-    <LinearLayout
-        android:padding="@dimen/size_min"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="45dp"
-           android:backgroundTint="@color/black"
-            android:layout_height="match_parent"
-            android:background="@drawable/ic_arrow_back"
-            android:textSize="18dp">
-        </androidx.appcompat.widget.AppCompatButton>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="@dimen/size_min"
-            android:text="Confirmation request"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-
-            android:textStyle="bold"></TextView>
-
-    </LinearLayout>
 
     <fragment
         android:id="@+id/fragment_confirmation"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
+        android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_confirmation_request" />
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,7 @@ import com.example.electroniccommunicationhandbook.R;
 
 public class FailureRequestFragment extends Fragment {
 
-    Button btnGoToHome, btnGoNewRequest;
+    Button btnGoToHome, btnGoNewRequest, btnBack;
     public FailureRequestFragment() {
         // Required empty public constructor
     }
@@ -28,6 +29,7 @@ public class FailureRequestFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         btnGoToHome= view.findViewById(R.id.btnFailureToHome);
         btnGoNewRequest= view.findViewById(R.id.btnRetryRequest);
+        btnBack= view.findViewById(R.id.btn_error_to_new);
         btnGoToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +42,12 @@ public class FailureRequestFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().popBackStackImmediate();
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_failureRequestFragment_to_boardConfirmation);
             }
         });
     }

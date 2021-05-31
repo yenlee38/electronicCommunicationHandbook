@@ -3,11 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:weightSum="9"
+    android:weightSum="10"
     android:layout_height="match_parent"
     tools:context=".ui.student.ConfirmationRequest.BoardConfirmation">
+    <LinearLayout
+        android:padding="@dimen/size_min"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="45dp"
+            android:id="@+id/btn_boardrequest_home"
+            android:backgroundTint="@color/black"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_arrow_back"
+            android:textSize="18dp">
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/size_min"
+            android:text="Confirmation request"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+
+            android:textStyle="bold"></TextView>
+
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:padding="@dimen/size_medium"
+        android:paddingLeft="@dimen/size_min"
+        android:paddingRight="@dimen/size_min"
+
         android:id="@+id/rcvRequestConfirmation1"
         android:layout_width="match_parent"
         android:layout_weight="8"

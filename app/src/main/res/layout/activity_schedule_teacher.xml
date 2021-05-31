@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.teacher.schedule.ScheduleTeacher">
+    <LinearLayout
+        android:id="@+id/nav_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_back_teacher"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="29dp"
+            android:src="@drawable/arrow_back_black_24dp"
+
+            />
+
+        <TextView
+            android:id="@+id/profile_teacher"
+            android:layout_width="117dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Schedule"
+
+            android:textAppearance="@style/tab_style_text"
+            android:lineSpacingExtra="8sp"
+            android:translationY="-4.11sp"
+            android:gravity="top"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/semster_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:paddingTop="8dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/nav_teacher"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_semesterOne_teacher"
+            android:layout_width="205dp"
+            android:layout_height="37dp"
+            android:text="SEMESTER 1"
+            android:background="@drawable/border_bottom"
+            android:textColor="#000000"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_semesterTwo_teacher"
+            android:layout_width="205dp"
+            android:layout_height="37dp"
+            android:text="SEMESTER 2"
+            android:background="@drawable/border_bottom_gray"
+
+            android:textColor="#AAA"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/day_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="#80E7FF"
+        android:layout_below="@+id/semster_teacher">>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_monDay_teacher"
+            android:layout_marginLeft="20dp"
+            android:layout_width="53dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border_btnview"
+            android:text="MON"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="0dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_tueDay_teacher"
+            android:layout_marginLeft="10dp"
+            android:layout_width="53dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border_btn_white"
+            android:text="TUE"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_wedDay_teacher"
+            android:layout_marginLeft="10dp"
+            android:layout_width="53dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border_btn_white"
+            android:text="WED"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_thuDay_teacher"
+            android:layout_marginLeft="10dp"
+            android:layout_width="53dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border_btn_white"
+            android:text="THU"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_friDay_teacher"
+            android:layout_marginLeft="10dp"
+            android:layout_width="53dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border_btn_white"
+            android:text="FRI"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_satDay_teacher"
+            android:layout_marginLeft="10dp"
+            android:layout_width="53dp"
+            android:layout_height="60dp"
+            android:background="@drawable/border_btn_white"
+            android:text="SAT"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="0dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            />
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rlv_schedule_teacher"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/day_teacher">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tv_nullClass_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_below="@+id/rlv_schedule_teacher"
+        android:textSize="30dp"
+        android:lineSpacingExtra="10dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end"
+        android:layout_marginEnd="0dp"
+        android:background="@drawable/point_footer_bg"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_year_teacher"
+            android:layout_width="152dp"
+            android:layout_height="36dp"
+            android:background="@drawable/border_btn_white"
+            android:gravity="center_vertical|center_horizontal"
+            android:textAlignment="center"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_viewPoint_teacher"
+            android:layout_width="156dp"
+            android:layout_height="37dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/border_btnview"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Year"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</RelativeLayout>

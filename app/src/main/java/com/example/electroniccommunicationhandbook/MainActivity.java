@@ -2,6 +2,7 @@ package com.example.electroniccommunicationhandbook;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 
@@ -12,6 +13,7 @@ import android.view.View;
 import com.example.electroniccommunicationhandbook.dao.StudentDAO;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
 import com.example.electroniccommunicationhandbook.service.StudentService;
+import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
 import com.example.electroniccommunicationhandbook.ui.message.MainMessage;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 
@@ -35,6 +37,7 @@ import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.repository.MainRepository;
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
 import com.example.electroniccommunicationhandbook.service.PointService;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.util.List;
 
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     //MainRepository mainRepository;
     PointRepository pointService;
     TextView tvName;
+
 
 
     StudentRepository studentRepository;
@@ -69,14 +73,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+
 
         tvName = findViewById(R.id.txvName);
-        btnLogout = findViewById(R.id.hoang);
+
         btn_request = findViewById(R.id.btn_request);
         pointService = PointRepository.getInstance(getApplication());
 
-
+        initView();
     }
 
 
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         btn_point = findViewById(R.id.btn_points);
         btnMessage = findViewById(R.id.btn_message);
         btn_request= findViewById(R.id.btn_request);
-
+        btn_logout= findViewById(R.id.btn_student_logout);
         btn_student_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-
                 startActivity(intent);
             }
         });
@@ -149,9 +152,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainMessage.class);
-                startActivity(intent);
-                // setContentView(R.layout.activity_schedule);
 
+                // setContentView(R.layout.activity_schedule);
+                FragmentManager fm = getSupportFragmentManager();
+                for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                    fm.popBackStack();
+                }
+                startActivity(intent);
+            }
+        });
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                UserLocalStore userLocalStore= new UserLocalStore(getApplicationContext());
+                userLocalStore.resetUserLocal();
+                Intent intent= new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

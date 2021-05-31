@@ -7,4 +7,5 @@ public class Comon {
     public static Account account;
     public static int CODE_SUCCESSFUL=200;
     public static int CODE_ERROR=404;
+    public static int VIEW_CODE=123;
 }

@@ -2,11 +2,10 @@ package com.example.electroniccommunicationhandbook.entity;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Collection;
 import java.util.Date;
 
 public class Class {
-    @SerializedName("class_id")
+    @SerializedName("classId")
     private String classId;
     private Subject subject;
     private Teacher teacher;
@@ -17,7 +16,7 @@ public class Class {
     private Date classStartDate;
     private int classDayOfWeek;
     private String classRoom;
-    private int startingSchoolTime;
+    private int startSchoolTime;
     private int endSchoolTime;
 //    private Collection<Announcement> announcements;
     //  private Collection<Student_Class>  students;
@@ -115,12 +114,12 @@ public class Class {
         this.endSchoolTime = endSchoolTime;
     }
 
-    public int getStartingSchoolTime() {
-        return startingSchoolTime;
+    public int getStartSchoolTime() {
+        return startSchoolTime;
     }
 
-    public void setStartingSchoolTime(int startingSchoolTime) {
-        this.startingSchoolTime = startingSchoolTime;
+    public void setStartSchoolTime(int startSchoolTime) {
+        this.startSchoolTime = startSchoolTime;
     }
 
     //<<<<<<< HEAD
@@ -183,7 +182,7 @@ public class Class {
         this.classStartDate = classStartDate;
         this.classDayOfWeek = classDayOfWeek;
         this.classRoom = classRoom;
-        this.startingSchoolTime = startingSchoolTime;
+        this.startSchoolTime = startingSchoolTime;
         this.endSchoolTime = endSchoolTime;
     }
 

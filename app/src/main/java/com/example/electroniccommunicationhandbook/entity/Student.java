@@ -17,12 +17,15 @@ import java.util.Date;
 public class Student implements Serializable {
     @SerializedName("studentId")
     @Expose
+
     private String studentId;
 
     @SerializedName("studentName")
     @Expose
     private String name;
 
+//    @SerializedName("studentBirthday")
+//    @Expose
 //    @SerializedName("studentBirthday")
 //    @Expose
     @TypeConverters(Convert.class)
@@ -36,7 +39,6 @@ public class Student implements Serializable {
 
     @SerializedName("studentAddress")
     @Expose
-
     private String address;
     @SerializedName("studentEmail")
     @Expose
