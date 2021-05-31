@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.electroniccommunicationhandbook.entity.Announcement;
 import com.example.electroniccommunicationhandbook.service.AnnouncementService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,6 +33,7 @@ public class AnnouncementRepository extends AndroidViewModel {
     private AnnouncementService announcementService;
     private ArrayList<Announcement> announcements;
     private MutableLiveData<ArrayList<Announcement>> announcmentList;
+    private Announcement mAnnouncement;
 
     public AnnouncementRepository(@NonNull Application application) {
 
@@ -53,10 +56,13 @@ public class AnnouncementRepository extends AndroidViewModel {
             }
         }).build();
 
+        GsonBuilder gsonBuilder= new GsonBuilder();
+        Gson gson = gsonBuilder.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").setPrettyPrinting().setLenient().create();
+
         announcementService = new retrofit2.Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(AnnouncementService.class);
     }
@@ -89,6 +95,28 @@ public class AnnouncementRepository extends AndroidViewModel {
         //Log.e("Size", ""+announcmentList.getValue().size() );
         return  announcmentList;
 
+    }
+
+    public Announcement save(Announcement announcement){
+        mAnnouncement= new Announcement();
+        announcementService.save(announcement).enqueue(new Callback<Announcement>() {
+            @Override
+            public void onResponse(Call<Announcement> call, Response<Announcement> response) {
+                if(response.isSuccessful())
+                {
+                    mAnnouncement= response.body();
+                    Log.e("DOne", "onResponse: "+response.body() );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Announcement> call, Throwable t) {
+                mAnnouncement= null;
+                Log.e("Faile", "onFailure: " +t.toString() );
+            }
+        });
+
+        return mAnnouncement;
     }
 
     public MutableLiveData<ArrayList<Announcement>> getAnnouncmentList() {
