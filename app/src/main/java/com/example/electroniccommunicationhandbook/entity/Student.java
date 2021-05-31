@@ -46,13 +46,13 @@ public class Student implements Serializable {
     @Expose
     private String image;
 
-   // private String bankSeri;
+    private String bankSeri;
 
     private Account account;
 
-   // private String year;
+    private int year;
 
-   // private String major;
+   private String major;
 
     public String getStudentId() {
         return studentId;
@@ -118,29 +118,29 @@ public class Student implements Serializable {
         this.image = image;
     }
 
-//    public String getBankSeri() {
-//        return bankSeri;
-//    }
-//
-//    public void setBankSeri(String bankSeri) {
-//        this.bankSeri = bankSeri;
-//    }
-//
-//    public String getYear() {
-//        return year;
-//    }
-//
-//    public void setYear(String year) {
-//        this.year = year;
-//    }
-//
-//    public String getMajor() {
-//        return major;
-//    }
-//
-//    public void setMajor(String major) {
-//        this.major = major;
-//    }
+    public String getBankSeri() {
+        return bankSeri;
+    }
+
+    public void setBankSeri(String bankSeri) {
+        this.bankSeri = bankSeri;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
 
     public Account getAccount() {
         return account;

@@ -60,6 +60,8 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Bundle bundle = new Bundle();
+                bundle.putInt("year", mClass.get(position).get_class().getStudyingYear());
+                bundle.putInt("semester", mClass.get(position).get_class().getSemester());
                 bundle.putSerializable("student_class_object", mClass.get(position));
                 RateDetailFragment myFragment = new RateDetailFragment();
                 myFragment.setArguments(bundle);
