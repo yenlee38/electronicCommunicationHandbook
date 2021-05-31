@@ -35,5 +35,6 @@
     <string name="notify">Notify</string>
     <string name="send">Send</string>
     <string name="class_off_request">Class Off Request</string>
-
+    <string name="empty_day">Empty Day</string>
+    <string name="empty_rate">Empty Rate</string>
 </resources>

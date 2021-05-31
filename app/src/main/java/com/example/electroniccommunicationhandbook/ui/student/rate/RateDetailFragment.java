@@ -37,7 +37,7 @@ public class RateDetailFragment extends Fragment {
     private StudentRepository studentRepository;
     private ImageView img_back;
     private static int RATE = 0;
-
+    public static boolean isRate = false;
     public RateDetailFragment() {
         studentRepository = new StudentRepository();
 
@@ -73,6 +73,7 @@ public class RateDetailFragment extends Fragment {
         btn_rate_3 = view.findViewById(R.id.btn_rate_3);
         btn_rate_4 = view.findViewById(R.id.btn_rate_4);
         btn_rate_5 = view.findViewById(R.id.btn_rate_5);
+        isRate = false;
 
         tv_name_subject_rate.setText(student_class.get_class().getSubject().getName());
         tv_name.setText(student_class.get_class().getTeacher().getName());
@@ -80,12 +81,12 @@ public class RateDetailFragment extends Fragment {
         if (student_class.getComment() != null) edt_comment.setText(student_class.getComment());
         setRateButton();
 
-//        img_back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         btn_rate_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,11 +133,12 @@ public class RateDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String comment = "";
+                isRate = true;
                 if (edt_comment.getText() != null)
                     comment = edt_comment.getText().toString();
                 Student_Class st = new Student_Class(student_class.getStudentClassId(), RATE, comment);
-                studentRepository.updateStudentClassById(st, student_class.getStudentClassId().getStudentId(), student_class.getStudentClassId().getClassId());
-                /// studentRepository.updateStudentClass(student_class);
+               studentRepository.updateStudentClassById(st, student_class.getStudentClassId().getStudentId(), student_class.getStudentClassId().getClassId());
+
             }
         });
     }
@@ -189,7 +191,18 @@ public class RateDetailFragment extends Fragment {
     }
 
     public void onBackPressed() {
-        startActivity(new Intent(getActivity(), RateTeacherActivity.class));
-        onDestroy();
+        Bundle bundle = new Bundle();
+        getFragmentManager().popBackStack();
+        if(isRate)
+        {
+            RateTeacherActivity rateTeacherActivity = new RateTeacherActivity();
+            rateTeacherActivity.YEAR = getArguments().getInt("year");
+            rateTeacherActivity.SEMESTER = getArguments().getInt("semester");
+            Intent intent = new Intent(getActivity(), rateTeacherActivity.getClass());
+            startActivity(intent);
+
+           // startActivity(new Intent(getActivity(), RateTeacherActivity.class));
+
+        }
     }
 }
