@@ -33,5 +33,6 @@ public interface StudentService {
     @PUT("/student_class/student/{id_student}/class/{id_class}")
     Call<Student_Class> updateStudentClassById(@Body Student_Class student_class, @Path("id_student") String studentId, @Path("id_class") String classId );
 
+
 }
 
