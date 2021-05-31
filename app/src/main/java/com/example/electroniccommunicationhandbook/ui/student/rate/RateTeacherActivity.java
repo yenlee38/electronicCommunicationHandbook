@@ -28,6 +28,7 @@ import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.time.Year;
@@ -51,6 +52,7 @@ public class RateTeacherActivity extends AppCompatActivity {
     private AppCompatButton btn_semesterTwo;
     private Spinner sp_year;
     private TextView tv_nullClass;
+    private AppCompatButton btn_viewPoint;
     //private
 
     @Override
@@ -117,6 +119,18 @@ public class RateTeacherActivity extends AppCompatActivity {
         userLocalStore = new UserLocalStore(getApplicationContext()); // get Student
         student = userLocalStore.getStudentLocal();
         setBtn_semesterChoose(SEMESTER);
+
+        btn_viewPoint = findViewById(R.id.btn_viewPoint);
+
+        btn_viewPoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

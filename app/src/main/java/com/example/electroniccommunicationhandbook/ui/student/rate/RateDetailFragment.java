@@ -139,6 +139,7 @@ public class RateDetailFragment extends Fragment {
                 Student_Class st = new Student_Class(student_class.getStudentClassId(), RATE, comment);
                studentRepository.updateStudentClassById(st, student_class.getStudentClassId().getStudentId(), student_class.getStudentClassId().getClassId());
 
+               onBackPressed();
             }
         });
     }

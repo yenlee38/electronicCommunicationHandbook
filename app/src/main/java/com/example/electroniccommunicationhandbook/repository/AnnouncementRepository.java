@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AnnouncementRepository extends AndroidViewModel {
 
-    private static final String BASE_URL = "https://api-spring-handbook.herokuapp.com/";
+    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
     private static AnnouncementRepository instance;
     private AnnouncementService announcementService;
     private ArrayList<Announcement> announcements;

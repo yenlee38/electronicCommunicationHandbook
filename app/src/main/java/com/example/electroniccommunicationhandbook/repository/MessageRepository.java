@@ -48,7 +48,7 @@ public class MessageRepository {
         }).build();
 
         messageService = new retrofit2.Retrofit.Builder()
-                .baseUrl("https://api-spring-handbook.herokuapp.com/")
+                .baseUrl("https://apihandbookversion2.herokuapp.com/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

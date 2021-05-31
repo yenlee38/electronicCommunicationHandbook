@@ -59,7 +59,7 @@ public class CardActivity  extends AppCompatActivity {
         tv_student_id.setText(student.getStudentId());
         if(student.getName() != null){ tv_name.setText(student.getName());}
         if(student.getMajor() != null){ tv_major.setText(student.getMajor());}
-        if(student.getYear() != 0){ tv_year_studying.setText(student.getYear());}
+        //try{if(student.getYear() != 0){ tv_year_studying.setText(student.getYear() + "");}}catch (Exception ex){}
         if(student.getBankSeri() != null){tv_bank_seri.setText(student.getBankSeri());}
 
     }
