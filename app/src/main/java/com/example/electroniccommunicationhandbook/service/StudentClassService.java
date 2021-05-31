@@ -37,7 +37,6 @@ public interface StudentClassService {
     @GET("/student_class/{id_student}/{year}/{semester}")
     Call<ArrayList<Student_Class>> findByStudentIdAndYearAndSemester(@Path("id_student") String studentId, @Path("year") int year, @Path("semester") int semester);
 
-
     @GET("/class/teacher/{teacherId}")
     Call<ArrayList<Class>> findClassByIdTeacher(@Path("teacherId") String teacherId);
 }

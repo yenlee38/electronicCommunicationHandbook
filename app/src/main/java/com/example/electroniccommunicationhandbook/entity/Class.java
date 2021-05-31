@@ -8,7 +8,6 @@ import java.util.Date;
 public class Class {
 
     @SerializedName("classId")
-
     private String classId;
     private Subject subject;
     private Teacher teacher;
@@ -194,5 +193,9 @@ public class Class {
     public Class() {
     }
 
+    @Override
+    public String toString(){
+        return this.getSubject().getName();
+    }
 
 }

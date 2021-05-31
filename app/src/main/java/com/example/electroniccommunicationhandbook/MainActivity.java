@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
 
-        tvName = findViewById(R.id.txvName);
-        btnLogout = findViewById(R.id.hoang);
         btn_request = findViewById(R.id.btn_request);
         pointService = PointRepository.getInstance(getApplication());
 
