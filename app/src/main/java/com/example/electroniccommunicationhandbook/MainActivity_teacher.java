@@ -13,10 +13,9 @@ import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
-<<<<<<< HEAD
+
 import com.example.electroniccommunicationhandbook.ui.student.statistic.StatisticActivity;
-=======
->>>>>>> Hoan thanh reset-profile
+
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
 import com.example.electroniccommunicationhandbook.ui.teacher.schedule.ScheduleTeacher;
 import com.example.electroniccommunicationhandbook.ui.teacher.statistic.StatisticTeacherActivity;
@@ -36,7 +35,7 @@ public class MainActivity_teacher extends AppCompatActivity {
     AppCompatButton btn_offRequest;
     TextView tv_username;
 
-    AppCompatButton  btn_viewNotification;
+    AppCompatButton btn_viewNotification;
 
 
     private AppCompatButton btnProfile;
@@ -58,9 +57,9 @@ public class MainActivity_teacher extends AppCompatActivity {
         btnLogout = findViewById(R.id.btn_logout_teacher);
         btn_createNotification = findViewById(R.id.btn_notification_new);
         btn_offRequest = findViewById(R.id.btn_send_off_request);
-        tv_username= findViewById(R.id.tv_username_teacher);
+        tv_username = findViewById(R.id.tv_username_teacher);
 
-        btn_viewNotification= findViewById(R.id.btn_notification);
+        btn_viewNotification = findViewById(R.id.btn_notification);
         btnStatistic = findViewById(R.id.btn_statistic_teacher);
 
         getInfo();
@@ -69,11 +68,9 @@ public class MainActivity_teacher extends AppCompatActivity {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-=======
+
                 Intent intent = new Intent(MainActivity_teacher.this, ProfileActivity.class);
->>>>>>> Hoan thanh reset-profile
+
                 startActivity(intent);
 
             }
@@ -111,7 +108,7 @@ public class MainActivity_teacher extends AppCompatActivity {
         btn_viewNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getApplicationContext(), NotificationTeacherViewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NotificationTeacherViewActivity.class);
                 startActivity(intent);
             }
         });
@@ -140,19 +137,25 @@ public class MainActivity_teacher extends AppCompatActivity {
                 //  setContentView(R.layout.activity_card_student);
             }
         });
-        
+
     }
-    public void getInfo(){
+
+    public void getInfo() {
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
         Teacher teacher = new Teacher();
-<<<<<<< HEAD
-        try{ teacher= userLocalStore.getTeacherLocal();
-=======
-        try{ teacher = userLocalStore.getTeacherLocal();
->>>>>>> Hoan thanh reset-profile
-            tv_username.setText(teacher.getName());}
-        catch (Exception ex){}
-    }
 
+        try {
+            teacher = userLocalStore.getTeacherLocal();
+
+            try {
+                teacher = userLocalStore.getTeacherLocal();
+                tv_username.setText(teacher.getName());
+            } catch (Exception ex) {
+            }
+        }
+        catch (Exception e){
+
+        }
+    }
 }

@@ -63,8 +63,8 @@ public class ListStudentsInClassAdapter extends RecyclerView.Adapter<ListStudent
         String tvEmail;
         public StudentsViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvStudentName= itemView.findViewById(R.id.tv_item_class_numbers);
-            tvStudentId= itemView.findViewById(R.id.tv_item_class_student);
+            tvStudentName= itemView.findViewById(R.id.tv_item_class_student);
+            tvStudentId= itemView.findViewById(R.id.tv_item_class_numbers);
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {

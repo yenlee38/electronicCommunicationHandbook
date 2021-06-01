@@ -1,6 +1,7 @@
 package com.example.electroniccommunicationhandbook.ui.authentication.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 
 import android.app.Dialog;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
 import android.widget.TextView;
@@ -36,6 +38,8 @@ import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.resetpassword.GetPhoneNumberActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FadingCircle;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -59,7 +63,8 @@ public class Login extends AppCompatActivity {
     EditText edtUserName, edtPassword;
     TextView tvResetPassword;
     UserLocalStore userLocalStore;
-
+    ProgressBar progressBar;
+    ConstraintLayout constraintLayout;
     Context context;
 
     RadioButton radTeacher, radParent, radStudent;
@@ -75,7 +80,7 @@ public class Login extends AppCompatActivity {
 
         userLocalStore = new UserLocalStore(context);
         mainRepository = mainRepository.getInstance();
-
+        constraintLayout= findViewById(R.id.layout_above);
         login= findViewById(R.id.btn_login);
         edtUserName= findViewById(R.id.edtUserName_Login);
         edtPassword= findViewById(R.id.edtPassword_Login);
@@ -94,8 +99,11 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: check Type login in radio button
-
+                //Loading bar
+                constraintLayout.setVisibility(View.VISIBLE);
+                progressBar = (ProgressBar) findViewById(R.id.spin_kit1);
+                Sprite fadingCircle = new FadingCircle();
+                progressBar.setIndeterminateDrawable(fadingCircle);
                 if (radTeacher.isChecked()) {
                     role = 1;
 

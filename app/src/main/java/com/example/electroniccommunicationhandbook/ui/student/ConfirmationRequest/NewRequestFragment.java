@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
@@ -23,6 +24,8 @@ import com.example.electroniccommunicationhandbook.entity.ConfirmationPaper;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_ConfirmationPaper;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FadingCircle;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -48,6 +51,8 @@ public class NewRequestFragment extends Fragment {
     int id_Confirmation_Transcript = 29;
     ConfirmationRequestViewModel confirmationRequestViewModel;
     Button btn_back;
+    ProgressBar progressBar;
+    ConstraintLayout constraintLayout;
     public NewRequestFragment() {
         // Required empty public constructor
     }
@@ -60,8 +65,11 @@ public class NewRequestFragment extends Fragment {
         radConfirmationStudent = view.findViewById(R.id.rdGetConfirmStudent);
         radConfirmationTranscript = view.findViewById(R.id.rdGetTranscript);
         btn_back= view.findViewById(R.id.btn_new_to_main_board);
+        progressBar = (ProgressBar) view.findViewById(R.id.spin_kit1_classes);
         UserLocalStore userLocalStore = new UserLocalStore(getContext());
         student = userLocalStore.getStudentLocal();
+        constraintLayout= view.findViewById(R.id.layout_above_classes);
+
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +80,10 @@ public class NewRequestFragment extends Fragment {
         btnNewRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Loading bar
+                constraintLayout.setVisibility(View.VISIBLE);
+                Sprite fadingCircle = new FadingCircle();
+                progressBar.setIndeterminateDrawable(fadingCircle);
 
                 Student_ConfirmationPaper newConfirmation = new Student_ConfirmationPaper();
                 ConfirmationPaper categoryPaper;
@@ -80,23 +92,13 @@ public class NewRequestFragment extends Fragment {
                 } else {
                     categoryPaper = new ConfirmationPaper(id_Confirmation_Transcript);
                 }
-//                /// SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSS'Z'");
-//                Date first_date = Calendar.getInstance().getTime();
-//
-                Student_ConfirmationPaper student_confirmationPaper = null;
-//
-//                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//                Date date = new Date();
 
+                Student_ConfirmationPaper student_confirmationPaper = null;
 
                 student_confirmationPaper = new Student_ConfirmationPaper(Calendar.getInstance().getTime(), student, categoryPaper);
 
-//                new Thread(new Runnable() {
-//                   @Override
-//                   public void run() {
                        confirmationRequestViewModel.createConfirmation(student_confirmationPaper);
-//                   }
-//               });
+
                 Dialog dialog =new Dialog(getActivity());
 
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -106,8 +108,8 @@ public class NewRequestFragment extends Fragment {
 
                     for (int i=-10000; i<1000000000;i=i+2)
                         i--;
-
                 dialog.dismiss();
+                constraintLayout.setVisibility(View.INVISIBLE);
                 //TODO: send request
                 int code= confirmationRequestViewModel.getCode();
                 if (code == CODE_SUCCESSFUL) {

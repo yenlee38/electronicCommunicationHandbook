@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.example.electroniccommunicationhandbook.entity.Parent;
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
+import com.example.electroniccommunicationhandbook.ui.student.fee.FeeViewActivity;
+import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.time.Year;
@@ -44,11 +46,10 @@ public class MainActivity_parent extends AppCompatActivity {
     public void getInfo(){
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
-<<<<<<< HEAD
+
         Parent parent= new Parent();
-=======
-        Parent parent = new Parent();
->>>>>>> Hoan thanh reset-profile
+
+
         try{ parent = userLocalStore.getParentLocal();
             tv_username.setText(parent.getName());}
         catch (Exception ex){}
@@ -99,18 +100,12 @@ public class MainActivity_parent extends AppCompatActivity {
        btnProfile.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-<<<<<<< HEAD
-               Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-               startActivity(intent);
-           }
-       });
 
-=======
+
                Intent intent = new Intent(MainActivity_parent.this, ProfileActivity.class);
                startActivity(intent);
            }
        });
->>>>>>> Hoan thanh reset-profile
 
        btn_viewPoints.setOnClickListener(new View.OnClickListener() {
            @Override
