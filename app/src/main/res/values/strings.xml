@@ -16,7 +16,7 @@
     <string name="viewpoints">View Points</string>
     <string name="title_activity_fee_view">activity_fee_view</string>
     <string name="tab_student_card">Student Card </string>
-    <string name="view_fee_title">Fee</string>
+    <string name="view_fee_title">Fees</string>
     <string name="total_fee">Total Fee</string>
     <string name="price">Price</string>
     <string name="no_sub">No. Subject</string>
@@ -31,8 +31,12 @@
     <string name="title_activity_try">TryActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
-
     <string name="not_yet_rated">Not Yet Rated</string>
     <string name="rated">Rated</string>
+    <string name="notify">Notify</string>
+    <string name="send">Send</string>
+    <string name="class_off_request">Class Off Request</string>
+    <string name="empty_day">Empty Day</string>
+    <string name="empty_rate">Empty Rate</string>
 
 </resources>

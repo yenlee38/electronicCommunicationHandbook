@@ -22,7 +22,7 @@
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/tv_username"
+            android:id="@+id/tv_username_parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hoang Thai Nhu Quynh"

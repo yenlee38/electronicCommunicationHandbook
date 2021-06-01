@@ -40,19 +40,22 @@ public class Student implements Serializable {
     @SerializedName("studentAddress")
     @Expose
     private String address;
+
     @SerializedName("studentEmail")
     @Expose
     private String email;
 
+    @SerializedName("studentImage")
+    @Expose
     private String image;
 
     private String bankSeri;
 
     private Account account;
 
-    private String year;
+    private int year;
 
-    private String major;
+   private String major;
 
     public String getStudentId() {
         return studentId;
@@ -126,11 +129,11 @@ public class Student implements Serializable {
         this.bankSeri = bankSeri;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
@@ -159,7 +162,7 @@ public class Student implements Serializable {
         this.address = address;
         this.email = email;
         this.image = image;
-        this.bankSeri = bankSeri;
+      //  this.bankSeri = bankSeri;
         this.account = account;
     }
 
@@ -176,9 +179,9 @@ public class Student implements Serializable {
         this.address = address;
         this.email = email;
         this.image = image;
-        this.bankSeri = bankSeri;
+     //   this.bankSeri = bankSeri;
         this.account = account;
-        this.year = year;
-        this.major = major;
+      //  this.year = year;
+      //  this.major = major;
     }
 }

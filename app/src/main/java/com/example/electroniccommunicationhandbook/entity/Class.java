@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class Class {
+
     @SerializedName("classId")
     private String classId;
     private Subject subject;
@@ -18,18 +19,6 @@ public class Class {
     private String classRoom;
     private int startSchoolTime;
     private int endSchoolTime;
-//    private Collection<Announcement> announcements;
-    //  private Collection<Student_Class>  students;
-//=======
-//    private Date startingDate;
-//    private Date endDate;
-//    private int classDayOfWeek;
-//    private String room;
-//    private int startingSchoolTime;
-//    private int endSchoolTime;
-//    private Collection<Announcement> announcement;
-//    private Collection<Student_Class>  students;
-//>>>>>>> 836807ab68d973bf865d4940a07023765675ffba
 
     public String getClassId() {
         return classId;
@@ -115,6 +104,7 @@ public class Class {
     }
 
     public int getStartSchoolTime() {
+
         return startSchoolTime;
     }
 
@@ -122,33 +112,7 @@ public class Class {
         this.startSchoolTime = startSchoolTime;
     }
 
-    //<<<<<<< HEAD
-////    public Collection<Announcement> getAnnouncements() {
-////        return announcements;
-////    }
-////
-////    public void setAnnouncements(Collection<Announcement> announcements) {
-////        this.announcements = announcements;
-////    }
-////=======
-//    public Collection<Announcement> getAnnouncements() {
-//        return announcement;
-//    }
-//
-//    public void setAnnouncements(Collection<Announcement> announcements) {
-//        this.announcement = announcements;
-//    }
-//>>>>>>> 836807ab68d973bf865d4940a07023765675ffba
-
-//    public Collection<Student_Class> getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(Collection<Student_Class> students) {
-//        this.students = students;
-//    }
-
-    public Class(Class classNew){
+    public Class(Class classNew) {
         classId = classNew.getClassId();
         subject = classNew.getSubject();
         teacher = classNew.getTeacher();
@@ -158,20 +122,8 @@ public class Class {
         classStartDate = classNew.getClassStartDate();
         classDayOfWeek = classNew.getClassDayOfWeek();
         classRoom = classNew.getClassRoom();
-//        startSchoolTime = classNew.getStartSchoolTime();
-////=======
-////        startingDate = classNew.getStartingDate();
-////        endDate = classNew.getEndDate();
-////        classDayOfWeek = classNew.getDayOfWeek();
-////        room = classNew.getRoom();
-////        startingSchoolTime = classNew.getStartingSchoolTime();
-////>>>>>>> 836807ab68d973bf865d4940a07023765675ffba
-//        classDayOfWeek = classNew.getDayOfWeek();
-//        classRoom = classNew.getRoom();
-//        startingSchoolTime = classNew.getStartingSchoolTime();
-//        endSchoolTime = classNew.getEndSchoolTime();
-    }
 
+    }
     public Class(String classId, Subject subject, Teacher teacher, int semester, int studyingYear, Date classEndDate, Date classStartDate, int classDayOfWeek, String classRoom, int startingSchoolTime, int endSchoolTime) {
         this.classId = classId;
         this.subject = subject;
@@ -189,5 +141,9 @@ public class Class {
     public Class() {
     }
 
+    @Override
+    public String toString(){
+        return this.getSubject().getName();
+    }
 
 }

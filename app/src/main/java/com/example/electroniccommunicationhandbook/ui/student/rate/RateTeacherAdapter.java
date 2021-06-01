@@ -1,7 +1,5 @@
 package com.example.electroniccommunicationhandbook.ui.student.rate;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -13,17 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.R;
-import com.example.electroniccommunicationhandbook.entity.Class;
-import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
-import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClassAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.RateTeacherViewHolder> {
 
@@ -67,8 +60,11 @@ public class RateTeacherAdapter extends RecyclerView.Adapter<RateTeacherAdapter.
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Bundle bundle = new Bundle();
+                bundle.putInt("year", mClass.get(position).get_class().getStudyingYear());
+                bundle.putInt("semester", mClass.get(position).get_class().getSemester());
                 bundle.putSerializable("student_class_object", mClass.get(position));
                 RateDetailFragment myFragment = new RateDetailFragment();
+                myFragment.setArguments(bundle);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.layout_rate_teacher, myFragment).addToBackStack(null).commit();
 
 

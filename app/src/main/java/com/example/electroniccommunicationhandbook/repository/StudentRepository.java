@@ -8,13 +8,19 @@ import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
+import com.example.electroniccommunicationhandbook.service.StudentClassService;
 import com.example.electroniccommunicationhandbook.service.StudentService;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -25,18 +31,22 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StudentRepository {
     private static final String BASE_URL = "https://api-spring-handbook.herokuapp.com/";
 
     private StudentService studentService;
+    public StudentClassService studentClassService;
     public Student student;
     private MutableLiveData<ArrayList<Class>> classResponseLiveData;
     private MutableLiveData<ArrayList<Student_Class>> studentClassResponseLiveData;
     public ArrayList<Class> lClass;
     public MutableLiveData<ArrayList<SchoolTime>> lSchoolTime;
     private static final int NUMBER_OF_THREADS = 4;
+    private MutableLiveData<ArrayList<Student_Class>> allStudentClassLiveData;
+    boolean isUpdate = false;
 
     public Student getStudent() {
         return student;
@@ -82,10 +92,12 @@ public class StudentRepository {
     }
 
     public StudentRepository() {
+        isUpdate = false;
         lClass = new ArrayList<Class>();
         lSchoolTime = new MutableLiveData<>();
         classResponseLiveData = new MutableLiveData<>();
         studentClassResponseLiveData = new MutableLiveData<>();
+        allStudentClassLiveData = new MutableLiveData<>();
         MainRepository mainRepository;
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -103,12 +115,28 @@ public class StudentRepository {
             }
         }).build();
 
-        studentService = new retrofit2.Retrofit.Builder()
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Student_Class.class, new JsonSerializer<Student_Class>() {
+                    @Override
+                    public JsonElement serialize(Student_Class src, Type typeOfSrc, JsonSerializationContext context) {
+                        return context.serialize(src, src.getClass());
+                    }
+                })
+                .create();
+
+        studentService = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(StudentService.class);
+
+        studentClassService = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(StudentClassService.class);
     }
 
     public void getInfo(String id) {
@@ -252,6 +280,46 @@ public class StudentRepository {
                 });
 
         return studentClassResponseLiveData;
+    }
+
+    public void updateStudentClass(Student_Class student_class){
+        Log.e("update :" ,"vao");
+        studentService.updateStudentClass(student_class).enqueue(new Callback<Student_Class>() {
+            @Override
+            public void onResponse(Call<Student_Class> call, Response<Student_Class> response) {
+                if (response.isSuccessful()){
+                    Log.e("update:" , response.body().getRating() +" " + response.body().getComment());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student_Class> call, Throwable t) {
+                Log.e("update fail:" , t.toString());
+            }
+        });
+    }
+
+    public boolean updateStudentClassById(Student_Class student_class, String studentId, String classId){
+
+        Log.e("update :" ,"vao");
+        studentService.updateStudentClassById(student_class, studentId, classId).enqueue(new Callback<Student_Class>() {
+            @Override
+            public void onResponse(Call<Student_Class> call, Response<Student_Class> response) {
+                if (response.isSuccessful()){
+                    isUpdate = true;
+                    Log.e("update:", "vao reponse");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Student_Class> call, Throwable t) {
+                Log.e("update fail:" , t.toString());
+                isUpdate = false;
+            }
+        });
+        return isUpdate;
     }
 
 

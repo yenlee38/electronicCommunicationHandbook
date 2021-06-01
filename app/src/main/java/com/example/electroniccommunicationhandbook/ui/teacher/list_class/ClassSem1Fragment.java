@@ -6,12 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,26 +18,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.R;
-import com.example.electroniccommunicationhandbook.ViewModel.ConfirmationRequestViewModel;
 import com.example.electroniccommunicationhandbook.ViewModel.TeacherClassViewModel;
-import com.example.electroniccommunicationhandbook.entity.Account;
-import com.example.electroniccommunicationhandbook.entity.Announcement;
-import com.example.electroniccommunicationhandbook.entity.ConfirmationPaper;
-import com.example.electroniccommunicationhandbook.entity.Student;
-import com.example.electroniccommunicationhandbook.entity.Student_Class;
-import com.example.electroniccommunicationhandbook.entity.Student_ConfirmationPaper;
-import com.example.electroniccommunicationhandbook.entity.Subject;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
-import com.example.electroniccommunicationhandbook.ui.student.ConfirmationRequest.ComfirmationAdapter;
-import com.example.electroniccommunicationhandbook.ui.student.point.ui.main.PlaceholderFragment;
+
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.example.electroniccommunicationhandbook.entity.Class;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 public class ClassSem1Fragment extends Fragment {
     private static final String SEMESTER = "Semester";
@@ -57,16 +40,11 @@ public class ClassSem1Fragment extends Fragment {
     static int studyingYear = 2021;
     public static void setSemester(int semester) {
         ClassSem1Fragment.semester = semester;
-        //this.updateList();
     }
-
     public void setStudyingYear(int studyingYear) {
         ClassSem1Fragment.studyingYear = studyingYear;
         this.updateList();
     }
-
-
-
     public ClassSem1Fragment() {
     }
 
@@ -78,7 +56,6 @@ public class ClassSem1Fragment extends Fragment {
         bundle.putInt(SEMESTER, semester);
         bundle.putInt(YEAR, studyingYear);
         fragment.setArguments(bundle);
-
 
         return fragment;
     }
@@ -92,27 +69,17 @@ public class ClassSem1Fragment extends Fragment {
         if (getArguments() != null) {
             mSemester = getArguments().getInt(SEMESTER);
             mYear = getArguments().getInt(YEAR);
-
         }
 
         semester = mSemester;
         studyingYear = mYear;
     }
 
-//    public static ClassSem1Fragment newInstance(int index){
-//        ClassSem1Fragment fragment= new ClassSem1Fragment();
-//        Bundle bundle= new Bundle();
-//        bundle.putInt(SEMESTER, index);
-//        fragment.setArguments(bundle);
-//        return Instance;
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_class_semp1, container, false);
-        //
         tvTotalClass = view.findViewById(R.id.tv_class_total_sem1);
         tvTotalStudent = view.findViewById(R.id.tv_class_total_sem1);
 
@@ -131,7 +98,6 @@ public class ClassSem1Fragment extends Fragment {
 
         updateList();
     }
-
     public void updateList() {
 
         teacherClassViewModel.findClassOfTeacher(teacher.getTeacherID(), semester, studyingYear).observe(getViewLifecycleOwner(),
@@ -146,10 +112,7 @@ public class ClassSem1Fragment extends Fragment {
                         tvTotalClass.setText(String.valueOf(listClass.size()));
 
                         rcvClasses.setAdapter(adapter);
-
                     }
                 });
-
-
     }
 }

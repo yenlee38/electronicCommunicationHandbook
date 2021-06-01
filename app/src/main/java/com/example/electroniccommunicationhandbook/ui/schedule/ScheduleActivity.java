@@ -28,6 +28,7 @@ import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.SchoolTime;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
+import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.time.Year;
@@ -40,9 +41,9 @@ public class ScheduleActivity extends AppCompatActivity {
     private ScheduleAdapter scheduleAdapter;
     private ImageView img_back;
     private MutableLiveData<ArrayList<Class>> classLiveData;
-    private static int YEAR;
-    private static int SEMESTER = 1;
-    private static int DAY = 1;
+    public static int YEAR = 2021;
+    public static int SEMESTER = 1;
+    public static int DAY = 1;
     private AppCompatButton btn_semesterOne;
     private AppCompatButton btn_semesterTwo;
     private StudentRepository studentRepository;
@@ -59,6 +60,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private MutableLiveData<ArrayList<SchoolTime>> lSchoolTimeLiveData;
     private Spinner sp_year;
     private TextView tv_nullClass;
+    private AppCompatButton btn_viewPoint;
     public ScheduleActivity() {
         // Required empty public constructor
     }
@@ -77,9 +79,14 @@ public class ScheduleActivity extends AppCompatActivity {
         List<StudyingYear> yearList = new ArrayList<StudyingYear>();
         for(int i = 2018; i < 2025; i++) // create year from 2018 to 2025
             yearList.add(new StudyingYear(i));
-        ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(getApplicationContext(), android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
+        ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(getApplicationContext(),
+                android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
         sp_year.setAdapter(adapter);
-        sp_year.setSelection(3); // set studying
+        int index = 0;
+        for(int i = 0; i < yearList.size(); i++)
+            if(yearList.get(i).getYear() == YEAR){index = i; break;}
+        sp_year.setSelection(index);
+
         sp_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -140,7 +147,7 @@ public class ScheduleActivity extends AppCompatActivity {
 
         }
         else
-            tv_nullClass.setText("DON'T HAVE CLASS OF DAY !!");
+            tv_nullClass.setText(getResources().getString(R.string.empty_day));
     }
 
 
@@ -162,6 +169,7 @@ public class ScheduleActivity extends AppCompatActivity {
         rlv_schedule = findViewById(R.id.rlv_schedule);
         sp_year = findViewById(R.id.sp_year);
         img_back = findViewById(R.id.img_back);
+        btn_viewPoint = findViewById(R.id.btn_viewPoint);
         btn_semesterOne = findViewById(R.id.btn_semesterOne);
         btn_semesterTwo = findViewById(R.id.btn_semesterTwo);
         btn_monDay = findViewById(R.id.btn_monDay);
@@ -170,6 +178,17 @@ public class ScheduleActivity extends AppCompatActivity {
         btn_thuDay = findViewById(R.id.btn_thuDay);
         btn_friDay = findViewById(R.id.btn_friDay);
         btn_satDay = findViewById(R.id.btn_satDay);
+
+        setBtn_semesterChoose(SEMESTER);
+        setBtnDay(DAY);
+
+        btn_viewPoint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         btn_monDay.setOnClickListener(new View.OnClickListener() {
@@ -357,10 +376,118 @@ public class ScheduleActivity extends AppCompatActivity {
       //  sortClassBySchoolTime(lClass);
         if(lClass.size() != 0)
             tv_nullClass.setText("");
-        else tv_nullClass.setText("DON'T HAVE CLASS OF DAY !!");
+        else tv_nullClass.setText(getResources().getString(R.string.empty_day));
         return lClass;
 
     }
 
 
+    public AppCompatButton getBtn_semesterOne() {
+        return btn_semesterOne;
+    }
+
+    public AppCompatButton getBtn_semesterTwo() {
+        return btn_semesterTwo;
+    }
+
+    public void setBtn_semesterChoose(int semesterChoose){
+        if(semesterChoose == 1){
+            getBtn_semesterOne().setBackground(getDrawable (R.drawable.border_bottom));
+            getBtn_semesterOne().setTextColor(Color.BLACK);
+            getBtn_semesterTwo() .setBackground(getDrawable(R.drawable.border_bottom_gray));
+            getBtn_semesterTwo() .setTextColor(Color.GRAY);
+        }else {
+            getBtn_semesterTwo().setBackground(getDrawable(R.drawable.border_bottom));
+            getBtn_semesterTwo().setTextColor(Color.BLACK);
+            getBtn_semesterOne().setBackground(getDrawable(R.drawable.border_bottom_gray));
+            getBtn_semesterOne().setTextColor(Color.GRAY);
+        }
+    }
+
+    public void setBtnDay(int day){
+        if(day == 1 || day == 7){
+            DAY = 1;
+            btn_monDay.setBackground(getDrawable(R.drawable.border_btnview));
+            btn_monDay.setTextColor(Color.WHITE);
+            btn_tueDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_tueDay.setTextColor(Color.BLACK);
+            btn_wedDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_wedDay.setTextColor(Color.BLACK);
+            btn_thuDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_thuDay.setTextColor(Color.BLACK);
+            btn_friDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_friDay.setTextColor(Color.BLACK);
+            btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_satDay.setTextColor(Color.BLACK);
+        }else if (day == 2){
+            btn_tueDay.setBackground(getDrawable(R.drawable.border_btnview));
+            btn_tueDay.setTextColor(Color.WHITE);
+            btn_monDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_monDay.setTextColor(Color.BLACK);
+            btn_wedDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_wedDay.setTextColor(Color.BLACK);
+            btn_thuDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_thuDay.setTextColor(Color.BLACK);
+            btn_friDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_friDay.setTextColor(Color.BLACK);
+            btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_satDay.setTextColor(Color.BLACK);
+        }else if(day ==3){
+            btn_wedDay.setBackground(getDrawable(R.drawable.border_btnview));
+            btn_wedDay.setTextColor(Color.WHITE);
+            btn_tueDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_tueDay.setTextColor(Color.BLACK);
+            btn_monDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_monDay.setTextColor(Color.BLACK);
+            btn_thuDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_thuDay.setTextColor(Color.BLACK);
+            btn_friDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_friDay.setTextColor(Color.BLACK);
+            btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_satDay.setTextColor(Color.BLACK);
+        }
+        else if(day ==4){
+            btn_thuDay.setBackground(getDrawable(R.drawable.border_btnview));
+            btn_thuDay.setTextColor(Color.WHITE);
+            btn_tueDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_tueDay.setTextColor(Color.BLACK);
+            btn_wedDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_wedDay.setTextColor(Color.BLACK);
+            btn_monDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_monDay.setTextColor(Color.BLACK);
+            btn_friDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_friDay.setTextColor(Color.BLACK);
+            btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_satDay.setTextColor(Color.BLACK);
+        }
+
+        else if(day ==5){
+            btn_friDay.setBackground(getDrawable(R.drawable.border_btnview));
+            btn_friDay.setTextColor(Color.WHITE);
+            btn_tueDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_tueDay.setTextColor(Color.BLACK);
+            btn_wedDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_wedDay.setTextColor(Color.BLACK);
+            btn_thuDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_thuDay.setTextColor(Color.BLACK);
+            btn_monDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_monDay.setTextColor(Color.BLACK);
+            btn_satDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_satDay.setTextColor(Color.BLACK);
+        }
+        else if(day ==6){
+            btn_satDay.setBackground(getDrawable(R.drawable.border_btnview));
+            btn_satDay.setTextColor(Color.WHITE);
+            btn_tueDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_tueDay.setTextColor(Color.BLACK);
+            btn_wedDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_wedDay.setTextColor(Color.BLACK);
+            btn_thuDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_thuDay.setTextColor(Color.BLACK);
+            btn_friDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_friDay.setTextColor(Color.BLACK);
+            btn_monDay.setBackground(getDrawable(R.drawable.border_btn_white));
+            btn_monDay.setTextColor(Color.BLACK);
+        }
+    }
 }

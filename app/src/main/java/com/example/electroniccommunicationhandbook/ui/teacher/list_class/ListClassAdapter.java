@@ -15,11 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
-import com.example.electroniccommunicationhandbook.entity.Subject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.ClassesViewHolder> {
     ArrayList<Class> data;
@@ -38,15 +36,9 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Clas
 
     @Override
     public void onBindViewHolder(@NonNull ClassesViewHolder holder, int position) {
-        //  holder.numberOfClass.setText(data.getClass().);
-//        if (!data.get(position).getStudents().isEmpty()){
-//            holder.listStudentInClass.addAll(data.get(position).getStudents());
-//
-//        }
         holder.classId= data.get(position).getClassId();
         holder.credit.setText(data.get(position).getClassRoom());
         holder.nameSubject.setText(data.get(position).getSubject().getName());
-        //  holder.numberOfClass.setText(data.get(position).getStudents().size());
     }
 
     @Override
@@ -56,7 +48,7 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Clas
         return 0;
     }
 
-    public class ClassesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ClassesViewHolder extends RecyclerView.ViewHolder {
         private TextView nameSubject;
         private TextView numberOfClass;
         private TextView credit;
@@ -72,18 +64,12 @@ public class ListClassAdapter extends RecyclerView.Adapter<ListClassAdapter.Clas
             btnViewStudents.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Intent intent = new Intent(mContext, StudentInClass.class);
                     intent.putExtra("classId", classId);
 
                     v.getContext().startActivity(intent);
                 }
             });
-        }
-
-        @Override
-        public void onClick(View v) {
-          //  mContext.startActivity();
         }
     }
 }

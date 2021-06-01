@@ -1,7 +1,6 @@
 package com.example.electroniccommunicationhandbook.service;
 
 import com.example.electroniccommunicationhandbook.entity.Class;
-import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 
 import java.util.ArrayList;
@@ -30,14 +29,13 @@ public interface StudentClassService {
     Call<ArrayList<Student_Class>> findAll();
 
     @GET("/student_class/{id_student}/{id_class}")
-    Call<Student_Class> findPointByClassAndStudentID(@Path("id_student") String id_student,@Path("id_class") String id_class);
+    Call<Student_Class> findPointByClassAndStudentID(@Path("id_student") String id_student, @Path("id_class") String id_class);
 
     @GET("/student_class/schedule/{id_student}/{year}/{semester}")
     Call<List<Class>> findStudentClassEverySemester(@Path("id_student") String studentId, @Path("year") int year, @Path("semester") int semester);
 
     @GET("/student_class/{id_student}/{year}/{semester}")
     Call<ArrayList<Student_Class>> findByStudentIdAndYearAndSemester(@Path("id_student") String studentId, @Path("year") int year, @Path("semester") int semester);
-
 
     @GET("/class/teacher/{teacherId}")
     Call<ArrayList<Class>> findClassByIdTeacher(@Path("teacherId") String teacherId);

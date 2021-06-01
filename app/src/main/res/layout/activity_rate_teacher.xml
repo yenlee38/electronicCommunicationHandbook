@@ -80,13 +80,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:layout_below="@+id/rlv_schedule"
+        android:layout_below="@+id/rlv_rateTeacher"
         android:textSize="30dp"
         android:lineSpacingExtra="10dp"
         android:textStyle="bold"
-        android:textAllCaps="true"
+        android:textColor="@color/gray_primary"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         />
-
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -2,10 +2,8 @@ package com.example.electroniccommunicationhandbook.database;
 
 import android.content.Context;
 
-import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverters;
 
 import com.example.electroniccommunicationhandbook.dao.AccountDAO;
 import com.example.electroniccommunicationhandbook.dao.AnnouncementDAO;
@@ -20,19 +18,6 @@ import com.example.electroniccommunicationhandbook.dao.Student_ConfirmationPaper
 import com.example.electroniccommunicationhandbook.dao.Student_ParentDAO;
 import com.example.electroniccommunicationhandbook.dao.SubjectDAO;
 import com.example.electroniccommunicationhandbook.dao.TeacherDAO;
-import com.example.electroniccommunicationhandbook.entity.Account;
-import com.example.electroniccommunicationhandbook.entity.Announcement;
-import com.example.electroniccommunicationhandbook.entity.Class;
-import com.example.electroniccommunicationhandbook.entity.ConfirmationPaper;
-import com.example.electroniccommunicationhandbook.entity.Message;
-import com.example.electroniccommunicationhandbook.entity.Parent;
-import com.example.electroniccommunicationhandbook.entity.SchoolTime;
-import com.example.electroniccommunicationhandbook.entity.Student;
-import com.example.electroniccommunicationhandbook.entity.Student_Class;
-import com.example.electroniccommunicationhandbook.entity.Student_ConfirmationPaper;
-import com.example.electroniccommunicationhandbook.entity.Student_Parent;
-import com.example.electroniccommunicationhandbook.entity.Subject;
-import com.example.electroniccommunicationhandbook.entity.Teacher;
 
 
 import java.util.concurrent.ExecutorService;

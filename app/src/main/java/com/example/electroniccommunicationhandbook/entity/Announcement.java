@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
@@ -12,19 +12,22 @@ import java.util.List;
 
 public class Announcement {
 
-    private int announcementId;
+    @SerializedName("announcementID")
+    @Expose
+    private int announcementID;
     private Teacher sender;
     @SerializedName("_Class")
-    private Class _class;
+    @Expose
+    private Class _Class;
     private String content;
     private Date announcementTime;
 
     public int getAnnouncementId() {
-        return announcementId;
+        return announcementID;
     }
 
     public void setAnnouncementId(int announcementId) {
-        this.announcementId = announcementId;
+        this.announcementID = announcementId;
     }
 
     public Teacher getSender() {
@@ -36,11 +39,11 @@ public class Announcement {
     }
 
     public Class get_class() {
-        return _class;
+        return _Class;
     }
 
     public void set_class(Class _class) {
-        this._class = _class;
+        this._Class = _class;
     }
 
     public String getContent() {
@@ -60,5 +63,12 @@ public class Announcement {
     }
 
     public Announcement() {
+    }
+
+    public Announcement( Teacher sender, Class _class, String content, Date announcementTime) {
+        this.sender = sender;
+        this._Class = _class;
+        this.content = content;
+        this.announcementTime = announcementTime;
     }
 }

@@ -35,10 +35,10 @@
             android:id="@+id/tv_gpa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="55dp"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:text="9.1"
+            android:text=""
             android:textColor="@color/white"
             android:textFontWeight="@android:integer/config_longAnimTime"
             android:textSize="17sp"
@@ -115,10 +115,10 @@
             android:id="@+id/tv_numPass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="43dp"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
-            android:text="3/4"
+            android:text=""
             android:textColor="#FFFFFF"
             android:textFontWeight="@android:integer/config_longAnimTime"
             android:textSize="17sp"
@@ -182,5 +182,17 @@
             />
 
     </LinearLayout>
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.Circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="88dp"
+        app:SpinKit_Color="@color/blue_pastel_500"
+        app:layout_constraintStart_toStartOf="@+id/recycelviewPoint"
+        app:layout_constraintTop_toTopOf="@+id/recycelviewPoint" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
