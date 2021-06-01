@@ -5,15 +5,33 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Parent {
 
     private String parentId;
+
+    @SerializedName("parentName")
+    @Expose
     private String name;
+
+    @SerializedName("parentBirthday")
+    @Expose
     private Date birthday;
+
+    @SerializedName("parentPhone")
+    @Expose
     private String phone;
+
+    @SerializedName("parentAddress")
+    @Expose
     private String address;
+
+    @SerializedName("parentEmail")
+    @Expose
     private String email;
     private String gender;
     private String image;

@@ -24,13 +24,15 @@ public class Student implements Serializable {
     @Expose
     private String name;
 
-//    @SerializedName("studentBirthday")
-//    @Expose
-//    @SerializedName("studentBirthday")
-//    @Expose
+
+    @SerializedName("studentBirthday")
+    @Expose
+
     @TypeConverters(Convert.class)
     private Date  birthday;
 
+    @SerializedName("studentGender")
+    @Expose
     private String gender;
 
     @SerializedName("studentPhone")
@@ -49,6 +51,7 @@ public class Student implements Serializable {
     @Expose
     private String image;
 
+    @SerializedName("studentB")
     private String bankSeri;
 
     private Account account;

@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.electroniccommunicationhandbook.entity.Parent;
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
@@ -24,7 +26,7 @@ import com.example.electroniccommunicationhandbook.ui.authentication.login.Login
 public class MainActivity_parent extends AppCompatActivity {
     Button btnLogout;
     TextView tv_username;
-    private AppCompatButton btn_schedule;
+    private AppCompatButton btn_schedule,btnProfile;
     UserLocalStore userLocalStore;
     private AppCompatButton btn_viewPoints;
     private AppCompatButton btn_viewFees;
@@ -42,9 +44,13 @@ public class MainActivity_parent extends AppCompatActivity {
     public void getInfo(){
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
-        Student student = new Student();
-        try{ student = userLocalStore.getStudentLocal();
-            tv_username.setText(student.getName());}
+<<<<<<< HEAD
+        Parent parent= new Parent();
+=======
+        Parent parent = new Parent();
+>>>>>>> Hoan thanh reset-profile
+        try{ parent = userLocalStore.getParentLocal();
+            tv_username.setText(parent.getName());}
         catch (Exception ex){}
     }
 
@@ -54,6 +60,7 @@ public class MainActivity_parent extends AppCompatActivity {
         userLocalStore = new UserLocalStore(getApplication());
         btn_schedule = findViewById(R.id.btn_schedule);
         tv_username = findViewById(R.id.tv_username);
+        btnProfile = findViewById(R.id.btn_profile);
     }
     public void initEvent(){
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +96,21 @@ public class MainActivity_parent extends AppCompatActivity {
                 // setContentView(R.layout.activity_schedule);
             }
         });
+       btnProfile.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+<<<<<<< HEAD
+               Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+               startActivity(intent);
+           }
+       });
 
+=======
+               Intent intent = new Intent(MainActivity_parent.this, ProfileActivity.class);
+               startActivity(intent);
+           }
+       });
+>>>>>>> Hoan thanh reset-profile
 
        btn_viewPoints.setOnClickListener(new View.OnClickListener() {
            @Override

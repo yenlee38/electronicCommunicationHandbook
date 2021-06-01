@@ -6,11 +6,17 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
+<<<<<<< HEAD
 import com.example.electroniccommunicationhandbook.ui.student.statistic.StatisticActivity;
+=======
+>>>>>>> Hoan thanh reset-profile
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
 import com.example.electroniccommunicationhandbook.ui.teacher.schedule.ScheduleTeacher;
 import com.example.electroniccommunicationhandbook.ui.teacher.statistic.StatisticTeacherActivity;
@@ -29,25 +35,49 @@ public class MainActivity_teacher extends AppCompatActivity {
     AppCompatButton btn_createNotification;
     AppCompatButton btn_offRequest;
     TextView tv_username;
+
     AppCompatButton  btn_viewNotification;
+
+
+    private AppCompatButton btnProfile;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_teacher);
 
+        initView();
+        getInfo();
+    }
+
+    public void initView() {
+        btnProfile = findViewById(R.id.btn_profile);
         btnClass = findViewById(R.id.btn_class);
         btnSchedule = findViewById(R.id.btn_schedule);
         btnLogout = findViewById(R.id.btn_logout_teacher);
         btn_createNotification = findViewById(R.id.btn_notification_new);
         btn_offRequest = findViewById(R.id.btn_send_off_request);
         tv_username= findViewById(R.id.tv_username_teacher);
+
         btn_viewNotification= findViewById(R.id.btn_notification);
         btnStatistic = findViewById(R.id.btn_statistic_teacher);
-        initView();
-        getInfo();
-    }
 
-    public void initView() {
+        getInfo();
+
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+<<<<<<< HEAD
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+=======
+                Intent intent = new Intent(MainActivity_teacher.this, ProfileActivity.class);
+>>>>>>> Hoan thanh reset-profile
+                startActivity(intent);
+
+            }
+        });
         btnClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,9 +145,13 @@ public class MainActivity_teacher extends AppCompatActivity {
     public void getInfo(){
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
-        Student student = new Student();
-        try{ student = userLocalStore.getStudentLocal();
-            tv_username.setText(student.getName());}
+        Teacher teacher = new Teacher();
+<<<<<<< HEAD
+        try{ teacher= userLocalStore.getTeacherLocal();
+=======
+        try{ teacher = userLocalStore.getTeacherLocal();
+>>>>>>> Hoan thanh reset-profile
+            tv_username.setText(teacher.getName());}
         catch (Exception ex){}
     }
 
