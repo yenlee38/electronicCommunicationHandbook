@@ -28,7 +28,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PointRepository extends AndroidViewModel {
 
     private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+<<<<<<< HEAD
 
+=======
+    //private static final String BASE_URL = "http://localhost:8080/";
+>>>>>>> d4f1fa6 (all)
 
     private StudentClassService studentClassService;
     private Student_Class point;
