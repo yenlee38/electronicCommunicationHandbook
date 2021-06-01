@@ -12,6 +12,7 @@ import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Message;
 import com.google.android.material.imageview.ShapeableImageView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailMessageAdapter extends RecyclerView.Adapter {
@@ -19,26 +20,31 @@ public class DetailMessageAdapter extends RecyclerView.Adapter {
     private final int MY_MESSAGE=1;
     private final int OTHER_MESSAGE=2;
 
-    private List<Message> messageList;
+    private ArrayList<Message> messageList;
     //myid is used to define the user using the app
     private int myID;
 
-    public DetailMessageAdapter(List<Message> messageList, int myID)
+    public DetailMessageAdapter(ArrayList<Message> messageList, int myID)
     {
         this.messageList = messageList;
         this.myID = myID;
     }
 
+    public void setMessageList(ArrayList<Message> messageList) {
+        this.messageList = messageList;
+        notifyDataSetChanged();
+    }
+
     /*
-    class holds structure of each message
-     */
+        class holds structure of each message
+         */
     public static class MyDetailMessageViewHolder extends RecyclerView.ViewHolder{
         public TextView tvMyMessage;
 
         public MyDetailMessageViewHolder(View itemView){
             super(itemView);
 
-//            this.tvMyMessage = (TextView) itemView.findViewById(R.id.tvMyDetailMessage);
+            this.tvMyMessage = (TextView) itemView.findViewById(R.id.tvMyDetailMessage);
         }
     }
 
@@ -52,8 +58,8 @@ public class DetailMessageAdapter extends RecyclerView.Adapter {
         public OtherDetailMessageViewHolder(View itemView){
             super(itemView);
 
-//            this.image = (ShapeableImageView)itemView.findViewById(R.id.imgViewOtherDetailMessage);
-//            this.tvOtherMessage = (TextView) itemView.findViewById(R.id.tv_other_detail_message);
+            this.image = (ShapeableImageView)itemView.findViewById(R.id.imgViewOtherDetailMessage);
+            this.tvOtherMessage = (TextView) itemView.findViewById(R.id.tv_other_detail_message);
         }
     }
 
@@ -61,7 +67,7 @@ public class DetailMessageAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        /*switch (viewType){
+        switch (viewType){
             case MY_MESSAGE:
                 View view1 = layoutInflater.inflate(R.layout.item_my_detail_message, parent, false);
                 return new MyDetailMessageViewHolder(view1);
@@ -70,8 +76,7 @@ public class DetailMessageAdapter extends RecyclerView.Adapter {
                 return new OtherDetailMessageViewHolder(view2);
             default:
                 return null;
-        }*/
-        return null;
+        }
     }
 
     @Override
@@ -99,11 +104,10 @@ public class DetailMessageAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         Message message = this.messageList.get(position);
-//        if(message.getSenderAccountID()==this.myID)
-//            return MY_MESSAGE;
-//        else
-//            return OTHER_MESSAGE;
-        return 0;
+        if(message.getSenderAccount().getAccountID()==this.myID)
+            return MY_MESSAGE;
+        else
+            return OTHER_MESSAGE;
     }
 
     @Override

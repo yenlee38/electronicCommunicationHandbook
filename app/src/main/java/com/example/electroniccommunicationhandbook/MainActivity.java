@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), RateTeacherActivity.class);
                 startActivity(intent);
                 //setContentView(R.layout.activity_rate_teacher);
-
             }
         });
 
