@@ -42,6 +42,7 @@ import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.repository.MainRepository;
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
 import com.example.electroniccommunicationhandbook.service.PointService;
+import com.example.electroniccommunicationhandbook.ui.student.statistic.StatisticActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.util.List;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private AppCompatButton btn_request;
     private AppCompatButton btn_notification;
     private AppCompatButton btn_fee;
+    private AppCompatButton btn_statistic;
     private AppCompatButton btn_logout;
 
     private AppCompatButton btn_point;
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         btn_logout= findViewById(R.id.btn_student_logout);
         btn_notification= findViewById(R.id.btn_notification);
         btn_fee= findViewById(R.id.btn_fee);
+        btn_statistic = findViewById(R.id.btn_statistic);
         tv_username = findViewById(R.id.tv_username);
 
         btn_student_card.setOnClickListener(new View.OnClickListener() {
@@ -218,5 +221,16 @@ public class MainActivity extends AppCompatActivity {
                  startActivity(intent);
              }
          });
+
+        btn_statistic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), StatisticActivity.class);
+                startActivity(intent);
+                //  setContentView(R.layout.activity_card_student);
+
+            }
+        });
+
     }
 }

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.student.statistic.StatisticActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:outlineSpotShadowColor="@color/white"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Statistic"
+            app:navigationIcon="@drawable/ic_round_arrow_back_24" />
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_semester"
+        android:layout_width="match_parent"
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="@color/black"
+        app:tabIndicatorHeight="3dp"
+        app:tabTextAppearance="@style/TabText"
+        app:tabTextColor="@color/material_on_background_disabled"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ti_semester1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Semester 1" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/ti_semester2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Semester 2" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester Results"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"/>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3">
+
+            <TextView
+                android:text="GPA"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:textAlignment="center"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:text="Grade"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:textAlignment="center"
+                android:layout_columnWeight="2"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:text="Pass"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:textAlignment="center"
+                android:layout_columnWeight="3"/>
+
+            <TextView
+                android:id="@+id/tv_gpa"
+                android:text="0.0"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_columnWeight="1"/>
+            <TextView
+                android:id="@+id/tv_grade"
+                android:text="F"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/tv_pass"
+                android:text="0/0"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:layout_columnWeight="1"/>
+
+
+        </GridLayout>
+
+    </LinearLayout>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="2"/>
+
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="No data for statistics"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="@color/gray_primary"
+        android:visibility="gone"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_blue_round"
+        android:orientation="horizontal"
+        android:paddingTop="32dp"
+        android:paddingBottom="32dp"
+        android:paddingLeft="36dp"
+        android:paddingRight="36dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:padding="0dp"
+            android:background="@drawable/background_white_spinner">
+
+            <Spinner
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:id="@+id/sp_year"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_round_arrow_drop_down_24"
+                android:drawablePadding="16dp" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_view_statistic"
+            android:layout_marginLeft="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@drawable/background_purple_button"
+            android:text="View Statistic"
+
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="16dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

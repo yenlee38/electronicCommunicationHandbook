@@ -118,6 +118,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="72dp"
                     android:gravity="center"
@@ -205,15 +206,25 @@
             >
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_notification"
+                android:layout_width="169dp"
+                android:layout_height="64dp"
+                android:textAllCaps="false"
+                android:text="Notification"
+                android:textSize="14dp"
+                android:drawableLeft="@drawable/ic_baseline_circle_notifications_24"
+                android:textColor="@color/white"
+                android:paddingLeft="12dp"
+                android:background="@drawable/btn_notification"/>
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
                 android:id="@+id/btn_message"
-                android:layout_width="match_parent"
+                android:layout_width="169dp"
                 android:layout_height="64dp"
                 android:textAllCaps="false"
                 android:text="Message"
-                android:textAlignment="center"
-                android:textSize="20dp"
+                android:textSize="14dp"
                 android:drawableLeft="@drawable/ic_baseline_chat_24"
                 android:textColor="@color/white"
                 android:paddingLeft="12dp"

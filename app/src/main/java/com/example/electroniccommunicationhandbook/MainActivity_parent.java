@@ -13,8 +13,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
-import com.example.electroniccommunicationhandbook.ui.student.fee.FeeViewActivity;
-import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.time.Year;
@@ -30,6 +28,7 @@ public class MainActivity_parent extends AppCompatActivity {
     UserLocalStore userLocalStore;
     private AppCompatButton btn_viewPoints;
     private AppCompatButton btn_viewFees;
+    private AppCompatButton btn_viewAnnouncements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +54,6 @@ public class MainActivity_parent extends AppCompatActivity {
         userLocalStore = new UserLocalStore(getApplication());
         btn_schedule = findViewById(R.id.btn_schedule);
         tv_username = findViewById(R.id.tv_username);
-        btn_viewPoints= findViewById(R.id.btn_points);
-        btn_viewFees= findViewById(R.id.btn_fee);
     }
     public void initEvent(){
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -75,12 +72,7 @@ public class MainActivity_parent extends AppCompatActivity {
 
     private void initView(){
  
-       try{
-           tv_username.setText(userLocalStore.getParentLocal().getName());
-       }
-       catch (Exception e){
-           Log.e("null name: ", e.getMessage());
-       }
+       try{ tv_username.setText(userLocalStore.getParentLocal().getName());}catch (Exception e){Log.e("null name: ", e.getMessage());}
 
         btn_schedule.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,21 +90,6 @@ public class MainActivity_parent extends AppCompatActivity {
             }
         });
 
-       btn_viewPoints.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
-               startActivity(intent);
-           }
-       });
-
-       btn_viewFees.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), FeeViewActivity.class);
-               startActivity(intent);
-           }
-       });
 
     }
 }
