@@ -72,6 +72,7 @@ public class NewRequestFragment extends Fragment {
         btnNewRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Student_ConfirmationPaper newConfirmation = new Student_ConfirmationPaper();
                 ConfirmationPaper categoryPaper;
                 if (radConfirmationStudent.isChecked()) {
@@ -90,13 +91,12 @@ public class NewRequestFragment extends Fragment {
 
                 student_confirmationPaper = new Student_ConfirmationPaper(Calendar.getInstance().getTime(), student, categoryPaper);
 
-                Student_ConfirmationPaper finalStudent_confirmationPaper = student_confirmationPaper;
-                new Thread(new Runnable() {
-                   @Override
-                   public void run() {
-                       confirmationRequestViewModel.createConfirmation(finalStudent_confirmationPaper);
-                   }
-               });
+//                new Thread(new Runnable() {
+//                   @Override
+//                   public void run() {
+                       confirmationRequestViewModel.createConfirmation(student_confirmationPaper);
+//                   }
+//               });
                 Dialog dialog =new Dialog(getActivity());
 
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
