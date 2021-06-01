@@ -31,6 +31,8 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        //Khởi tạo và ánh xạ các biến
         userLocalStore = new UserLocalStore(this);
         imvBack = findViewById(R.id.imv_back);
         imvPhoto = findViewById(R.id.imv_photo);
@@ -40,24 +42,22 @@ public class ProfileActivity extends AppCompatActivity {
         edtEmail =findViewById(R.id.edit_text_email_profile);
         edtPhone = findViewById(R.id.edit_text_phone_profile);
         edtAddress = findViewById(R.id.edit_text_address_profile);
+
         loadData();
 
         imvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int accountType = 1 ;
-                switch (accountType) {
-                    case 1:
-                        Intent intentStudent = new Intent(ProfileActivity.this, MainActivity.class);
-                        startActivity(intentStudent);
-                    case 2:
-                        Intent intentParent = new Intent(ProfileActivity.this, MainActivity_parent.class);
-                        startActivity(intentParent);
-                    case 3:
-                        Intent intentTeacher = new Intent(ProfileActivity.this, MainActivity_teacher.class);
-                        startActivity(intentTeacher);
-                    default:
-                        return ;
+
+                if(userLocalStore.getRoleLocal()==1){
+                    Intent intentTeacher = new Intent(ProfileActivity.this, MainActivity_teacher.class);
+                    startActivity(intentTeacher);
+                }else if(userLocalStore.getRoleLocal()==2){
+                    Intent intentStudent = new Intent(ProfileActivity.this, MainActivity.class);
+                    startActivity(intentStudent);
+                }else{
+                    Intent intentParent = new Intent(ProfileActivity.this, MainActivity_parent.class);
+                    startActivity(intentParent);
                 }
             }
         });
@@ -69,19 +69,19 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
-
+// Hàm load data
     private void loadData() {
-
+        // Load thông tin Giáo viên nếu role =1
         if(userLocalStore.getRoleLocal()==1){
             Teacher teacher = userLocalStore.getTeacherLocal();
             tvName.setText(teacher.getName());
-            tvID.setText("Không");
+            tvID.setText(teacher.getTeacherID());
             edtEmail.setText(teacher.getEmail());
             edtPhone.setText(teacher.getPhone());
             edtAddress.setText(teacher.getAddress());
+//            Load thông tin Sinh viên nếu role =2
         }else if (userLocalStore.getRoleLocal()==2){
             Student student = userLocalStore.getStudentLocal();
             tvName.setText(student.getName());
@@ -90,9 +90,9 @@ public class ProfileActivity extends AppCompatActivity {
             edtPhone.setText(student.getPhone());
             edtAddress.setText(student.getAddress());
         }else{
-            Parent parent = new Parent();
+            Parent parent = userLocalStore.getParentLocal();//Load thong tin phụ huynh
             tvName.setText(parent.getName());
-            tvID.setText("Không");
+            tvID.setText(parent.getParentId());
             edtEmail.setText(parent.getEmail());
             edtPhone.setText(parent.getPhone());
             edtAddress.setText(parent.getAddress());

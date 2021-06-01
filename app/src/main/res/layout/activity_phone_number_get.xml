@@ -8,10 +8,11 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/imv_back"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="29dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/arrow_back_black_24dp" />
 
         <TextView
@@ -50,7 +51,7 @@ to your email."
         android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/edit_text_email"
+            android:id="@+id/edit_text_phone_number"
             android:layout_width="363dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
@@ -58,7 +59,7 @@ to your email."
             android:importantForAutofill="no"
             android:layout_marginTop="10dp"
             android:textColorHint="@color/litte_gray"
-            android:hint="  Enter your email"
+            android:hint="  Enter your phone number"
             android:inputType="textEmailAddress"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -70,17 +71,27 @@ to your email."
             android:textSize="16sp"/>
 
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_send_numberphone"
+            android:layout_width="363dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_verify"
+            android:text="Verify"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+        <ProgressBar
+            android:id="@+id/progess_bar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+    </FrameLayout>
 
-    <Button
-        android:id="@+id/btn_verify"
-        android:layout_width="363dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/btn_verify"
-        android:text="Verify"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:textStyle="bold" />
 
 </LinearLayout>

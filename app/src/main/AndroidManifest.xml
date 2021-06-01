@@ -40,7 +40,7 @@
         <activity android:name=".ui.resetpassword.ResetPasswordSuccessfullyActivity" />
         <activity android:name=".ui.resetpassword.ChangePasswordActivity" />
         <activity android:name=".ui.resetpassword.PasswordResetVerificationActivity" />
-        <activity android:name=".ui.resetpassword.GetEmailActivity" />
+        <activity android:name=".ui.resetpassword.GetPhoneNumberActivity" />
         <activity android:name=".ui.profile.UpdateSuccessfullyActivity" />
         <activity android:name=".ui.profile.VerifyOTPActivity" />
         <activity android:name=".ui.profile.UpdateProfileActivity" />

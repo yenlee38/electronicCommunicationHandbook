@@ -160,6 +160,7 @@
                 android:id="@+id/edit_text_phone_profile"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:textColor="@color/black"
                 android:layout_marginTop="4dp"
                 android:hint="0365791309"
                 android:layout_marginStart="5dp"
@@ -197,6 +198,7 @@
             <EditText
                 android:id="@+id/edit_text_address_profile"
                 android:layout_width="match_parent"
+                android:textColor="@color/black"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
                 android:hint="01 Street 7, Linh Chieu, Thu Duc"
