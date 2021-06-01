@@ -101,7 +101,7 @@ public class NotificationFragment extends Fragment {
                 mclass =(Class) spinnerClass.getSelectedItem();
                 if(mclass!=null)
                 {
-                    Announcement announcement= new Announcement(teacher,mclass,edtContent.getText().toString(),Calendar.getInstance().getTime());
+                    Announcement announcement= new Announcement(teacher,mclass,edtContent.getText().toString(),Calendar.getInstance().getTime(), edtTitle.getText().toString());
                     announcement= announcementRepository.save(announcement);
                     if(announcement!=null){
                         Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();

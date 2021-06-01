@@ -32,13 +32,15 @@ public class AnnouncementRepository extends AndroidViewModel {
     private static AnnouncementRepository instance;
     private AnnouncementService announcementService;
     private ArrayList<Announcement> announcements;
-    private MutableLiveData<ArrayList<Announcement>> announcmentList;
+    private MutableLiveData<ArrayList<Announcement>> announcementList;
+    private MutableLiveData<ArrayList<Announcement>> announcementSchools;
     private Announcement mAnnouncement;
 
     public AnnouncementRepository(@NonNull Application application) {
 
         super(application);
-        announcmentList= new MutableLiveData<>();
+        announcementList= new MutableLiveData<>();
+        announcementSchools= new MutableLiveData<>();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -82,7 +84,7 @@ public class AnnouncementRepository extends AndroidViewModel {
                 if(response.isSuccessful())
                 {
                     announcements= response.body();
-                    announcmentList.postValue(announcements);
+                    announcementList.postValue(announcements);
                     Log.e("response", "onResponse: "+announcements.size());
                 }
             }
@@ -93,7 +95,7 @@ public class AnnouncementRepository extends AndroidViewModel {
             }
         });
         //Log.e("Size", ""+announcmentList.getValue().size() );
-        return  announcmentList;
+        return  announcementList;
 
     }
 
@@ -119,7 +121,47 @@ public class AnnouncementRepository extends AndroidViewModel {
         return mAnnouncement;
     }
 
+    public void findByStudentIdAndSenderNull(String studentId){
+        announcementService.findByStudentIdAndSenderNull(studentId).enqueue(new Callback<ArrayList<Announcement>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Announcement>> call, Response<ArrayList<Announcement>> response) {
+                if(response.isSuccessful()){
+                    announcementSchools.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Announcement>> call, Throwable t) {
+                Log.e("Failure : ", "onFailure: "+t.toString() );
+            }
+        });
+
+    }
+
+    public void findBySenderId(String senderId){
+        announcementService.findBySenderId(senderId).enqueue(new Callback<ArrayList<Announcement>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Announcement>> call, Response<ArrayList<Announcement>> response) {
+                if(response.isSuccessful()){
+                  announcementSchools.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Announcement>> call, Throwable t) {
+                Log.e("Failure : ", "onFailure: "+t.toString() );
+            }
+        });
+
+    }
+
+
+
+    public MutableLiveData<ArrayList<Announcement>> getAnnouncementSchools() {
+        return announcementSchools;
+    }
+
     public MutableLiveData<ArrayList<Announcement>> getAnnouncmentList() {
-        return announcmentList;
+        return announcementList;
     }
 }

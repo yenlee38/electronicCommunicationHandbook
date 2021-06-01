@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Announcement;
 import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.repository.AnnouncementRepository;
 import com.example.electroniccommunicationhandbook.ui.student.notification.NotificationAdapter;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
@@ -80,14 +81,31 @@ public class PlaceholderFragment extends Fragment {
             studentLocal = userLocalStore.getStudentLocal();
         }
 
+        progressBar = (ProgressBar) root.findViewById(R.id.spin_kit1);
+        Sprite doubleBounc = new ThreeBounce();
+        progressBar.setIndeterminateDrawable(doubleBounc);
+        repository= ViewModelProviders.of(this).get(AnnouncementRepository.class);
+        //Use for tab SCHOOL
+        if(index==1){
+            //Loading
+            repository.findByStudentIdAndSenderNull(studentLocal.getStudentId());
+            repository.getAnnouncementSchools().observe(getViewLifecycleOwner(), new Observer<ArrayList<Announcement>>() {
+                @Override
+                public void onChanged(ArrayList<Announcement> announcements) {
+                    if(announcements!=null){
+                        loadNotification(announcements,root);
+                    }
+                    else {
 
-
+                    }
+                    progressBar.setVisibility(View.INVISIBLE);
+                }
+            });
+        }
+        else
+          //USE FOR TAB TEACHER
         if(index==2)
         {
-            progressBar = (ProgressBar) root.findViewById(R.id.spin_kit1);
-            Sprite doubleBounc = new ThreeBounce();
-            progressBar.setIndeterminateDrawable(doubleBounc);
-            repository= ViewModelProviders.of(this).get(AnnouncementRepository.class);
             repository.findAnnouncementByStudentId(studentLocal.getStudentId());
             repository.getAnnouncmentList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Announcement>>() {
                 @Override
@@ -102,6 +120,29 @@ public class PlaceholderFragment extends Fragment {
                 }
             });
         }
+        if(index==3){
+            if(role==1){
+                Teacher teacher= new Teacher();
+                teacher= userLocalStore.getTeacherLocal();
+
+                repository.findBySenderId( userLocalStore.getTeacherLocal().getTeacherID());
+                repository.getAnnouncmentList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Announcement>>() {
+                    @Override
+                    public void onChanged(ArrayList<Announcement> announcements) {
+                        if(announcements!=null){
+                            loadNotification(announcements,root);
+                        }
+                        else {
+
+                        }
+                        progressBar.setVisibility(View.INVISIBLE);
+                    }
+                });
+            }
+
+        }
+
+
 
         return root;
     }

@@ -46,7 +46,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.tvContent.setText(announcement.getContent());
         holder.tvTeacher.setText(announcement.getSender().getName());
         holder.tvTimeCreate.setText(String.valueOf(announcement.getAnnouncementTime()));
-        holder.tvTitle.setText(String.valueOf(announcement.getAnnouncementTime()).substring(0,10));
+        holder.tvTitle.setText(announcement.getTitle());
     }
 
     @Override
