@@ -9,16 +9,16 @@ import android.os.Bundle;
 import android.view.View;
 
 
-<<<<<<< HEAD
+
 import com.example.electroniccommunicationhandbook.dao.StudentDAO;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
 import com.example.electroniccommunicationhandbook.service.StudentService;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 
-=======
+
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
+
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointViewActivity;
 import com.example.electroniccommunicationhandbook.ui.student.rate.RateTeacherActivity;
@@ -35,14 +35,12 @@ public class MainActivity extends AppCompatActivity {
     //MainRepository mainRepository;
     PointRepository pointService;
     TextView tvName;
-<<<<<<< HEAD
+
 
     StudentRepository studentRepository;
     private AppCompatButton btn_profile;
 
-=======
-    private AppCompatButton btn_profile;
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
+
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
@@ -95,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-<<<<<<< HEAD
+
 
 
         btn_point.setOnClickListener(new View.OnClickListener() {
@@ -104,16 +102,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
             } });
 
-=======
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
+
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-<<<<<<< HEAD
-
-=======
->>>>>>> 33fc63c66a5a1e283594e2f4360098f52e33a3fa
                 startActivity(intent);
             }
         });

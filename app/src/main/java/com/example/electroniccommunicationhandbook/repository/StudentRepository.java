@@ -27,7 +27,7 @@ import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StudentRepository {
-    private static final String BASE_URL = "https://api-spring-handbook.herokuapp.com/";
+    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
 
     private StudentService studentService;
     public Student student;
@@ -128,6 +128,7 @@ public class StudentRepository {
             }
         });
     }
+   
 
     public MutableLiveData<ArrayList<SchoolTime>> setLSchoolTimeLiveData(){
         studentService.getListSchoolTime()

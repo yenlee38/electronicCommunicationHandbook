@@ -21,11 +21,13 @@ public class Student {
     @Expose
     private String name;
 
-//    @SerializedName("studentBirthday")
-//    @Expose
+    @SerializedName("studentBirthday")
+    @Expose
     @TypeConverters(Convert.class)
     private Date  birthday;
 
+    @SerializedName("studentGender")
+    @Expose
     private String gender;
 
     @SerializedName("studentPhone")
@@ -34,14 +36,18 @@ public class Student {
 
     @SerializedName("studentAddress")
     @Expose
-
     private String address;
+
+
     @SerializedName("studentEmail")
     @Expose
     private String email;
 
+    @SerializedName("studentImage")
+    @Expose
     private String image;
 
+    @SerializedName("studentB")
     private String bankSeri;
 
     private Account account;

@@ -102,6 +102,17 @@ public class UserLocalStore {
         return userLocalStore.getInt(ROLE,0);
     }
 
+    public int getAccountID(){
+        Account account = new Account();
+        if(getRoleLocal()==1){
+            account = getTeacherLocal().getAccount();
+        }else if(getRoleLocal() ==2){
+             account = getStudentLocal().getAccount();
+        }else{
+             account = getParentLocal().getAccount();
+        }
+        return account.getAccountID();
+    }
     /*
      Clear all user and role when logout
      */
@@ -137,6 +148,7 @@ public class UserLocalStore {
         editor.clear();
         editor.commit();
     }
+
     /*
     public void setUserLogined(boolean bool){
         SharedPreferences.Editor editor= userLocalStore.edit();
