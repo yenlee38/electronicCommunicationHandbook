@@ -6,12 +6,15 @@ import android.os.Bundle;
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.ui.profile.UpdateSuccessfullyActivity;
+import com.example.electroniccommunicationhandbook.ui.student.fee.ui.main.PlaceholderFragment;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +25,7 @@ import android.view.View;
 import com.example.electroniccommunicationhandbook.ui.student.fee.ui.main.SectionsPagerAdapter;
 
 public class FeeViewActivity extends AppCompatActivity {
+
 
     private AppCompatButton btn_comeback;
     private UserLocalStore userLocalStore;
@@ -51,9 +55,9 @@ public class FeeViewActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
 
-
             }
         });
 
     }
+
 }

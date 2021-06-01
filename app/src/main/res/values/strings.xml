@@ -38,5 +38,5 @@
     <string name="class_off_request">Class Off Request</string>
     <string name="empty_day">Empty Day</string>
     <string name="empty_rate">Empty Rate</string>
-
+    <string name="title_activity_announcement_teacher_view">AnnouncementTeacherViewActivity</string>
 </resources>

@@ -7,6 +7,7 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginTop="10dp"
+    android:backgroundTint="#FFFFFF"
     android:background="@drawable/border_notification"
     android:layout_height="wrap_content">
 
@@ -52,43 +53,62 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         />
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="75dp"
-        android:fontFamily="@font/muli_bold"
-        android:text="Title ABC "
-        android:textColor="@color/black"
-        android:textSize="19dp" />
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="15dp"
-        android:textColor="@color/black"
-        android:text="Ngày mai các em được nghĩ học, nhớ thông báo đến các bạn cùng lớp giúp thầy"
-        android:layout_marginBottom="30dp"
-        />
-
-    <TextView
-        android:id="@+id/tv_timeCreate"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:fontFamily="@font/muli"
-        android:text="Create at:"
-        android:textAlignment="textEnd"
-        android:textSize="14dp"
-        android:layout_marginStart="15dp"
-        android:textColor="#C9000000"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="5dp"
-        tools:ignore="RtlCompat">
+        android:orientation="vertical">
 
-    </TextView>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="75dp"
+            android:fontFamily="@font/muli_extrabold"
+            android:text="Title ABC "
+            android:textColor="#0B0B0B"
+            android:textSize="19dp" />
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:text="Ngày mai các em được nghĩ học, nhớ thông báo đến các bạn cùng lớp giúp thầy"
+            />
+
+        <TextView
+            android:id="@+id/tv_timeCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:fontFamily="@font/muli"
+            android:text="Create at:"
+            android:textAlignment="textEnd"
+            android:textSize="14dp"
+            android:layout_marginStart="15dp"
+            android:textColor="#C9000000"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="italic"
+            tools:ignore="RtlCompat">
+
+        </TextView>
+        <TextView
+            android:id="@+id/tvClass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Class: "
+            android:textSize="17dp"
+            android:fontFamily="@font/muli_bold"
+            android:textAlignment="textEnd"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="10dp"
+            />
+    </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

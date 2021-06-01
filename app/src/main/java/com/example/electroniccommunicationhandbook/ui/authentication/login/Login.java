@@ -1,8 +1,12 @@
 package com.example.electroniccommunicationhandbook.ui.authentication.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Dialog;
+
+import android.app.DatePickerDialog;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,10 +15,13 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.auth0.android.jwt.Claim;
@@ -23,6 +30,7 @@ import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.common.SetDate;
 import com.example.electroniccommunicationhandbook.repository.MainRepository;
 import com.example.electroniccommunicationhandbook.entity.Account;
 import com.example.electroniccommunicationhandbook.entity.Dummy.jwt;
@@ -30,6 +38,10 @@ import com.example.electroniccommunicationhandbook.entity.Parent;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FadingCircle;
+import com.github.ybq.android.spinkit.style.FoldingCube;
+import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -45,13 +57,17 @@ import static com.example.electroniccommunicationhandbook.util.UnixEpochDateType
 
 
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Login extends AppCompatActivity {
     int role;
     Button login;
     EditText edtUserName, edtPassword;
-
+    ProgressBar progressBar;
+    ConstraintLayout constraintLayout;
     UserLocalStore userLocalStore;
 
     Context context;
@@ -76,12 +92,18 @@ public class Login extends AppCompatActivity {
         radParent = findViewById(R.id.rad_log_parent);
         radTeacher = findViewById(R.id.rad_log_teacher);
         radStudent = findViewById(R.id.rad_log_student);
+        constraintLayout= findViewById(R.id.layout_above);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: check Type login in radio button
+                //Loading bar
+                constraintLayout.setVisibility(View.VISIBLE);
+                progressBar = (ProgressBar) findViewById(R.id.spin_kit1);
+                Sprite fadingCircle = new FadingCircle();
+                progressBar.setIndeterminateDrawable(fadingCircle);
 
+                //TODO: check Type login in radio button
                 if (radTeacher.isChecked()) {
                     role = 1;
 
@@ -125,6 +147,7 @@ public class Login extends AppCompatActivity {
                                 //Convert Json to object
                                 Gson gson = new GsonBuilder()
                                         .registerTypeAdapter(Date.class, getUnixEpochDateTypeAdapter()).create();
+                                constraintLayout.setVisibility(View.INVISIBLE);
                                 if (role == 1) {
                                     Teacher teacher = gson.fromJson(text, Teacher.class);
                                     userLocalStore.storeTeacher(teacher);
@@ -136,6 +159,7 @@ public class Login extends AppCompatActivity {
                                     //TODO: save to share preference
                                     userLocalStore.storeStudent(student);
                                     //Go login
+
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
                                 } else {

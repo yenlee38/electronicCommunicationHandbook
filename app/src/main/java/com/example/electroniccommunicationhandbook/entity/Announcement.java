@@ -21,6 +21,15 @@ public class Announcement {
     private Class _Class;
     private String content;
     private Date announcementTime;
+    private String title="";
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public int getAnnouncementId() {
         return announcementID;
@@ -65,10 +74,11 @@ public class Announcement {
     public Announcement() {
     }
 
-    public Announcement( Teacher sender, Class _class, String content, Date announcementTime) {
+    public Announcement( Teacher sender, Class _class, String content, Date announcementTime, String title) {
         this.sender = sender;
         this._Class = _class;
         this.content = content;
         this.announcementTime = announcementTime;
+        this.title= title;
     }
 }

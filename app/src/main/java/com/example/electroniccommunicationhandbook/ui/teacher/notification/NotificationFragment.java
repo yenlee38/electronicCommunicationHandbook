@@ -97,17 +97,25 @@ public class NotificationFragment extends Fragment {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Class mclass= new Class();
-                mclass =(Class) spinnerClass.getSelectedItem();
-                if(mclass!=null)
+                if(checkInput())
                 {
-                    Announcement announcement= new Announcement(teacher,mclass,edtContent.getText().toString(),Calendar.getInstance().getTime());
-                    announcement= announcementRepository.save(announcement);
-                    if(announcement!=null){
-                        Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();
+                    Class mclass= new Class();
+                    mclass =(Class) spinnerClass.getSelectedItem();
+                    if(mclass!=null)
+                    {
+                        Announcement announcement= new Announcement(teacher,mclass,edtContent.getText().toString(),Calendar.getInstance().getTime(), edtTitle.getText().toString());
+                        announcement= announcementRepository.save(announcement);
+                        if(announcement!=null){
+                            activityCallback.onButtonClick("Notification has been sent successfully");
+                        }
+                        else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
                     }
-                    else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(context ,"Loading class failed so you can not create announcement! Please reload!",Toast.LENGTH_SHORT).show();
                 }
+                else
+                    Toast.makeText(context ,"You have to fill all field!",Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -119,6 +127,13 @@ public class NotificationFragment extends Fragment {
         View root= inflater.inflate(R.layout.fragment_notification_creation, container, false);
 
         return root;
+    }
+
+    Boolean checkInput(){
+        if(edtTitle.getText().toString().isEmpty()|| edtContent.getText().toString().isEmpty()){
+            return false;
+        }
+        return true;
     }
 
     public void initSpinner(ArrayList<String> arrayList){
@@ -144,6 +159,21 @@ public class NotificationFragment extends Fragment {
 
             }
         });
+    }
+
+    FirstFragmentListener activityCallback;
+    public interface FirstFragmentListener {
+        public void onButtonClick(String title);
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            activityCallback = (FirstFragmentListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " You must implement FirstFragmentListener");
+        }
     }
 
 }
