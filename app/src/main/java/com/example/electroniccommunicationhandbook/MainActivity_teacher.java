@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
 import com.example.electroniccommunicationhandbook.ui.teacher.schedule.ScheduleTeacher;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
@@ -51,6 +53,8 @@ public class MainActivity_teacher extends AppCompatActivity {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(MainActivity_teacher.this, ProfileActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -101,9 +105,9 @@ public class MainActivity_teacher extends AppCompatActivity {
     public void getInfo(){
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
-        Student student = new Student();
-        try{ student = userLocalStore.getStudentLocal();
-            tv_username.setText(student.getName());}
+        Teacher teacher = new Teacher();
+        try{ teacher = userLocalStore.getTeacherLocal();
+            tv_username.setText(teacher.getName());}
         catch (Exception ex){}
     }
 
