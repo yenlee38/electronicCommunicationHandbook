@@ -23,6 +23,7 @@ import com.example.electroniccommunicationhandbook.R;
 
 import com.example.electroniccommunicationhandbook.common.StudyingYear;
 import com.example.electroniccommunicationhandbook.entity.Class;
+import com.example.electroniccommunicationhandbook.entity.Parent;
 import com.example.electroniccommunicationhandbook.entity.Point;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
@@ -54,6 +55,7 @@ public class PlaceholderFragment extends Fragment {
     private ArrayList<Student_Class> listpoint;
     private UserLocalStore userLocalStore;
     private Student studentLocal ;
+    private Parent parentLocal;
     private Context context;
     private PointRepository repository;
     private int role;
@@ -121,7 +123,11 @@ public class PlaceholderFragment extends Fragment {
         if(role==2){
             studentLocal= userLocalStore.getStudentLocal();
         }
-
+        if(role==3)
+        {
+            parentLocal= userLocalStore.getParentLocal();
+            studentLocal= parentLocal.getStudent();
+        }
         setListStudyingYear(root);
         return root;
     }

@@ -56,6 +56,7 @@ public class OffRequestRepository {
         GsonBuilder gsonBuilder= new GsonBuilder();
         Gson gson = gsonBuilder.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").setPrettyPrinting().setLenient().create();
 
+
         offRequestService = new retrofit2.Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
@@ -65,7 +66,7 @@ public class OffRequestRepository {
     }
 
     public OffRequest save(OffRequest offRequest){
-        moffRequest= new OffRequest();
+        //moffRequest= new OffRequest();
         offRequestService.save(offRequest).enqueue(new Callback<OffRequest>() {
             @Override
             public void onResponse(Call<OffRequest> call, Response<OffRequest> response) {

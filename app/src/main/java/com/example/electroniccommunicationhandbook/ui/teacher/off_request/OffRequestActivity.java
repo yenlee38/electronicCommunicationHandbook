@@ -7,11 +7,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlertDialog;
+
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
@@ -33,6 +35,7 @@ import com.example.electroniccommunicationhandbook.repository.AnnouncementReposi
 import com.example.electroniccommunicationhandbook.repository.ClassRepository;
 import com.example.electroniccommunicationhandbook.repository.OffRequestRepository;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
+import com.example.electroniccommunicationhandbook.ui.profile.UpdateSuccessfullyActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -102,11 +105,17 @@ public class OffRequestActivity extends AppCompatActivity {
                     mclass =(Class) spinner.getSelectedItem();
                     if(mclass!=null)
                     {
-                        OffRequest offRequest= new OffRequest(Calendar.getInstance().getTime(),edtReason.getText().toString(),teacher,mclass);
+                        OffRequest offRequest= new OffRequest( Calendar.getInstance().getTime(),edtReason.getText().toString(),teacher,mclass);
                         offRequest= requestRepository.save(offRequest);
                         if(offRequest!=null)
                         {
-                            Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();
+                            Intent intent= new Intent(getApplicationContext(), UpdateSuccessfullyActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("Title", "Send request successfully");
+                            bundle.putString("Detail","Please wait for the notification to accept the request from the school.");
+                            bundle.putString("Key","1");
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         }
                         else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
 
@@ -194,6 +203,7 @@ public class OffRequestActivity extends AppCompatActivity {
         });
     }
 
+
     public void initSpinner(ArrayList<String> arrayList){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,arrayList);
         spinner.setAdapter(adapter);
@@ -223,5 +233,18 @@ public class OffRequestActivity extends AppCompatActivity {
         if(edtReason.getText().toString().isEmpty() || edtPickdate.getText().toString().isEmpty())
             return false;
         return true;
+    }
+
+    private Date getDate() {
+        Calendar cal = Calendar.getInstance();
+        String datePattern="yyyy-mm-dd HH-MM-SS";
+        DateFormat simpFormat = new SimpleDateFormat(datePattern);
+        try {
+            cal.setTime(simpFormat.parse(edtPickdate.getText().toString()));
+        } catch (Exception e) {
+        }
+        Log.e("get time calender", Calendar.getInstance().getTime()+"");
+        Log.e("time :", "getDate: "+cal.getTime() );
+        return cal.getTime();
     }
 }

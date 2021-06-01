@@ -34,16 +34,31 @@
        android:layout_height="150dp"
        android:background="@drawable/ic_task_alt"
        android:layout_gravity="center"
-       android:layout_marginTop="150dp"/>
+       android:layout_marginTop="100dp"/>
+
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:padding="9dp"
         android:text="Update profile successfully"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="35sp"
-        android:gravity="center"/>
+        android:textSize="32sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tv_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:gravity="center"
+        android:padding="6dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/muli_bold"
+        android:textColor="#555"
+        />
     <Button
         android:id="@+id/btn_go_to_home"
         android:layout_width="176dp"
