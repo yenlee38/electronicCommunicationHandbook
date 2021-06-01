@@ -94,6 +94,7 @@ public class UpdateRepository extends AndroidViewModel {
         accountService.resetPassword(uPhone,uPassword).enqueue(new Callback<Account>() {
             @Override
             public void onResponse(Call<Account> call, Response<Account> response) {
+                Log.e("reset :",response.body().getPassword());
                 account = response.body();
             }
 

@@ -44,7 +44,11 @@ public class MainActivity_parent extends AppCompatActivity {
     public void getInfo(){
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
+<<<<<<< HEAD
         Parent parent= new Parent();
+=======
+        Parent parent = new Parent();
+>>>>>>> Hoan thanh reset-profile
         try{ parent = userLocalStore.getParentLocal();
             tv_username.setText(parent.getName());}
         catch (Exception ex){}
@@ -56,6 +60,7 @@ public class MainActivity_parent extends AppCompatActivity {
         userLocalStore = new UserLocalStore(getApplication());
         btn_schedule = findViewById(R.id.btn_schedule);
         tv_username = findViewById(R.id.tv_username);
+        btnProfile = findViewById(R.id.btn_profile);
     }
     public void initEvent(){
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -94,11 +99,18 @@ public class MainActivity_parent extends AppCompatActivity {
        btnProfile.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+<<<<<<< HEAD
                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                startActivity(intent);
            }
        });
 
+=======
+               Intent intent = new Intent(MainActivity_parent.this, ProfileActivity.class);
+               startActivity(intent);
+           }
+       });
+>>>>>>> Hoan thanh reset-profile
 
     }
 }

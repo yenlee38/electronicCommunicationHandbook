@@ -19,6 +19,9 @@ import android.widget.ImageView;
 
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Dummy.Role;
+import com.example.electroniccommunicationhandbook.entity.Parent;
+import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.repository.UpdateRepository;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,12 +37,15 @@ public class VerifyOTPActivity extends AppCompatActivity {
     private UpdateRepository updateRepository;
     private UserLocalStore userLocalStore;
     private ImageView imvBack;
-    Integer role;
+    int role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_o_t_p);
+
         UserLocalStore userLocalStore = new UserLocalStore(this);
+
+        updateRepository = new UpdateRepository(getApplication());
 
         imvBack = findViewById(R.id.imv_back);
         imvBack.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +103,22 @@ public class VerifyOTPActivity extends AppCompatActivity {
                                         btnVerify.setVisibility(View.VISIBLE);
                                         if(task.isSuccessful()){
                                             updateRepository.UpdateInfo(userLocalStore.getAccountID(),address,numberPhone);
+                                            if(userLocalStore.getRoleLocal()==1){
+                                                Teacher teacher = userLocalStore.getTeacherLocal();
+                                                teacher.setPhone(numberPhone);
+                                                teacher.setAddress(address);
+                                                userLocalStore.storeTeacher(teacher);
+                                            }else if(userLocalStore.getRoleLocal()==2){
+                                                Student student = userLocalStore.getStudentLocal();
+                                                student.setPhone(numberPhone);
+                                                student.setAddress(address);
+                                                userLocalStore.storeStudent(student);
+                                            }else{
+                                                Parent parent = userLocalStore.getParentLocal();
+                                                parent.setPhone(numberPhone);
+                                                parent.setAddress(address);
+                                                userLocalStore.storeParent(parent);
+                                            }
                                             Intent intent = new Intent(VerifyOTPActivity.this, UpdateSuccessfullyActivity.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);

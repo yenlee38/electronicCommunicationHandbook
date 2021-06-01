@@ -25,7 +25,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-         String phoneNumber = getIntent().getStringExtra("phoneNumber");
+         String phoneNumber = getIntent().getStringExtra("phoneNumbertoReset");
 
         updateRepository = new UpdateRepository(getApplication());
         edtPass = findViewById(R.id.edit_text_pass);
@@ -45,6 +45,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 else{
                     updateRepository.ResetPassword(phoneNumber,password) ;
                     Intent intent = new Intent(ChangePasswordActivity.this,ResetPasswordSuccessfullyActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
             }

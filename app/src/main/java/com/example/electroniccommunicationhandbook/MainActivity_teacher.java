@@ -13,7 +13,10 @@ import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
+<<<<<<< HEAD
 import com.example.electroniccommunicationhandbook.ui.student.statistic.StatisticActivity;
+=======
+>>>>>>> Hoan thanh reset-profile
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
 import com.example.electroniccommunicationhandbook.ui.teacher.schedule.ScheduleTeacher;
 import com.example.electroniccommunicationhandbook.ui.teacher.statistic.StatisticTeacherActivity;
@@ -66,7 +69,11 @@ public class MainActivity_teacher extends AppCompatActivity {
         btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+=======
+                Intent intent = new Intent(MainActivity_teacher.this, ProfileActivity.class);
+>>>>>>> Hoan thanh reset-profile
                 startActivity(intent);
 
             }
@@ -139,7 +146,11 @@ public class MainActivity_teacher extends AppCompatActivity {
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
         Teacher teacher = new Teacher();
+<<<<<<< HEAD
         try{ teacher= userLocalStore.getTeacherLocal();
+=======
+        try{ teacher = userLocalStore.getTeacherLocal();
+>>>>>>> Hoan thanh reset-profile
             tv_username.setText(teacher.getName());}
         catch (Exception ex){}
     }

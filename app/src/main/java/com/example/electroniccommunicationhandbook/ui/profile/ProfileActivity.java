@@ -34,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         //Khởi tạo và ánh xạ các biến
         userLocalStore = new UserLocalStore(this);
+
         imvBack = findViewById(R.id.imv_back);
         imvPhoto = findViewById(R.id.imv_photo);
         tvID = findViewById(R.id.tv_student_id);
@@ -42,7 +43,6 @@ public class ProfileActivity extends AppCompatActivity {
         edtEmail =findViewById(R.id.edit_text_email_profile);
         edtPhone = findViewById(R.id.edit_text_phone_profile);
         edtAddress = findViewById(R.id.edit_text_address_profile);
-
         loadData();
 
         imvBack.setOnClickListener(new View.OnClickListener() {

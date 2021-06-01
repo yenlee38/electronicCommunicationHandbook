@@ -64,11 +64,11 @@ public class GetPhoneNumberActivity extends AppCompatActivity {
                 String phoneNumber = edtPhoneNumber.getText().toString();
 
                 if(updateRepository.CheckPhoneNumber(phoneNumber)<=0){
+
                     createDialog("The number phone does not exist !","Notification");
+                    return;
                 }
-
                 else {
-
                     String phoneNumberToSend = phoneNumber.substring(1,phoneNumber.length());
 
                     btnSend.setVisibility(View.GONE);
