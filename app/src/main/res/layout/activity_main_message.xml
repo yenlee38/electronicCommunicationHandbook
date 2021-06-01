@@ -14,15 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.message.MainMessage">
+
         <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#ba55d3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#A682FF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnBack_mainMessage"
