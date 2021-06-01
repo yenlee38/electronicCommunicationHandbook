@@ -16,6 +16,7 @@ public class Teacher implements Serializable {
 
     private String teacherID;
 
+
     private String name;
 
     @TypeConverters(Convert.class)
@@ -23,18 +24,12 @@ public class Teacher implements Serializable {
 
     private String degree;
 
-//    @SerializedName("teacherPhone")
-//    @Expose
     private String phone;
 
     private String gender;
 
-//    @SerializedName("teacherAddress")
-//    @Expose
     private String address;
 
-//    @SerializedName("teacherEmail")
-//    @Expose
     private String email;
 
     private String image;

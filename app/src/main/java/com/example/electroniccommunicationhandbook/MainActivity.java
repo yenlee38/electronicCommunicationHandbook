@@ -9,8 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-
 import com.example.electroniccommunicationhandbook.entity.Student;
+
+import com.example.electroniccommunicationhandbook.dao.StudentDAO;
 import com.example.electroniccommunicationhandbook.repository.StudentRepository;
 
 import com.example.electroniccommunicationhandbook.service.StudentService;
@@ -23,6 +24,9 @@ import com.example.electroniccommunicationhandbook.ui.student.ConfirmationReques
 
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 
+
+
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 
 import com.example.electroniccommunicationhandbook.ui.student.card.CardActivity;
 import com.example.electroniccommunicationhandbook.ui.student.fee.FeeViewActivity;
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppCompatButton btn_profile;
 
+
     private AppCompatButton btn_student_card;
     private AppCompatButton btn_rate;
     private AppCompatButton btn_schedule;
@@ -83,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         initView();
 
@@ -154,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -189,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
                     fm.popBackStack();
                 }
+
                 startActivity(intent);
             }
         });

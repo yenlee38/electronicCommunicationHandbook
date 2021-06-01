@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +14,16 @@ import android.text.TextWatcher;
 import android.view.View;
 
 import android.widget.EditText;
+import android.widget.ImageView;
 
 
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.entity.Dummy.Role;
+import com.example.electroniccommunicationhandbook.entity.Parent;
+import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Teacher;
+import com.example.electroniccommunicationhandbook.repository.UpdateRepository;
+import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,11 +33,30 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 public class VerifyOTPActivity extends AppCompatActivity {
     private EditText inputCode1,inputCode2,inputCode3,inputCode4,inputCode5,inputCode6;
-    private String verificationId;
+    private String verificationId ,numberPhone,address;
+    private UpdateRepository updateRepository;
+    private UserLocalStore userLocalStore;
+    private ImageView imvBack;
+    int role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_o_t_p);
+
+        UserLocalStore userLocalStore = new UserLocalStore(this);
+
+        updateRepository = new UpdateRepository(getApplication());
+
+        imvBack = findViewById(R.id.imv_back);
+        imvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VerifyOTPActivity.this, UpdateProfileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
         final AppCompatButton btnVerify = findViewById(R.id.btn_verify);
 
         inputCode1 = findViewById(R.id.inputCode1);
@@ -39,25 +67,29 @@ public class VerifyOTPActivity extends AppCompatActivity {
         inputCode6 = findViewById(R.id.inputCode6);
         setupOTPInputs();
 
+//        updateRepository = ViewModelProviders.of(this).get(UpdateRepository.class);
         verificationId =getIntent().getStringExtra("verificationId");
+        numberPhone = getIntent().getStringExtra("mobile");
+        address = getIntent().getStringExtra("address");
         //Bat su kien cho Button
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Ham kiểm tra mà OTP nhập đã đủ chưa
                 if (inputCode1.getText().toString().trim().isEmpty()
                         ||inputCode2.getText().toString().trim().isEmpty()
                         ||inputCode3.getText().toString().trim().isEmpty()
                         ||inputCode4.getText().toString().trim().isEmpty()
                         ||inputCode5.getText().toString().trim().isEmpty()
                         ||inputCode6.getText().toString().trim().isEmpty()){
-                    createDialog("Xin vui lòng nhập mã hợp lệ","Thông báo");
+                    createDialog("Please enter the OTP valid !","Notification");
                     return;
                 }
                     String code = inputCode1.getText().toString() + inputCode2.getText().toString()
                             + inputCode3.getText().toString() + inputCode4.getText().toString()
                             +inputCode5.getText().toString() + inputCode6.getText().toString();
-                    if(verificationId!=null){
 
+                    if(verificationId!=null){
                         btnVerify.setVisibility(View.INVISIBLE);
                         PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
                                 verificationId,
@@ -70,12 +102,29 @@ public class VerifyOTPActivity extends AppCompatActivity {
 //                                        progressBar.setVisibility(View.GONE);
                                         btnVerify.setVisibility(View.VISIBLE);
                                         if(task.isSuccessful()){
-                                            Intent intent = new Intent(VerifyOTPActivity.this,UpdateSuccessfullyActivity.class);
+                                            updateRepository.UpdateInfo(userLocalStore.getAccountID(),address,numberPhone);
+                                            if(userLocalStore.getRoleLocal()==1){
+                                                Teacher teacher = userLocalStore.getTeacherLocal();
+                                                teacher.setPhone(numberPhone);
+                                                teacher.setAddress(address);
+                                                userLocalStore.storeTeacher(teacher);
+                                            }else if(userLocalStore.getRoleLocal()==2){
+                                                Student student = userLocalStore.getStudentLocal();
+                                                student.setPhone(numberPhone);
+                                                student.setAddress(address);
+                                                userLocalStore.storeStudent(student);
+                                            }else{
+                                                Parent parent = userLocalStore.getParentLocal();
+                                                parent.setPhone(numberPhone);
+                                                parent.setAddress(address);
+                                                userLocalStore.storeParent(parent);
+                                            }
+                                            Intent intent = new Intent(VerifyOTPActivity.this, UpdateSuccessfullyActivity.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
                                         }
                                         else{
-                                            createDialog("Mã xác thực không chính xác","Thông báo");
+                                            createDialog("The OTP is not correct !","Notification");
                                         }
 
                                     }
