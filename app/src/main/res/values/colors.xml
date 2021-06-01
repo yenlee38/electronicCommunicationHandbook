@@ -28,4 +28,10 @@
     <color name="grey_150">#F4F4F2</color>
     <color name="green_light">#50D968</color>
 
+    <!-- Quynh: Statistic -->
+    <color name="gray_10">#E5E5E5</color>
+    <color name="blue_pastel">#80E7FF</color>
+    <color name="purple_pastel">#7367F0</color>
+    <color name="purple_transparent_90">#7AA7F7</color>
+
 </resources>

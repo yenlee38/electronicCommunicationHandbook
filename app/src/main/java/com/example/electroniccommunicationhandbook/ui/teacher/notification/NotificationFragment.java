@@ -106,7 +106,7 @@ public class NotificationFragment extends Fragment {
                         Announcement announcement= new Announcement(teacher,mclass,edtContent.getText().toString(),Calendar.getInstance().getTime(), edtTitle.getText().toString());
                         announcement= announcementRepository.save(announcement);
                         if(announcement!=null){
-                            activityCallback.onButtonClick("Notification has been sent successfully");
+                            Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();
                         }
                         else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
                     }
@@ -159,21 +159,6 @@ public class NotificationFragment extends Fragment {
 
             }
         });
-    }
-
-    FirstFragmentListener activityCallback;
-    public interface FirstFragmentListener {
-        public void onButtonClick(String title);
-    }
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        try {
-            activityCallback = (FirstFragmentListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " You must implement FirstFragmentListener");
-        }
     }
 
 }

@@ -179,7 +179,7 @@
                     android:gravity="center"
                     android:background="@drawable/btn_statistic_home">
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_statistic"
+                        android:id="@+id/btn_statistic_teacher"
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:background="@drawable/ic_round_bar_chart_24"

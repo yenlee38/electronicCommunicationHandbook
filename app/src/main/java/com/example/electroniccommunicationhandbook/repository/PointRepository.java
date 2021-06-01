@@ -37,6 +37,12 @@ public class PointRepository extends AndroidViewModel {
     private MutableLiveData<ArrayList<Student_Class>> studentClassList;
     private MutableLiveData<ArrayList<Class>> classList;
 
+
+    private MutableLiveData<ArrayList<Student_Class>> allClass;
+    private MutableLiveData<ArrayList<Class>> allClassOfTeacher;
+    private MutableLiveData<ArrayList<Student_Class>> allStudentClassOfTeacher;
+
+
     private static PointRepository instance;
 
     public static PointRepository getInstance(Application application){
@@ -51,6 +57,9 @@ public class PointRepository extends AndroidViewModel {
       //  a = new ArrayList<>();
         //a.add(new Student_Class());
         studentClassList= new MutableLiveData<>();
+        allClass = new MutableLiveData<>();
+        allClassOfTeacher = new MutableLiveData<>();
+        allStudentClassOfTeacher = new MutableLiveData<>();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -121,4 +130,64 @@ public class PointRepository extends AndroidViewModel {
     private ArrayList<Class> b;
 
     public MutableLiveData<ArrayList<Student_Class>> getStudentClassList(){return studentClassList;}
+
+    public MutableLiveData<ArrayList<Student_Class>> findAllLiveData(){
+        studentClassService.findAll().enqueue(new Callback<ArrayList<Student_Class>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Student_Class>> call, Response<ArrayList<Student_Class>> response) {
+                if(response.isSuccessful()){
+                    ArrayList<Student_Class> t = response.body();
+                    //Log.e("Xong", "t :" + t.toString());
+                    allClass.postValue(t);
+                    //Log.e("Xong", "all Class :" + response.body().size());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Student_Class>> call, Throwable t) {
+                allClass= null;
+                Log.e("Failure : ", t.toString() );
+            }
+        });
+        Log.e("Xong", "Get class");
+        return allClass;
+    }
+
+    public MutableLiveData<ArrayList<Class>> findAllClassOfTeacher(String teacherId) {
+        studentClassService.findClassByIdTeacher(teacherId).enqueue(new Callback<ArrayList<Class>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Class>> call, Response<ArrayList<Class>> response) {
+                ArrayList<Class> temp = response.body();
+                allClassOfTeacher.postValue(temp);
+                Log.e("Test", "----------- findAllClassOfTeacher - top -----------");
+                Log.e("Test All Class of teacher", String.valueOf(temp.size()));
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Class>> call, Throwable t) {
+                allClassOfTeacher = null;
+            }
+        });
+
+        return allClassOfTeacher;
+    }
+
+    public MutableLiveData<ArrayList<Student_Class>> findAllStudentOfTeacherInASemester(String teacherId, int year, int semester) {
+        studentClassService.findStudentClassByIdTeacherAndYearAndSemester(teacherId, year, semester).enqueue(new Callback<ArrayList<Student_Class>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Student_Class>> call, Response<ArrayList<Student_Class>> response) {
+                ArrayList<Student_Class> temp = response.body();
+                allStudentClassOfTeacher.postValue(temp);
+                Log.e("Test", "----------- findAllClassOfTeacher - bottom -----------");
+                Log.e("Test Teacher Statistic", String.valueOf(temp.size()));
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Student_Class>> call, Throwable t) {
+                allStudentClassOfTeacher = null;
+            }
+        });
+
+        return allStudentClassOfTeacher;
+    }
 }

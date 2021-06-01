@@ -2,33 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.electroniccommunicationhandbook">
-<!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
-
+    <!-- <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectronicCommunicationHandbook">
-        <activity android:name=".ui.teacher.notification.NotificationTeacherViewActivity"></activity>
-
-        <activity android:name=".ui.teacher.schedule.ScheduleTeacher"></activity>
+        <activity android:name=".ui.student.statistic.StatisticActivity"></activity>
+        <activity android:name=".ui.teacher.statistic.StatisticTeacherActivity" />
+        <activity android:name=".ui.teacher.notification.NotificationTeacherViewActivity" />
+        <activity android:name=".ui.teacher.schedule.ScheduleTeacher" />
         <activity android:name=".ViewStudentProfile" />
         <activity android:name=".ui.teacher.list_class.StudentInClass" />
-        <activity android:name=".ui.message.MainMessage"></activity>
+        <activity android:name=".ui.message.MainMessage" />
         <activity android:name=".ui.message.detail_message" />
-
-
         <activity
             android:name=".ui.teacher.notification.TeacherNotificationActivity"
-            android:label="@string/title_activity_announcement_teacher_view">
-        </activity>
-
+            android:label="@string/title_activity_announcement_teacher_view" />
         <activity android:name=".ui.teacher.off_request.OffRequestActivity" />
         <activity android:name=".ui.authentication.login.Login">
             <intent-filter>

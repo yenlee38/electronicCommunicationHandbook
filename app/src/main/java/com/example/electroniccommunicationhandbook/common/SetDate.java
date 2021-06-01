@@ -3,7 +3,6 @@ package com.example.electroniccommunicationhandbook.common;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -12,7 +11,7 @@ import java.util.Calendar;
 
 public class SetDate {
 
-    public static void setDate(EditText tvDate, Context context){
+    public static void setDate(TextView tvDate, Context context){
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
