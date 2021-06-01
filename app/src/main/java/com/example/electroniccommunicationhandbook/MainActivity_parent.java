@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.electroniccommunicationhandbook.entity.Parent;
+import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
@@ -24,7 +26,7 @@ import com.example.electroniccommunicationhandbook.ui.authentication.login.Login
 public class MainActivity_parent extends AppCompatActivity {
     Button btnLogout;
     TextView tv_username;
-    private AppCompatButton btn_schedule;
+    private AppCompatButton btn_schedule,btnProfile;
     UserLocalStore userLocalStore;
     private AppCompatButton btn_viewPoints;
     private AppCompatButton btn_viewFees;
@@ -42,9 +44,9 @@ public class MainActivity_parent extends AppCompatActivity {
     public void getInfo(){
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
-        Student student = new Student();
-        try{ student = userLocalStore.getStudentLocal();
-            tv_username.setText(student.getName());}
+        Parent parent= new Parent();
+        try{ parent = userLocalStore.getParentLocal();
+            tv_username.setText(parent.getName());}
         catch (Exception ex){}
     }
 
@@ -89,6 +91,13 @@ public class MainActivity_parent extends AppCompatActivity {
                 // setContentView(R.layout.activity_schedule);
             }
         });
+       btnProfile.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+               startActivity(intent);
+           }
+       });
 
 
     }

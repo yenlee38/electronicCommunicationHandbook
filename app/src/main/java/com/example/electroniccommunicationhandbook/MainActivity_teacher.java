@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.entity.Student;
+import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 import com.example.electroniccommunicationhandbook.ui.student.statistic.StatisticActivity;
@@ -49,7 +50,6 @@ public class MainActivity_teacher extends AppCompatActivity {
 
     public void initView() {
         btnProfile = findViewById(R.id.btn_profile);
-
         btnClass = findViewById(R.id.btn_class);
         btnSchedule = findViewById(R.id.btn_schedule);
         btnLogout = findViewById(R.id.btn_logout_teacher);
@@ -59,7 +59,7 @@ public class MainActivity_teacher extends AppCompatActivity {
 
         btn_viewNotification= findViewById(R.id.btn_notification);
         btnStatistic = findViewById(R.id.btn_statistic_teacher);
-        initView();
+
         getInfo();
 
 
@@ -138,9 +138,9 @@ public class MainActivity_teacher extends AppCompatActivity {
     public void getInfo(){
         UserLocalStore userLocalStore;
         userLocalStore = new UserLocalStore(getApplicationContext());
-        Student student = new Student();
-        try{ student = userLocalStore.getStudentLocal();
-            tv_username.setText(student.getName());}
+        Teacher teacher = new Teacher();
+        try{ teacher= userLocalStore.getTeacherLocal();
+            tv_username.setText(teacher.getName());}
         catch (Exception ex){}
     }
 

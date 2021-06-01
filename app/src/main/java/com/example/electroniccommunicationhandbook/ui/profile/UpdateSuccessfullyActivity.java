@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.electroniccommunicationhandbook.MainActivity;
+import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
@@ -31,7 +32,7 @@ public class UpdateSuccessfullyActivity extends AppCompatActivity {
                     Intent intentStudent = new Intent(UpdateSuccessfullyActivity.this, MainActivity.class);
                     startActivity(intentStudent);
                 }else{
-                    Intent intentParent = new Intent(UpdateSuccessfullyActivity.this, MainActivity.class);
+                    Intent intentParent = new Intent(UpdateSuccessfullyActivity.this, MainActivity_parent.class);
                     startActivity(intentParent);
                 }
             }
