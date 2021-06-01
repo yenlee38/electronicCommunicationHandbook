@@ -20,4 +20,10 @@ public interface AnnouncementService {
 
     @POST("/announcement")
     Call<Announcement> save(@Body Announcement announcement);
+
+    @GET("/announcement/school/studentId/{studentId}")
+    Call<ArrayList<Announcement>> findByStudentIdAndSenderNull(@Path("studentId") String studentId);
+
+    @GET("/announcement/senderId/{senderId}")
+    Call<ArrayList<Announcement>> findBySenderId(@Path("senderId") String senderId);
 }

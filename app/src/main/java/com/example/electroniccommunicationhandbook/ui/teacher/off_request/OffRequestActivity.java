@@ -7,12 +7,15 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.electroniccommunicationhandbook.MainActivity_parent;
+import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.OffRequest;
@@ -20,6 +23,7 @@ import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.repository.AnnouncementRepository;
 import com.example.electroniccommunicationhandbook.repository.ClassRepository;
 import com.example.electroniccommunicationhandbook.repository.OffRequestRepository;
+import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import java.util.ArrayList;
@@ -31,7 +35,7 @@ public class OffRequestActivity extends AppCompatActivity {
 
     private OffRequestRepository requestRepository;
     private ClassRepository classRepository;
-    private AppCompatButton btn_senRequest;
+    private AppCompatButton btn_senRequest, btn_back;
     private UserLocalStore userLocalStore;
     private Spinner spinner;
     private Teacher teacher;
@@ -45,6 +49,7 @@ public class OffRequestActivity extends AppCompatActivity {
         spinner= findViewById(R.id.spinnerClass);
         edtPickdate= findViewById(R.id.edtpickDate);
         edtReason= findViewById(R.id.edtreason);
+        btn_back= findViewById(R.id.btn_comeback);
         context= this.getApplicationContext();
         userLocalStore= new UserLocalStore(this.getApplicationContext());
 
@@ -74,20 +79,40 @@ public class OffRequestActivity extends AppCompatActivity {
         btn_senRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Class mclass= new Class();
-                mclass =(Class) spinner.getSelectedItem();
-                mclass.setClassId("CP0X36C5");
-                if(mclass!=null)
-                {
-                    teacher.setTeacherID("Teacher12");
-                    OffRequest offRequest= new OffRequest(Calendar.getInstance().getTime(),edtReason.getText().toString(),teacher,mclass);
-                    offRequest= requestRepository.save(offRequest);
-                    if(offRequest!=null)
+                if(checkInput()){
+                    Class mclass= new Class();
+                    mclass =(Class) spinner.getSelectedItem();
+                    if(mclass!=null)
                     {
-                        Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();
-                    }
-                    else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
+                        OffRequest offRequest= new OffRequest(Calendar.getInstance().getTime(),edtReason.getText().toString(),teacher,mclass);
+                        offRequest= requestRepository.save(offRequest);
+                        if(offRequest!=null)
+                        {
+                            Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();
+                        }
+                        else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
 
+                    }
+                }
+                else {
+                    Toast.makeText(context ,"You have to fill all field !",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(userLocalStore.getRoleLocal()==1)
+                {
+                    Intent intent= new Intent(getApplicationContext(), MainActivity_teacher.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Intent intent= new Intent(getApplicationContext(), Login.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -116,5 +141,11 @@ public class OffRequestActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    Boolean checkInput(){
+        if(edtReason.getText().toString().isEmpty() || edtPickdate.getText().toString().isEmpty())
+            return false;
+        return true;
     }
 }

@@ -16,6 +16,7 @@ import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import com.example.electroniccommunicationhandbook.entity.OffRequest;
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
+import com.example.electroniccommunicationhandbook.ui.teacher.notification.NotificationTeacherViewActivity;
 import com.example.electroniccommunicationhandbook.ui.teacher.notification.TeacherNotificationActivity;
 import com.example.electroniccommunicationhandbook.ui.teacher.off_request.OffRequestActivity;
 
@@ -26,7 +27,7 @@ public class MainActivity_teacher extends AppCompatActivity {
     AppCompatButton btn_createNotification;
     AppCompatButton btn_offRequest;
     TextView tv_username;
-
+    AppCompatButton  btn_viewNotification;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class MainActivity_teacher extends AppCompatActivity {
         btn_createNotification = findViewById(R.id.btn_notification_new);
         btn_offRequest = findViewById(R.id.btn_send_off_request);
         tv_username= findViewById(R.id.tv_username_teacher);
+        btn_viewNotification= findViewById(R.id.btn_notification);
         initView();
         getInfo();
     }
@@ -69,23 +71,34 @@ public class MainActivity_teacher extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
-                btn_createNotification.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), TeacherNotificationActivity.class);
-                        startActivity(intent);
-                    }
-                });
 
-                btn_offRequest.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(getApplicationContext(), OffRequestActivity.class);
-                        startActivity(intent);
-                    }
-                });
             }
         });
+
+        btn_viewNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), NotificationTeacherViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_createNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), TeacherNotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_offRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OffRequestActivity.class);
+                startActivity(intent);
+            }
+        });
+        
     }
     public void getInfo(){
         UserLocalStore userLocalStore;
