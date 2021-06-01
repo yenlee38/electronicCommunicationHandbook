@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
+    android:weightSum="11"
     android:layout_height="match_parent"
     tools:context=".ui.student.ConfirmationRequest.BoardConfirmation">
     <LinearLayout
@@ -32,14 +32,18 @@
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:paddingLeft="@dimen/size_min"
-        android:paddingRight="@dimen/size_min"
 
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvRequestConfirmation1"
         android:layout_width="match_parent"
-        android:layout_weight="8"
-        android:layout_height="0dp" />
+        android:layout_marginLeft="@dimen/size_medium"
+        android:layout_marginRight="@dimen/size_medium"
+        android:layout_marginBottom="@dimen/size_super_min"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:paddingLeft="@dimen/size_min"
+        android:layout_marginTop="0dp"
+        android:paddingRight="@dimen/size_min" />
 
     <LinearLayout
         android:layout_margin="@dimen/size_medium"

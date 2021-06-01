@@ -89,8 +89,14 @@ public class NewRequestFragment extends Fragment {
 
 
                 student_confirmationPaper = new Student_ConfirmationPaper(Calendar.getInstance().getTime(), student, categoryPaper);
-                confirmationRequestViewModel.createConfirmation(student_confirmationPaper);
 
+                Student_ConfirmationPaper finalStudent_confirmationPaper = student_confirmationPaper;
+                new Thread(new Runnable() {
+                   @Override
+                   public void run() {
+                       confirmationRequestViewModel.createConfirmation(finalStudent_confirmationPaper);
+                   }
+               });
                 Dialog dialog =new Dialog(getActivity());
 
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -98,9 +104,8 @@ public class NewRequestFragment extends Fragment {
                 dialog.setContentView(R.layout.wait_request);
                 dialog.show();
 
-
-                    for (int i=-10000; i<1000000000;i++)
-                        i++;
+                    for (int i=-10000; i<1000000000;i=i+2)
+                        i--;
 
                 dialog.dismiss();
                 //TODO: send request

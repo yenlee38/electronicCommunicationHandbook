@@ -29,8 +29,8 @@ public  class MainRepository {
     }
 
     private RequestPaperService requestPaperService;
-   private Student student;
-   private boolean loginSuccess= false;
+    private Student student;
+    private boolean loginSuccess= false;
    private Retrofit retrofit;
     public AuthenticateService getAuthenticateService() {
         return authenticateService;

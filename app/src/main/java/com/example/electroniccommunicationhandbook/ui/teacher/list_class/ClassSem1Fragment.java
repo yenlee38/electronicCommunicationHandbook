@@ -38,6 +38,7 @@ public class ClassSem1Fragment extends Fragment {
     Teacher teacher;
     static int semester = 1;
     static int studyingYear = 2021;
+    TextView tvEmpty;
     public static void setSemester(int semester) {
         ClassSem1Fragment.semester = semester;
     }
@@ -82,7 +83,7 @@ public class ClassSem1Fragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_class_semp1, container, false);
         tvTotalClass = view.findViewById(R.id.tv_class_total_sem1);
         tvTotalStudent = view.findViewById(R.id.tv_class_total_sem1);
-
+        tvEmpty= view.findViewById(R.id.tv_empty_classes);
         teacherClassViewModel = ViewModelProviders.of(this).get(TeacherClassViewModel.class);
         rcvClasses = view.findViewById(R.id.rcv_Classes);
         UserLocalStore userLocalStore = new UserLocalStore(getContext());
@@ -112,6 +113,13 @@ public class ClassSem1Fragment extends Fragment {
                         tvTotalClass.setText(String.valueOf(listClass.size()));
 
                         rcvClasses.setAdapter(adapter);
+
+                        if(listClass.isEmpty()){
+                            tvEmpty.setText("You not teach in this semester");
+                        }
+                        else {
+                            tvEmpty.setText("");
+                        }
                     }
                 });
     }

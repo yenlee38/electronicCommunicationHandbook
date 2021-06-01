@@ -9,6 +9,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="16dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="@dimen/size_medium"
+        android:paddingRight="@dimen/size_medium"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:padding="8dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Thông tin chi tiết"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
         android:paddingLeft="@dimen/size_medium"
         android:paddingRight="@dimen/size_medium"
         android:layout_gravity="center_horizontal">
@@ -201,17 +220,19 @@
 
     </LinearLayout>
     <Button
-        android:layout_width="120dp"
+        android:layout_width="150dp"
 
-        android:paddingRight="@dimen/size_medium"
+        android:paddingRight="@dimen/size_super_max"
         android:text="OK"
+        android:gravity="center"
         android:layout_marginTop="@dimen/size_super_min"
         android:id="@+id/btn_detail_cancel"
         android:textColor="@color/white"
         android:layout_gravity="end"
-        android:backgroundTint="@color/gray_primary"
+        android:textStyle="bold"
         android:textSize="@dimen/size_min"
-        android:layout_marginRight="@dimen/size_super_max"
+        android:layout_marginRight="45dp"
         android:layout_marginBottom="@dimen/size_medium"
+        android:backgroundTint="@color/blue_pastel_300"
         android:layout_height="@dimen/size_super_max"></Button>
 </LinearLayout>

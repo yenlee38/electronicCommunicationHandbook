@@ -85,6 +85,7 @@ public class StudentInClass extends AppCompatActivity {
                             ListStudentsInClassAdapter adapter = new ListStudentsInClassAdapter(students);
                             rcvStudentInClass.setLayoutManager(new LinearLayoutManager(getBaseContext()));
                             rcvStudentInClass.setAdapter(adapter);
+                            tvEmpty.setText("");
                         }
                         else{
                             tvEmpty.setText("Nothing student enroll this class");

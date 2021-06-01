@@ -124,7 +124,6 @@ public class ListClass extends AppCompatActivity {
     }
 
     public void updateList() {
-        Log.e("Thanh ", "Hihi");
         teacherClassViewModel.findClassOfTeacher(teacher.getTeacherID(), semester, studyingYear).observe(this,
                 new Observer<ArrayList<Class>>() {
                     @Override
@@ -138,7 +137,7 @@ public class ListClass extends AppCompatActivity {
                         rcvClasses.setAdapter(adapter);
                         if (!classes.isEmpty()) {
                             tvTotalClass.setText(String.valueOf(listClasses.size()));
-                            tvClassEmpty.setText("null");
+                            tvClassEmpty.setText("");
                         }
                         else
                         {

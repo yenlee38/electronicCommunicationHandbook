@@ -2,6 +2,7 @@ package com.example.electroniccommunicationhandbook.ui.authentication.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -149,7 +150,11 @@ public class Login extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
-                            Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
+                           // Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
+                            Dialog dialog= new Dialog(getApplication());
+                            dialog.setTitle("Email or password is invalid!!!");
+                            dialog.setCancelable(true);
+                            dialog.show();
                         }
                     }
 
@@ -157,8 +162,11 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<jwt> call, Throwable t) {
                         //Toast.makeText(getApplicationContext(),"Problem happen!!!", Toast.LENGTH_LONG);
-                        Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
-
+                        //Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
+                        Dialog dialog= new Dialog(getApplication());
+                        dialog.setTitle("Error happen, Try again !!!");
+                        dialog.setCancelable(true);
+                        dialog.show();
                     }
                 });
 
