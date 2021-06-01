@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.entity.Student;
@@ -27,10 +28,19 @@ public class MainActivity_teacher extends AppCompatActivity {
     AppCompatButton btn_offRequest;
     TextView tv_username;
 
+    private AppCompatButton btnProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_teacher);
+
+        initView();
+        getInfo();
+    }
+
+    public void initView() {
+        btnProfile = findViewById(R.id.btn_profile);
 
         btnClass = findViewById(R.id.btn_class);
         btnSchedule = findViewById(R.id.btn_schedule);
@@ -38,11 +48,12 @@ public class MainActivity_teacher extends AppCompatActivity {
         btn_createNotification = findViewById(R.id.btn_notification_new);
         btn_offRequest = findViewById(R.id.btn_send_off_request);
         tv_username= findViewById(R.id.tv_username_teacher);
-        initView();
-        getInfo();
-    }
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    public void initView() {
+            }
+        });
         btnClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -14,6 +14,7 @@ import android.widget.EditText;
 
 import android.widget.RadioButton;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.auth0.android.jwt.Claim;
@@ -28,6 +29,7 @@ import com.example.electroniccommunicationhandbook.entity.Dummy.jwt;
 import com.example.electroniccommunicationhandbook.entity.Parent;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
+import com.example.electroniccommunicationhandbook.ui.resetpassword.GetPhoneNumberActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +52,7 @@ public class Login extends AppCompatActivity {
     int role;
     Button login;
     EditText edtUserName, edtPassword;
-
+    TextView tvResetPassword;
     UserLocalStore userLocalStore;
 
     Context context;
@@ -69,12 +71,20 @@ public class Login extends AppCompatActivity {
         userLocalStore = new UserLocalStore(context);
         mainRepository = mainRepository.getInstance();
 
-        login = findViewById(R.id.btn_login);
-        edtUserName = findViewById(R.id.edtUserName_Login);
-        edtPassword = findViewById(R.id.edtPassword_Login);
-        radParent = findViewById(R.id.rad_log_parent);
-        radTeacher = findViewById(R.id.rad_log_teacher);
-        radStudent = findViewById(R.id.rad_log_student);
+        login= findViewById(R.id.btn_login);
+        edtUserName= findViewById(R.id.edtUserName_Login);
+        edtPassword= findViewById(R.id.edtPassword_Login);
+        radParent= findViewById(R.id.rad_log_parent);
+        radTeacher=findViewById(R.id.rad_log_teacher);
+        radStudent= findViewById(R.id.rad_log_student);
+        tvResetPassword = findViewById(R.id.tv_log_direct_reset);
+        tvResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, GetPhoneNumberActivity.class);
+                startActivity(intent);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,17 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="29dp"
-            android:src="@drawable/arrow_back_black_24dp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="49dp"
             android:layout_marginTop="16dp"
             android:text="@string/update_profile"
             android:textAppearance="@style/tab_style_text"
@@ -44,7 +37,7 @@
         android:textStyle="bold"
         android:textSize="35sp"
         android:gravity="center"/>
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_go_to_home"
         android:layout_width="176dp"
         android:layout_height="48dp"
