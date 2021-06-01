@@ -101,7 +101,7 @@ public class MainActivity_parent extends AppCompatActivity {
        btn_viewPoints.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), PointViewActivity.class);
+               Intent intent = new Intent(v.getContext(), PointViewActivity.class);
                startActivity(intent);
            }
        });
@@ -109,7 +109,7 @@ public class MainActivity_parent extends AppCompatActivity {
        btn_viewFees.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), FeeViewActivity.class);
+               Intent intent = new Intent(v.getContext(), FeeViewActivity.class);
                startActivity(intent);
            }
        });

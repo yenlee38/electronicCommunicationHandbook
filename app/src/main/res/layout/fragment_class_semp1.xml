@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="7"
+
     tools:context=".ui.teacher.list_class.ClassSem1Fragment">
 
     <LinearLayout
@@ -87,7 +87,9 @@
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/tv_empty_classes"
+        android:textSize="@dimen/size_super_max"
         android:layout_width="match_parent"
+        android:text="Class is empty"
         android:layout_height="wrap_content"></TextView>
 
 </LinearLayout>

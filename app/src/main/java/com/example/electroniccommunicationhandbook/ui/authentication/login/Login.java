@@ -174,11 +174,13 @@ public class Login extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         } else {
-                           // Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
-                            Dialog dialog= new Dialog(getApplication());
-                            dialog.setTitle("Email or password is invalid!!!");
-                            dialog.setCancelable(true);
-                            dialog.show();
+                            constraintLayout.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getBaseContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
+                            //Dialog dialog= new Dialog();
+//                            dialog.setTitle("Email or password is invalid!!!");
+//                            dialog.setCancelable(true);
+//                            dialog.show();
+
                         }
                     }
 
@@ -187,10 +189,13 @@ public class Login extends AppCompatActivity {
                     public void onFailure(Call<jwt> call, Throwable t) {
                         //Toast.makeText(getApplicationContext(),"Problem happen!!!", Toast.LENGTH_LONG);
                         //Toast.makeText(getApplication().getApplicationContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
-                        Dialog dialog= new Dialog(getApplication());
-                        dialog.setTitle("Error happen, Try again !!!");
-                        dialog.setCancelable(true);
-                        dialog.show();
+//                        Dialog dialog= new Dialog(getApplication());
+//                        dialog.setTitle("Error happen, Try again !!!");
+//                        dialog.setCancelable(true);
+//                        dialog.show();
+                        constraintLayout.setVisibility(View.INVISIBLE);
+                        Toast.makeText(getBaseContext(),"Problem happen!!!", Toast.LENGTH_LONG);
+
                     }
                 });
 
