@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.electroniccommunicationhandbook.MainActivity;
+import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.common.StudyingYear;
 import com.example.electroniccommunicationhandbook.entity.Class;
@@ -44,6 +45,7 @@ public class ScheduleActivity extends AppCompatActivity {
     public static int YEAR = 2021;
     public static int SEMESTER = 1;
     public static int DAY = 1;
+    public static int ROLE = 2; // 2 is student, 3 is parent
     private AppCompatButton btn_semesterOne;
     private AppCompatButton btn_semesterTwo;
     private StudentRepository studentRepository;
@@ -153,13 +155,19 @@ public class ScheduleActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, MainActivity.class));
+        if(userLocalStore.getRoleLocal() == 2)
+            startActivity(new Intent(this, MainActivity.class));
+        else if(userLocalStore.getRoleLocal() == 3) startActivity(new Intent(this, MainActivity_parent.class));
         finish();
     }
 
     private void initView(){
         userLocalStore = new UserLocalStore(getApplicationContext());
-        student = userLocalStore.getStudentLocal();
+       if(userLocalStore.getRoleLocal() == 2)
+           student = userLocalStore.getStudentLocal();
+       else  if(userLocalStore.getRoleLocal() == 3){
+           student = userLocalStore.getParentLocal().getStudent();
+       }
         studentRepository = new StudentRepository();
         classLiveData = new MutableLiveData<>();
         lSchedule = new ArrayList<Class>();

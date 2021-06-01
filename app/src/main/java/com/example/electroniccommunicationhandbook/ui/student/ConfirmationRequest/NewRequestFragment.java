@@ -44,8 +44,8 @@ public class NewRequestFragment extends Fragment {
     RadioButton radConfirmationTranscript;
     RadioButton radConfirmationStudent;
     Student student;
-    int id_Confirmation_Student = 26;
-    int id_Confirmation_Transcript = 27;
+    int id_Confirmation_Student = 28;
+    int id_Confirmation_Transcript = 29;
     ConfirmationRequestViewModel confirmationRequestViewModel;
     Button btn_back;
     public NewRequestFragment() {

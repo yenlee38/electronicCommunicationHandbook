@@ -122,9 +122,10 @@ public class MainActivity extends AppCompatActivity {
         btn_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
                 RateTeacherActivity rateTeacherActivity = new RateTeacherActivity();
                 rateTeacherActivity.YEAR = Year.now().getValue();
-                if(Calendar.getInstance().MONTH < 9)
+                if(calendar.get(Calendar.MONTH) < 8) // < 8 is semster 2
                     rateTeacherActivity.SEMESTER = 2;
                 else rateTeacherActivity.SEMESTER = 1;
                 Intent intent = new Intent(getApplicationContext(), rateTeacherActivity.getClass());
@@ -138,9 +139,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ScheduleActivity scheduleActivity = new ScheduleActivity();
+                Calendar calendar = Calendar.getInstance();
                 scheduleActivity.YEAR = Year.now().getValue();
-                scheduleActivity.DAY = Calendar.getInstance().DAY_OF_WEEK;
-                if(Calendar.getInstance().MONTH < 9)
+                scheduleActivity.DAY = calendar.get(Calendar.DAY_OF_WEEK);
+                if(calendar.get(Calendar.MONTH) < 8) // < 8 is semster 2
                     scheduleActivity.SEMESTER = 2;
                 else scheduleActivity.SEMESTER = 1;
                 Intent intent = new Intent(getApplicationContext(), scheduleActivity.getClass());

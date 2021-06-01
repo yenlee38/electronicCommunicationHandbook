@@ -9,7 +9,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="315dp"
         android:layout_height="97dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/border_item_schedule">
 
         <TextView
             android:id="@+id/tv_subject_name"

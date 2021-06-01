@@ -110,12 +110,12 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_viewRate"
+            android:id="@+id/btn_viewPoint"
             android:layout_width="156dp"
             android:layout_height="37dp"
             android:layout_marginLeft="8dp"
             android:background="@drawable/border_btnview"
-            android:text="View Rate"
+            android:text="View Points"
             android:textSize="16dp"
             android:textAllCaps="false"
             android:textColor="@color/white"
