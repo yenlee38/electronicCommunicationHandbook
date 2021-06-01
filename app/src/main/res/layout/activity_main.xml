@@ -183,8 +183,7 @@
                     android:id="@+id/btn_statistic"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
-                    android:background="@drawable/ic_round_bar_chart_24"
-                    />
+                    android:background="@drawable/ic_round_bar_chart_24" />
             </LinearLayout>
             <TextView
                 android:layout_marginTop="8dp"

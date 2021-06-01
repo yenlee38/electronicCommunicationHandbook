@@ -1,7 +1,6 @@
 package com.example.electroniccommunicationhandbook.ui.student.fee.ui.main;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,7 +27,6 @@ import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.repository.FeeRepository;
 import com.example.electroniccommunicationhandbook.repository.PointRepository;
-import com.example.electroniccommunicationhandbook.ui.profile.UpdateSuccessfullyActivity;
 import com.example.electroniccommunicationhandbook.ui.student.fee.FeeAdapter;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointAdapter;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
@@ -97,10 +95,6 @@ public class PlaceholderFragment extends Fragment {
         if(role==2){
             studentLocal= userLocalStore.getStudentLocal();
         }
-        if(role==3)
-        {
-            studentLocal= userLocalStore.getParentLocal().getStudent();
-        }
 
         repository= ViewModelProviders.of(this).get(FeeRepository.class);
 
@@ -109,12 +103,11 @@ public class PlaceholderFragment extends Fragment {
             public void onChanged(ArrayList<FeeInfor> feeInfors) {
                 if(feeInfors!=null) {
                     loadFee(feeInfors,root);
-
                 }
                 else {
 
                     loadFee(new ArrayList<FeeInfor>(),root);
-                    Toast.makeText(context,"No data to load  !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"Không còn nợ  !",Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.INVISIBLE);
             }
@@ -176,8 +169,4 @@ public class PlaceholderFragment extends Fragment {
         tv_totalfee.setText(totalFee+"VND");
         tv_numSubject.setText(numSubject+"");
     }
-
-
-
-
 }

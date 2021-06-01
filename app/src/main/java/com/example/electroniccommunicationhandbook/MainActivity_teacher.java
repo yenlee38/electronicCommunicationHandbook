@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
+import com.example.electroniccommunicationhandbook.ui.student.statistic.StatisticActivity;
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
 import com.example.electroniccommunicationhandbook.ui.teacher.schedule.ScheduleTeacher;
+import com.example.electroniccommunicationhandbook.ui.teacher.statistic.StatisticTeacherActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import com.example.electroniccommunicationhandbook.entity.OffRequest;
@@ -22,7 +24,7 @@ import com.example.electroniccommunicationhandbook.ui.teacher.off_request.OffReq
 
 
 public class MainActivity_teacher extends AppCompatActivity {
-    AppCompatButton btnClass, btnSchedule, btnLogout;
+    AppCompatButton btnClass, btnSchedule, btnLogout, btnStatistic;
 
     AppCompatButton btn_createNotification;
     AppCompatButton btn_offRequest;
@@ -40,6 +42,7 @@ public class MainActivity_teacher extends AppCompatActivity {
         btn_offRequest = findViewById(R.id.btn_send_off_request);
         tv_username= findViewById(R.id.tv_username_teacher);
         btn_viewNotification= findViewById(R.id.btn_notification);
+        btnStatistic = findViewById(R.id.btn_statistic_teacher);
         initView();
         getInfo();
     }
@@ -99,6 +102,15 @@ public class MainActivity_teacher extends AppCompatActivity {
             }
         });
 
+        btnStatistic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), StatisticTeacherActivity.class);
+                startActivity(intent);
+                //  setContentView(R.layout.activity_card_student);
+            }
+        });
+        
     }
     public void getInfo(){
         UserLocalStore userLocalStore;
