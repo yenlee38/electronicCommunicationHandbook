@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Message {
@@ -13,6 +14,7 @@ public class Message {
     private Account senderAccount;
     private Account receiverAccount;
     private String messageContent;
+    private MessageId messageId;
 
     public Date getSentTime() {
         return sentTime;
@@ -47,5 +49,19 @@ public class Message {
     }
 
     public Message() {
+    }
+
+    public Message(Account senderAccount, Account receiverAccount, String messageContent, Date sentTime) {
+        this.sentTime = sentTime;
+        this.senderAccount = senderAccount;
+        this.receiverAccount = receiverAccount;
+        this.messageContent = messageContent;
+    }
+
+    public Message (String messageContent, Account receiverAccount,  Account senderAccount){
+        this.senderAccount = senderAccount;
+        this.receiverAccount = receiverAccount;
+        this.messageContent = messageContent;
+        messageId= new MessageId(senderAccount.getAccountID(), receiverAccount.getAccountID(), Calendar.getInstance().getTime());
     }
 }
