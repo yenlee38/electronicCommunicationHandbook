@@ -98,7 +98,7 @@ public class MainActivity_teacher extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
     }
     public void getInfo(){
         UserLocalStore userLocalStore;

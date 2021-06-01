@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlertDialog;
+
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +34,7 @@ import com.example.electroniccommunicationhandbook.repository.AnnouncementReposi
 import com.example.electroniccommunicationhandbook.repository.ClassRepository;
 import com.example.electroniccommunicationhandbook.repository.OffRequestRepository;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
+import com.example.electroniccommunicationhandbook.ui.profile.UpdateSuccessfullyActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -106,7 +108,13 @@ public class OffRequestActivity extends AppCompatActivity {
                         offRequest= requestRepository.save(offRequest);
                         if(offRequest!=null)
                         {
-                            Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();
+                            Intent intent= new Intent(getApplicationContext(), UpdateSuccessfullyActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("Title", "Send request successfully");
+                            bundle.putString("Detail","Please wait for the notification to accept the request from the school.");
+                            bundle.putString("Key","1");
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         }
                         else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
 
