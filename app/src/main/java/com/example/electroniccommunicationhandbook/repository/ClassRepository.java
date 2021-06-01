@@ -67,7 +67,7 @@ public class ClassRepository extends AndroidViewModel {
                 .create(ClassService.class);
     }
 
-    public void getClassOfTeacher(String teacherId, int year, int semester){
+    public void  getClassOfTeacher(String teacherId, int year, int semester){
 
         classService.getClassOfTeacher(teacherId,semester,year).enqueue(new Callback<ArrayList<Class>>() {
             @Override

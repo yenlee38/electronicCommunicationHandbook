@@ -46,6 +46,7 @@ public class PlaceholderFragment extends Fragment {
     private Student studentLocal ;
     private Context context;
     private int role;
+    private  int checkrole;
     private ProgressBar progressBar ;
 
     public static PlaceholderFragment newInstance(int index) {

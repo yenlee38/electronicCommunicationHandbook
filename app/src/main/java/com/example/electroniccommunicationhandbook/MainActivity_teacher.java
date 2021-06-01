@@ -16,6 +16,7 @@ import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 import com.example.electroniccommunicationhandbook.entity.OffRequest;
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
+import com.example.electroniccommunicationhandbook.ui.teacher.notification.NotificationTeacherViewActivity;
 import com.example.electroniccommunicationhandbook.ui.teacher.notification.TeacherNotificationActivity;
 import com.example.electroniccommunicationhandbook.ui.teacher.off_request.OffRequestActivity;
 
@@ -24,9 +25,13 @@ public class MainActivity_teacher extends AppCompatActivity {
     AppCompatButton btnClass, btnSchedule, btnLogout;
 
     AppCompatButton btn_createNotification;
+<<<<<<< HEAD
     AppCompatButton btn_offRequest;
     TextView tv_username;
 
+=======
+    AppCompatButton btn_offRequest, btn_viewNotification;
+>>>>>>> 7935826...  complete teacher role
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +42,11 @@ public class MainActivity_teacher extends AppCompatActivity {
         btnLogout = findViewById(R.id.btn_logout_teacher);
         btn_createNotification = findViewById(R.id.btn_notification_new);
         btn_offRequest = findViewById(R.id.btn_send_off_request);
+<<<<<<< HEAD
         tv_username= findViewById(R.id.tv_username_teacher);
+=======
+        btn_viewNotification= findViewById(R.id.btn_notification);
+>>>>>>> 7935826...  complete teacher role
         initView();
         getInfo();
     }
@@ -84,6 +93,14 @@ public class MainActivity_teacher extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+            }
+        });
+
+        btn_viewNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getApplicationContext(), NotificationTeacherViewActivity.class);
+                startActivity(intent);
             }
         });
     }

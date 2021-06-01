@@ -20,13 +20,16 @@ import java.util.Calendar;
 
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
-import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
 public class MainActivity_parent extends AppCompatActivity {
     Button btnLogout;
     TextView tv_username;
     private AppCompatButton btn_schedule;
     UserLocalStore userLocalStore;
+    private AppCompatButton btn_viewPoints;
+    private AppCompatButton btn_viewFees;
+    private AppCompatButton btn_viewAnnouncements;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +89,7 @@ public class MainActivity_parent extends AppCompatActivity {
                 // setContentView(R.layout.activity_schedule);
             }
         });
+
 
     }
 }

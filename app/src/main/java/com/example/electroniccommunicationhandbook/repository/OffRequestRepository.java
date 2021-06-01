@@ -46,7 +46,7 @@ public class OffRequestRepository {
                 Request originalRequest = chain.request();
 
                 Request.Builder builder = originalRequest.newBuilder().header("Authorization",
-                        "Bearer " + "MainRepository.getToken()");
+                        "Bearer " + MainRepository.getToken());
 
                 Request newRequest = builder.build();
                 return chain.proceed(newRequest);

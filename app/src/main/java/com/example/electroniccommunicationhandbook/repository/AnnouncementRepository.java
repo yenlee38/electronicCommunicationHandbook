@@ -143,7 +143,7 @@ public class AnnouncementRepository extends AndroidViewModel {
             @Override
             public void onResponse(Call<ArrayList<Announcement>> call, Response<ArrayList<Announcement>> response) {
                 if(response.isSuccessful()){
-                  announcementSchools.postValue(response.body());
+                  announcementList.postValue(response.body());
                 }
             }
 
