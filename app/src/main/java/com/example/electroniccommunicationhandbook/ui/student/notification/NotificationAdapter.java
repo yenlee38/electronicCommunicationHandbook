@@ -24,6 +24,8 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
@@ -32,7 +34,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public NotificationAdapter(ArrayList<Announcement> announcements, Context context) {
         announcementList= new ArrayList<>();
-        this.announcementList = announcements;
+        announcementList= announcements;
+        Collections.reverse(announcementList);
         this.context = context;
     }
 
