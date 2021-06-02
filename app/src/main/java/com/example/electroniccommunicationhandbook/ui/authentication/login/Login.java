@@ -151,12 +151,14 @@ public class Login extends AppCompatActivity {
                                     Teacher teacher = gson.fromJson(text, Teacher.class);
                                     userLocalStore.storeTeacher(teacher);
                                     //Go login
+                                    constraintLayout.setVisibility(View.INVISIBLE);
                                     Intent intent = new Intent(getApplicationContext(), MainActivity_teacher.class);
                                     startActivity(intent);
                                 } else if (role == 2) {
                                     Student student = gson.fromJson(text, Student.class);
                                     //TODO: save to share preference
                                     userLocalStore.storeStudent(student);
+                                    constraintLayout.setVisibility(View.INVISIBLE);
                                     //Go login
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
@@ -164,6 +166,7 @@ public class Login extends AppCompatActivity {
                                     Parent parent = gson.fromJson(text, Parent.class);
                                     //TODO: save to share preference
                                     userLocalStore.storeParent(parent);
+                                    constraintLayout.setVisibility(View.INVISIBLE);
                                     //Go login
                                     Intent intent = new Intent(getApplicationContext(), MainActivity_parent.class);
                                     startActivity(intent);
@@ -173,7 +176,7 @@ public class Login extends AppCompatActivity {
                             }
                         } else {
                             constraintLayout.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getBaseContext(), "Email or password is incorrect", Toast.LENGTH_LONG);
+                            Toast.makeText(getBaseContext(), "Email or password is incorrect", Toast.LENGTH_LONG).show();
                             //Dialog dialog= new Dialog();
 //                            dialog.setTitle("Email or password is invalid!!!");
 //                            dialog.setCancelable(true);
@@ -192,7 +195,7 @@ public class Login extends AppCompatActivity {
 //                        dialog.setCancelable(true);
 //                        dialog.show();
                         constraintLayout.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getBaseContext(),"Problem happen!!!", Toast.LENGTH_LONG);
+                        Toast.makeText(getBaseContext(),"Problem happen!!!", Toast.LENGTH_LONG).show();
 
                     }
                 });

@@ -11,6 +11,7 @@ import com.example.electroniccommunicationhandbook.entity.Message;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.service.MessageService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -71,7 +72,7 @@ public class MessageRepository {
                 .create();
 
         messageService = new retrofit2.Retrofit.Builder()
-                .baseUrl("https://apihandbookversion2.herokuapp.com/")
+                .baseUrl(Comon.API_LINK)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()

@@ -11,6 +11,7 @@ import com.example.electroniccommunicationhandbook.entity.Account;
 import com.example.electroniccommunicationhandbook.entity.Dummy.Role;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.service.AccountService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UpdateRepository extends AndroidViewModel {
 
-    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+    private static final String BASE_URL = Comon.API_LINK;
     //private static final String BASE_URL = "http://localhost:8080/";
     private Account account;
     private AccountService accountService;
