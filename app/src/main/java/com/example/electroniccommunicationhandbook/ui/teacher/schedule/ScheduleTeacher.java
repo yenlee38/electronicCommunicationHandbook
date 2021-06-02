@@ -142,13 +142,13 @@ public class ScheduleTeacher extends AppCompatActivity {
 
         }
         else
-            tv_nullClass.setText("DON'T HAVE CLASS OF DAY !!");
+            tv_nullClass.setText(getResources().getString(R.string.empty_day));
     }
 
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, MainActivity_teacher.class));
+        startActivity(new Intent(ScheduleTeacher.this, MainActivity_teacher.class));
         finish();
     }
 
@@ -362,9 +362,8 @@ public class ScheduleTeacher extends AppCompatActivity {
         //  sortClassBySchoolTime(lClass);
         if(lClass.size() != 0)
             tv_nullClass.setText("");
-        else tv_nullClass.setText("DON'T HAVE CLASS OF DAY !!");
+        else tv_nullClass.setText(getResources().getString(R.string.empty_day));
         return lClass;
-
     }
 
 }
