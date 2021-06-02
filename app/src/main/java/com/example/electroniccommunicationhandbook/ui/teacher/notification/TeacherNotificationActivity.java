@@ -1,7 +1,7 @@
 package com.example.electroniccommunicationhandbook.ui.teacher.notification;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -12,9 +12,10 @@ import android.view.View;
 import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
+import com.example.electroniccommunicationhandbook.ui.profile.UpdateSuccessfullyActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 
-public class TeacherNotificationActivity extends AppCompatActivity {
+public class TeacherNotificationActivity extends FragmentActivity implements NotificationFragment.FirstFragmentListener {
 
     private AppCompatButton btn_back;
     private UserLocalStore userLocalStore;
@@ -42,5 +43,15 @@ public class TeacherNotificationActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onButtonClick(String title) {
+        Intent intent= new Intent(getApplicationContext(), UpdateSuccessfullyActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("Title", title);
+        bundle.putString("Key","2");
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

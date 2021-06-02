@@ -62,6 +62,8 @@ public class MainActivity_parent extends AppCompatActivity {
         btn_schedule = findViewById(R.id.btn_schedule);
         tv_username = findViewById(R.id.tv_username);
         btnProfile = findViewById(R.id.btn_profile);
+        btn_viewPoints= findViewById(R.id.btn_points);
+        btn_viewFees= findViewById(R.id.btn_fee);
     }
     public void initEvent(){
         btnLogout.setOnClickListener(new View.OnClickListener() {
