@@ -27,7 +27,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code128Writer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-
 import java.text.SimpleDateFormat;
 import java.util.Hashtable;
 import java.util.Locale;
@@ -46,6 +45,7 @@ public class CardActivity  extends AppCompatActivity {
     private ImageView img_back;
     private StudentRepository studentRepository;
     UserLocalStore userLocalStore;
+
 
     Context context;
 
@@ -67,8 +67,9 @@ public class CardActivity  extends AppCompatActivity {
         tv_student_id.setText(student.getStudentId());
         if(student.getName() != null){ tv_name.setText(student.getName());}
         if(student.getMajor() != null){ tv_major.setText(student.getMajor());}
-        //try{if(student.getYear() != 0){ tv_year_studying.setText(student.getYear() + "");}}catch (Exception ex){}
+        if(student.getYear() != 0){ tv_year_studying.setText(student.getYear() + "");}
         if(student.getBankSeri() != null){tv_bank_seri.setText(student.getBankSeri());}
+
 
         if(!(student.getImage()==null || student.getImage().equals("")  ||student.getImage().equals("string")) ) {
             Glide.with(context).load(student.getImage()).into(img_avatar);
@@ -92,6 +93,7 @@ public class CardActivity  extends AppCompatActivity {
         tv_bank_seri = findViewById(R.id.tv_bank_seri);
         img_code_id = findViewById(R.id.img_code_id);
         img_back = findViewById(R.id.img_back);
+        tv_DoB = findViewById(R.id.tv_DoB);
 
         setValueForCard();
 

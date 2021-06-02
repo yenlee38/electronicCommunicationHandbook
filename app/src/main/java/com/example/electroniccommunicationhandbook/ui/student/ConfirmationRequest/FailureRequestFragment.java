@@ -40,8 +40,8 @@ public class FailureRequestFragment extends Fragment {
 
         btnGoNewRequest.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                getFragmentManager().popBackStackImmediate();
+            public void onClick(View v)
+            {Navigation.findNavController(v).navigate(R.id.action_failureRequestFragment_to_newRequestFragment);
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
