@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.database.RoomDB;
 import com.example.electroniccommunicationhandbook.entity.Account;
@@ -48,6 +50,7 @@ public class detail_message extends AppCompatActivity {
     private MessageRepository messageRepository;
     private Account currentAccount;
     private int otherAccountId;
+    int role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class detail_message extends AppCompatActivity {
 
         //get current user
         user = new UserLocalStore(getApplicationContext());
-        int role = user.getRoleLocal();
+        role = user.getRoleLocal();
 
         messageRepository = MessageRepository.getInstance();
 
@@ -100,10 +103,10 @@ public class detail_message extends AppCompatActivity {
 
         //set user name
         tvUserName.setText("");
-        setStudentName(otherAccountId, tvUserName);
+        setStudentName(otherAccountId, tvUserName, userImg, this);
 
         if(tvUserName.getText().toString().isEmpty()){
-            setTeacherName(otherAccountId, tvUserName);
+            setTeacherName(otherAccountId, tvUserName, userImg, this);
         }
 
         messageArrayList = new ArrayList<>();
@@ -133,7 +136,9 @@ public class detail_message extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Message>> call, Response<ArrayList<Message>> response) {
                 messageArrayList = response.body();
                 messageArrayList= sortIncreasingMessageList(messageArrayList);
-                    adapter = new DetailMessageAdapter(messageArrayList, currentAccount.getAccountID());
+                    adapter = new DetailMessageAdapter(messageArrayList, currentAccount.getAccountID(), otherAccountId,
+                            messageRepository,
+                            getApplicationContext(), role);
 //                    adapter.setMessageList(messageArrayList);
 
                     recycMessage.setAdapter(adapter);
@@ -162,7 +167,9 @@ public class detail_message extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Message>> call, Response<ArrayList<Message>> response) {
                 messageArrayList = response.body();
                 messageArrayList= sortIncreasingMessageList(messageArrayList);
-                adapter = new DetailMessageAdapter(messageArrayList, currentAccount.getAccountID());
+                adapter = new DetailMessageAdapter(messageArrayList, currentAccount.getAccountID(), otherAccountId,
+                        messageRepository,
+                        getApplicationContext(), role);
 //                    adapter.setMessageList(messageArrayList);
 
                 recycMessage.setAdapter(adapter);
@@ -181,7 +188,7 @@ public class detail_message extends AppCompatActivity {
     /*
    get student's name
     */
-    public void setStudentName(int accountid, TextView tvName){
+    public void setStudentName(int accountid, TextView tvName, ShapeableImageView imgView, Context context){
         MutableLiveData<ArrayList<Student>> studentMultableList = messageRepository.getAllStudents();
 
         studentMultableList.observeForever( new Observer<ArrayList<Student>>() {
@@ -193,6 +200,14 @@ public class detail_message extends AppCompatActivity {
                     for (int i=0; i<stdList.size(); i++){
                         if(stdList.get(i).getAccount().getAccountID()==accountid){
                             tvName.setText(stdList.get(i).getName());
+                            try{
+                                Glide.with(context).load(stdList.get(i).getImage())
+                                        .error(R.drawable.cus_input)
+                                        .into(imgView);
+                            }
+                            catch(Exception ex){
+                                Log.e("Load image", "no image");
+                            }
                             break;
                         }
                     }
@@ -204,17 +219,26 @@ public class detail_message extends AppCompatActivity {
     /*
   get teacher's name
    */
-    public void setTeacherName(int accountid, TextView tvName) {
+    public void setTeacherName(int accountid, TextView tvName, ShapeableImageView imgView, Context mcontext) {
         Call<ArrayList<Teacher>> call = messageRepository.getMessageService().getAllTeacher();
         call.enqueue(new Callback<ArrayList<Teacher>>() {
             @Override
             public void onResponse(Call<ArrayList<Teacher>> call, Response<ArrayList<Teacher>> response) {
                 ArrayList<Teacher> teacherArrayList = new ArrayList<>();
                 teacherArrayList=response.body();
-                if(teacherArrayList != null){
+                if(teacherArrayList!=null) {
+
                     for (int i = 0; i < teacherArrayList.size(); i++) {
                         if (teacherArrayList.get(i).getAccount().getAccountID() == accountid) {
                             tvName.setText(teacherArrayList.get(i).getName());
+                            try{
+                                Glide.with(mcontext).load(teacherArrayList.get(i).getImage())
+                                        .error(R.drawable.cus_input)
+                                        .into(imgView);
+                            }
+                            catch(Exception ex){
+                                Log.e("Load image", "no image");
+                            }
                             break;
                         }
                     }

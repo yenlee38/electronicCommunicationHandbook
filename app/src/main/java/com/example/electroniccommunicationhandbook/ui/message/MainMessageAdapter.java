@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.database.RoomDB;
 import com.example.electroniccommunicationhandbook.entity.Account;
@@ -140,13 +141,13 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
             //get receiver's name
             name = "";
             holder.tvName.setText("");
-            setStudentName(otherAccountID, holder.tvName);
+            setStudentName(otherAccountID, holder.tvName, holder.personalImage);
 
             if(holder.tvName.getText().toString().isEmpty()){
-                setTeacherName(otherAccountID, holder.tvName);
+                setTeacherName(otherAccountID, holder.tvName, holder.personalImage);
             }
 
-            //if other user is a student
+//            //if other user is a student
             student = new Student();
             Call<Student> studentCall = messageRepository.getMessageService().getStudentByAccountId(otherAccountID);
             studentCall.enqueue(new Callback<Student>() {
@@ -175,7 +176,14 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
             //invisible lastest message
             holder.tvLastestMessage.setVisibility(View.GONE);
             holder.allBorder.setBackgroundResource(R.drawable.no_border_message);
-
+            try{
+                Glide.with(mcontext).load(student.getImage())
+                        .error(R.drawable.cus_input)
+                        .into(holder.personalImage);
+            }
+            catch(Exception ex){
+                Log.e("Load imge", "Error");
+            }
         }
         else if(teacherList!=null){ //list teacher for searching in student role
             Teacher teacher = this.teacherList.get(position);
@@ -185,6 +193,14 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
             //invisible lastest message
             holder.tvLastestMessage.setVisibility(View.GONE);
             holder.allBorder.setBackgroundResource(R.drawable.no_border_message);
+            try{
+                Glide.with(mcontext).load(teacher.getImage())
+                        .error(R.drawable.cus_input)
+                        .into(holder.personalImage);
+            }
+            catch(Exception ex){
+                Log.e("Load imge", "Error");
+            }
         }
     }
 
@@ -198,7 +214,7 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
     /*
     get student's name
      */
-    public void setStudentName(int accountid, TextView tvName) {
+    public void setStudentName(int accountid, TextView tvName, ShapeableImageView imgView) {
         Call<ArrayList<Student>> call = messageRepository.getMessageService().getAllStudent();
         call.enqueue(new Callback<ArrayList<Student>>() {
             @Override
@@ -209,6 +225,15 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
                     for (int i = 0; i < allStudentArrayList.size(); i++) {
                         if (allStudentArrayList.get(i).getAccount().getAccountID() == accountid) {
                             tvName.setText(allStudentArrayList.get(i).getName());
+
+                            try{
+                                Glide.with(mcontext).load(allStudentArrayList.get(i).getImage())
+                                        .error(R.drawable.cus_input)
+                                        .into(imgView);
+                            }
+                            catch(Exception ex){
+                                Log.e("Load image", "no image");
+                            }
                             break;
                         }
                     }
@@ -225,7 +250,7 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
     /*
   get teacher's name
    */
-    public void setTeacherName(int accountid, TextView tvName) {
+    public void setTeacherName(int accountid, TextView tvName, ShapeableImageView imgView ) {
         Call<ArrayList<Teacher>> call = messageRepository.getMessageService().getAllTeacher();
         call.enqueue(new Callback<ArrayList<Teacher>>() {
             @Override
@@ -236,6 +261,16 @@ public class MainMessageAdapter extends RecyclerView.Adapter<MainMessageAdapter.
                     for (int i = 0; i < teacherArrayList.size(); i++) {
                         if (teacherArrayList.get(i).getAccount().getAccountID() == accountid) {
                             tvName.setText(teacherArrayList.get(i).getName());
+
+                            try{
+                                Glide.with(mcontext).load(teacherArrayList.get(i).getImage())
+                                        .error(R.drawable.cus_input)
+                                        .into(imgView);
+                            }
+                            catch(Exception ex){
+                                Log.e("Load image", "no image");
+                            }
+
                             break;
                         }
                     }
