@@ -25,9 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="@dimen/size_min"
-            android:text="Successfully!!!"
+            android:text="Logout"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
