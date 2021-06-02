@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.MainActivity_parent;
 import com.example.electroniccommunicationhandbook.MainActivity_teacher;
@@ -81,6 +82,8 @@ public class ProfileActivity extends AppCompatActivity {
             edtEmail.setText(teacher.getEmail());
             edtPhone.setText(teacher.getPhone());
             edtAddress.setText(teacher.getAddress());
+            if(!(teacher.getImage()==null|| teacher.getImage().equals("")  ||teacher.getImage().equals("string")) )
+                Glide.with(this.getApplicationContext()).load(teacher.getImage()).into(imvPhoto);
 //            Load thông tin Sinh viên nếu role =2
         }else if (userLocalStore.getRoleLocal()==2){
             Student student = userLocalStore.getStudentLocal();
@@ -89,6 +92,8 @@ public class ProfileActivity extends AppCompatActivity {
             edtEmail.setText(student.getEmail());
             edtPhone.setText(student.getPhone());
             edtAddress.setText(student.getAddress());
+            if(!(student.getImage() == null|| student.getImage().equals("")  ||student.getImage().equals("string")) )
+                Glide.with(this.getApplicationContext()).load(student.getImage()).into(imvPhoto);
         }else{
             Parent parent = userLocalStore.getParentLocal();//Load thong tin phụ huynh
             tvName.setText(parent.getName());
@@ -96,6 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
             edtEmail.setText(parent.getEmail());
             edtPhone.setText(parent.getPhone());
             edtAddress.setText(parent.getAddress());
+
         }
 
     }

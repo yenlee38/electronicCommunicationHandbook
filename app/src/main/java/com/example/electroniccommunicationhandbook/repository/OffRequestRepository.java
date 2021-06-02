@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.electroniccommunicationhandbook.entity.OffRequest;
 import com.example.electroniccommunicationhandbook.service.OffRequestService;
 import com.example.electroniccommunicationhandbook.service.StudentService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -23,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OffRequestRepository {
 
-    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+    private static final String BASE_URL = Comon.API_LINK;
     private static OffRequestRepository instance;
     private OffRequestService offRequestService;
     public OffRequest moffRequest;
