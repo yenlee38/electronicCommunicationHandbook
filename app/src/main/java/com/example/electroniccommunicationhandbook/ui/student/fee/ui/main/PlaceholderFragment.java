@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.common.StudyingYear;
 import com.example.electroniccommunicationhandbook.entity.FeeInfor;
+import com.example.electroniccommunicationhandbook.entity.Parent;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.repository.FeeRepository;
@@ -51,6 +52,7 @@ public class PlaceholderFragment extends Fragment {
     private int role;
     private Student studentLocal;
     private UserLocalStore userLocalStore;
+    private Parent parentLocal;
     private Spinner spinnerYear;
     private ProgressBar progressBar;
     private TextView tv_totalfee,tv_numSubject;
@@ -95,7 +97,11 @@ public class PlaceholderFragment extends Fragment {
         if(role==2){
             studentLocal= userLocalStore.getStudentLocal();
         }
-
+        if(role==3)
+        {
+            parentLocal= userLocalStore.getParentLocal();
+            studentLocal= parentLocal.getStudent();
+        }
         repository= ViewModelProviders.of(this).get(FeeRepository.class);
 
         repository.getFeeInforMutableLiveData().observe(getViewLifecycleOwner(), new Observer<ArrayList<FeeInfor>>() {
@@ -107,7 +113,7 @@ public class PlaceholderFragment extends Fragment {
                 else {
 
                     loadFee(new ArrayList<FeeInfor>(),root);
-                    Toast.makeText(context,"Không còn nợ  !",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"No data to load !!",Toast.LENGTH_SHORT).show();
                 }
                 progressBar.setVisibility(View.INVISIBLE);
             }
