@@ -166,7 +166,9 @@ public class RateTeacherActivity extends AppCompatActivity {
     private void setListStudyingYear(){
         sp_year = findViewById(R.id.sp_year);
         List<StudyingYear> yearList = new ArrayList<StudyingYear>();
-        for(int i = 2018; i < 2025; i++) // create year from 2018 to 2025
+        int startYear = 2018; // set
+        if(student.getYear() > 0) startYear = student.getYear();
+        for(int i = startYear ; i < startYear + 5; i++) // create year from start year to end year
             yearList.add(new StudyingYear(i));
         ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(getApplicationContext(), android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
         sp_year.setAdapter(adapter);

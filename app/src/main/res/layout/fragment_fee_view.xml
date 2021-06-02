@@ -115,8 +115,9 @@
             android:id="@+id/spinnerYear"
             android:layout_width="150dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/border_spinner"
-            android:layout_height="40dp"/>
+            android:background="@drawable/border_btn_white"
+            android:layout_height="40dp"
+            />
 
         <Button
             android:layout_width="156dp"
