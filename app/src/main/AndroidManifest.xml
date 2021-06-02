@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectronicCommunicationHandbook">
-        <activity android:name=".ui.student.statistic.StatisticActivity"></activity>
+        <activity android:name=".LogoutActivity"></activity>
+        <activity android:name=".ui.student.statistic.StatisticActivity" />
         <activity android:name=".ui.teacher.statistic.StatisticTeacherActivity" />
         <activity android:name=".ui.teacher.notification.NotificationTeacherViewActivity" />
         <activity android:name=".ui.teacher.schedule.ScheduleTeacher" />

@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 ScheduleActivity scheduleActivity = new ScheduleActivity();
                 Calendar calendar = Calendar.getInstance();
                 scheduleActivity.YEAR = Year.now().getValue();
-                scheduleActivity.DAY = calendar.get(Calendar.DAY_OF_WEEK);
+                scheduleActivity.DAY = calendar.get(Calendar.DAY_OF_WEEK)-1;
                 if(calendar.get(Calendar.MONTH) < 8) // < 8 is semster 2
                     scheduleActivity.SEMESTER = 2;
                 else scheduleActivity.SEMESTER = 1;
@@ -201,9 +201,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                UserLocalStore userLocalStore= new UserLocalStore(getApplicationContext());
-                userLocalStore.resetUserLocal();
-                Intent intent= new Intent(MainActivity.this, Login.class);
+                Intent intent= new Intent(MainActivity.this, LogoutActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

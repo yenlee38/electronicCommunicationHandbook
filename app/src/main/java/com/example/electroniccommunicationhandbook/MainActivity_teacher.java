@@ -2,6 +2,7 @@ package com.example.electroniccommunicationhandbook;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +13,10 @@ import android.widget.TextView;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Teacher;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
+import com.example.electroniccommunicationhandbook.ui.message.MainMessage;
 import com.example.electroniccommunicationhandbook.ui.profile.ProfileActivity;
 
+import com.example.electroniccommunicationhandbook.ui.schedule.ScheduleActivity;
 import com.example.electroniccommunicationhandbook.ui.student.statistic.StatisticActivity;
 
 import com.example.electroniccommunicationhandbook.ui.teacher.list_class.ListClass;
@@ -27,10 +30,13 @@ import com.example.electroniccommunicationhandbook.ui.teacher.notification.Notif
 import com.example.electroniccommunicationhandbook.ui.teacher.notification.TeacherNotificationActivity;
 import com.example.electroniccommunicationhandbook.ui.teacher.off_request.OffRequestActivity;
 
+import java.time.Year;
+import java.util.Calendar;
+
 
 public class MainActivity_teacher extends AppCompatActivity {
     AppCompatButton btnClass, btnSchedule, btnLogout, btnStatistic;
-
+    AppCompatButton btnMessage;
     AppCompatButton btn_createNotification;
     AppCompatButton btn_offRequest;
     TextView tv_username;
@@ -58,7 +64,7 @@ public class MainActivity_teacher extends AppCompatActivity {
         btn_createNotification = findViewById(R.id.btn_notification_new);
         btn_offRequest = findViewById(R.id.btn_send_off_request);
         tv_username = findViewById(R.id.tv_username_teacher);
-
+        btnMessage= findViewById(R.id.btn_message);
         btn_viewNotification = findViewById(R.id.btn_notification);
         btnStatistic = findViewById(R.id.btn_statistic_teacher);
 
@@ -86,7 +92,15 @@ public class MainActivity_teacher extends AppCompatActivity {
         btnSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ScheduleTeacher.class);
+
+                ScheduleTeacher scheduleActivity = new ScheduleTeacher();
+                Calendar calendar = Calendar.getInstance();
+                scheduleActivity.YEAR = Year.now().getValue();
+                scheduleActivity.DAY = calendar.get(Calendar.DAY_OF_WEEK)-1;
+                if(calendar.get(Calendar.MONTH) < 8) // < 8 is semster 2
+                    scheduleActivity.SEMESTER = 2;
+                else scheduleActivity.SEMESTER = 1;
+                Intent intent = new Intent(getApplicationContext(), scheduleActivity.getClass());
                 startActivity(intent);
             }
         });
@@ -94,9 +108,7 @@ public class MainActivity_teacher extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
-                userLocalStore.resetUserLocal();
-                Intent intent = new Intent(MainActivity_teacher.this, Login.class);
+                Intent intent = new Intent(MainActivity_teacher.this, LogoutActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
@@ -137,7 +149,20 @@ public class MainActivity_teacher extends AppCompatActivity {
                 //  setContentView(R.layout.activity_card_student);
             }
         });
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainMessage.class);
 
+                // setContentView(R.layout.activity_schedule);
+                FragmentManager fm = getSupportFragmentManager();
+                for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                    fm.popBackStack();
+                }
+
+                startActivity(intent);
+            }
+        });
     }
 
     public void getInfo() {
