@@ -26,7 +26,10 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code128Writer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
+import java.util.Locale;
 
 public class CardActivity  extends AppCompatActivity {
 
@@ -41,6 +44,7 @@ public class CardActivity  extends AppCompatActivity {
     private ImageView img_back;
     private StudentRepository studentRepository;
     UserLocalStore userLocalStore;
+    private TextView tv_DoB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +63,12 @@ public class CardActivity  extends AppCompatActivity {
         tv_student_id.setText(student.getStudentId());
         if(student.getName() != null){ tv_name.setText(student.getName());}
         if(student.getMajor() != null){ tv_major.setText(student.getMajor());}
-        //try{if(student.getYear() != 0){ tv_year_studying.setText(student.getYear() + "");}}catch (Exception ex){}
+        if(student.getYear() != 0){ tv_year_studying.setText(student.getYear() + "");}
         if(student.getBankSeri() != null){tv_bank_seri.setText(student.getBankSeri());}
+
+        try
+        {SimpleDateFormat simpleFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+        tv_DoB.setText(simpleFormat.format(student.getBirthday()));}catch (Exception e) {}
 
     }
 
@@ -74,6 +82,7 @@ public class CardActivity  extends AppCompatActivity {
         tv_bank_seri = findViewById(R.id.tv_bank_seri);
         img_code_id = findViewById(R.id.img_code_id);
         img_back = findViewById(R.id.img_back);
+        tv_DoB = findViewById(R.id.tv_DoB);
 
         setValueForCard();
 
