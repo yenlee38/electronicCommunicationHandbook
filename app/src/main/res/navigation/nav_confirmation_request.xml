@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_failureRequestFragment_to_boardConfirmation"
             app:destination="@id/boardConfirmation" />
+        <action
+            android:id="@+id/action_failureRequestFragment_to_newRequestFragment"
+            app:destination="@id/newRequestFragment" />
     </fragment>
     <fragment
         android:id="@+id/boardConfirmation"
