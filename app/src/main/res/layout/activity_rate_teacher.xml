@@ -105,9 +105,7 @@
             android:layout_height="36dp"
             android:background="@drawable/border_btn_white"
             android:gravity="center"
-            android:textAlignment="center"
-
-            />
+            android:textAlignment="center" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_viewPoint"

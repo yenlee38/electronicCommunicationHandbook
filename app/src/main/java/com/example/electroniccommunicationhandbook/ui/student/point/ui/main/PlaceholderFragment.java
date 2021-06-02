@@ -36,6 +36,7 @@ import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.github.ybq.android.spinkit.style.RotatingCircle;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,7 +134,9 @@ public class PlaceholderFragment extends Fragment {
 
     private void setListStudyingYear(View root){
         List<StudyingYear> yearList = new ArrayList<StudyingYear>();
-        for(int i = 2018; i < 2022; i++) // create year from 2018 to 2025
+        int startYear = 2018; // set
+        if(studentLocal.getYear() > 0) startYear = studentLocal.getYear();
+        for(int i = startYear ; i < startYear + 5; i++) // create year from start year to end year
             yearList.add(new StudyingYear(i));
         ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(context, android.R.layout.simple_spinner_item, new ArrayList<StudyingYear>(yearList));
         spnStudyingYear.setAdapter(adapter);
@@ -153,7 +156,11 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
-        spnStudyingYear.setSelection(3);
+        int index = 3;
+        for(int i = 0; i < yearList.size(); i++)
+            if(yearList.get(i).getYear() == Year.now().getValue()){index = i; break;} // set selection year now
+
+        spnStudyingYear.setSelection(index);
     }
 
     private void setClassLiveDataForChangeSemester(int year){

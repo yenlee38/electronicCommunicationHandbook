@@ -34,6 +34,7 @@ import com.example.electroniccommunicationhandbook.util.UserLocalStore;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.ThreeBounce;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class PlaceholderFragment extends Fragment {
         tv_numSubject= root.findViewById(R.id.tv_noSubject);
         tv_totalfee= root.findViewById(R.id.tv_totalfee);
         context= this.getContext();
-        setSpinnerYearValue();
+       // setSpinnerYearValue();
 
         progressBar = (ProgressBar) root.findViewById(R.id.spin_kit);
         Sprite doubleBounce = new ThreeBounce();
@@ -119,6 +120,8 @@ public class PlaceholderFragment extends Fragment {
             }
         });
 
+        setSpinnerYearValue(); // get student not null
+
         spinnerYearSelectionChange();
 
         //repository.getFeeInfor(studentLocal.getStudentId(),year, semester);
@@ -149,12 +152,19 @@ public class PlaceholderFragment extends Fragment {
 
     public void setSpinnerYearValue(){
         List<StudyingYear> yearList = new ArrayList<StudyingYear>();
-        for(int i = 2019; i <= 2022; i++) // create year from 2018 to 2025
+        int startYear = 2018; // set
+        if(studentLocal.getYear() > 0) startYear = studentLocal.getYear();
+        for(int i = startYear ; i < startYear + 5; i++) // create year from start year to end year
             yearList.add(new StudyingYear(i));
         ArrayAdapter<StudyingYear> adapter = new ArrayAdapter<StudyingYear>(context, android.R.layout.simple_spinner_dropdown_item, new ArrayList<StudyingYear>(yearList));
         spinnerYear.setAdapter(adapter);
 
-        spinnerYear.setSelection(2);
+        int index = 2;
+        for(int i = 0; i < yearList.size(); i++)
+            if(yearList.get(i).getYear() == Year.now().getValue()){index = i; break;} // set selection year now
+
+        spinnerYear.setSelection(index);
+
     }
 
     public void loadFee(ArrayList<FeeInfor> feeInfors, View root){
