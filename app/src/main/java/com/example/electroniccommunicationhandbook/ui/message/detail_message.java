@@ -211,10 +211,12 @@ public class detail_message extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Teacher>> call, Response<ArrayList<Teacher>> response) {
                 ArrayList<Teacher> teacherArrayList = new ArrayList<>();
                 teacherArrayList=response.body();
-                for (int i = 0; i < teacherArrayList.size(); i++) {
-                    if (teacherArrayList.get(i).getAccount().getAccountID() == accountid) {
-                        tvName.setText(teacherArrayList.get(i).getName());
-                        break;
+                if(teacherArrayList!=null) {
+                    for (int i = 0; i < teacherArrayList.size(); i++) {
+                        if (teacherArrayList.get(i).getAccount().getAccountID() == accountid) {
+                            tvName.setText(teacherArrayList.get(i).getName());
+                            break;
+                        }
                     }
                 }
             }
