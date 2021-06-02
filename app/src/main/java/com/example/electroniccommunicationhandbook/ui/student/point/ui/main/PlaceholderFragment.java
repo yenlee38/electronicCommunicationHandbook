@@ -121,6 +121,11 @@ public class PlaceholderFragment extends Fragment {
         if(role==2){
             studentLocal= userLocalStore.getStudentLocal();
         }
+        if(role==3)
+        {
+
+            studentLocal= userLocalStore.getParentLocal().getStudent();
+        }
 
         setListStudyingYear(root);
         return root;

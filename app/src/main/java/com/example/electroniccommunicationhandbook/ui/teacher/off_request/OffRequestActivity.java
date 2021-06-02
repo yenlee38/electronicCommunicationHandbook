@@ -9,9 +9,11 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.electroniccommunicationhandbook.MainActivity_parent;
@@ -24,12 +26,19 @@ import com.example.electroniccommunicationhandbook.repository.AnnouncementReposi
 import com.example.electroniccommunicationhandbook.repository.ClassRepository;
 import com.example.electroniccommunicationhandbook.repository.OffRequestRepository;
 import com.example.electroniccommunicationhandbook.ui.authentication.login.Login;
+import com.example.electroniccommunicationhandbook.ui.profile.UpdateSuccessfullyActivity;
 import com.example.electroniccommunicationhandbook.util.UserLocalStore;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class OffRequestActivity extends AppCompatActivity {
 
@@ -40,7 +49,8 @@ public class OffRequestActivity extends AppCompatActivity {
     private Spinner spinner;
     private Teacher teacher;
     private Context context;
-    private AppCompatEditText edtPickdate, edtReason;
+    private TextView edtPickdate;
+    private AppCompatEditText  edtReason;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +98,13 @@ public class OffRequestActivity extends AppCompatActivity {
                         offRequest= requestRepository.save(offRequest);
                         if(offRequest!=null)
                         {
-                            Toast.makeText(context ,"Success",Toast.LENGTH_SHORT).show();
+                            Intent intent= new Intent(getApplicationContext(), UpdateSuccessfullyActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("Title", "Send request successfully");
+                            bundle.putString("Detail","Please wait for the notification to accept the request from the school.");
+                            bundle.putString("Key","1");
+                            intent.putExtras(bundle);
+                            startActivity(intent);
                         }
                         else  Toast.makeText(context ,"Fail",Toast.LENGTH_SHORT).show();
 
@@ -97,6 +113,61 @@ public class OffRequestActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(context ,"You have to fill all field !",Toast.LENGTH_SHORT).show();
                 }
+
+            }
+        });
+
+        edtPickdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                Calendar cal = Calendar.getInstance();
+                DateFormat formater= new SimpleDateFormat("E, MMM dd yyyy");
+                //if the date is selected
+                if (!edtPickdate.getText().toString().isEmpty())
+                {
+                    SimpleDateFormat simpFormat = new SimpleDateFormat("E, MMM dd yyyy");
+                    //Calendar cal = Calendar.getInstance();
+                    try {
+                        cal.setTime(simpFormat.parse(edtPickdate.getText().toString()));
+                        year = (cal.get(Calendar.YEAR));
+                        month = cal.get(Calendar.MONTH);
+                        day = cal.get(Calendar.DAY_OF_MONTH);
+                    }
+                    catch(Exception e)
+                    {}
+                }
+
+                MaterialDatePicker datePicker =
+                        MaterialDatePicker.Builder.datePicker()
+                                .setTitleText("Select date")
+                                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                                .build();
+
+                datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
+                    @Override
+                    public void onPositiveButtonClick(Long selectedDate) {
+                        // user has selected a date
+                        // format the date and set the text of the input box to be the selected date
+                        // right now this format is hard-coded, this will change
+                        ;
+                        // Get the offset from our timezone and UTC.
+                        TimeZone timeZoneUTC = TimeZone.getDefault();
+                        // It will be negative, so that's the -1
+                        int offsetFromUTC = timeZoneUTC.getOffset(new Date().getTime()) * -1;
+
+                        // Create a date format, then a date object with our offset
+                        SimpleDateFormat simpleFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+                        Date date = new Date(selectedDate + offsetFromUTC);
+
+                        edtPickdate.setText(simpleFormat.format(date));
+                    }
+                });
+
+                datePicker.show(getSupportFragmentManager(), "tag");
 
             }
         });
@@ -147,5 +218,18 @@ public class OffRequestActivity extends AppCompatActivity {
         if(edtReason.getText().toString().isEmpty() || edtPickdate.getText().toString().isEmpty())
             return false;
         return true;
+    }
+
+    private Date getDate() {
+        Calendar cal = Calendar.getInstance();
+        String datePattern="yyyy-mm-dd HH-MM-SS";
+        DateFormat simpFormat = new SimpleDateFormat(datePattern);
+        try {
+            cal.setTime(simpFormat.parse(edtPickdate.getText().toString()));
+        } catch (Exception e) {
+        }
+        Log.e("get time calender", Calendar.getInstance().getTime()+"");
+        Log.e("time :", "getDate: "+cal.getTime() );
+        return cal.getTime();
     }
 }
