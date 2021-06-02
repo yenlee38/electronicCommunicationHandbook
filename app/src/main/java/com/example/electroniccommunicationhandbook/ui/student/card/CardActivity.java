@@ -1,5 +1,6 @@
 package com.example.electroniccommunicationhandbook.ui.student.card;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.electroniccommunicationhandbook.MainActivity;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Student;
@@ -26,7 +28,9 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code128Writer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
+import java.text.SimpleDateFormat;
 import java.util.Hashtable;
+import java.util.Locale;
 
 public class CardActivity  extends AppCompatActivity {
 
@@ -38,9 +42,12 @@ public class CardActivity  extends AppCompatActivity {
     private TextView tv_year_studying;
     private ImageView img_code_id;
     private TextView tv_bank_seri;
+    private TextView tv_DoB;
     private ImageView img_back;
     private StudentRepository studentRepository;
     UserLocalStore userLocalStore;
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,7 @@ public class CardActivity  extends AppCompatActivity {
         studentRepository = new StudentRepository();
         userLocalStore = new UserLocalStore(getApplicationContext());
         student = userLocalStore.getStudentLocal();
+        this.context = this;
         initView();
         createImageViewCode();
 
@@ -62,10 +70,20 @@ public class CardActivity  extends AppCompatActivity {
         //try{if(student.getYear() != 0){ tv_year_studying.setText(student.getYear() + "");}}catch (Exception ex){}
         if(student.getBankSeri() != null){tv_bank_seri.setText(student.getBankSeri());}
 
+        if(!(student.getImage()==null || student.getImage().equals("")  ||student.getImage().equals("string")) ) {
+            Glide.with(context).load(student.getImage()).into(img_avatar);
+        }
+
+        try
+        {
+            SimpleDateFormat simpleFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+            tv_DoB.setText(simpleFormat.format(student.getBirthday()));}catch (Exception e) {}
+
     }
 
     private void initView(){
 
+        tv_DoB = findViewById(R.id.tv_DoB);
         img_avatar = findViewById(R.id.img_avatar);
         tv_student_id = findViewById(R.id.tv_student_id);
         tv_name = findViewById(R.id.tv_name);

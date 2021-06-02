@@ -41,9 +41,9 @@ public class ScheduleTeacher extends AppCompatActivity {
     private ScheduleTeacherAdapter scheduleTeacherAdapter;
     private ImageView img_back;
     private MutableLiveData<ArrayList<Class>> classLiveData;
-    private static int YEAR;
-    private static int SEMESTER = 1;
-    private static int DAY = 1;
+    public static int YEAR;
+    public static int SEMESTER = 1;
+    public static int DAY = 1;
     private AppCompatButton btn_semesterOne;
     private AppCompatButton btn_semesterTwo;
     private StudentRepository studentRepository;

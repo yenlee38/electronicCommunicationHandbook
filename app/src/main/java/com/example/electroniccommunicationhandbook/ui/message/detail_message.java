@@ -211,7 +211,11 @@ public class detail_message extends AppCompatActivity {
             public void onResponse(Call<ArrayList<Teacher>> call, Response<ArrayList<Teacher>> response) {
                 ArrayList<Teacher> teacherArrayList = new ArrayList<>();
                 teacherArrayList=response.body();
+<<<<<<< HEAD
                 if(teacherArrayList!=null) {
+=======
+                if(teacherArrayList != null){
+>>>>>>> a8c430e57b829b2318e4040b9b8d1eae9a0f3e7d
                     for (int i = 0; i < teacherArrayList.size(); i++) {
                         if (teacherArrayList.get(i).getAccount().getAccountID() == accountid) {
                             tvName.setText(teacherArrayList.get(i).getName());
@@ -219,6 +223,7 @@ public class detail_message extends AppCompatActivity {
                         }
                     }
                 }
+
             }
 
             @Override

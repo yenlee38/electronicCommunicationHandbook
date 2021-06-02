@@ -5,6 +5,7 @@ import com.example.electroniccommunicationhandbook.service.AuthenticateService;
 import com.example.electroniccommunicationhandbook.service.ClassService;
 import com.example.electroniccommunicationhandbook.service.PointService;
 import com.example.electroniccommunicationhandbook.service.RequestPaperService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -77,7 +78,7 @@ public  class MainRepository {
         }).build();
 
         retrofit= new Retrofit.Builder()
-                .baseUrl("https://apihandbookversion2.herokuapp.com/")
+                .baseUrl(Comon.API_LINK)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();

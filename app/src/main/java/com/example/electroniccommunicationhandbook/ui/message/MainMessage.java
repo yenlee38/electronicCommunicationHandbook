@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 
 import com.example.electroniccommunicationhandbook.MainActivity;
+import com.example.electroniccommunicationhandbook.MainActivity_teacher;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.database.RoomDB;
 import com.example.electroniccommunicationhandbook.entity.Account;
@@ -96,7 +97,12 @@ public class MainMessage extends AppCompatActivity {
         //back to main form
         btnBackMessage = findViewById(R.id.btnBack_mainMessage);
         btnBackMessage.setOnClickListener((View view) -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent ;
+            if(role==1){
+                intent= new Intent(getApplicationContext(), MainActivity_teacher.class);
+            }else {
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+            }
             startActivity(intent);
         });
 

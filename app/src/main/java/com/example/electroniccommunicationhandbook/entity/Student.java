@@ -51,7 +51,6 @@ public class Student implements Serializable {
     @Expose
     private String image;
 
-    @SerializedName("studentB")
     private String bankSeri;
 
     private Account account;
@@ -170,6 +169,7 @@ public class Student implements Serializable {
     }
 
     public Student() {
+        this.year=0;
     }
 
     public Student(String studentId, String name, Date birthday, String gender, String phone, String address,
