@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Announcement;
 import com.example.electroniccommunicationhandbook.ui.student.point.PointAdapter;
@@ -23,6 +24,8 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
 
@@ -31,7 +34,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public NotificationAdapter(ArrayList<Announcement> announcements, Context context) {
         announcementList= new ArrayList<>();
-        this.announcementList = announcements;
+        announcementList= announcements;
+        Collections.reverse(announcementList);
         this.context = context;
     }
 
@@ -55,24 +59,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             holder.tvContent.setText(announcement.getContent());
             if(announcement.getSender()==null)
                 holder.tvTeacher.setText("SCHOOL ");
-            else
+            else{
+                if(!(announcement.getSender().getImage()==null || announcement.getSender().getImage().equals("")  ||announcement.getSender().getImage().equals("string")))
+                {
+                    Glide.with(this.context).load(announcement.getSender().getImage()).into(holder.image);
+                }
                 holder.tvTeacher.setText(announcement.getSender().getName());
+            }
+
             holder.tvTimeCreate.setText(String.valueOf(announcement.getAnnouncementTime()));
             holder.tvTitle.setText(announcement.getTitle());
             holder.tvClass.setText("Class: "+ announcement.get_class().getSubject().getName());
-//            if(announcement.getSender().getImage()!=null)
-//            {
-//                try {
-//                    String imageUrl= announcement.getSender().getImage();
-//                    Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
-//                    holder.image.setImageBitmap(bitmap);
-//                } catch (MalformedURLException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
+
 
         }
 

@@ -10,11 +10,13 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Student;
 
@@ -29,12 +31,12 @@ public class ListStudentsInClassAdapter extends RecyclerView.Adapter<ListStudent
     public ListStudentsInClassAdapter(ArrayList<Student> data) {
         this.data = data;
     }
-
+    View mview;
     @NonNull
     @Override
     public StudentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_students,parent, false);
-
+       mview=view;
         return new  StudentsViewHolder(view);
     }
 
@@ -45,6 +47,10 @@ public class ListStudentsInClassAdapter extends RecyclerView.Adapter<ListStudent
         holder.tvAddress=data.get(position).getAddress();
         holder.tvPhone=data.get(position).getPhone();
         holder.tvEmail=data.get(position).getPhone();
+        if(!(data.get(position).getImage()==null || data.get(position).getImage().equals("") ||data.get(position).getImage().equals("string") ))
+        {
+            Glide.with(mview).load(data.get(position).getImage()).into(holder.imgStudent);
+        }
     }
 
     @Override
@@ -61,10 +67,12 @@ public class ListStudentsInClassAdapter extends RecyclerView.Adapter<ListStudent
         String tvPhone;
         String tvAddress;
         String tvEmail;
+        ImageView imgStudent;
         public StudentsViewHolder(@NonNull View itemView) {
             super(itemView);
             tvStudentName= itemView.findViewById(R.id.tv_item_class_student);
             tvStudentId= itemView.findViewById(R.id.tv_item_class_numbers);
+            imgStudent = itemView.findViewById(R.id.imgStudent);
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {

@@ -1,15 +1,20 @@
 package com.example.electroniccommunicationhandbook.repository;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.electroniccommunicationhandbook.R;
 import com.example.electroniccommunicationhandbook.entity.Announcement;
 import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.service.AnnouncementService;
 import com.example.electroniccommunicationhandbook.service.ClassService;
+import com.example.electroniccommunicationhandbook.util.Comon;
+import com.google.android.gms.common.internal.service.Common;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -26,10 +31,11 @@ import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ClassRepository extends AndroidViewModel {
-    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+    private static final String BASE_URL = Comon.API_LINK;
     private static ClassRepository instance;
     private ClassService classService;
     private ArrayList<Class> announcements;
+    private Context context;
     private MutableLiveData<ArrayList<Class>> classList;
 
     public static ClassRepository getInstance(Application application){
@@ -42,7 +48,7 @@ public class ClassRepository extends AndroidViewModel {
     public ClassRepository(Application application){
         super(application);
         classList= new MutableLiveData<>();
-
+        context= application.getApplicationContext();
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {

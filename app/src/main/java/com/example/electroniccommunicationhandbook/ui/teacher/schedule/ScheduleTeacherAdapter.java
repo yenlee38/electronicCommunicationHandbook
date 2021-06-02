@@ -51,7 +51,7 @@ public class ScheduleTeacherAdapter extends RecyclerView.Adapter<ScheduleTeacher
             holder.getTv_subject_name().setText(mClassOfDay.get(position).getSubject().getName());
         }
 
-        if(mClassOfDay.get(position).getStartSchoolTime() != 0){
+        if( mClassOfDay.get(position).getStartSchoolTime() != 0){
             holder.getTv_start_room().setText(getTime(mClassOfDay.get(position).getStartSchoolTime()).getStartingTime());
         }
 

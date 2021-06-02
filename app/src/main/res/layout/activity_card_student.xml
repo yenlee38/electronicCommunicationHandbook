@@ -51,12 +51,13 @@
             <ImageView
                 android:id="@+id/img_avatar"
                 android:layout_width="100dp"
-                android:layout_height="133dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginLeft="12dp"
+                android:layout_height="140dp"
+
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/avatar"/>
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/avatar" />
 
             <LinearLayout
                 android:layout_width="214dp"

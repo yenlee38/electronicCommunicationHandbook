@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.electroniccommunicationhandbook.entity.Announcement;
 import com.example.electroniccommunicationhandbook.service.AnnouncementService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -28,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AnnouncementRepository extends AndroidViewModel {
 
-    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+    private static final String BASE_URL = Comon.API_LINK;
     private static AnnouncementRepository instance;
     private AnnouncementService announcementService;
     private ArrayList<Announcement> announcements;

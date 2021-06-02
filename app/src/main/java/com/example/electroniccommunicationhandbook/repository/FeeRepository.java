@@ -11,6 +11,7 @@ import com.example.electroniccommunicationhandbook.entity.FeeperCredit;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.service.FeeService;
 import com.example.electroniccommunicationhandbook.service.StudentClassService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +28,7 @@ import retrofit2.Response;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FeeRepository extends AndroidViewModel {
-    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+    private static final String BASE_URL = Comon.API_LINK;
 
     private static FeeRepository instance;
     private FeeService feeService;

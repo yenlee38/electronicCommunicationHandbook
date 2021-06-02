@@ -10,6 +10,7 @@ import com.example.electroniccommunicationhandbook.entity.Class;
 import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.service.StudentClassService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PointRepository extends AndroidViewModel {
 
-    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+    private static final String BASE_URL = Comon.API_LINK;
 
     private StudentClassService studentClassService;
     private Student_Class point;

@@ -10,6 +10,7 @@ import com.example.electroniccommunicationhandbook.entity.Student;
 import com.example.electroniccommunicationhandbook.entity.Student_Class;
 import com.example.electroniccommunicationhandbook.service.StudentClassService;
 import com.example.electroniccommunicationhandbook.service.StudentService;
+import com.example.electroniccommunicationhandbook.util.Comon;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -35,7 +36,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StudentRepository {
-    private static final String BASE_URL = "https://apihandbookversion2.herokuapp.com/";
+    private static final String BASE_URL = Comon.API_LINK;
 
     private StudentService studentService;
     public StudentClassService studentClassService;

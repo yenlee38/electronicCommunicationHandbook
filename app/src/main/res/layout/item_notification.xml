@@ -31,7 +31,6 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:foregroundGravity="center"
-                android:layout_margin="4dp"
                 android:src="@drawable/avatar"></ImageView>
         </androidx.cardview.widget.CardView>
         <TextView

@@ -170,6 +170,7 @@ public class Student implements Serializable {
 
     public Student() {
         this.year = 0;
+
     }
 
     public Student(String studentId, String name, Date birthday, String gender, String phone, String address,
